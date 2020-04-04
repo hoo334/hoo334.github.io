@@ -27,14 +27,14 @@
 <meta property="og:site_name" content="hoo blog">
 <meta property="og:description" content="本文为复习计算机网络整理的资料。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://img2020.cnblogs.com/i-beta/1450462/202003/1450462-20200302163842831-1685005446.png">
-<meta property="og:image" content="https://img2020.cnblogs.com/i-beta/1450462/202003/1450462-20200302165609512-632407467.png">
-<meta property="og:image" content="https://img2020.cnblogs.com/i-beta/1450462/202003/1450462-20200302170604363-1497658468.png">
+<meta property="og:image" content="https://i.loli.net/2020/04/04/TgmOEQv4BAeCZXt.png">
+<meta property="og:image" content="https://i.loli.net/2020/04/04/2LT6fPzRjcS7sOm.png">
+<meta property="og:image" content="https://i.loli.net/2020/04/04/b4jrLfc7wiYvuMe.png">
 <meta property="article:published_time" content="2020-04-04T06:39:13.000Z">
-<meta property="article:modified_time" content="2020-04-04T09:01:51.181Z">
+<meta property="article:modified_time" content="2020-04-04T09:57:15.682Z">
 <meta property="article:author" content="hoo334">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img2020.cnblogs.com/i-beta/1450462/202003/1450462-20200302163842831-1685005446.png">
+<meta name="twitter:image" content="https://i.loli.net/2020/04/04/TgmOEQv4BAeCZXt.png">
 
 <link rel="canonical" href="http://yoursite.com/2020/04/04/%E7%89%A9%E7%90%86%E5%B1%82/">
 
@@ -188,7 +188,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-04-04 14:39:13 / Modified: 17:01:51" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
+              <time title="Created: 2020-04-04 14:39:13 / Modified: 17:57:15" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -227,7 +227,7 @@
 <p>　　2）香农定理：给出了带宽受限且有高斯白噪声干扰的信道的极限数据传输率</p>
 <p>　　<strong>信道的极限数据传输率 = W*log2(1+S/N)</strong></p>
 <p> 　</p>
-<h4 id="编码与调制"><a href="#编码与调制" class="headerlink" title="编码与调制"></a>编码与调制</h4><p>　　<img src="https://img2020.cnblogs.com/i-beta/1450462/202003/1450462-20200302163842831-1685005446.png" alt="img"></p>
+<h4 id="编码与调制"><a href="#编码与调制" class="headerlink" title="编码与调制"></a>编码与调制</h4><p>　　<img src="https://i.loli.net/2020/04/04/TgmOEQv4BAeCZXt.png" alt="img"></p>
 <p> 　归零编码（RZ）：高电平为1，低电平为0，在每个时钟周期中间均跳变到低电平。</p>
 <p>　　非归零编码（NRZ）：高电平为1，低电平为0，无法传递时钟信号难以同步。</p>
 <p>　　反转非归零码（NRZI）：用信号的翻转代表0，信号保持不变代表1。</p>
@@ -236,11 +236,11 @@
 <h4 id="电路交换、报文交换与分组交换"><a href="#电路交换、报文交换与分组交换" class="headerlink" title="电路交换、报文交换与分组交换"></a>电路交换、报文交换与分组交换</h4><p>　　1）电路交换：在进行数据传输前，两个结点之间必须<strong>建立一条双方独占的物理通信路径</strong>。时延小，有序传输，无冲突，实时性强。建立连接时间长，线路独占，灵活性差，难以规格化。</p>
 <p>　　2) 报文交换：<strong>数据交换的单位是报文</strong>，报文携带有目标地址、源地址等信息。报文交换在交换结点采用存储转发的传输方式。无须建立连接，动态分配线路，提高线路可靠性提高线路利用率，提供多目标服务。转发时延大，需要较大缓存空间。</p>
 <p>　　3）分组交换：<strong>限制每次传送数据块大小上限，</strong>采用存储–转发方式。无建立时延，线路利用率高、简化存储管理，加速传输，减少出错概率和重发数据量。存在传输时延，需要传输额外的信息量，当分组交换使用数据报服务时会出现失序、丢失或者重复分组，需要重新排序分组。采用虚电路服务，无失序问题但有呼叫建立、数据传输和虚电路释放三个过程。</p>
-<p><img src="https://img2020.cnblogs.com/i-beta/1450462/202003/1450462-20200302165609512-632407467.png" alt="img"></p>
+<p><img src="https://i.loli.net/2020/04/04/2LT6fPzRjcS7sOm.png" alt="img"></p>
 <h4 id="数据报和虚电路"><a href="#数据报和虚电路" class="headerlink" title="数据报和虚电路"></a>数据报和虚电路</h4><p>　　<strong>分组交换可分为面向连接的虚电路方式和无连接的数据报方式</strong>。这两种服务方式都由网络层提供。（IP分组）数据报方式和虚电路方式是分组交换的两种方式。</p>
 <p>　　1）数据报：高层协议先将报文拆成若干个带序号的数据单元，在网络层加上控制信息形成数据报分组。<strong>不同的分组可以走不同的路径，也可以按不同的顺序到达目的结点。</strong></p>
 <p>　　2）虚电路：在发送发和接收方建立一条逻辑上相连的虚电路，连接一旦确立就固定了虚电路所对应的物理路径。与电路交换类似，分为虚电路建立、数据传输和虚电路释放。端系统每次建立虚电路时，选择一个未使用过的虚电路号分配给该虚电路。<strong>每个数据分组不仅要有分组号、校验和控制信息还要有它要通过的虚电路号。</strong></p>
-<p><img src="https://img2020.cnblogs.com/i-beta/1450462/202003/1450462-20200302170604363-1497658468.png" alt="img"></p>
+<p><img src="https://i.loli.net/2020/04/04/b4jrLfc7wiYvuMe.png" alt="img"></p>
 <h3 id="传输介质"><a href="#传输介质" class="headerlink" title="传输介质"></a><strong>传输介质</strong></h3><h4 id="双绞线、同轴电缆、光纤与无线传输介质"><a href="#双绞线、同轴电缆、光纤与无线传输介质" class="headerlink" title="双绞线、同轴电缆、光纤与无线传输介质"></a>双绞线、同轴电缆、光纤与无线传输介质</h4><p>　　传输介质是发送设备和接收设备之间的物理线路。</p>
 <p>　　1）双绞线：由两根采用一定规则并排绞合的互相绝缘的铜导线组合而成，绞合可以减少对相邻导线的电磁干扰。模拟传输和数字传输都可使用。</p>
 <p>　　2）同轴电缆：由内导体、绝缘层、网状编织层和塑料外层构成。</p>
@@ -268,12 +268,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/04/04/%E6%A6%82%E8%BF%B0/" rel="prev" title="计算机网络体系结构">
-      <i class="fa fa-chevron-left"></i> 计算机网络体系结构
+    <a href="/2020/04/04/%E7%BD%91%E7%BB%9C%E5%B1%82/" rel="prev" title="网络层">
+      <i class="fa fa-chevron-left"></i> 网络层
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/04/04/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/" rel="next" title="数据链路层">
-      数据链路层 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/04/04/%E6%A6%82%E8%BF%B0/" rel="next" title="计算机网络体系结构">
+      计算机网络体系结构 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
