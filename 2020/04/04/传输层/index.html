@@ -35,12 +35,12 @@
 <meta property="og:image" content="https://i.loli.net/2020/04/04/5wOiGbaTICBSJ4j.png">
 <meta property="og:image" content="https://i.loli.net/2020/04/04/frq8gsQlw239Y1h.png">
 <meta property="og:image" content="https://i.loli.net/2020/04/04/Dodg3HIf7sBjJbW.png">
-<meta property="og:image" content="https://img2020.cnblogs.com/i-beta/1450462/202003/1450462-20200305144506785-1198066770.png">
+<meta property="og:image" content="https://i.loli.net/2020/04/04/2wIRxO9r1jsymtp.png">
 <meta property="og:image" content="https://i.loli.net/2020/04/04/vD9GEh5pFyoHwIq.png">
 <meta property="og:image" content="https://i.loli.net/2020/04/04/RQCNmEf41ZLnPO8.png">
 <meta property="og:image" content="https://i.loli.net/2020/04/04/kHdKev7JVR15yna.png">
 <meta property="article:published_time" content="2020-04-04T06:39:13.000Z">
-<meta property="article:modified_time" content="2020-04-04T09:47:51.230Z">
+<meta property="article:modified_time" content="2020-04-04T10:06:46.029Z">
 <meta property="article:author" content="hoo334">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.loli.net/2020/04/04/3FQL42bwSgD95yh.png">
@@ -197,7 +197,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-04-04 14:39:13 / Modified: 17:47:51" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
+              <time title="Created: 2020-04-04 14:39:13 / Modified: 18:06:46" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -326,7 +326,7 @@
 <p>　　1）接收窗口cwnd，接收方根据目前接收缓存大小所许诺的最新窗口值，反映接收方的容量。由接收方根据其放在TCP报文首部的窗口值通知发送方。</p>
 <p>　　2）拥塞窗口cwnd，发送方根据自己估算的网络拥塞程度而设置的窗口值，反映网络的当前容量。</p>
 <p>　　<strong>发送窗口的上限值应取接收窗口 rwnd 和拥塞窗口 cwnd 中较小的一个。</strong></p>
-<p>　　<strong><img src="https://img2020.cnblogs.com/i-beta/1450462/202003/1450462-20200305144506785-1198066770.png" alt="img"></strong></p>
+<p>　　<strong><img src="https://i.loli.net/2020/04/04/2wIRxO9r1jsymtp.png" alt="img"></strong></p>
 <p> 　接收窗口的大小可根据TCP报文的窗口字段通知发送方，发送方如何维护拥塞窗口呢？下面讲慢开始和拥塞避免算法。</p>
 <h5 id="慢开始和拥塞避免"><a href="#慢开始和拥塞避免" class="headerlink" title="慢开始和拥塞避免"></a>慢开始和拥塞避免</h5><h6 id="慢开始算法"><a href="#慢开始算法" class="headerlink" title="慢开始算法"></a>慢开始算法</h6><p>　　在TCP 刚连接好并开始发送TCP 报文时，先令拥塞窗口 cwnd=1，即一个最大报文段长度MSS，每收到一个对新报文的确认后将 cwnd加1，即增大一个MSS。逐步加大发送方的拥塞窗口。</p>
 <p>　　例如，A 向 B 发送数据，发送时 A 的拥塞窗口为 2，那么 A 一次可以发送两个 TCP 报文段，经过一个 RTT 后，A 收到 B 对刚才两个报文的确认，于是把拥塞窗口调整为 4，下一次发送时就可以一次发送4个报文段。</p>
@@ -358,12 +358,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/04/04/%E4%BA%8B%E5%8A%A1/" rel="prev" title="事务">
-      <i class="fa fa-chevron-left"></i> 事务
+    <a href="/2020/04/04/%E4%BD%8D%E8%BF%90%E7%AE%97%E6%80%BB%E7%BB%93/" rel="prev" title="位运算总结">
+      <i class="fa fa-chevron-left"></i> 位运算总结
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/04/04/SQL%E8%AF%AD%E8%A8%80/" rel="next" title="SQL语言">
-      SQL语言 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/04/04/%E4%BA%8C%E5%8F%89%E6%A0%91%E9%9D%9E%E9%80%92%E5%BD%92%E9%81%8D%E5%8E%86%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/" rel="next" title="二叉树非递归遍历方法总结">
+      二叉树非递归遍历方法总结 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -437,15 +437,21 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">58</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
