@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://img2020.cnblogs.com/i-beta/1450462/202003/1450462-20200302165609512-632407467.png">
 <meta property="og:image" content="https://img2020.cnblogs.com/i-beta/1450462/202003/1450462-20200302170604363-1497658468.png">
 <meta property="article:published_time" content="2020-04-04T06:39:13.000Z">
-<meta property="article:modified_time" content="2020-04-04T07:37:20.712Z">
+<meta property="article:modified_time" content="2020-04-04T09:01:51.181Z">
 <meta property="article:author" content="hoo334">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img2020.cnblogs.com/i-beta/1450462/202003/1450462-20200302163842831-1685005446.png">
@@ -188,7 +188,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-04-04 14:39:13 / Modified: 15:37:20" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
+              <time title="Created: 2020-04-04 14:39:13 / Modified: 17:01:51" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -212,62 +212,47 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h1><p><strong>2.1 通信基础</strong></p>
-<p>　　<strong><em>2.1.1 基本概念</em></strong></p>
-<p>　　1. 数据、信号与码元</p>
-<p>　　1）数据：传送信息的实体。</p>
+        <h1 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h1><h3 id="通信基础"><a href="#通信基础" class="headerlink" title="通信基础"></a><strong>通信基础</strong></h3><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><h5 id="数据、信号与码元"><a href="#数据、信号与码元" class="headerlink" title="数据、信号与码元"></a>数据、信号与码元</h5><p>　　1）数据：传送信息的实体。</p>
 <p>　　2）信号：数据的电气或电磁表现，是数据在传输过程中的存在形式。</p>
 <p>　　3）码元：用一个固定时长的信号波形表示一位k进制数字。</p>
 <p>　　</p>
-<p>　　2. 信源、信道与信宿</p>
-<p>　　1）信源：产生与发送数据的源头 。2）信道：信号的传输媒介。3）信宿：接收数据的终点。</p>
+<h5 id="信源、信道与信宿"><a href="#信源、信道与信宿" class="headerlink" title="信源、信道与信宿"></a>信源、信道与信宿</h5><p>　　1）信源：产生与发送数据的源头 。2）信道：信号的传输媒介。3）信宿：接收数据的终点。</p>
 <p>　　</p>
-<p>　　3. 速率、波特与带宽</p>
-<p>　　速率：单位时间传输的数据量。可以用码元传输速率和信息传输速率表示。</p>
+<h5 id="速率、波特与带宽"><a href="#速率、波特与带宽" class="headerlink" title="速率、波特与带宽"></a>速率、波特与带宽</h5><p>　　速率：单位时间传输的数据量。可以用码元传输速率和信息传输速率表示。</p>
 <p>　　1）码元传输速率：单位时间内传输的码元个数。单位为波特Baud。</p>
 <p>　　2）信息传输率：单位时间内传输的比特数，单位 b/s。</p>
 <p>　　</p>
-<p>　　<strong><em>2.1.2 奈奎斯特定理和香农定理</em></strong></p>
-<p>　　1）奈奎斯特定理：<strong>在理想低通信道中极限码元传输率为2W波特，其中W是理想低通信道的带宽单位为Hz。</strong>若用V来表示每个码元离散电平的数目，比如有16种不同的码元，采用NRZ码传输，发送一位需要1个信号周期，一个码元含有4bit信息量，若采用Manchester码 ，发送一位需要2个信号周期，一个码元含有2bit信息量。如果只有两种码元，采用NRZ，每个码元含有1bit信息量；采用Manchester，每个码元含有0.5bit信息量。</p>
+<h4 id="奈奎斯特定理和香农定理"><a href="#奈奎斯特定理和香农定理" class="headerlink" title="奈奎斯特定理和香农定理"></a>奈奎斯特定理和香农定理</h4><p>　　1）奈奎斯特定理：<strong>在理想低通信道中极限码元传输率为2W波特，其中W是理想低通信道的带宽单位为Hz。</strong>若用V来表示每个码元离散电平的数目，比如有16种不同的码元，采用NRZ码传输，发送一位需要1个信号周期，一个码元含有4bit信息量，若采用Manchester码 ，发送一位需要2个信号周期，一个码元含有2bit信息量。如果只有两种码元，采用NRZ，每个码元含有1bit信息量；采用Manchester，每个码元含有0.5bit信息量。</p>
 <p>　　<strong>极限数据传输率 = 2W*log2(V)</strong></p>
 <p>　　2）香农定理：给出了带宽受限且有高斯白噪声干扰的信道的极限数据传输率</p>
 <p>　　<strong>信道的极限数据传输率 = W*log2(1+S/N)</strong></p>
 <p> 　</p>
-<p>　　<strong><em>2.1.3 编码与调制</em></strong></p>
-<p>　　<img src="https://img2020.cnblogs.com/i-beta/1450462/202003/1450462-20200302163842831-1685005446.png" alt="img"></p>
+<h4 id="编码与调制"><a href="#编码与调制" class="headerlink" title="编码与调制"></a>编码与调制</h4><p>　　<img src="https://img2020.cnblogs.com/i-beta/1450462/202003/1450462-20200302163842831-1685005446.png" alt="img"></p>
 <p> 　归零编码（RZ）：高电平为1，低电平为0，在每个时钟周期中间均跳变到低电平。</p>
 <p>　　非归零编码（NRZ）：高电平为1，低电平为0，无法传递时钟信号难以同步。</p>
 <p>　　反转非归零码（NRZI）：用信号的翻转代表0，信号保持不变代表1。</p>
 <p>　　曼彻斯特码（Manchester）：10 表示高电平，01表示低电平。以太网使用。</p>
 <p>　　差分曼彻斯特码：若下一个电平为低，在码元边界反转，若为高电平则保持不变。</p>
-<p>　　<strong><em>2.1.4 电路交换、报文交换与分组交换</em></strong></p>
-<p>　　1）电路交换：在进行数据传输前，两个结点之间必须<strong>建立一条双方独占的物理通信路径</strong>。时延小，有序传输，无冲突，实时性强。建立连接时间长，线路独占，灵活性差，难以规格化。</p>
+<h4 id="电路交换、报文交换与分组交换"><a href="#电路交换、报文交换与分组交换" class="headerlink" title="电路交换、报文交换与分组交换"></a>电路交换、报文交换与分组交换</h4><p>　　1）电路交换：在进行数据传输前，两个结点之间必须<strong>建立一条双方独占的物理通信路径</strong>。时延小，有序传输，无冲突，实时性强。建立连接时间长，线路独占，灵活性差，难以规格化。</p>
 <p>　　2) 报文交换：<strong>数据交换的单位是报文</strong>，报文携带有目标地址、源地址等信息。报文交换在交换结点采用存储转发的传输方式。无须建立连接，动态分配线路，提高线路可靠性提高线路利用率，提供多目标服务。转发时延大，需要较大缓存空间。</p>
 <p>　　3）分组交换：<strong>限制每次传送数据块大小上限，</strong>采用存储–转发方式。无建立时延，线路利用率高、简化存储管理，加速传输，减少出错概率和重发数据量。存在传输时延，需要传输额外的信息量，当分组交换使用数据报服务时会出现失序、丢失或者重复分组，需要重新排序分组。采用虚电路服务，无失序问题但有呼叫建立、数据传输和虚电路释放三个过程。</p>
 <p><img src="https://img2020.cnblogs.com/i-beta/1450462/202003/1450462-20200302165609512-632407467.png" alt="img"></p>
-<p> 　<strong><em>2.1.5 数据报和虚电路</em></strong></p>
-<p>　　<strong>分组交换可分为面向连接的虚电路方式和无连接的数据报方式</strong>。这两种服务方式都由网络层提供。（IP分组）数据报方式和虚电路方式是分组交换的两种方式。</p>
+<h4 id="数据报和虚电路"><a href="#数据报和虚电路" class="headerlink" title="数据报和虚电路"></a>数据报和虚电路</h4><p>　　<strong>分组交换可分为面向连接的虚电路方式和无连接的数据报方式</strong>。这两种服务方式都由网络层提供。（IP分组）数据报方式和虚电路方式是分组交换的两种方式。</p>
 <p>　　1）数据报：高层协议先将报文拆成若干个带序号的数据单元，在网络层加上控制信息形成数据报分组。<strong>不同的分组可以走不同的路径，也可以按不同的顺序到达目的结点。</strong></p>
 <p>　　2）虚电路：在发送发和接收方建立一条逻辑上相连的虚电路，连接一旦确立就固定了虚电路所对应的物理路径。与电路交换类似，分为虚电路建立、数据传输和虚电路释放。端系统每次建立虚电路时，选择一个未使用过的虚电路号分配给该虚电路。<strong>每个数据分组不仅要有分组号、校验和控制信息还要有它要通过的虚电路号。</strong></p>
 <p><img src="https://img2020.cnblogs.com/i-beta/1450462/202003/1450462-20200302170604363-1497658468.png" alt="img"></p>
-<p><strong>2.2 传输介质</strong></p>
-<p>　　<strong><em>2.2.1 双绞线、同轴电缆、光纤与无线传输介质</em></strong></p>
-<p>　　传输介质是发送设备和接收设备之间的物理线路。</p>
+<h3 id="传输介质"><a href="#传输介质" class="headerlink" title="传输介质"></a><strong>传输介质</strong></h3><h4 id="双绞线、同轴电缆、光纤与无线传输介质"><a href="#双绞线、同轴电缆、光纤与无线传输介质" class="headerlink" title="双绞线、同轴电缆、光纤与无线传输介质"></a>双绞线、同轴电缆、光纤与无线传输介质</h4><p>　　传输介质是发送设备和接收设备之间的物理线路。</p>
 <p>　　1）双绞线：由两根采用一定规则并排绞合的互相绝缘的铜导线组合而成，绞合可以减少对相邻导线的电磁干扰。模拟传输和数字传输都可使用。</p>
 <p>　　2）同轴电缆：由内导体、绝缘层、网状编织层和塑料外层构成。</p>
 <p>　　3）光纤：主要由纤心和包层构成，利用光的全反射。</p>
 <p>　　4）无线传输介质：无线电波 微光、红外光和激光。</p>
 <p>　　</p>
-<p>　　<strong><em>2.2.2 物理层接口的特性</em></strong></p>
-<p>　　1）机械特性：规定物理连接时所采用的规格、引线的数目、引脚的数量和排列情况。</p>
+<h4 id="物理层接口的特性"><a href="#物理层接口的特性" class="headerlink" title="物理层接口的特性"></a>物理层接口的特性</h4><p>　　1）机械特性：规定物理连接时所采用的规格、引线的数目、引脚的数量和排列情况。</p>
 <p>　　2）电气特性：规定传输二进制位时，线路上信号的电压高低、阻抗匹配、传输速率和距离限制等。</p>
 <p>　　3）功能特性：指明某条线上出现的某一电平的电压表示何种意义，接口部件的信号线用途。</p>
 <p>　　4）规程特性：定义各条物理线路的工作规程和时序关系。</p>
-<p><strong>2.3 物理层设备</strong> </p>
-<p> 　<strong><em>2.3.1 中继器</em></strong></p>
-<p>　　中继器又称转发器，主要功能是将信号整形并放大再转发出去，消除衰减，<strong>其原理是信号再生</strong>。有两个端口输入和输出端口。使用中继器连接的几个网段仍是一个局域网，它不能连接两个具有不同速率的局域网，它没有存储转发功能。中继器两端的网络部分是网段，而不是子网。</p>
-<p>　　<strong><em>2.3.2 集线器</em></strong></p>
-<p>　　集线器实质上是一个多端口的中继器工作在物理层。当Hub工作时，一个端口收到数据信号后，将其整形放大，使之再生然后转发到其他所有端口，Hub在网络中只起信号放大和转发作用，目的是扩大网络的传输范围，不具备信号的定向传输能力。Hub组成的网络是共享式网络，逻辑上仍是一个总线网，Hub只能在半双工状态下工作。集线器不能分割冲突域，例如一个带宽为10Mbps 的集线器上连接了8台计算机，8台计算机同时工作时，每台计算机真正拥有的带宽时1.25Mbps。</p>
+<h3 id="物理层设备"><a href="#物理层设备" class="headerlink" title="物理层设备"></a><strong>物理层设备</strong></h3><h4 id="中继器"><a href="#中继器" class="headerlink" title="中继器"></a>中继器</h4><p>　　中继器又称转发器，主要功能是将信号整形并放大再转发出去，消除衰减，<strong>其原理是信号再生</strong>。有两个端口输入和输出端口。使用中继器连接的几个网段仍是一个局域网，它不能连接两个具有不同速率的局域网，它没有存储转发功能。中继器两端的网络部分是网段，而不是子网。</p>
+<h4 id="集线器"><a href="#集线器" class="headerlink" title="集线器"></a>集线器</h4><p>　　集线器实质上是一个多端口的中继器工作在物理层。当Hub工作时，一个端口收到数据信号后，将其整形放大，使之再生然后转发到其他所有端口，Hub在网络中只起信号放大和转发作用，目的是扩大网络的传输范围，不具备信号的定向传输能力。Hub组成的网络是共享式网络，逻辑上仍是一个总线网，Hub只能在半双工状态下工作。集线器不能分割冲突域，例如一个带宽为10Mbps 的集线器上连接了8台计算机，8台计算机同时工作时，每台计算机真正拥有的带宽时1.25Mbps。</p>
 
     </div>
 
@@ -282,10 +267,13 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2020/04/04/%E7%BD%91%E7%BB%9C%E5%B1%82/" rel="next" title="网络层">
-      网络层 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/04/04/%E6%A6%82%E8%BF%B0/" rel="prev" title="计算机网络体系结构">
+      <i class="fa fa-chevron-left"></i> 计算机网络体系结构
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/04/04/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/" rel="next" title="数据链路层">
+      数据链路层 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -345,7 +333,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#物理层"><span class="nav-number">1.</span> <span class="nav-text">物理层</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#物理层"><span class="nav-number">1.</span> <span class="nav-text">物理层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通信基础"><span class="nav-number">1.0.1.</span> <span class="nav-text">通信基础</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本概念"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据、信号与码元"><span class="nav-number">1.0.1.1.1.</span> <span class="nav-text">数据、信号与码元</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#信源、信道与信宿"><span class="nav-number">1.0.1.1.2.</span> <span class="nav-text">信源、信道与信宿</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#速率、波特与带宽"><span class="nav-number">1.0.1.1.3.</span> <span class="nav-text">速率、波特与带宽</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#奈奎斯特定理和香农定理"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">奈奎斯特定理和香农定理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编码与调制"><span class="nav-number">1.0.1.3.</span> <span class="nav-text">编码与调制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#电路交换、报文交换与分组交换"><span class="nav-number">1.0.1.4.</span> <span class="nav-text">电路交换、报文交换与分组交换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据报和虚电路"><span class="nav-number">1.0.1.5.</span> <span class="nav-text">数据报和虚电路</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#传输介质"><span class="nav-number">1.0.2.</span> <span class="nav-text">传输介质</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#双绞线、同轴电缆、光纤与无线传输介质"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">双绞线、同轴电缆、光纤与无线传输介质</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#物理层接口的特性"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">物理层接口的特性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#物理层设备"><span class="nav-number">1.0.3.</span> <span class="nav-text">物理层设备</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#中继器"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">中继器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集线器"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">集线器</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
