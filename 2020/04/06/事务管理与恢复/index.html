@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="本文是复习数据库整理的资料">
+<meta property="og:type" content="article">
+<meta property="og:title" content="事务管理与恢复">
+<meta property="og:url" content="http://yoursite.com/2020/04/06/%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86%E4%B8%8E%E6%81%A2%E5%A4%8D/index.html">
+<meta property="og:site_name" content="hoo blog">
+<meta property="og:description" content="本文是复习数据库整理的资料">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2020/04/06/KOWfz9e1juAwros.png">
+<meta property="og:image" content="https://i.loli.net/2020/04/06/4C2VSsKYmMUngI8.png">
+<meta property="og:image" content="https://i.loli.net/2020/04/06/W5y9jOtbTdmeuCz.png">
+<meta property="og:image" content="https://i.loli.net/2020/04/06/1uJ9kfFZqtl7VEz.png">
+<meta property="og:image" content="https://i.loli.net/2020/04/06/sNHdY7A2PhBy3ET.png">
+<meta property="og:image" content="https://i.loli.net/2020/04/06/JX7bQ8va4hoMHNK.png">
+<meta property="og:image" content="https://i.loli.net/2020/04/06/6OxDya25XE3bVAo.png">
+<meta property="og:image" content="https://i.loli.net/2020/04/06/GZAjXMbNu4z7apB.png">
+<meta property="og:image" content="https://i.loli.net/2020/04/06/TcfswaB6NqoKzdp.png">
+<meta property="og:image" content="https://i.loli.net/2020/04/06/TgmJlz6Qevkprni.png">
+<meta property="article:published_time" content="2020-04-06T01:27:11.000Z">
+<meta property="article:modified_time" content="2020-04-06T03:58:04.707Z">
+<meta property="article:author" content="hoo334">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/04/06/KOWfz9e1juAwros.png">
+
+<link rel="canonical" href="http://yoursite.com/2020/04/06/%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86%E4%B8%8E%E6%81%A2%E5%A4%8D/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>事务管理与恢复 | hoo blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">hoo blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/06/%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86%E4%B8%8E%E6%81%A2%E5%A4%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hoo334">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hoo blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          事务管理与恢复
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-04-06 09:27:11 / Modified: 11:58:04" itemprop="dateCreated datePublished" datetime="2020-04-06T09:27:11+08:00">2020-04-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">本文是复习数据库整理的资料</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="事务管理与恢复"><a href="#事务管理与恢复" class="headerlink" title="事务管理与恢复"></a>事务管理与恢复</h1><h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h3><h4 id="事务概念"><a href="#事务概念" class="headerlink" title="事务概念"></a>事务概念</h4><p>​    对于用户而言，事务是具有完整逻辑意义的数据库操作序列的集合。对于数据库管理系统而言，事务则是一个读写操作序列。这些操作是一个不可分割的逻辑工作单元，要么都做，要么都不做。</p>
+<p>​    通常有有两种类型的事务结束语句：</p>
+<p>​    1）事务提交（commit）：将成功完成事务的执行结果（即更新）永久化，并释放事务占有的全部资源。</p>
+<p>​    2）事务回滚（rollback）：中止当前事务、撤销其对数据库所做的更新，并释放事务占有的全部资源。</p>
+<p>​    </p>
+<p>SQL Server 数据库提供了 3 种类型的事务模式：显式事务、隐式事务及自定义事务。</p>
+<p>​    显式事务是指用户使用了 Transact-SQL 事务语句所定义的事务，其事务语句包括：</p>
+<p>​    事务开始：begin transaction</p>
+<p>​    事务提交：commit transaction，commit work</p>
+<p>​    事务回滚：rollback transaction，rollback work</p>
+<p>​    隐式事务是指事务提交或回滚后，SQL Server 自动开始新的事务。该类事务不需要采用 begin transaction 语句标识事务的开始。</p>
+<p>​    自动定义事务模式：当一个语句成功执行后，它被自动提交，而当执行过程中出错时，则被自动回滚。</p>
+<h4 id="事务特性"><a href="#事务特性" class="headerlink" title="事务特性"></a>事务特性</h4><p>​    1）原子性（Atomicity）。事务的所有操作要么全部被执行，要么都不执行。</p>
+<p>​    2）一致性（Consistency）。一个单独执行的事务应保证其执行结果的一致性，即总是将数据库从一个一致性状态转化到另一个一致性状态。</p>
+<p>​    3）隔离性（Isolation）。当多个事务并发执行时，一个事务的执行不能影响另一个事务，即并发执行的各个事务不能相互干扰。</p>
+<p>​    4）持久性（Durability）。一个事务提交成功后，它对数据库的改变必须是永久的，即使随后系统出现故障。</p>
+<h4 id="事务并发执行与调度"><a href="#事务并发执行与调度" class="headerlink" title="事务并发执行与调度"></a>事务并发执行与调度</h4><p>​    数据库管理系统允许多个事务并发执行，其主要优点是增加系统吞吐量和减少平均响应时间。</p>
+<p>​    </p>
+<p>​    并发事务带来的问题：</p>
+<p>​    1）<strong>脏读（Dirty Read）</strong>：一个事务正在访问数据并对数据进行修改，修改还没有提交到数据库，这是另外一个事务访问了这个数据，然后使用了这个数据。这个数据更改之前的数据，另一个事务读到的数据是“脏数据”，依靠“脏数据”所做的操作是不正确的。</p>
+<p>　2）<strong>丢失修改（Lost to modify）</strong>：一个事务读取一个数据时，另外一个事务也访问了该数据，在第一个事务中修改数据后，第二个事务也修改了这个数据。第一个事务内的修改结果丢失，因此称作丢失修改。例如事务1读取某表中的数据 A=20 ，事务2也读取A=20，事务1修改A=A-1，事务2也修改A=A-1，最终结果A=19，事务1的修改丢失。</p>
+<p>　3）<strong>不可重复读（Unrepeatable read）</strong>：在一个事务内多次读同一个数据在这个事务还没有结束时，另一个事务也访问该数据。在第一个事务的两次读之间，另一个事务可能已经修改了数据，导致两次读取的数据可能不太一样。</p>
+<p>　4）<strong>幻读（Phanatom read）</strong>：幻读与不可重复读类似。发生在一个事务读了几行数据，接着另一个并发 事务插入了一些数据。在随后的查询中第一个事务就会发现多了一些原本不存在的记录，好像发生了幻觉。    </p>
+<h4 id="事务调度及正确性准则"><a href="#事务调度及正确性准则" class="headerlink" title="事务调度及正确性准则"></a>事务调度及正确性准则</h4><p>​    事务并发执行顺序是随机的，将由多个事务操作组成的随机执行序列称为一个调度。对于一组事务操作组成的调度序列而言，应满足下列条件：</p>
+<p>​    1）该调度包括该组事务的全部操作；</p>
+<p>​    2）属于同一个事务的操作应保持在原事务中的执行顺序。</p>
+<p>​    串行调度：在调度 S 中，如果属于同一事务的操作都是相邻的，则称 S 是串行调度。</p>
+<p>​    冲突操作：在一个调度 S 中，如果 A 和 B 是不同事务在相同数据对象上的操作，并且其中至少有一个是写操作，则称 A 与 B 是冲突操作。</p>
+<p>​    冲突等价：如果一调度 S 可以经过交换一系列非冲突操作执行的顺序而得到一个新的调度 S‘ ，则称 S 与 S’ 是冲突等价的。</p>
+<p>​    冲突可串行化：如果一调度 S 与一串行调度是冲突等价 的，则称 S 是冲突可串行化的。</p>
+<h5 id="判断调度是否可串行化的方法"><a href="#判断调度是否可串行化的方法" class="headerlink" title="判断调度是否可串行化的方法"></a>判断调度是否可串行化的方法</h5><p><img src="https://i.loli.net/2020/04/06/KOWfz9e1juAwros.png" alt="image-20200406101649482"></p>
+<p><img src="https://i.loli.net/2020/04/06/4C2VSsKYmMUngI8.png" alt="image-20200406101753978"></p>
+<p><img src="https://i.loli.net/2020/04/06/W5y9jOtbTdmeuCz.png" alt="image-20200406101814976"></p>
+<p><img src="https://i.loli.net/2020/04/06/1uJ9kfFZqtl7VEz.png" alt="image-20200406101908368"></p>
+<p>​    图 10-2(a) 中，对于 A 的并发访问：R1(A), W1(A), R2(A), W2(A)，存在 W1(A)后执行R2(A)，W1(A)后执行W2(A)。故 T1 -&gt; T2。优先图中无环可以串行化。</p>
+<p>​    图 10-2(b) 中，对于 A 的并发访问：R2(A), W2(A), R1(A), W1(A) ，存在 W2(A)后执行R1(A)，W2(A)后执行W1A)。故 T2 -&gt; T1。优先图中无环可以串行化。</p>
+<p>​    图10-8 中，对于 A 的并发访问：R4(A), W4(A), R6(A), W6(A)，存在 W4(A)后执行R6(A)，W4(A)后执行W6(A)。故 T4-&gt; T6。对于 B 的并发访问：R6(B), W6(B), R4(B), W4(B)，存在 W6(B)后执行R4(B)，W6(B)后执行W4(B)。故 T6-&gt; T4。优先图中有环，不可串行化。</p>
+<h3 id="并发控制"><a href="#并发控制" class="headerlink" title="并发控制"></a>并发控制</h3><h4 id="基于封锁的协议"><a href="#基于封锁的协议" class="headerlink" title="基于封锁的协议"></a>基于封锁的协议</h4><p>​    并发控制机制大体上可分为悲观的和乐观的两种。悲观的并发控制方法认为数据库 的一致性经常会收到破坏，因此在事务访问数据对象前采取一定措施加以控制，只有得到访问许可时，才能访问数据对象，如<strong>基于封锁的并发控制方法</strong>。而乐观的并发控制方法则认为数据库的一致性通常不会得到破坏，故事务执行时可直接访问数据对象，只在事务结束时才验证数据库的一致性是否会遭到破坏，如基于有效性验证方法。</p>
+<p>​    基于封锁的并发控制方法的基本思想是：当事务 <em>T</em> 需访问数据对象 <em>Q</em> 时，先申请对 <em>Q</em> 的锁。如批准获得，则 <em>T</em> 继续执行，且此后不允许其他任何事物修改 <em>Q</em>，直到事务 <em>T</em> 释放 <em>Q</em> 上的锁为止。</p>
+<p>​    基本锁类型：</p>
+<p>​    1）共享锁（Shared Lock，记为 S ）：如果事务 <em>T</em> 获得的对象 <em>Q</em> 上的共享锁，则 <em>T</em> 可读 <em>Q</em> 但不能写 <em>Q</em> 。</p>
+<p>​     2）排他锁（eXclusive lock，记为 X ）：如果事务 <em>T</em> 获得的对象 <em>Q</em> 上的排他锁，则 <em>T</em> 可读 <em>Q</em> 又能写 <em>Q</em> 。</p>
+<p>​    <strong>一个数据对象 <em>Q</em> 上可能有多个（被不同事务拥有的）共享锁，但任何时候只能有一个排他锁。</strong></p>
+<p><img src="https://i.loli.net/2020/04/06/sNHdY7A2PhBy3ET.png" alt="image-20200406104004431"></p>
+<p><img src="https://i.loli.net/2020/04/06/JX7bQ8va4hoMHNK.png" alt="image-20200406104529309"></p>
+<p>​    图10-13 中的调度存在以下问题：</p>
+<p>​    1）脏读。T2 步骤 11 读了 T1 修改后的数据，而T1 在步骤 12 回滚了。</p>
+<p>​    2）不可重复读。如 T3 两次读到 A 的值不同。</p>
+<p>​    3）不可串行化。</p>
+<p>​    出现上述问题的原因是<strong>事务过早地释放了锁</strong>，如果规定事务在结束后才释放其持有地锁则可以保证调度的可串行性。但这会导致系统性能下降。</p>
+<h4 id="两阶段封锁协议"><a href="#两阶段封锁协议" class="headerlink" title="两阶段封锁协议"></a>两阶段封锁协议</h4><p>​    两阶段封锁协议要求每个事务分两个阶段提出申请锁和解锁申请。</p>
+<p>​    1）增长阶段：事务可以获得锁，但不能释放锁。</p>
+<p>​    2）缩减阶段：事务可以释放锁，但不能获得新锁。</p>
+<p>​    一开始，事务处于增长阶段，事务根据需要获得锁。一旦该事务释放了锁，它就进入了缩减阶段，不能再发出加锁请求。</p>
+<p>​    两阶段封锁协议能保证冲突可串行化。对于任何事务，调度中该事务获得其最后加锁的时刻（增长阶段结束点）称为事务的封锁点。多个事务可以根据它们的封锁点进行排序，而这个顺序就是并发事务的一个冲突可串行化顺序。</p>
+<p><img src="https://i.loli.net/2020/04/06/6OxDya25XE3bVAo.png" alt="image-20200406105546498"></p>
+<p>​    图10-14 采用了两阶段封锁，允许 T4 在获得全部锁后（A 和 B 上的排他锁）提前释放部分锁（步骤 7 释放了 A 上的排他锁），T5得以提前执行，从而提高了 T4 和 T5 的并发度，该调度是可串行化 的。</p>
+<p>​    两阶段封锁保证了并发执行事务的正确性，但仍存在两个主要问题：</p>
+<p>​    1）可能导致死锁，即持有锁的事务出现相互等待都不能继续执行。解除死锁的一个简单方法是超时机制。如果一个事务为某个锁等待的时间过长，可以悲观得认为死锁已经发生，回滚该事务并重启。</p>
+<p>​    2）不能避免读脏数据。</p>
+<p>​    另一个两阶段封锁得变体是强两阶段封锁协议，它要求事务提交之前不得释放任何锁。事务可以按其提交得顺序串行化。</p>
+<h3 id="恢复与备份"><a href="#恢复与备份" class="headerlink" title="恢复与备份"></a>恢复与备份</h3><h4 id="故障分类及恢复策略"><a href="#故障分类及恢复策略" class="headerlink" title="故障分类及恢复策略"></a>故障分类及恢复策略</h4><p>​    1）事务故障。事务未运行至正常终止点就夭折了。</p>
+<p>​    2）系统故障。突发事件导致系统停止运行。</p>
+<p>​    3）介质故障。硬件损坏。</p>
+<p>​    4）其他故障。有人攻击。</p>
+<h4 id="事务访问数据方式"><a href="#事务访问数据方式" class="headerlink" title="事务访问数据方式"></a>事务访问数据方式</h4><p>​    对于一个事务而言，它是通过 3 个地址空间同数据库进行交互：</p>
+<p>​    1）保存数据库元素的磁盘块空间——物理数据库。</p>
+<p>​    2）缓冲区管理器所管理的内存地址空间——数据缓冲区。</p>
+<p>​    3）事务的局部地址空间——事务工作区。</p>
+<p>​    当事务要读取数据库元素时，首先必须将该元素从物理数据库读取到数据缓冲区中，除非它已经在缓冲区中，然后再将缓冲区中的内容读到事务工作区中。</p>
+<p><img src="https://i.loli.net/2020/04/06/GZAjXMbNu4z7apB.png" alt="image-20200406111338451"></p>
+<p><img src="https://i.loli.net/2020/04/06/TcfswaB6NqoKzdp.png" alt="image-20200406111426865"></p>
+<h4 id="基于日志的故障恢复策略"><a href="#基于日志的故障恢复策略" class="headerlink" title="基于日志的故障恢复策略"></a>基于日志的故障恢复策略</h4><p>​    日志是 DBMS 记录数据库全部更新操作的序列文件。通常一个数据库系统只有一个日志文件，为所有事务共享，其主要特点有：</p>
+<p>​    1）日志文件记录了数据库的全部更新顺序。</p>
+<p>​    2）每条日志都记录在日志的尾部，故日志文件是一个追加文件。</p>
+<p>​    3）DBMS 允许事务的并发执行导致日志文件是“交错的”。</p>
+<p>​    4）属于单个事务的日志顺序与该事务的更新操作顺序是一致的。</p>
+<p>​    5）日志记录通常是先写到日志缓冲区中，然后写到稳定存储器中。</p>
+<p>​    数据库中的日志记录有两种类型：</p>
+<p>​    1）记录数据更新操作的日志记录，包括 update，insert 和 delete 操作。</p>
+<p>​    2）记录事务操作的日志记录，包括start，commit 和 abort 操作。</p>
+<p>​    它们的具体记录格式如下：</p>
+<p>​    &lt; Ti, A, V1,V2 &gt; 表示 Ti 对数据元素 A 执行了更新操作，V1为 A 更新前的值，V2表示 A 更新后的值。</p>
+<p>​    &lt; Ti, START &gt; 表示事务 Ti 已经开始。此时 DBMS 完成对事务的初始化工作，如分配事务工作区等。</p>
+<p>​    &lt; Ti, COMMIT &gt; 表示事务 Ti 已经提交。</p>
+<p>​    &lt; Ti, ABORT &gt; 表示事务已经终止，即事务执行失败。</p>
+<p>​    为了保证数据库能运用日志进行恢复，要求日志文件必须放到稳定存储器上，并且要求每条日志记录必须在其所包含数据元素的更新值写到稳定存储器之前写到稳定存储器上，即<strong>先写日志</strong>规则。</p>
+<h5 id="UNDO-操作"><a href="#UNDO-操作" class="headerlink" title="UNDO 操作"></a>UNDO 操作</h5><p>​    事务 T 执行过程中修改了数据库后，可能由于某种原因事务中止或系统崩溃，可使用 UNDO 恢复技术将 T 修改的全部数据对象值恢复到 T 开始前的状态。</p>
+<p>​    对于要 UNDO 的事务 T ，日志中记录有 &lt;T, START&gt; 以及 T 对数据库的所有更新操作的日志记录。UNDO 过程为：从 T 的最后一条更新日志开始，从日志尾向日志头（反向）依次将 T 更新的数据元素恢复为旧值（V1）。</p>
+<p>​    之所以需要 UNDO ，是因为故障发生时未提交事务的修改可能已写到磁盘上。</p>
+<h5 id="REDO-操作"><a href="#REDO-操作" class="headerlink" title="REDO 操作"></a>REDO 操作</h5><p>​    REDO 操作时对已提交事务进行重做，将数据库状态恢复到事务结束后的状态。</p>
+<p>​    对于要 REDO 的事务 T，日志中已经记录了 &lt;T, START&gt;  ，T 的所有更新操作日志以及 &lt;T, COMMIT&gt;。REDO 的过程为：从 T 的第一条更新日志记录来时，从日志头向日志尾（顺向）依次将 T 更新的数据元素值恢复为新值（V2）。</p>
+<p>​    需要 REDO 的原因是，故障发生时可能有些已提交事务的更新数据还未写到磁盘上。</p>
+<h5 id="并发执行事务的基本恢复过程"><a href="#并发执行事务的基本恢复过程" class="headerlink" title="并发执行事务的基本恢复过程"></a>并发执行事务的基本恢复过程</h5><p>​    1）分析阶段。从日志头开始顺向扫描日志，以确定重做事务集和撤销事务集。将既有  &lt;T, START&gt;又有 &lt;T, COMMIT&gt; 日志记录的事务 T 加入重做事务集。将只有  &lt;T, START&gt;没有 &lt;T, COMMIT&gt; 日志记录的事务 T 加入撤销事务集。</p>
+<p>​    2）撤销阶段。从日志尾反向扫描日志，对每一条属于撤销事务集中的事务更新操作日志依次执行 UNDO 操作。</p>
+<p>​    3）重做阶段。从日志头顺向扫描日志，对每一条属于重做事务集中的事务更新操作日志依次执行 REDO 操作。</p>
+<h4 id="检查点"><a href="#检查点" class="headerlink" title="检查点"></a>检查点</h4><p>​    检查点是周期性地向日志中写一条检查点记录并记录所有当前活跃的事务，为恢复管理器提供信息，以决定从日志的何处开始恢复。在日志记录中使用 &lt; Checkpoint L &gt;来指定检查点 L 。</p>
+<p>​    图10-19 是系统崩溃时的不同事务状态类型，其中 Tc 为完成最近检查点时刻，Tf 为故障发生时刻。 </p>
+<p><img src="https://i.loli.net/2020/04/06/TgmJlz6Qevkprni.png" alt="image-20200406114406231"></p>
+<h4 id="备份与介质故障恢复"><a href="#备份与介质故障恢复" class="headerlink" title="备份与介质故障恢复"></a>备份与介质故障恢复</h4><p>​    动态备份是指备份操作与用户事务的执行并发进行，备份期间允许对数据库进行存取或修改。静态备份则要等待用户事务结束然后备份。</p>
+<p>​    具体进行数据备份时可以有两种方式，一种是全备份，一种是增量备份。</p>
+<p>​    全备份是指每次备份全部数据库，而增量备份只备份上次备份后更新过的数据。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/04/05/E-R-%E6%A8%A1%E5%9E%8B/" rel="prev" title="E-R 模型">
+      <i class="fa fa-chevron-left"></i> E-R 模型
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#事务管理与恢复"><span class="nav-number">1.</span> <span class="nav-text">事务管理与恢复</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事务"><span class="nav-number">1.0.1.</span> <span class="nav-text">事务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#事务概念"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">事务概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事务特性"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">事务特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事务并发执行与调度"><span class="nav-number">1.0.1.3.</span> <span class="nav-text">事务并发执行与调度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事务调度及正确性准则"><span class="nav-number">1.0.1.4.</span> <span class="nav-text">事务调度及正确性准则</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#判断调度是否可串行化的方法"><span class="nav-number">1.0.1.4.1.</span> <span class="nav-text">判断调度是否可串行化的方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#并发控制"><span class="nav-number">1.0.2.</span> <span class="nav-text">并发控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基于封锁的协议"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">基于封锁的协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#两阶段封锁协议"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">两阶段封锁协议</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#恢复与备份"><span class="nav-number">1.0.3.</span> <span class="nav-text">恢复与备份</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#故障分类及恢复策略"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">故障分类及恢复策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事务访问数据方式"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">事务访问数据方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于日志的故障恢复策略"><span class="nav-number">1.0.3.3.</span> <span class="nav-text">基于日志的故障恢复策略</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#UNDO-操作"><span class="nav-number">1.0.3.3.1.</span> <span class="nav-text">UNDO 操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#REDO-操作"><span class="nav-number">1.0.3.3.2.</span> <span class="nav-text">REDO 操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#并发执行事务的基本恢复过程"><span class="nav-number">1.0.3.3.3.</span> <span class="nav-text">并发执行事务的基本恢复过程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#检查点"><span class="nav-number">1.0.3.4.</span> <span class="nav-text">检查点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#备份与介质故障恢复"><span class="nav-number">1.0.3.5.</span> <span class="nav-text">备份与介质故障恢复</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">hoo334</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/hoo334" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;hoo334" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>Gitee</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:liminghu98@foxmail.com" title="E-Mail → mailto:liminghu98@foxmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hoo334</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

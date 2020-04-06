@@ -41,7 +41,7 @@
 <meta property="og:image" content="https://i.loli.net/2020/04/05/KzmCBDclWnp6hxR.png">
 <meta property="og:image" content="https://i.loli.net/2020/04/05/rSV8gNdlaT6vQwx.png">
 <meta property="article:published_time" content="2020-04-05T14:23:02.000Z">
-<meta property="article:modified_time" content="2020-04-05T12:34:17.761Z">
+<meta property="article:modified_time" content="2020-04-06T04:01:55.457Z">
 <meta property="article:author" content="hoo334">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.loli.net/2020/04/05/PMcSmGxa3O7JzBb.png">
@@ -196,10 +196,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-04-05 22:23:02 / Modified: 20:34:17" itemprop="dateCreated datePublished" datetime="2020-04-05T22:23:02+08:00">2020-04-05</time>
+              <time title="Created: 2020-04-05 22:23:02" itemprop="dateCreated datePublished" datetime="2020-04-05T22:23:02+08:00">2020-04-05</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-06 12:01:55" itemprop="dateModified" datetime="2020-04-06T12:01:55+08:00">2020-04-06</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -233,14 +239,14 @@
 <h5 id="权限的授予与收回"><a href="#权限的授予与收回" class="headerlink" title="权限的授予与收回"></a>权限的授予与收回</h5><p>​    grant 和 revoke 有两种权限：目标权限和命令权限。</p>
 <h6 id="命令权限的授予与收回"><a href="#命令权限的授予与收回" class="headerlink" title="命令权限的授予与收回"></a>命令权限的授予与收回</h6><p>​    命令级权限主要指 DDL 操作权限。命令权限的授予语句 grant 和 收回语句 revoke 的语法分别为：</p>
 <p><img src="https://i.loli.net/2020/04/05/jWhtYLXsdeT6iAE.png" alt="image-20200405155559635"></p>
-<p>​    其中 *<command_list>* 可以是 create database、create default、create function、create procedure、create rule、create table、create view、create index、backup database 和 backup log 等。</p>
+<p>​    其中 &lt; command_list &gt; 可以是 create database、create default、create function、create procedure、create rule、create table、create view、create index、backup database 和 backup log 等。</p>
 <p>​    一次可以授予多种权限，授予多种权限时，权限之间用逗号分隔。</p>
 <p>​    all：表示上述所有权限。</p>
 <p>​    public：表示所有用户。</p>
-<p>​    *<username_list>*：指定的用户名列表。如果将某组权限同时授予多个用户，则用户名之间用逗号分隔。</p>
+<p>​    &lt; username_list &gt;：指定的用户名列表。如果将某组权限同时授予多个用户，则用户名之间用逗号分隔。</p>
 <h6 id="目标权限的授予与收回"><a href="#目标权限的授予与收回" class="headerlink" title="目标权限的授予与收回"></a>目标权限的授予与收回</h6><p>​    目标权限主要指对对象的 DML 操作权限。对象权限的授予语句 grant 和收回语句 revoke 的语法分别为：</p>
 <p><img src="https://i.loli.net/2020/04/05/iEl5Mm3Tw8tWVQ6.png" alt="image-20200405160348795"></p>
-<p>​    其中 *<command_list>* 可以是 update、select、insert、delete、execute 和 all 。execute 针对存储过程授予执行权限，update、select、insert、delete 针对基本表和视图授权， all 指全部的权限。</p>
+<p>​    其中 &lt; command_list &gt; 可以是 update、select、insert、delete、execute 和 all 。execute 针对存储过程授予执行权限，update、select、insert、delete 针对基本表和视图授权， all 指全部的权限。</p>
 <p>​    cascade ：级联收回。</p>
 <p>​    restrict：默认值，若转赋了权限，则不能收回。</p>
 <p>​    with grant option：将指定对象上的目标权限授予其他安全账户的能力，但是不允许循环授权。即不允许将其得到的权限授予其祖先。</p>
@@ -267,7 +273,8 @@
 <p>​    1）检查主码是否唯一。如果不唯一则拒绝插入或修改。（索引或顺序查找）</p>
 <p>​    2）检查主码的各个属性是否为空，只要有一个为空则拒绝插入或修改。</p>
 <h4 id="参照完整性"><a href="#参照完整性" class="headerlink" title="参照完整性"></a>参照完整性</h4><p>​    参照完整性为若干个表中的相应元组建立联系。参照完整性定义是使用 create table 语句中的 foreign key 和 references 短语来实现，或通过 alter table 语句中的 add foreign key 来实现。</p>
-<pre><code>参照完整性的检查和违约处理：</code></pre><p>​    1）拒绝执行。如果发生了违约，阻止操作。</p>
+<p>​     参照完整性的检查和违约处理：</p>
+<p>​    1）拒绝执行。如果发生了违约，阻止操作。</p>
 <p>​    2）级联操作。当删除或修改被参照关系的某个元组造成了与参照关系的不一致时，则删除或修改参照表中所有不一致的元组。级联操作必须在定义外码时给出定义（在外码定义最后追加 on delete/update cascade）。</p>
 <p>​    3）设置为空值。如果外码可以为空，发生了违约则将外码置空。</p>
 <p>​    4）置空值删除。删除被参照关系的元组，并将被参照关系中相应元组的外码置空值。</p>
@@ -285,11 +292,11 @@
 <p>​    4）关闭游标：close；</p>
 <p>​    5）释放游标：deallocate；</p>
 <h4 id="游标的使用"><a href="#游标的使用" class="headerlink" title="游标的使用"></a>游标的使用</h4><h5 id="定义游标"><a href="#定义游标" class="headerlink" title="定义游标"></a>定义游标</h5><p><img src="https://i.loli.net/2020/04/05/vcoWwbID6UaBy2i.png" alt="image-20200405165033658"></p>
-<p>​    read only 表示当前游标集中的元组仅可以查询，不可以修改。update表示可以对当前游标集中的元组进行更新操作，如果有 of <columnName_list>，表示仅可以对游标集中指定的属性列进行更新操作。</p>
+<p>​    read only 表示当前游标集中的元组仅可以查询，不可以修改。update表示可以对当前游标集中的元组进行更新操作，如果有 of &lt; columnName_list &gt;，表示仅可以对游标集中指定的属性列进行更新操作。</p>
 <h5 id="打开游标"><a href="#打开游标" class="headerlink" title="打开游标"></a>打开游标</h5><p>​    系统按照游标的定义从数据库中将数据检索出来，放在内存的游标集中，并为游标集指定一个游标，该游标指向游标集中的第一个元组。</p>
-<p>​    打开游标的语法：open &lt; curserName &gt;</p>
+<p>​    打开游标的语法：open &lt; cursorName &gt;</p>
 <h5 id="获取当前游标值"><a href="#获取当前游标值" class="headerlink" title="获取当前游标值"></a>获取当前游标值</h5><p>​    要对当前游标所指向的元组进行操作，必须获取当前游标所指向的元组，其语法是</p>
-<p>​    fetch &lt; curserName &gt; into &lt; @variableName_list &gt;</p>
+<p>​    fetch &lt; cursorName &gt; into &lt; @variableName_list &gt;</p>
 <p>​    <strong>获取当前游标的值，必须将当前游标所指向的元组的各个属性值分别用变量接收，其变量个数、数据类型必须与定义游标中的 select 子句所定义的属性（或表达式）个数数据类型相一致。</strong></p>
 <p>​    SQL Server 中，变量名前面必须使用 @ 符号，使用一个 @ 符号位局部变量，使用两个 @ 为全局变量。</p>
 <p>​    执行一次该语句，系统将当前游标所指向的元组属性放到变量中，然后游标自动下移一个元组。当游标移至尾部，则不可以再读取游标，必须关闭游标再重新打开游标。可以通过检查全局变量 @@FETCH_STATUS 来判断是否已经读完游标集中所有行。</p>
@@ -301,10 +308,10 @@
 <h5 id="释放游标所占用的存储空间"><a href="#释放游标所占用的存储空间" class="headerlink" title="释放游标所占用的存储空间"></a>释放游标所占用的存储空间</h5><p>deallocate  &lt; cursorName &gt;</p>
 <h5 id="变量赋值"><a href="#变量赋值" class="headerlink" title="变量赋值"></a>变量赋值</h5><p><img src="https://i.loli.net/2020/04/05/NUanJEF7lpHYyhA.png" alt="image-20200405195554371"></p>
 <h4 id="对当前游标集的修改"><a href="#对当前游标集的修改" class="headerlink" title="对当前游标集的修改"></a>对当前游标集的修改</h4><p>​    可以对当前游标集中的元组执行删除和更新操作。</p>
-<h5 id="删除游标集中的当前行"><a href="#删除游标集中的当前行" class="headerlink" title="删除游标集中的当前行"></a>删除游标集中的当前行</h5><p>​    delete from &lt; tableName &gt; where current of &lt; curserName &gt;</p>
+<h5 id="删除游标集中的当前行"><a href="#删除游标集中的当前行" class="headerlink" title="删除游标集中的当前行"></a>删除游标集中的当前行</h5><p>​    delete from &lt; tableName &gt; where current of &lt; cursorName  &gt;</p>
 <h5 id="更新游标集中的当前行"><a href="#更新游标集中的当前行" class="headerlink" title="更新游标集中的当前行"></a>更新游标集中的当前行</h5><p>​    update &lt; tableName &gt;</p>
 <p>​    set &lt; columnName &gt;=&lt; expr &gt;[,&lt; columnName &gt;=&lt; expr &gt;…]</p>
-<p>​    where current of &lt; curserName &gt;</p>
+<p>​    where current of &lt; cursorName &gt;</p>
 <h3 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a>存储过程</h3><p>​    存储过程是为了完成特定功能汇集而成的一组命名了的 SQL 语句集合，该集合编译后存放在数据库中，可按实际情况重新编译。</p>
 <p>​    使用存储过程的优点：将业务操作封装、便于事务管理、实现一定程度的安全性保护、特别适合统计和查询操作、减少网络通信量。</p>
 <h4 id="创建存储过程"><a href="#创建存储过程" class="headerlink" title="创建存储过程"></a>创建存储过程</h4><p><img src="https://i.loli.net/2020/04/05/vXtEcyQObCRpxT6.png" alt="image-20200405200322658"></p>
@@ -340,8 +347,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/04/04/Gradle%E4%BE%9D%E8%B5%96%E4%B8%8B%E8%BD%BD/" rel="prev" title="利用gradle添加依赖">
-      <i class="fa fa-chevron-left"></i> 利用gradle添加依赖
+    <a href="/2020/04/04/JVM%20%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA/" rel="prev" title="JVM 运行时数据区">
+      <i class="fa fa-chevron-left"></i> JVM 运行时数据区
     </a></div>
       <div class="post-nav-item">
     <a href="/2020/04/05/E-R-%E6%A8%A1%E5%9E%8B/" rel="next" title="E-R 模型">
@@ -419,7 +426,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">60</span>
+          <span class="site-state-item-count">61</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
