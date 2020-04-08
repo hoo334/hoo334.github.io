@@ -40,7 +40,7 @@
 <meta property="og:image" content="https://i.loli.net/2020/04/04/RcqhALHKwyl9GUX.png">
 <meta property="og:image" content="https://i.loli.net/2020/04/04/yL3SnojMe8WakFN.png">
 <meta property="article:published_time" content="2020-04-04T06:39:13.000Z">
-<meta property="article:modified_time" content="2020-04-04T09:41:24.994Z">
+<meta property="article:modified_time" content="2020-04-07T14:12:31.995Z">
 <meta property="article:author" content="hoo334">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.loli.net/2020/04/04/E4hlWZPTntAf6KX.png">
@@ -195,10 +195,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-04-04 14:39:13 / Modified: 17:41:24" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
+              <time title="Created: 2020-04-04 14:39:13" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-07 22:12:31" itemprop="dateModified" datetime="2020-04-07T22:12:31+08:00">2020-04-07</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -268,7 +274,7 @@
 <p>　　(3)F中不存在这样的函数依赖X→A，X有真子集Z使得F-{X→A}U{Z→A}与F等价。</p>
 <h5 id="最小依赖集通用算法"><a href="#最小依赖集通用算法" class="headerlink" title="最小依赖集通用算法"></a><strong>最小依赖集通用算法</strong></h5><p>　　① 用分解的法则，使F中的任何一个函数依赖的右部仅含有一个属性；</p>
 <p>　　② 去掉多余的函数依赖：从第一个函数依赖X→Y开始将其从F中去掉，然后在剩下的函数依赖中求X的闭包X+，看X+是否包含Y，若是，则去掉X→Y；否则不能去掉，依次做下去。直到找不到冗余的函数依赖；</p>
-<p>　　③ 去掉各依赖左部多余的属性。一个一个地检查函数依赖左部非单个属性的依赖<strong>。例如XY→A，若要判Y为多余的，则以X→A代替XY→A是否等价？若A属于(X)+，则Y是多余属性，可以去掉。</strong>（以上步骤中，求出关系依赖集F,此时，在F的基础上，求出X或者Y的闭包，是否包含A）</p>
+<p>　　③ 去掉各依赖左部多余的属性。一个一个地检查函数依赖左部非单个属性的依赖。<strong>例如XY→A，若要判 X 为多余的，则以X→A代替XY→A，若 A 属于(Y)+，则 X 是多余属性（A 不通过 XY→A，通过 Y 就可以得到 A ，证明 X 是冗余的。），若 X 为多余的则用 Y→A 替代 XY→A。</strong></p>
 <h5 id="最小依赖集案例"><a href="#最小依赖集案例" class="headerlink" title="最小依赖集案例"></a>最小依赖集案例</h5><p>　　例1：关系模式R(U，F)中，U=ABCDEG，F={B-&gt;D，DG-&gt;C,BD-&gt;E,AG-&gt;B,ADG-&gt;BC}；求F的最小函数依赖集</p>
 <p>　　步骤：</p>
 <p>　　（1）用分解的法则，使F中的任何一个函数依赖的右部仅含有一个属性；得到：F={B-&gt;D，DG-&gt;C,BD-&gt;E,AG-&gt;B,ADG-&gt;B，ADG-&gt;C}；</p>
@@ -382,12 +388,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/04/04/%E5%80%9F%E5%8A%A9Spring%20Boot%20%E7%AE%80%E5%8C%96%20Spring%20%E5%BC%80%E5%8F%91/" rel="prev" title="使用对象-关系映射持久化数据">
-      <i class="fa fa-chevron-left"></i> 使用对象-关系映射持久化数据
+    <a href="/2020/04/04/Spring%E4%B9%8B%E6%97%85/" rel="prev" title="Spring之旅">
+      <i class="fa fa-chevron-left"></i> Spring之旅
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/04/04/%E4%BD%BF%E7%94%A8NoSQL%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="next" title="使用NoSQL数据库">
-      使用NoSQL数据库 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/04/04/%E5%80%9F%E5%8A%A9Spring%20Boot%20%E7%AE%80%E5%8C%96%20Spring%20%E5%BC%80%E5%8F%91/" rel="next" title="使用对象-关系映射持久化数据">
+      使用对象-关系映射持久化数据 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -474,7 +480,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
