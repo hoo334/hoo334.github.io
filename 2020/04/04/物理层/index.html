@@ -30,8 +30,9 @@
 <meta property="og:image" content="https://i.loli.net/2020/04/04/TgmOEQv4BAeCZXt.png">
 <meta property="og:image" content="https://i.loli.net/2020/04/04/2LT6fPzRjcS7sOm.png">
 <meta property="og:image" content="https://i.loli.net/2020/04/04/b4jrLfc7wiYvuMe.png">
+<meta property="og:image" content="https://i.loli.net/2020/04/10/CD5szARNdXO238P.png">
 <meta property="article:published_time" content="2020-04-04T06:39:13.000Z">
-<meta property="article:modified_time" content="2020-04-04T09:57:15.682Z">
+<meta property="article:modified_time" content="2020-04-10T02:23:40.282Z">
 <meta property="article:author" content="hoo334">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.loli.net/2020/04/04/TgmOEQv4BAeCZXt.png">
@@ -186,10 +187,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-04-04 14:39:13 / Modified: 17:57:15" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
+              <time title="Created: 2020-04-04 14:39:13" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-10 10:23:40" itemprop="dateModified" datetime="2020-04-10T10:23:40+08:00">2020-04-10</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -228,7 +235,7 @@
 <p>　　<strong>信道的极限数据传输率 = W*log2(1+S/N)</strong></p>
 <p> 　</p>
 <h4 id="编码与调制"><a href="#编码与调制" class="headerlink" title="编码与调制"></a>编码与调制</h4><p>　　<img src="https://i.loli.net/2020/04/04/TgmOEQv4BAeCZXt.png" alt="img"></p>
-<p> 　归零编码（RZ）：高电平为1，低电平为0，在每个时钟周期中间均跳变到低电平。</p>
+<p> 　   归零编码（RZ）：高电平为1，低电平为0，在每个时钟周期中间均跳变到低电平。</p>
 <p>　　非归零编码（NRZ）：高电平为1，低电平为0，无法传递时钟信号难以同步。</p>
 <p>　　反转非归零码（NRZI）：用信号的翻转代表0，信号保持不变代表1。</p>
 <p>　　曼彻斯特码（Manchester）：10 表示高电平，01表示低电平。以太网使用。</p>
@@ -253,6 +260,7 @@
 <p>　　4）规程特性：定义各条物理线路的工作规程和时序关系。</p>
 <h3 id="物理层设备"><a href="#物理层设备" class="headerlink" title="物理层设备"></a><strong>物理层设备</strong></h3><h4 id="中继器"><a href="#中继器" class="headerlink" title="中继器"></a>中继器</h4><p>　　中继器又称转发器，主要功能是将信号整形并放大再转发出去，消除衰减，<strong>其原理是信号再生</strong>。有两个端口输入和输出端口。使用中继器连接的几个网段仍是一个局域网，它不能连接两个具有不同速率的局域网，它没有存储转发功能。中继器两端的网络部分是网段，而不是子网。</p>
 <h4 id="集线器"><a href="#集线器" class="headerlink" title="集线器"></a>集线器</h4><p>　　集线器实质上是一个多端口的中继器工作在物理层。当Hub工作时，一个端口收到数据信号后，将其整形放大，使之再生然后转发到其他所有端口，Hub在网络中只起信号放大和转发作用，目的是扩大网络的传输范围，不具备信号的定向传输能力。Hub组成的网络是共享式网络，逻辑上仍是一个总线网，Hub只能在半双工状态下工作。集线器不能分割冲突域，例如一个带宽为10Mbps 的集线器上连接了8台计算机，8台计算机同时工作时，每台计算机真正拥有的带宽时1.25Mbps。</p>
+<h3 id="结构图"><a href="#结构图" class="headerlink" title="结构图"></a>结构图</h3><p><img src="https://i.loli.net/2020/04/10/CD5szARNdXO238P.png" alt="image-20200410102252708"></p>
 
     </div>
 
@@ -333,7 +341,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#物理层"><span class="nav-number">1.</span> <span class="nav-text">物理层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通信基础"><span class="nav-number">1.0.1.</span> <span class="nav-text">通信基础</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本概念"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据、信号与码元"><span class="nav-number">1.0.1.1.1.</span> <span class="nav-text">数据、信号与码元</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#信源、信道与信宿"><span class="nav-number">1.0.1.1.2.</span> <span class="nav-text">信源、信道与信宿</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#速率、波特与带宽"><span class="nav-number">1.0.1.1.3.</span> <span class="nav-text">速率、波特与带宽</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#奈奎斯特定理和香农定理"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">奈奎斯特定理和香农定理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编码与调制"><span class="nav-number">1.0.1.3.</span> <span class="nav-text">编码与调制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#电路交换、报文交换与分组交换"><span class="nav-number">1.0.1.4.</span> <span class="nav-text">电路交换、报文交换与分组交换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据报和虚电路"><span class="nav-number">1.0.1.5.</span> <span class="nav-text">数据报和虚电路</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#传输介质"><span class="nav-number">1.0.2.</span> <span class="nav-text">传输介质</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#双绞线、同轴电缆、光纤与无线传输介质"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">双绞线、同轴电缆、光纤与无线传输介质</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#物理层接口的特性"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">物理层接口的特性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#物理层设备"><span class="nav-number">1.0.3.</span> <span class="nav-text">物理层设备</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#中继器"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">中继器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集线器"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">集线器</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#物理层"><span class="nav-number">1.</span> <span class="nav-text">物理层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通信基础"><span class="nav-number">1.0.1.</span> <span class="nav-text">通信基础</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本概念"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据、信号与码元"><span class="nav-number">1.0.1.1.1.</span> <span class="nav-text">数据、信号与码元</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#信源、信道与信宿"><span class="nav-number">1.0.1.1.2.</span> <span class="nav-text">信源、信道与信宿</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#速率、波特与带宽"><span class="nav-number">1.0.1.1.3.</span> <span class="nav-text">速率、波特与带宽</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#奈奎斯特定理和香农定理"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">奈奎斯特定理和香农定理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编码与调制"><span class="nav-number">1.0.1.3.</span> <span class="nav-text">编码与调制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#电路交换、报文交换与分组交换"><span class="nav-number">1.0.1.4.</span> <span class="nav-text">电路交换、报文交换与分组交换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据报和虚电路"><span class="nav-number">1.0.1.5.</span> <span class="nav-text">数据报和虚电路</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#传输介质"><span class="nav-number">1.0.2.</span> <span class="nav-text">传输介质</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#双绞线、同轴电缆、光纤与无线传输介质"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">双绞线、同轴电缆、光纤与无线传输介质</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#物理层接口的特性"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">物理层接口的特性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#物理层设备"><span class="nav-number">1.0.3.</span> <span class="nav-text">物理层设备</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#中继器"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">中继器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集线器"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">集线器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结构图"><span class="nav-number">1.0.4.</span> <span class="nav-text">结构图</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
