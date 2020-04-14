@@ -65,7 +65,7 @@
 <meta property="og:image" content="https://i.loli.net/2020/04/04/FiN2qdoAf8LMkCu.png">
 <meta property="og:image" content="https://i.loli.net/2020/04/04/VeDnJizjmpqPsXB.png">
 <meta property="article:published_time" content="2020-04-04T06:39:13.000Z">
-<meta property="article:modified_time" content="2020-04-04T09:29:18.518Z">
+<meta property="article:modified_time" content="2020-04-12T04:13:06.877Z">
 <meta property="article:author" content="hoo334">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.loli.net/2020/04/04/5NmKQzuGXSE8p3H.png">
@@ -220,10 +220,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-04-04 14:39:13 / Modified: 17:29:18" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
+              <time title="Created: 2020-04-04 14:39:13" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-12 12:13:06" itemprop="dateModified" datetime="2020-04-12T12:13:06+08:00">2020-04-12</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -274,7 +280,7 @@
 <p>　　　　from 表a <strong>full outer join</strong> 表b <strong>on</strong> a.xx=b.xx</p>
 <h3 id="嵌套子查询"><a href="#嵌套子查询" class="headerlink" title="嵌套子查询"></a>嵌套子查询</h3><h4 id="使用-in-的子查询"><a href="#使用-in-的子查询" class="headerlink" title="使用 in 的子查询"></a>使用 in 的子查询</h4><p><img src="https://i.loli.net/2020/04/04/Ut6bKM5lAWsTPiL.png" alt="img"></p>
 <p> <img src="https://i.loli.net/2020/04/04/Hm7MZoWqi2VEt9F.png" alt="img"></p>
-<p> <img src="https://i.loli.net/2020/04/04/BhbMpFjTZxcPXUn.png" alt="img"></p>
+<p><img src="https://i.loli.net/2020/04/04/BhbMpFjTZxcPXUn.png" alt="img"></p>
 <p> <img src="https://i.loli.net/2020/04/04/Sq2ceb7Lfpahj8E.png" alt="img"></p>
 <h4 id="使用比较运算符的子查询"><a href="#使用比较运算符的子查询" class="headerlink" title="使用比较运算符的子查询"></a>使用比较运算符的子查询</h4><p><img src="https://i.loli.net/2020/04/04/vt87Oam4YzwJxES.png" alt="img"></p>
 <p><img src="https://i.loli.net/2020/04/04/OdEwbPAcBqGKonx.png" alt="img"></p>
@@ -295,12 +301,12 @@
 <p>　　select studentNo, avg(score) as avgScore</p>
 <p>　　from score </p>
 <p>　　group by studentNo</p>
-<p>　　having count(*) &gt;-5</p>
+<p>　　having count(*) &gt;5</p>
 <p>　　order by avgScore</p>
 <p>　　limit 0,1</p>
 <p><img src="https://i.loli.net/2020/04/04/NRbIMlTqom1LdJS.png" alt="img"></p>
 <p><img src="https://i.loli.net/2020/04/04/kT2RU6ud3DBzLAf.png" alt="img"></p>
-<h3 id="集合运算"><a href="#集合运算" class="headerlink" title="集合运算"></a>集合运算</h3><p>　　SQL 支持集合运算。select 语句查询的结果是集合，多个 select 语句的结果可以进行集合操作，传统的集合操作主要包括并 union、交 intersect、差 except 运算，在执行集合运算时要求参与运算的查询结果的列数一样，其对应列的数据类型必须一致。</p>
+<h3 id="集合运算"><a href="#集合运算" class="headerlink" title="集合运算"></a>集合运算</h3><p>　　SQL 支持集合运算。select 语句查询的结果是集合，多个 select 语句的结果可以进行集合操作，传统的集合操作主要包括并 union、交 intersect、差 except 运算，<strong>在执行集合运算时要求参与运算的查询结果的列数一样，其对应列的数据类型必须一致。</strong></p>
 <p><img src="https://i.loli.net/2020/04/04/QvEbtCTGPunSkRr.png" alt="img"></p>
 <h3 id="SQL-查询一般格式"><a href="#SQL-查询一般格式" class="headerlink" title="SQL 查询一般格式"></a>SQL 查询一般格式</h3><p><img src="https://i.loli.net/2020/04/04/d5JLQ4SFejksW8t.png" alt="img"></p>
 <h3 id="SQL-数据定义语言"><a href="#SQL-数据定义语言" class="headerlink" title="SQL 数据定义语言"></a>SQL 数据定义语言</h3><p>　　数据库中的关系集合必须由数据定义语言 DDL 来定义，包括：数据库模式、关系模式、每个属性的值域、完整性约束、每个关系的索引集合和关系的物理存储结构等。</p>
@@ -415,12 +421,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/04/04/%E4%BA%8B%E5%8A%A1/" rel="prev" title="事务">
-      <i class="fa fa-chevron-left"></i> 事务
+    <a href="/2020/04/04/%E4%BA%8C%E5%8F%89%E6%A0%91%E9%9D%9E%E9%80%92%E5%BD%92%E9%81%8D%E5%8E%86%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/" rel="prev" title="二叉树非递归遍历方法总结">
+      <i class="fa fa-chevron-left"></i> 二叉树非递归遍历方法总结
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/04/04/Spring+JDBC%E5%BE%81%E6%9C%8D%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="next" title="Spring+JDBC征服数据库">
-      Spring+JDBC征服数据库 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/04/04/Spring%E4%B9%8B%E6%97%85/" rel="next" title="Spring之旅">
+      Spring之旅 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
