@@ -472,7 +472,7 @@
 <p>使当前线程阻塞直到另一个线程调用此对象的 notify 方法或 notifyAll 方法。</p>
 <h4 id="finalize"><a href="#finalize" class="headerlink" title="finalize"></a>finalize</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">finalize</span><span class="params">()</span> <span class="keyword">throws</span> Throwable </span>&#123; &#125;</span><br></pre></td></tr></table></figure>
 
-<p>当垃圾收集器确定不再有该对象的引用时调用。finalize 方法可以让此对象再次可用于其他线程而避免被垃圾收集器清除。finalize 方法只能调用一次。</p>
+<p>当垃圾收集器确定不再有该对象的引用时调用。finalize 方法通常的目的是在对象不可撤销丢弃之前执行清楚动作。甚至finalize 方法可以让此对象再次可用于其他线程而避免被垃圾收集器清除。finalize 方法只能调用一次。</p>
 <p>参考：</p>
 <p><a href="https://blog.csdn.net/Saintyyu/article/details/90452826" target="_blank" rel="noopener">https://blog.csdn.net/Saintyyu/article/details/90452826</a></p>
 ]]></content>
