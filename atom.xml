@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>hoo blog</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2020-04-15T08:48:34.106Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>hoo334</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Object</title>
+    <link href="http://yoursite.com/2020/04/14/Object/"/>
+    <id>http://yoursite.com/2020/04/14/Object/</id>
+    <published>2020-04-14T12:46:18.000Z</published>
+    <updated>2020-04-15T08:48:34.106Z</updated>
+    
+    <summary type="html">
+    
+      JDK 源码分析
+    
+    </summary>
+    
+    
+      <category term="JDK 源码分析" scheme="http://yoursite.com/categories/JDK-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
+    
+    
+      <category term="java.lang包" scheme="http://yoursite.com/tags/java-lang%E5%8C%85/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>简单数组</title>
+    <link href="http://yoursite.com/2020/04/09/%E7%AE%80%E5%8D%95%E6%95%B0%E7%BB%84/"/>
+    <id>http://yoursite.com/2020/04/09/%E7%AE%80%E5%8D%95%E6%95%B0%E7%BB%84/</id>
+    <published>2020-04-09T01:41:01.000Z</published>
+    <updated>2020-04-09T01:44:24.874Z</updated>
+    
+    <summary type="html">
+    
+      Leetcode easy 数组总结
+    
+    </summary>
+    
+    
+      <category term="Leetcode" scheme="http://yoursite.com/categories/Leetcode/"/>
+    
+    
+      <category term="数组" scheme="http://yoursite.com/tags/%E6%95%B0%E7%BB%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>一文搞定简单动态规划</title>
+    <link href="http://yoursite.com/2020/04/08/%E4%B8%80%E6%96%87%E6%90%9E%E5%AE%9A%E7%AE%80%E5%8D%95%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    <id>http://yoursite.com/2020/04/08/%E4%B8%80%E6%96%87%E6%90%9E%E5%AE%9A%E7%AE%80%E5%8D%95%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</id>
+    <published>2020-04-08T03:20:53.000Z</published>
+    <updated>2020-04-09T02:01:47.671Z</updated>
+    
+    <summary type="html">
+    
+      Leetcode easy 动态规划总结
+    
+    </summary>
+    
+    
+      <category term="Leetcode" scheme="http://yoursite.com/categories/Leetcode/"/>
+    
+    
+      <category term="动态规划" scheme="http://yoursite.com/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+      <category term="数组" scheme="http://yoursite.com/tags/%E6%95%B0%E7%BB%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>事务管理与恢复</title>
+    <link href="http://yoursite.com/2020/04/06/%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86%E4%B8%8E%E6%81%A2%E5%A4%8D/"/>
+    <id>http://yoursite.com/2020/04/06/%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86%E4%B8%8E%E6%81%A2%E5%A4%8D/</id>
+    <published>2020-04-06T01:27:11.000Z</published>
+    <updated>2020-04-06T03:58:04.707Z</updated>
+    
+    <summary type="html">
+    
+      本文是复习数据库整理的资料
+    
+    </summary>
+    
+    
+      <category term="数据库" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>E-R 模型</title>
+    <link href="http://yoursite.com/2020/04/05/E-R-%E6%A8%A1%E5%9E%8B/"/>
+    <id>http://yoursite.com/2020/04/05/E-R-%E6%A8%A1%E5%9E%8B/</id>
+    <published>2020-04-05T14:23:02.000Z</published>
+    <updated>2020-04-14T02:24:03.659Z</updated>
+    
+    <summary type="html">
+    
+      本文为复习数据库整理的资料。
+    
+    </summary>
+    
+    
+      <category term="数据库" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>数据库完整性与安全性</title>
+    <link href="http://yoursite.com/2020/04/05/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%8C%E6%95%B4%E6%80%A7%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/"/>
+    <id>http://yoursite.com/2020/04/05/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%8C%E6%95%B4%E6%80%A7%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/</id>
+    <published>2020-04-05T14:23:02.000Z</published>
+    <updated>2020-04-06T04:01:55.457Z</updated>
+    
+    <summary type="html">
+    
+      复习数据库整理的资料
+    
+    </summary>
+    
+    
+      <category term="数据库" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JVM 运行时数据区</title>
+    <link href="http://yoursite.com/2020/04/04/JVM%20%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA/"/>
+    <id>http://yoursite.com/2020/04/04/JVM%20%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA/</id>
+    <published>2020-04-04T06:39:13.000Z</published>
+    <updated>2020-04-04T10:20:58.745Z</updated>
+    
+    <summary type="html">
+    
+      JVM学习
+    
+    </summary>
+    
+    
+      <category term="JVM" scheme="http://yoursite.com/categories/JVM/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Git上传本地项目</title>
+    <link href="http://yoursite.com/2020/04/04/Git%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE/"/>
+    <id>http://yoursite.com/2020/04/04/Git%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE/</id>
+    <published>2020-04-04T06:39:13.000Z</published>
+    <updated>2020-04-04T10:17:09.904Z</updated>
+    
+    <summary type="html">
+    
+      Git
+    
+    </summary>
+    
+    
+      <category term="工具" scheme="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
+    
+      <category term="Git" scheme="http://yoursite.com/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用gradle添加依赖</title>
+    <link href="http://yoursite.com/2020/04/04/Gradle%E4%BE%9D%E8%B5%96%E4%B8%8B%E8%BD%BD/"/>
+    <id>http://yoursite.com/2020/04/04/Gradle%E4%BE%9D%E8%B5%96%E4%B8%8B%E8%BD%BD/</id>
+    <published>2020-04-04T06:39:13.000Z</published>
+    <updated>2020-04-04T10:14:40.428Z</updated>
+    
+    <summary type="html">
+    
+      Gradle 构件工具
+    
+    </summary>
+    
+    
+      <category term="工具" scheme="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
+    
+      <category term="Gradle" scheme="http://yoursite.com/tags/Gradle/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SQL语言</title>
+    <link href="http://yoursite.com/2020/04/04/SQL%E8%AF%AD%E8%A8%80/"/>
+    <id>http://yoursite.com/2020/04/04/SQL%E8%AF%AD%E8%A8%80/</id>
+    <published>2020-04-04T06:39:13.000Z</published>
+    <updated>2020-04-12T04:13:06.877Z</updated>
+    
+    <summary type="html">
+    
+      本文为复习数据库整理的资料。
+    
+    </summary>
+    
+    
+      <category term="数据库" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Spring+JDBC征服数据库</title>
+    <link href="http://yoursite.com/2020/04/04/Spring+JDBC%E5%BE%81%E6%9C%8D%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    <id>http://yoursite.com/2020/04/04/Spring+JDBC%E5%BE%81%E6%9C%8D%E6%95%B0%E6%8D%AE%E5%BA%93/</id>
+    <published>2020-04-04T06:39:13.000Z</published>
+    <updated>2020-04-04T10:47:08.473Z</updated>
+    
+    <summary type="html">
+    
+      Spring 实战
+    
+    </summary>
+    
+    
+      <category term="Spring" scheme="http://yoursite.com/categories/Spring/"/>
+    
+    
+      <category term="Spring" scheme="http://yoursite.com/tags/Spring/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>下载文泉学堂 PDF</title>
+    <link href="http://yoursite.com/2020/04/04/%E4%B8%8B%E8%BD%BD%E6%96%87%E6%B3%89%E5%AD%A6%E5%A0%82%20PDF/"/>
+    <id>http://yoursite.com/2020/04/04/%E4%B8%8B%E8%BD%BD%E6%96%87%E6%B3%89%E5%AD%A6%E5%A0%82%20PDF/</id>
+    <published>2020-04-04T06:39:13.000Z</published>
+    <updated>2020-04-04T10:27:19.900Z</updated>
+    
+    <summary type="html">
+    
+      pdf 下载利器
+    
+    </summary>
+    
+    
+      <category term="工具" scheme="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>事务</title>
+    <link href="http://yoursite.com/2020/04/04/%E4%BA%8B%E5%8A%A1/"/>
+    <id>http://yoursite.com/2020/04/04/%E4%BA%8B%E5%8A%A1/</id>
+    <published>2020-04-04T06:39:13.000Z</published>
+    <updated>2020-04-04T09:29:56.568Z</updated>
+    
+    <summary type="html">
+    
+      本文为复习数据库整理的资料。
+    
+    </summary>
+    
+    
+      <category term="数据库" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Spring之旅</title>
+    <link href="http://yoursite.com/2020/04/04/Spring%E4%B9%8B%E6%97%85/"/>
+    <id>http://yoursite.com/2020/04/04/Spring%E4%B9%8B%E6%97%85/</id>
+    <published>2020-04-04T06:39:13.000Z</published>
+    <updated>2020-04-04T10:47:32.509Z</updated>
+    
+    <summary type="html">
+    
+      Spring 实战
+    
+    </summary>
+    
+    
+      <category term="Spring" scheme="http://yoursite.com/categories/Spring/"/>
+    
+    
+      <category term="Spring" scheme="http://yoursite.com/tags/Spring/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 深拷贝和浅拷贝</title>
+    <link href="http://yoursite.com/2020/04/04/Java%20%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D/"/>
+    <id>http://yoursite.com/2020/04/04/Java%20%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D/</id>
+    <published>2020-04-04T06:39:13.000Z</published>
+    <updated>2020-04-04T10:21:55.977Z</updated>
+    
+    <summary type="html">
+    
+      Java 学习
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>二叉树非递归遍历方法总结</title>
+    <link href="http://yoursite.com/2020/04/04/%E4%BA%8C%E5%8F%89%E6%A0%91%E9%9D%9E%E9%80%92%E5%BD%92%E9%81%8D%E5%8E%86%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/"/>
+    <id>http://yoursite.com/2020/04/04/%E4%BA%8C%E5%8F%89%E6%A0%91%E9%9D%9E%E9%80%92%E5%BD%92%E9%81%8D%E5%8E%86%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/</id>
+    <published>2020-04-04T06:39:13.000Z</published>
+    <updated>2020-04-04T10:31:39.995Z</updated>
+    
+    <summary type="html">
+    
+      刷题小总结
+    
+    </summary>
+    
+    
+      <category term="Leetcode" scheme="http://yoursite.com/categories/Leetcode/"/>
+    
+    
+      <category term="二叉树" scheme="http://yoursite.com/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用对象-关系映射持久化数据</title>
+    <link href="http://yoursite.com/2020/04/04/%E4%BD%BF%E7%94%A8%E5%AF%B9%E8%B1%A1-%E5%85%B3%E7%B3%BB%E6%98%A0%E5%B0%84%E6%8C%81%E4%B9%85%E5%8C%96%E6%95%B0%E6%8D%AE/"/>
+    <id>http://yoursite.com/2020/04/04/%E4%BD%BF%E7%94%A8%E5%AF%B9%E8%B1%A1-%E5%85%B3%E7%B3%BB%E6%98%A0%E5%B0%84%E6%8C%81%E4%B9%85%E5%8C%96%E6%95%B0%E6%8D%AE/</id>
+    <published>2020-04-04T06:39:13.000Z</published>
+    <updated>2020-04-04T10:46:31.950Z</updated>
+    
+    <summary type="html">
+    
+      Spring 实战
+    
+    </summary>
+    
+    
+      <category term="Spring" scheme="http://yoursite.com/categories/Spring/"/>
+    
+    
+      <category term="Spring" scheme="http://yoursite.com/tags/Spring/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>位运算总结</title>
+    <link href="http://yoursite.com/2020/04/04/%E4%BD%8D%E8%BF%90%E7%AE%97%E6%80%BB%E7%BB%93/"/>
+    <id>http://yoursite.com/2020/04/04/%E4%BD%8D%E8%BF%90%E7%AE%97%E6%80%BB%E7%BB%93/</id>
+    <published>2020-04-04T06:39:13.000Z</published>
+    <updated>2020-04-04T10:29:01.779Z</updated>
+    
+    <summary type="html">
+    
+      刷题小总结
+    
+    </summary>
+    
+    
+      <category term="Leetcode" scheme="http://yoursite.com/categories/Leetcode/"/>
+    
+    
+      <category term="数组" scheme="http://yoursite.com/tags/%E6%95%B0%E7%BB%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用NoSQL数据库</title>
+    <link href="http://yoursite.com/2020/04/04/%E4%BD%BF%E7%94%A8NoSQL%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    <id>http://yoursite.com/2020/04/04/%E4%BD%BF%E7%94%A8NoSQL%E6%95%B0%E6%8D%AE%E5%BA%93/</id>
+    <published>2020-04-04T06:39:13.000Z</published>
+    <updated>2020-04-04T10:48:36.168Z</updated>
+    
+    <summary type="html">
+    
+      Spring 实战
+    
+    </summary>
+    
+    
+      <category term="Spring" scheme="http://yoursite.com/categories/Spring/"/>
+    
+    
+      <category term="Spring" scheme="http://yoursite.com/tags/Spring/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关系模型与关系代数</title>
+    <link href="http://yoursite.com/2020/04/04/%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B%E4%B8%8E%E5%85%B3%E7%B3%BB%E4%BB%A3%E6%95%B0/"/>
+    <id>http://yoursite.com/2020/04/04/%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B%E4%B8%8E%E5%85%B3%E7%B3%BB%E4%BB%A3%E6%95%B0/</id>
+    <published>2020-04-04T06:39:13.000Z</published>
+    <updated>2020-04-12T02:49:54.022Z</updated>
+    
+    <summary type="html">
+    
+      本文为复习数据库整理的资料。
+    
+    </summary>
+    
+    
+      <category term="数据库" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+  </entry>
+  
+</feed>
