@@ -3,7 +3,7 @@
   <entry>
     <title>E-R 模型</title>
     <url>/2020/04/05/E-R-%E6%A8%A1%E5%9E%8B/</url>
-    <content><![CDATA[<h1 id="数据库建模（E-R-模型）"><a href="#数据库建模（E-R-模型）" class="headerlink" title="数据库建模（E-R 模型）"></a>数据库建模（E-R 模型）</h1><h3 id="数据库设计过程"><a href="#数据库设计过程" class="headerlink" title="数据库设计过程"></a>数据库设计过程</h3><p>​    1）需求分析：了解和分析系统将要提供的功能及未来数据库的用户需求。</p>
+    <content><![CDATA[<h3 id="数据库设计过程"><a href="#数据库设计过程" class="headerlink" title="数据库设计过程"></a>数据库设计过程</h3><p>​    1）需求分析：了解和分析系统将要提供的功能及未来数据库的用户需求。</p>
 <p>​    2）概念设计：根据需求分析中得到的信息，设计者此阶段须选择适当的数据模型将这些需求转化为数据库的概念模式。例如 <strong>E - R 模型</strong> 是概念设计。</p>
 <p>​    3）逻辑设计：将概念设计转化为所选择的数据库管理系统支持的逻辑数据模型，即数据库模式。逻辑数据库设计的任务是将 E - R 模型转化为关系数据库模式。</p>
 <p>​    4）模式求精：对已得到的关系数据库模式进行分析找出潜在的问题并加以改进和优化。</p>
@@ -128,7 +128,7 @@
   <entry>
     <title>SQL语言</title>
     <url>/2020/04/04/SQL%E8%AF%AD%E8%A8%80/</url>
-    <content><![CDATA[<h1 id="SQL语言"><a href="#SQL语言" class="headerlink" title="SQL语言"></a>SQL语言</h1><h3 id="SQL-概述"><a href="#SQL-概述" class="headerlink" title="SQL 概述"></a>SQL 概述</h3><p>　　SQL 语言由 4 部分组成，包括数据定义语言 DDL、数据操纵语言 DML、数据控制语言和其他。</p>
+    <content><![CDATA[<h3 id="SQL-概述"><a href="#SQL-概述" class="headerlink" title="SQL 概述"></a>SQL 概述</h3><p>　　SQL 语言由 4 部分组成，包括数据定义语言 DDL、数据操纵语言 DML、数据控制语言和其他。</p>
 <p>　　1）数据定义语言（Data Definition Language，DDL）：主要用于定义数据库的逻辑结构，包括数据库，基本表，视图和索引等，扩展 DDL 还支持存储过程、函数、对象、触发器等的定义。DDL 包括 3 类语言，即定义、修改和删除。</p>
 <p>　　2）数据操纵语言（Data Manipulation Language，DML）：主要用于对数据库的数据进行检索和更新，其中更新操作包括插入、删除和修改数据。</p>
 <p>　　3）数据控制语言（Data Control Language，DCL）：主要用于对数据库的对象进行授权、用户维护（包括创建、修改和删除）、完整性规则定义和事务定义等。</p>
@@ -472,7 +472,7 @@
 <p>使当前线程阻塞直到另一个线程调用此对象的 notify 方法或 notifyAll 方法。</p>
 <h4 id="finalize"><a href="#finalize" class="headerlink" title="finalize"></a>finalize</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">finalize</span><span class="params">()</span> <span class="keyword">throws</span> Throwable </span>&#123; &#125;</span><br></pre></td></tr></table></figure>
 
-<p>当垃圾收集器确定不再有该对象的引用时调用。finalize 方法通常的目的是在对象不可撤销丢弃之前执行清楚动作。甚至finalize 方法可以让此对象再次可用于其他线程而避免被垃圾收集器清除。finalize 方法只能调用一次。</p>
+<p>当垃圾收集器确定不再有该对象的引用时调用。finalize 方法通常的目的是在对象不可撤销丢弃之前执行清除动作。甚至finalize 方法可以让此对象再次可用于其他线程而避免被垃圾收集器清除。finalize 方法只能调用一次。</p>
 <p>参考：</p>
 <p><a href="https://blog.csdn.net/Saintyyu/article/details/90452826" target="_blank" rel="noopener">https://blog.csdn.net/Saintyyu/article/details/90452826</a></p>
 ]]></content>
@@ -570,7 +570,7 @@
   <entry>
     <title>事务管理与恢复</title>
     <url>/2020/04/06/%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86%E4%B8%8E%E6%81%A2%E5%A4%8D/</url>
-    <content><![CDATA[<h1 id="事务管理与恢复"><a href="#事务管理与恢复" class="headerlink" title="事务管理与恢复"></a>事务管理与恢复</h1><h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h3><h4 id="事务概念"><a href="#事务概念" class="headerlink" title="事务概念"></a>事务概念</h4><p>​    对于用户而言，事务是具有完整逻辑意义的数据库操作序列的集合。对于数据库管理系统而言，事务则是一个读写操作序列。这些操作是一个不可分割的逻辑工作单元，要么都做，要么都不做。</p>
+    <content><![CDATA[<h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h3><h4 id="事务概念"><a href="#事务概念" class="headerlink" title="事务概念"></a>事务概念</h4><p>​    对于用户而言，事务是具有完整逻辑意义的数据库操作序列的集合。对于数据库管理系统而言，事务则是一个读写操作序列。这些操作是一个不可分割的逻辑工作单元，要么都做，要么都不做。</p>
 <p>​    通常有有两种类型的事务结束语句：</p>
 <p>​    1）事务提交（commit）：将成功完成事务的执行结果（即更新）永久化，并释放事务占有的全部资源。</p>
 <p>​    2）事务回滚（rollback）：中止当前事务、撤销其对数据库所做的更新，并释放事务占有的全部资源。</p>
@@ -611,8 +611,7 @@
 <p>​    基于封锁的并发控制方法的基本思想是：当事务 <em>T</em> 需访问数据对象 <em>Q</em> 时，先申请对 <em>Q</em> 的锁。如批准获得，则 <em>T</em> 继续执行，且此后不允许其他任何事物修改 <em>Q</em>，直到事务 <em>T</em> 释放 <em>Q</em> 上的锁为止。</p>
 <p>​    基本锁类型：</p>
 <p>​    1）共享锁（Shared Lock，记为 S ）：如果事务 <em>T</em> 获得的对象 <em>Q</em> 上的共享锁，则 <em>T</em> 可读 <em>Q</em> 但不能写 <em>Q</em> 。</p>
-<p>​     2）排他锁（eXclusive lock，记为 X ）：如果事务 <em>T</em> 获得的对象 <em>Q</em> 上的排他锁，则 <em>T</em> 可读 <em>Q</em> 又能写 <em>Q</em> 。</p>
-<p>​    <strong>一个数据对象 <em>Q</em> 上可能有多个（被不同事务拥有的）共享锁，但任何时候只能有一个排他锁。</strong></p>
+<pre><code>2）排他锁（eXclusive lock，记为 X ）：如果事务 *T* 获得的对象 *Q* 上的排他锁，则 *T* 可读 *Q* 又能写 *Q* 。</code></pre><p>​    <strong>一个数据对象 <em>Q</em> 上可能有多个（被不同事务拥有的）共享锁，但任何时候只能有一个排他锁。</strong></p>
 <p><img src="https://i.loli.net/2020/04/06/sNHdY7A2PhBy3ET.png" alt="image-20200406104004431"></p>
 <p><img src="https://i.loli.net/2020/04/06/JX7bQ8va4hoMHNK.png" alt="image-20200406104529309"></p>
 <p>​    图10-13 中的调度存在以下问题：</p>
@@ -697,7 +696,7 @@
   <entry>
     <title>事务</title>
     <url>/2020/04/04/%E4%BA%8B%E5%8A%A1/</url>
-    <content><![CDATA[<h1 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h1><h3 id="什么是事务"><a href="#什么是事务" class="headerlink" title="什么是事务"></a><strong>什么是事务</strong></h3><p>　　事务是逻辑上的一组操作，要么都执行，要么都不执行。</p>
+    <content><![CDATA[<h3 id="什么是事务"><a href="#什么是事务" class="headerlink" title="什么是事务"></a><strong>什么是事务</strong></h3><p>　　事务是逻辑上的一组操作，要么都执行，要么都不执行。</p>
 <h3 id="事务的四大特性"><a href="#事务的四大特性" class="headerlink" title="事务的四大特性"></a><strong>事务的四大特性</strong></h3><p>　　1）<strong>原子性（Atomicity）</strong>：事务是最小的执行单位，不允许分割。事务的原子性确保动作全部完成，要么完全不起作用。</p>
 <p>　　2）<strong>一致性（Consistency）</strong>：执行事务前后，数据保持一致，多个事务对同一个数据读取的结果是相同的。</p>
 <p>　　3）<strong>隔离性（Isolation）</strong>：并发访问数据库时，一个用户的事务不被其他事务所干扰，各并发事务之间数据库是独立的。</p>
@@ -727,7 +726,7 @@
   <entry>
     <title>传输层</title>
     <url>/2020/04/04/%E4%BC%A0%E8%BE%93%E5%B1%82/</url>
-    <content><![CDATA[<h1 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h1><h3 id="传输层提供的服务"><a href="#传输层提供的服务" class="headerlink" title="传输层提供的服务"></a>传输层提供的服务</h3><h4 id="传输层的功能"><a href="#传输层的功能" class="headerlink" title="传输层的功能"></a>传输层的功能</h4><p>　　传输层向它上面的应用层提供通信服务，属于面向通信部分的最高层，同时也是用户功能中的最底层。</p>
+    <content><![CDATA[<h3 id="传输层提供的服务"><a href="#传输层提供的服务" class="headerlink" title="传输层提供的服务"></a>传输层提供的服务</h3><h4 id="传输层的功能"><a href="#传输层的功能" class="headerlink" title="传输层的功能"></a>传输层的功能</h4><p>　　传输层向它上面的应用层提供通信服务，属于面向通信部分的最高层，同时也是用户功能中的最底层。</p>
 <p>　　<strong>传输层</strong>位于网络层上，它为运行在不同主机上的<strong>进程</strong>之间提供了逻辑通信，<strong>网络层</strong>提供<strong>主机</strong>之间的逻辑通信。即使网络层协议不可靠（网络层协议使分组丢失、混乱或重复），传输层同样能为应用程序提供可靠的服务。</p>
 <p>　　传输层的功能如下：</p>
 <p>　　1）提供应用进程之间的通信（端到端的通信）。与网络层的区别是，网络层提供的是主机之间的逻辑通信。</p>
@@ -1084,7 +1083,7 @@
   <entry>
     <title>关系模型与关系代数</title>
     <url>/2020/04/04/%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B%E4%B8%8E%E5%85%B3%E7%B3%BB%E4%BB%A3%E6%95%B0/</url>
-    <content><![CDATA[<h1 id="关系模型与关系代数"><a href="#关系模型与关系代数" class="headerlink" title="关系模型与关系代数"></a>关系模型与关系代数</h1><h3 id="关系模型"><a href="#关系模型" class="headerlink" title="关系模型"></a>关系模型</h3><h4 id="关系"><a href="#关系" class="headerlink" title="关系"></a>关系</h4><p>　　1）关系模型的数据结构为二维表，亦称关系，每个表（关系）有唯一的名字。</p>
+    <content><![CDATA[<h3 id="关系模型"><a href="#关系模型" class="headerlink" title="关系模型"></a>关系模型</h3><h4 id="关系"><a href="#关系" class="headerlink" title="关系"></a>关系</h4><p>　　1）关系模型的数据结构为二维表，亦称关系，每个表（关系）有唯一的名字。</p>
 <p>　　2）关系数据库是表的集合，即关系的集合。 </p>
 <h4 id="关系数据结构的形式化定义"><a href="#关系数据结构的形式化定义" class="headerlink" title="关系数据结构的形式化定义"></a>关系数据结构的形式化定义</h4><p>　　1）域。域是一组具有相同数据类型的值的集合。如{‘男’，‘女’}。</p>
 <p>　　2）笛卡儿积。</p>
@@ -1123,7 +1122,7 @@
   <entry>
     <title>关系数据理论</title>
     <url>/2020/04/04/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%90%86%E8%AE%BA/</url>
-    <content><![CDATA[<h1 id="关系数据理论"><a href="#关系数据理论" class="headerlink" title="关系数据理论"></a>关系数据理论</h1><p>　　本文为复习数据库整理的资料。</p>
+    <content><![CDATA[<p>　　本文为复习数据库整理的资料。</p>
 <p>　　参考：</p>
 <p>　　<a href="https://blog.csdn.net/prdslf001001/article/details/80336835" target="_blank" rel="noopener">https://blog.csdn.net/prdslf001001/article/details/80336835</a></p>
 <p>　　<a href="https://www.bilibili.com/video/av73467859/" target="_blank" rel="noopener">https://www.bilibili.com/video/av73467859/</a></p>
@@ -1515,7 +1514,7 @@
   <entry>
     <title>应用层</title>
     <url>/2020/04/04/%E5%BA%94%E7%94%A8%E5%B1%82/</url>
-    <content><![CDATA[<h1 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h1><h3 id="网络应用模型"><a href="#网络应用模型" class="headerlink" title="网络应用模型"></a>网络应用模型</h3><h4 id="客户-服务器模型"><a href="#客户-服务器模型" class="headerlink" title="客户/服务器模型"></a>客户/服务器模型</h4><p>　　在客户/服务器模型（Client/Server，C/S）模型中，有一个总是打开的主机称为服务器，它服务于许多来自其他称为客户机的主机请求。</p>
+    <content><![CDATA[<h3 id="网络应用模型"><a href="#网络应用模型" class="headerlink" title="网络应用模型"></a>网络应用模型</h3><h4 id="客户-服务器模型"><a href="#客户-服务器模型" class="headerlink" title="客户/服务器模型"></a>客户/服务器模型</h4><p>　　在客户/服务器模型（Client/Server，C/S）模型中，有一个总是打开的主机称为服务器，它服务于许多来自其他称为客户机的主机请求。</p>
 <p>　　其工作流程如下：</p>
 <p>　　1）服务器处于接收请求的状态。</p>
 <p>　　2）客户机发出服务请求，并等待接收结果。</p>
@@ -2359,7 +2358,7 @@
   <entry>
     <title>数据库完整性与安全性</title>
     <url>/2020/04/05/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%8C%E6%95%B4%E6%80%A7%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/</url>
-    <content><![CDATA[<h1 id="数据库完整性与安全性"><a href="#数据库完整性与安全性" class="headerlink" title="数据库完整性与安全性"></a>数据库完整性与安全性</h1><h3 id="数据库安全性"><a href="#数据库安全性" class="headerlink" title="数据库安全性"></a>数据库安全性</h3><h4 id="SQL-存取控制机制"><a href="#SQL-存取控制机制" class="headerlink" title="SQL 存取控制机制"></a>SQL 存取控制机制</h4><p>​    SQL 支持受控的存取保护，即在自主存取控制中，用户对于不同的数据对象有不同的存取权限，不同的用户对同一对象也有不同的权限，而且用户还可将其拥有的存取权限转授给其他用户。因此自主存取控制非常灵活。</p>
+    <content><![CDATA[<h3 id="数据库安全性"><a href="#数据库安全性" class="headerlink" title="数据库安全性"></a>数据库安全性</h3><h4 id="SQL-存取控制机制"><a href="#SQL-存取控制机制" class="headerlink" title="SQL 存取控制机制"></a>SQL 存取控制机制</h4><p>​    SQL 支持受控的存取保护，即在自主存取控制中，用户对于不同的数据对象有不同的存取权限，不同的用户对同一对象也有不同的权限，而且用户还可将其拥有的存取权限转授给其他用户。因此自主存取控制非常灵活。</p>
 <p>​    自主存取控制通过 SQL 的 grant 和 revoke 语句实现。</p>
 <p>​    用户权限是由两个要素组成的：数据对象和操作对象。</p>
 <p>​    用户的存取权限：该用户可以在哪些数据对象上进行哪些类型的操作。定义存取权限称为授权。</p>
@@ -2404,8 +2403,7 @@
 <p>​    1）检查主码是否唯一。如果不唯一则拒绝插入或修改。（索引或顺序查找）</p>
 <p>​    2）检查主码的各个属性是否为空，只要有一个为空则拒绝插入或修改。</p>
 <h4 id="参照完整性"><a href="#参照完整性" class="headerlink" title="参照完整性"></a>参照完整性</h4><p>​    参照完整性为若干个表中的相应元组建立联系。参照完整性定义是使用 create table 语句中的 foreign key 和 references 短语来实现，或通过 alter table 语句中的 add foreign key 来实现。</p>
-<p>​     参照完整性的检查和违约处理：</p>
-<p>​    1）拒绝执行。如果发生了违约，阻止操作。</p>
+<pre><code>参照完整性的检查和违约处理：</code></pre><p>​    1）拒绝执行。如果发生了违约，阻止操作。</p>
 <p>​    2）级联操作。当删除或修改被参照关系的某个元组造成了与参照关系的不一致时，则删除或修改参照表中所有不一致的元组。级联操作必须在定义外码时给出定义（在外码定义最后追加 on delete/update cascade）。</p>
 <p>​    3）设置为空值。如果外码可以为空，发生了违约则将外码置空。</p>
 <p>​    4）置空值删除。删除被参照关系的元组，并将被参照关系中相应元组的外码置空值。</p>
@@ -2471,7 +2469,7 @@
   <entry>
     <title>数据链路层</title>
     <url>/2020/04/04/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/</url>
-    <content><![CDATA[<h1 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h1><h3 id="数据链路层的功能"><a href="#数据链路层的功能" class="headerlink" title="数据链路层的功能"></a>数据链路层的功能</h3><h4 id="为网络层提供服务"><a href="#为网络层提供服务" class="headerlink" title="为网络层提供服务"></a>为网络层提供服务</h4><p>　　对网络层而言，数据链路层的基本任务是将源机器中来自网络层的数据传输到目标机器的网络层。</p>
+    <content><![CDATA[<h3 id="数据链路层的功能"><a href="#数据链路层的功能" class="headerlink" title="数据链路层的功能"></a>数据链路层的功能</h3><h4 id="为网络层提供服务"><a href="#为网络层提供服务" class="headerlink" title="为网络层提供服务"></a>为网络层提供服务</h4><p>　　对网络层而言，数据链路层的基本任务是将源机器中来自网络层的数据传输到目标机器的网络层。</p>
 <p>　　1）无确认的无连接服务。源机器发送数据帧时<strong>不需要先建立链路连接</strong>，目的机器收到数据帧时<strong>无需发回确认</strong>，对于<strong>丢失的帧交给上层处理</strong>。<strong>适用于实时通信或误码率较低的通信信道，如以太网</strong>。</p>
 <p>　　2）有确认的无连接服务。源机器发送数据帧时<strong>不需要先建立链路连接</strong>，目的机器收到数据帧时<strong>必须发回确认。</strong>源机器在规定的时间内未收到确认信号时就<strong>重传丢失的帧</strong>。适用于误码率较高的通信信道，如无线通信。</p>
 <p>​        3）有确认的面向连接服务。帧传输过程分为三个阶段：建立数据链路、传输帧、释放数据链路。目的机器对收到的每一帧都要给出确认，源机器收到确认后才能发送下一帧。适用于通信要求（可靠性、实时性）较高的场合。</p>
@@ -2670,7 +2668,7 @@
   <entry>
     <title>数据库系统概论</title>
     <url>/2020/04/04/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/</url>
-    <content><![CDATA[<h1 id="数据库系统概论"><a href="#数据库系统概论" class="headerlink" title="数据库系统概论"></a>数据库系统概论</h1><h3 id="数据库系统的作用"><a href="#数据库系统的作用" class="headerlink" title="数据库系统的作用"></a>数据库系统的作用</h3><h4 id="数据与数据管理"><a href="#数据与数据管理" class="headerlink" title="数据与数据管理"></a>数据与数据管理</h4><p>　　1）数据。描述事物的符号记录称为数据。数据是数据库中存储的对象，也是数据库管理系统处理的对象。数据和关于数据的解释是不可分的。</p>
+    <content><![CDATA[<h3 id="数据库系统的作用"><a href="#数据库系统的作用" class="headerlink" title="数据库系统的作用"></a>数据库系统的作用</h3><h4 id="数据与数据管理"><a href="#数据与数据管理" class="headerlink" title="数据与数据管理"></a>数据与数据管理</h4><p>　　1）数据。描述事物的符号记录称为数据。数据是数据库中存储的对象，也是数据库管理系统处理的对象。数据和关于数据的解释是不可分的。</p>
 <p>　　2）数据管理。数据处理是指对各种数据进行采集、存储、检索、加工、传播和应用等一系列活动的总和。数据管理是对数据进行有效的分类、组织、编码、存储、检索、维护和应用，它是数据处理的中心问题。</p>
 <h4 id="数据管理技术的产生与发展"><a href="#数据管理技术的产生与发展" class="headerlink" title="数据管理技术的产生与发展"></a>数据管理技术的产生与发展</h4><p>　　1）人工管理阶段。面向应用程序，一个数据集只能对应一个程序，没有相应的软件系统专门负责数据的管理工作。当多个应用程序设计某些相同的数据时，必须由各自的应用程序分别定义和管理这些数据，无法共享利用，存在大量冗余。</p>
 <p>　　2）文件系统阶段。利用文件系统管理数据就是由专门的软件对数据进行统一管理。对于一个特定的应用，数据被集中组织存放在多个数据文件组中，并针对该文件组来开发特定的应用程序。文件系统利用“按文件名访问，按记录进行存取”的管理技术，可以对文件进行修改、插入和删除。</p>
@@ -2683,7 +2681,7 @@
 <p>　　<strong>物理独立性</strong>是指用户的应用程序与存储在磁盘上数据库中的数据是相互独立的。</p>
 <p>　　<strong>逻辑独立性</strong>是指用户的应用程序与数据的逻辑结构是相互独立的。</p>
 <p>　　d.数据由数据库管理系统统一管理和控制</p>
-<p>　　DBMS 必须提供：数据的安全性保护。数据的完整性检查。并发控制。数据库恢复。</p>
+<p>　　DBMS 必须提供：<strong>数据的安全性保护。数据的完整性检查。并发控制。数据库恢复。</strong></p>
 <h3 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h3><p>　　数据模型是一个描述数据语义数据与数据之间联系数据操作，以及一致性（完整性）约束的概念工具的集合。通过数据模型可以对现实世界的数据特征进行抽象。</p>
 <h4 id="数据模型的分类"><a href="#数据模型的分类" class="headerlink" title="数据模型的分类"></a>数据模型的分类</h4><p>　　数据模型应满足三方面的要求：一是能比较真实地模拟现实世界；二是容易被人所理解；三是便于在计算机上实现。</p>
 <p>　　1）<strong>概念模型</strong>。又称信息模型，它按用户的观点或认识对现实世界的数据和信息进行建模，主要用于数据库设计。常用的概念模型有 E-R 模型，OO 模型。</p>
@@ -2724,7 +2722,7 @@
   <entry>
     <title>物理层</title>
     <url>/2020/04/04/%E7%89%A9%E7%90%86%E5%B1%82/</url>
-    <content><![CDATA[<h1 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h1><h3 id="通信基础"><a href="#通信基础" class="headerlink" title="通信基础"></a><strong>通信基础</strong></h3><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><h5 id="数据、信号与码元"><a href="#数据、信号与码元" class="headerlink" title="数据、信号与码元"></a>数据、信号与码元</h5><p>　　1）数据：传送信息的实体。</p>
+    <content><![CDATA[<h3 id="通信基础"><a href="#通信基础" class="headerlink" title="通信基础"></a><strong>通信基础</strong></h3><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><h5 id="数据、信号与码元"><a href="#数据、信号与码元" class="headerlink" title="数据、信号与码元"></a>数据、信号与码元</h5><p>　　1）数据：传送信息的实体。</p>
 <p>　　2）信号：数据的电气或电磁表现，是数据在传输过程中的存在形式。</p>
 <p>　　3）码元：用一个固定时长的信号波形表示一位k进制数字。</p>
 <p>　　</p>
@@ -3127,7 +3125,7 @@
   <entry>
     <title>网络层</title>
     <url>/2020/04/04/%E7%BD%91%E7%BB%9C%E5%B1%82/</url>
-    <content><![CDATA[<h1 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h1><h3 id="网络层的功能"><a href="#网络层的功能" class="headerlink" title="网络层的功能"></a><strong>网络层的功能</strong></h3><h4 id="异构网络互联"><a href="#异构网络互联" class="headerlink" title="异构网络互联"></a>异构网络互联</h4><p>　　网络互联：将两个以上的计算机网络，通过一定的方法，用一种或多种通信处理设备（中间设备）连接起来。</p>
+    <content><![CDATA[<h3 id="网络层的功能"><a href="#网络层的功能" class="headerlink" title="网络层的功能"></a><strong>网络层的功能</strong></h3><h4 id="异构网络互联"><a href="#异构网络互联" class="headerlink" title="异构网络互联"></a>异构网络互联</h4><p>　　网络互联：将两个以上的计算机网络，通过一定的方法，用一种或多种通信处理设备（中间设备）连接起来。</p>
 <p>　　中继设备分以下四种：</p>
 <p>　　1）物理层中继设备：中继器，集线器。</p>
 <p>　　2）数据链路层中继设备：网桥或交换机。</p>
@@ -3866,7 +3864,7 @@
   <entry>
     <title>计算机网络体系结构</title>
     <url>/2020/04/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%A6%82%E8%BF%B0/</url>
-    <content><![CDATA[<h1 id="计算机网络体系结构"><a href="#计算机网络体系结构" class="headerlink" title="计算机网络体系结构"></a>计算机网络体系结构</h1><h3 id="计算机网络概述"><a href="#计算机网络概述" class="headerlink" title="计算机网络概述"></a><strong>计算机网络概述</strong></h3><h4 id="计算机网络概念"><a href="#计算机网络概念" class="headerlink" title="计算机网络概念"></a>计算机网络概念</h4><p>　　1）广义观点：只要是能实现远程信息处理的系统或能进一步达到资源共享的系统，都是计算机网络。</p>
+    <content><![CDATA[<h3 id="计算机网络概述"><a href="#计算机网络概述" class="headerlink" title="计算机网络概述"></a><strong>计算机网络概述</strong></h3><h4 id="计算机网络概念"><a href="#计算机网络概念" class="headerlink" title="计算机网络概念"></a>计算机网络概念</h4><p>　　1）广义观点：只要是能实现远程信息处理的系统或能进一步达到资源共享的系统，都是计算机网络。</p>
 <p>　　2）资源共享观点：计算机网络是 “以能够共享资源的方式互联起来的自治计算机系统的集合” 。该定义包含三层含义： 1、目的：资源共享；2、组成单元：分布在不同地理位置的多台独立的 “ 自治计算机”；3、网络中的计算机额必须遵循统一的规则–网络协议。</p>
 <p>　　3）用户透明性观点：存在一个能够为用户自动管理的网络操作系统，它能够调用用户所需要的资源。　　</p>
 <h4 id="计算机网络的组成"><a href="#计算机网络的组成" class="headerlink" title="计算机网络的组成"></a>计算机网络的组成</h4><p>　　1）从组成部分上来看：完整的计算机网络主要由<strong>硬件、软件、协议</strong>三大部分组成。硬件主要由主机、通信链路（双绞线、光纤）、交换设备（路由器、交换机）和通信处理机（网卡）等组成。软件主要是各种实现资源共享的软件和方便用户使用的各种工具软件（OS、FTP程序等），多属于应用层。协议规定了网络传输数据时所遵循的规范。</p>
@@ -4008,7 +4006,7 @@
   <entry>
     <title>协议</title>
     <url>/2020/04/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/</url>
-    <content><![CDATA[<h1 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h1><h3 id="应用层协议：（应用程序）"><a href="#应用层协议：（应用程序）" class="headerlink" title="应用层协议：（应用程序）"></a><strong>应用层协议：（应用程序）</strong></h3><h4 id="使用TCP"><a href="#使用TCP" class="headerlink" title="使用TCP"></a>使用TCP</h4><p>　　HTTP（Hypertext Transfer Protocol ）超文本传输协议 &lt;端口号 80&gt;， 面向事务的应用层协议。</p>
+    <content><![CDATA[<h3 id="应用层协议：（应用程序）"><a href="#应用层协议：（应用程序）" class="headerlink" title="应用层协议：（应用程序）"></a><strong>应用层协议：（应用程序）</strong></h3><h4 id="使用TCP"><a href="#使用TCP" class="headerlink" title="使用TCP"></a>使用TCP</h4><p>　　HTTP（Hypertext Transfer Protocol ）超文本传输协议 &lt;端口号 80&gt;， 面向事务的应用层协议。</p>
 <p>　　FTP（File Transfer Protocol ）文件传输协议&lt;端口号21&gt;减少或消除不同操作系统下处理文件的不兼容性。 </p>
 <p>　　TELNET 远程登录协议 &lt;端口号23&gt; 。</p>
 <p>　　SMTP （Simple Mail Transfer Protocol ）简单邮件传输协议 &lt;端口号25&gt; 用于发送邮件。 </p>
@@ -4158,7 +4156,7 @@
       </tags>
   </entry>
   <entry>
-    <title>动态规划Easy</title>
+    <title>动态规划 easy</title>
     <url>/2020/04/08/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92Easy/</url>
     <content><![CDATA[<h4 id="53-最大子序和"><a href="#53-最大子序和" class="headerlink" title="53. 最大子序和"></a><a href="https://leetcode-cn.com/problems/maximum-subarray/" target="_blank" rel="noopener">53. 最大子序和</a></h4><p>难度简单1831收藏分享切换为英文关注反馈</p>
 <p>给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。</p>
@@ -4249,7 +4247,7 @@
       </tags>
   </entry>
   <entry>
-    <title>数组Easy</title>
+    <title>数组 easy</title>
     <url>/2020/04/09/%E6%95%B0%E7%BB%84Easy/</url>
     <content><![CDATA[<h4 id="1-两数之和"><a href="#1-两数之和" class="headerlink" title="1. 两数之和"></a><a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">1. 两数之和</a></h4><p>给定一个整数数组 <code>nums</code> 和一个目标值 <code>target</code>，请你在该数组中找出和为目标值的那 <strong>两个</strong> 整数，并返回他们的数组下标。</p>
 <p>你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。</p>
@@ -4388,7 +4386,7 @@
       </tags>
   </entry>
   <entry>
-    <title>数组medium</title>
+    <title>数组 medium</title>
     <url>/2020/04/17/%E6%95%B0%E7%BB%84Medium/</url>
     <content><![CDATA[<h4 id="11-盛最多水的容器"><a href="#11-盛最多水的容器" class="headerlink" title="11. 盛最多水的容器"></a><a href="https://leetcode-cn.com/problems/container-with-most-water/" target="_blank" rel="noopener">11. 盛最多水的容器</a></h4><p>给你 <em>n</em> 个非负整数 <em>a</em>1，<em>a</em>2，…，<em>a</em>n，每个数代表坐标中的一个点 (<em>i</em>, <em>ai</em>) 。在坐标内画 <em>n</em> 条垂直线，垂直线 <em>i</em> 的两个端点分别为 (<em>i</em>, <em>ai</em>) 和 (<em>i</em>, 0)。找出其中的两条线，使得它们与 <em>x</em> 轴共同构成的容器可以容纳最多的水。</p>
 <p><strong>说明：</strong>你不能倾斜容器，且 <em>n</em> 的值至少为 2。</p>
@@ -4425,7 +4423,7 @@
       </tags>
   </entry>
   <entry>
-    <title>二叉树medium</title>
+    <title>二叉树 medium</title>
     <url>/2020/04/18/%E4%BA%8C%E5%8F%89%E6%A0%91medium/</url>
     <content><![CDATA[<h4 id="94-二叉树的中序遍历"><a href="#94-二叉树的中序遍历" class="headerlink" title="94. 二叉树的中序遍历"></a><a href="https://leetcode-cn.com/problems/binary-tree-inorder-traversal/" target="_blank" rel="noopener">94. 二叉树的中序遍历</a></h4><p>给定一个二叉树，返回它的<em>中序</em> 遍历。</p>
 <p><strong>示例:</strong></p>
@@ -4454,7 +4452,7 @@
       </tags>
   </entry>
   <entry>
-    <title>二叉树hard</title>
+    <title>二叉树 hard</title>
     <url>/2020/04/18/%E4%BA%8C%E5%8F%89%E6%A0%91hard/</url>
     <content><![CDATA[<h4 id="145-二叉树的后序遍历"><a href="#145-二叉树的后序遍历" class="headerlink" title="145. 二叉树的后序遍历"></a><a href="https://leetcode-cn.com/problems/binary-tree-postorder-traversal/" target="_blank" rel="noopener">145. 二叉树的后序遍历</a></h4><p>给定一个二叉树，返回它的 <em>后序</em> 遍历。</p>
 <p><strong>示例:</strong></p>
@@ -4469,6 +4467,90 @@
       </categories>
       <tags>
         <tag>二叉树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>动态规划 medium</title>
+    <url>/2020/04/19/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92medium/</url>
+    <content><![CDATA[<h4 id="279-完全平方数"><a href="#279-完全平方数" class="headerlink" title="279. 完全平方数"></a><a href="https://leetcode-cn.com/problems/perfect-squares/" target="_blank" rel="noopener">279. 完全平方数</a></h4><p>给定正整数 <em>n</em>，找到若干个完全平方数（比如 <code>1, 4, 9, 16, ...</code>）使得它们的和等于 <em>n</em>。你需要让组成和的完全平方数的个数最少。</p>
+<p>动态转移方程为：<code>dp[i] = MIN(dp[i], dp[i - j * j] + 1)</code>，<code>i</code>表示当前数字，<code>j*j</code>表示平方数。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: n &#x3D; 12</span><br><span class="line">输出: 3 </span><br><span class="line">解释: 12 &#x3D; 4 + 4 + 4.</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: n &#x3D; 13</span><br><span class="line">输出: 2</span><br><span class="line">解释: 13 &#x3D; 4 + 9.</span><br></pre></td></tr></table></figure>
+<p>使用 dp 数组来保存以当前下标为和的完全平方数的个数。依次对每个数判断是否可以使用之前的dp数组中的值加一个较大的完全平方数得到。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numSquares</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[n+<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; ++i)&#123;</span><br><span class="line">            <span class="comment">//最坏的情况，全部由 1 相加得到</span></span><br><span class="line">            dp[i] = i;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; i-j*j&gt;=<span class="number">0</span>; ++j)&#123;</span><br><span class="line">                <span class="comment">//尝试由 i-1, i-4, i-9 ...得到 i </span></span><br><span class="line">                dp[i] = Math.min(dp[i], dp[i-j*j]+<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="376-摆动序列"><a href="#376-摆动序列" class="headerlink" title="376. 摆动序列"></a><a href="https://leetcode-cn.com/problems/wiggle-subsequence/" target="_blank" rel="noopener">376. 摆动序列</a></h4><p>如果连续数字之间的差严格地在正数和负数之间交替，则数字序列称为<strong>摆动序列。</strong>第一个差（如果存在的话）可能是正数或负数。少于两个元素的序列也是摆动序列。</p>
+<p>例如， <code>[1,7,4,9,2,5]</code> 是一个摆动序列，因为差值 <code>(6,-3,5,-7,3)</code> 是正负交替出现的。相反, <code>[1,4,7,2,5]</code> 和 <code>[1,7,4,5,5]</code> 不是摆动序列，第一个序列是因为它的前两个差值都是正数，第二个序列是因为它的最后一个差值为零。</p>
+<p>给定一个整数序列，返回作为摆动序列的最长子序列的长度。 通过从原始序列中删除一些（也可以不删除）元素来获得子序列，剩下的元素保持其原始顺序。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: [1,7,4,9,2,5]</span><br><span class="line">输出: 6 </span><br><span class="line">解释: 整个序列均为摆动序列。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: [1,17,5,10,13,15,10,5,16,8]</span><br><span class="line">输出: 7</span><br><span class="line">解释: 这个序列包含几个长度为 7 摆动序列，其中一个可为[1,17,10,13,10,16,8]。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: [1,2,3,4,5,6,7,8,9]</span><br><span class="line">输出: 2</span><br></pre></td></tr></table></figure>
+
+<p><strong>进阶:</strong><br>你能否用 O(<em>n</em>) 时间复杂度完成此题?</p>
+<p>每当我们选择一个元素作为摆动序列的一部分时，这个元素要么是上升的，要么是下降的，这取决于前一个元素的大小。</p>
+<p>我们使用两个数组来 dp，up[i] 存的是目前为止的以第 i 个元素结尾的上升摆动序列的长度。</p>
+<p>类似的，down[i] 存的是目前为止以第 i 个元素结尾的下降摆动序列的长度。</p>
+<p>数组中的任何元素都对应下面三种可能状态中的一种：</p>
+<ol>
+<li>上升的位置，意味着 nums[i] &gt; nums[i - 1]</li>
+<li>下降的位置，意味着 nums[i] &lt; nums[i - 1]</li>
+<li>相同的位置，意味着 nums[i] == nums[i - 1]</li>
+</ol>
+<p>如果为情况 1 ，意味着在这里摆动上升，前一个数字肯定处于下降的位置。所以 up[i] = down[i-1]+1, down[i] = down[i-1]。</p>
+<p>如果为情况 2， 意味着在这里摆动下降，前一个数字肯定处在上升的位置。所以 down[i] = up[i-1]+1, up[i] = up[i-1]。</p>
+<p>如果为情况 3，up[i] = up[i-1], down[i] = down[i-1]。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">wiggleMaxLength</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums.length &lt; <span class="number">2</span>)</span><br><span class="line">            <span class="keyword">return</span> nums.length;</span><br><span class="line">        <span class="keyword">int</span>[] up = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length];</span><br><span class="line">        <span class="keyword">int</span>[] down = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length];</span><br><span class="line">        up[<span class="number">0</span>] = down[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length; ++i)&#123;</span><br><span class="line">            <span class="comment">//情况1</span></span><br><span class="line">            <span class="keyword">if</span>(nums[i] &gt; nums[i-<span class="number">1</span>])&#123;</span><br><span class="line">                up[i] = down[i-<span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">                down[i] = down[i-<span class="number">1</span>];</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(nums[i] &lt; nums[i-<span class="number">1</span>])&#123; <span class="comment">//情况 2</span></span><br><span class="line">                down[i] = up[i-<span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">                up[i] = up[i-<span class="number">1</span>];</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;<span class="comment">//情况 3</span></span><br><span class="line">                down[i] = down[i-<span class="number">1</span>];</span><br><span class="line">                up[i] = up[i-<span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Math.max(up[nums.length-<span class="number">1</span>], down[nums.length-<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>优化：我们只需要 up[i-1] 和 down[i-1] ，只需要两个变量来保存。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">wiggleMaxLength</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums.length &lt; <span class="number">2</span>)</span><br><span class="line">            <span class="keyword">return</span> nums.length;</span><br><span class="line">        <span class="keyword">int</span> up = <span class="number">1</span>, down = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length; ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] &gt; nums[i-<span class="number">1</span>])&#123;</span><br><span class="line">                up = down + <span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(nums[i] &lt; nums[i-<span class="number">1</span>])&#123;</span><br><span class="line">                down = up + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Math.max(up, down);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>动态规划</tag>
+        <tag>数组</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>DFS &amp; BFS medium</title>
+    <url>/2020/04/20/DFS&amp;BFSMedium/</url>
+    <content><![CDATA[<h4 id="200-岛屿数量"><a href="#200-岛屿数量" class="headerlink" title="200. 岛屿数量"></a><a href="https://leetcode-cn.com/problems/number-of-islands/" target="_blank" rel="noopener">200. 岛屿数量</a></h4><p>给你一个由 <code>&#39;1&#39;</code>（陆地）和 <code>&#39;0&#39;</code>（水）组成的的二维网格，请你计算网格中岛屿的数量。</p>
+<p>岛屿总是被水包围，并且每座岛屿只能由水平方向和/或竖直方向上相邻的陆地连接形成。</p>
+<p>此外，你可以假设该网格的四条边均被水包围。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入:</span><br><span class="line">11110</span><br><span class="line">11010</span><br><span class="line">11000</span><br><span class="line">00000</span><br><span class="line">输出: 1</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入:</span><br><span class="line">11000</span><br><span class="line">11000</span><br><span class="line">00100</span><br><span class="line">00011</span><br><span class="line">输出: 3</span><br><span class="line">解释: 每座岛屿只能由水平和&#x2F;或竖直方向上相邻的陆地连接而成。</span><br></pre></td></tr></table></figure>
+
+<p>我们可以将二维网格看成一个无向图，竖直或水平相邻的 1 之间有边相连。为了求出岛屿的数量，我们可以扫描整个二维网格。如果一个位置为 1 ，则以其为起始结点开始进行深度优先搜索。在深度优先搜索的过程中，每个搜索到的 1 都会被重新标记为 0。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numIslands</span><span class="params">(<span class="keyword">char</span>[][] grid)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> rows = grid.length;</span><br><span class="line">        <span class="keyword">if</span>(rows == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> cols = grid[<span class="number">0</span>].length;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//对网格中的每个 1 都做深度优先搜索</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;rows; ++i)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;cols; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(grid[i][j] == <span class="string">'1'</span>)&#123;</span><br><span class="line">                    <span class="comment">//发现一个岛屿</span></span><br><span class="line">                    ++ count;</span><br><span class="line">                    <span class="comment">//将该 1 相连的 1 全部置为 0</span></span><br><span class="line">                    dfs(grid, i, j);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">char</span>[][] grid, <span class="keyword">int</span> r, <span class="keyword">int</span> c)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> rows = grid.length;</span><br><span class="line">        <span class="keyword">int</span> cols = grid[<span class="number">0</span>].length;</span><br><span class="line">		<span class="comment">//将第 r 行，第 c 列的 1 相邻的 1 全部置为 0</span></span><br><span class="line">        grid[r][c] = <span class="string">'0'</span>;</span><br><span class="line">        <span class="keyword">if</span>(r-<span class="number">1</span> &gt;= <span class="number">0</span> &amp;&amp; grid[r-<span class="number">1</span>][c] == <span class="string">'1'</span>) dfs(grid, r-<span class="number">1</span>, c);</span><br><span class="line">        <span class="keyword">if</span>(r+<span class="number">1</span> &lt;rows &amp;&amp; grid[r+<span class="number">1</span>][c] == <span class="string">'1'</span>) dfs(grid, r+<span class="number">1</span>, c);</span><br><span class="line">        <span class="keyword">if</span>(c-<span class="number">1</span> &gt;= <span class="number">0</span> &amp;&amp; grid[r][c-<span class="number">1</span>] == <span class="string">'1'</span>)dfs(grid, r, c-<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span>(c+<span class="number">1</span> &lt; cols &amp;&amp; grid[r][c+<span class="number">1</span>] == <span class="string">'1'</span>)dfs(grid, r, c+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numIslands</span><span class="params">(<span class="keyword">char</span>[][] grid)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> rows = grid.length;</span><br><span class="line">        <span class="keyword">if</span>(rows == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> cols = grid[<span class="number">0</span>].length;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;rows; ++i)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;cols; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(grid[i][j] == <span class="string">'1'</span>)&#123;</span><br><span class="line">                    <span class="comment">//发现一个岛屿</span></span><br><span class="line">                    grid[i][j] = <span class="string">'0'</span>;</span><br><span class="line">                    ++count;</span><br><span class="line">                    </span><br><span class="line">                    Queue&lt;Integer&gt; neighbors = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">                    neighbors.add(i*cols+j);</span><br><span class="line">                    <span class="comment">//BFS</span></span><br><span class="line">                    <span class="keyword">while</span>(! neighbors.isEmpty())&#123;</span><br><span class="line">                        <span class="comment">//得到保存的行列信息</span></span><br><span class="line">                        <span class="keyword">int</span> id = neighbors.remove();</span><br><span class="line">                        <span class="keyword">int</span> r = id / cols;</span><br><span class="line">                        <span class="keyword">int</span> c = id % cols;</span><br><span class="line">                        </span><br><span class="line">                        <span class="comment">//将第 i 行，第 j 列的 1 相邻的 1 全部置为 0</span></span><br><span class="line">                        <span class="keyword">if</span>(r-<span class="number">1</span> &gt;= <span class="number">0</span> &amp;&amp; grid[r-<span class="number">1</span>][c] == <span class="string">'1'</span>)&#123;</span><br><span class="line">                            neighbors.add((r-<span class="number">1</span>)*cols+c);</span><br><span class="line">                            grid[r-<span class="number">1</span>][c] = <span class="string">'0'</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="keyword">if</span>(r+<span class="number">1</span> &lt;rows &amp;&amp; grid[r+<span class="number">1</span>][c] == <span class="string">'1'</span>)&#123;</span><br><span class="line">                            neighbors.add((r+<span class="number">1</span>)*cols+c);</span><br><span class="line">                            grid[r+<span class="number">1</span>][c] = <span class="string">'0'</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="keyword">if</span>(c-<span class="number">1</span> &gt;= <span class="number">0</span> &amp;&amp; grid[r][c-<span class="number">1</span>] == <span class="string">'1'</span>)&#123;</span><br><span class="line">                            neighbors.add(r*cols + c - <span class="number">1</span>);</span><br><span class="line">                            grid[r][c-<span class="number">1</span>] = <span class="string">'0'</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="keyword">if</span>(c+<span class="number">1</span> &lt; cols &amp;&amp; grid[r][c+<span class="number">1</span>] == <span class="string">'1'</span>)&#123;</span><br><span class="line">                            neighbors.add(r*cols + c + <span class="number">1</span>);</span><br><span class="line">                            grid[r][c+<span class="number">1</span>] = <span class="string">'0'</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>DFS</tag>
+        <tag>BFS</tag>
       </tags>
   </entry>
 </search>
