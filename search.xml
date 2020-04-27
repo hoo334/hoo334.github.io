@@ -611,7 +611,8 @@
 <p>​    基于封锁的并发控制方法的基本思想是：当事务 <em>T</em> 需访问数据对象 <em>Q</em> 时，先申请对 <em>Q</em> 的锁。如批准获得，则 <em>T</em> 继续执行，且此后不允许其他任何事物修改 <em>Q</em>，直到事务 <em>T</em> 释放 <em>Q</em> 上的锁为止。</p>
 <p>​    基本锁类型：</p>
 <p>​    1）共享锁（Shared Lock，记为 S ）：如果事务 <em>T</em> 获得的对象 <em>Q</em> 上的共享锁，则 <em>T</em> 可读 <em>Q</em> 但不能写 <em>Q</em> 。</p>
-<pre><code>2）排他锁（eXclusive lock，记为 X ）：如果事务 *T* 获得的对象 *Q* 上的排他锁，则 *T* 可读 *Q* 又能写 *Q* 。</code></pre><p>​    <strong>一个数据对象 <em>Q</em> 上可能有多个（被不同事务拥有的）共享锁，但任何时候只能有一个排他锁。</strong></p>
+<p>​    2）排他锁（eXclusive lock，记为 X ）：如果事务 <em>T</em> 获得的对象 <em>Q</em> 上的排他锁，则 <em>T</em> 可读 <em>Q</em> 又能写 <em>Q</em> 。</p>
+<p>​    <strong>一个数据对象 <em>Q</em> 上可能有多个（被不同事务拥有的）共享锁，但任何时候只能有一个排他锁。</strong></p>
 <p><img src="https://i.loli.net/2020/04/06/sNHdY7A2PhBy3ET.png" alt="image-20200406104004431"></p>
 <p><img src="https://i.loli.net/2020/04/06/JX7bQ8va4hoMHNK.png" alt="image-20200406104529309"></p>
 <p>​    图10-13 中的调度存在以下问题：</p>
@@ -1250,7 +1251,7 @@
 <p>　　R：F</p>
 <p>　　LR：A，B，D</p>
 <p>　　L 一定为主属性，将 L 和 LR 组合为 ACE，BCE，CDE。</p>
-<p>　　主属性： A，B，D ；非主属性： C</p>
+<p>　　主属性： A，B，C，D ，E；非主属性： F</p>
 <p>　　ACE+ = ABCDEF；BCE+ = ABCDEF；CDE+ = ABCDEF；故ACE，BCE，CDE为候选码。</p>
 <p> 　　<strong>3）分解</strong></p>
 <p>　　将上面的函数依赖依次分解得到：AEF，AB，BCD，CDA，CEF。</p>
@@ -2402,7 +2403,8 @@
 <p>​    1）检查主码是否唯一。如果不唯一则拒绝插入或修改。（索引或顺序查找）</p>
 <p>​    2）检查主码的各个属性是否为空，只要有一个为空则拒绝插入或修改。</p>
 <h4 id="参照完整性"><a href="#参照完整性" class="headerlink" title="参照完整性"></a>参照完整性</h4><p>​    参照完整性为若干个表中的相应元组建立联系。参照完整性定义是使用 create table 语句中的 foreign key 和 references 短语来实现，或通过 alter table 语句中的 add foreign key 来实现。</p>
-<pre><code>参照完整性的检查和违约处理：</code></pre><p>​    1）拒绝执行。如果发生了违约，阻止操作。</p>
+<p>​    参照完整性的检查和违约处理：</p>
+<p>​    1）拒绝执行。如果发生了违约，阻止操作。</p>
 <p>​    2）级联操作。当删除或修改被参照关系的某个元组造成了与参照关系的不一致时，则删除或修改参照表中所有不一致的元组。级联操作必须在定义外码时给出定义（在外码定义最后追加 on delete/update cascade）。</p>
 <p>​    3）设置为空值。如果外码可以为空，发生了违约则将外码置空。</p>
 <p>​    4）置空值删除。删除被参照关系的元组，并将被参照关系中相应元组的外码置空值。</p>
@@ -3905,7 +3907,7 @@
 <h4 id="计算机网络性能指标"><a href="#计算机网络性能指标" class="headerlink" title="计算机网络性能指标"></a>计算机网络性能指标</h4><p>　　1）带宽：网络通信线路所能传输数据的能力，是数字信道所能传输的 “最高数据率” 的同义词，单位 b/s。</p>
 <p>　　2）时延：数据（一个分组或报文）从网络（或链路）的一端传送到另一端所需要的总时间，它由4部分构成 发送时延、传播时延、处理时延、排队时延。</p>
 <p><img src="https://i.loli.net/2020/04/04/aDkJnfzV4wTejlB.png" alt="img"></p>
-<p>​        3）时延带宽积：发送端发送的第一个比特即将到达终点时，发送端已经发出了多少个比特。</p>
+<p>​    3）时延带宽积：发送端发送的第一个比特即将到达终点时，发送端已经发出了多少个比特。</p>
 <p>　　时延带宽积 = 传播时延*信道带宽</p>
 <p>　　<img src="https://i.loli.net/2020/04/04/ogeU1hSdpj54sB3.png" alt="img"></p>
 <p>​        4）往返时延（Round-Trip Time）：从发送端发送数据开始，到发送端收到来自接收端的确认总共经过的时延。</p>
@@ -3934,6 +3936,38 @@
 <p><img src="https://i.loli.net/2020/04/04/eRNgk93nSQomYJV.png" alt="img"></p>
 <p> <img src="https://i.loli.net/2020/04/04/jVCxW8psaHF7EwO.png" alt="img"></p>
 <p> <img src="https://i.loli.net/2020/04/04/gTzGmJbDRMC5kwa.png" alt="img"></p>
+<h3 id="本章小结及疑难点"><a href="#本章小结及疑难点" class="headerlink" title="本章小结及疑难点"></a>本章小结及疑难点</h3><ol>
+<li><p>计算机网络与分布式计算机系统的主要区别是什么？</p>
+<p>分布式系统最主要的特点是：整个系统中的各个计算机对用户都是透明的。用户通过属兔命令就可以运行程序，用户并不知道是哪台计算机在为它运行程序。操作系统为用户选择一台最合适的计算机来运行其程序，并将运行的结果传送到合适的地方。</p>
+<p>计算机网络则不同，用户必须先登录欲运行程序的计算机，然后按照计算机的地址，将程序通过计算机网络传送到该计算机上运行，最后根据用户的命令将结果传送到指定的计算机。两者的区别主要是软件的不同。</p>
+</li>
+</ol>
+<ol start="2">
+<li><p>为什么一个网络协议必须考虑到各种不利的情况？</p>
+<p>因为网络协议如果不全面考虑不利的情况，那么当情况发生变化时，协议就会保持理想状况，一直等下去。</p>
+</li>
+</ol>
+<ol start="3">
+<li>因特网使用的 IP 协议是无连接的，因此其传输是不可靠的。这样容易使人们感到因特网很不可靠。那么当初为什么不把因特网传输设计为可靠的呢？<br>传统电信网的主要用途使电话通信，并且普通电话机不是智能的，因此电信公司必须花费巨大的代价把电信网设计的非常好，以保证用户的通信质量。<br>计算机网络的先驱们认为，计算机网络和电信网的一个重大区别是终端设备的性能差别很大。于是，他们采用了 “端到端的可靠传输” 策略，即在传输层使用面向连接的 TCP 协议，这样既能使网络部分价格便宜且灵活可靠，又能保证端到端的可靠传输。</li>
+</ol>
+<ol start="4">
+<li>端到端通信和点到点通信有什么区别？<br>由物理层、数据链路层和网络层组成的通信子网为网络环境中的主机提供点到点的服务，而传输层为网络中的主机提供端到端的通信。<br>直接相连的结点之间的通信称为<strong>点到点通信</strong>，它只提供一台机器到另一台机器之间的通信，不涉及程序或进程的概念。同时，点到点通信并不能保证数据传输的可靠性，也不能说明源主机和目的主机之间是哪两个进程在通信，这些工作都是由传输层来完成的。<br>端到端通信建立在点到点通信的基础上，它是由一段段的点到点通信信道构成的，是比点到点通信更高一级的通信方式，以完成应用程序（进程）之间的通信。“端” 是指用户程序的端口，端口号标识了应用层中不同的进程。</li>
+</ol>
+<ol start="5">
+<li>如何理解传输速率、带宽和传播速率？<br>传输速率指主机在<strong>数字信道上发送数据的速率</strong>，也称数据率或比特率，单位是 b/s 。<br>带宽在计算机网络中指数字信道所能传送的“最高数据传输速率”，常用来表示网络的通信线路传送数据的能力。<br>传播速率是指电磁波在信道中传播的速率，单位是 m/s。</li>
+</ol>
+<ol start="6">
+<li><p>试从多个方面比较电路交换、报文交换和分组交换的优缺点。<br>电路交换的主要特点：<br>1）通信一定由有三个阶段：建立连接、通信、释放连接。<br>2）在整个通信过程中，通信的双方自始至终占用着所使用的物理信道。<br>电路交换对通信线路的利用率比较低。静态分配传输带宽，当发生拥塞时通信质量不会下降。<br>目前常用的分组交换是使用无连接的 IP 协议。这种分组交换以分组作为传输的单位。采用存储转发技术，无连接建立和释放这两个阶段，传送数据较快。动态分配传输带宽，对通信链路是逐段占用的。分组在各路由器存储转发时需要排队，这就会造成一定的时延。<br>报文交换也采用存储转发技术，报文交换不再把 报文分割为更小的分组，而是把整个报文在网络的结点中存储下来，然后转发出去。传输数据的时延较大。</p>
+</li>
+<li><p>协议与服务有何区别？有何关系？<br>协议是控制两个对等实体（或多个实体）进行通信的规则的集合。在协议的控制下，两个对等实体间的通信使得本层能够向上一层提供服务。要实现本层协议，还需要使用下面一层所提供的服务。<br>协议是“水平的”，即协议是控制对等实体之间通信的规则。但服务是“垂直的”，即服务是由下层向上层通过层间接口提供的。</p>
+</li>
+</ol>
+<ol start="8">
+<li>网络协议的三个要素是什么？各有什么含义？<br>1）语法，即数据与控制信息的结构或格式。<br>2）语义，即需要发出何种控制信息、完成何种动作以及做出何种响应。<br>3）同步，即时间实现顺序的详细说明。</li>
+</ol>
+<ol start="9">
+<li>试述具有五层协议的网络体系结构的要点，包括各层的主要功能。<br>1）物理层。在物理层上传送数据的单位是比特。物理层的任务就是透明地传送比特流。<br>2）数据链路层。将网络层交下来地 IP 数据报组装成帧，在两个相邻结点间地链路上“透明”地传送帧中的数据。<br>3）网络层。负责为分组交换网上的不同主机提供通信服务。在发送数据时，网络层把传输层产生的报文段或用户数据报封装成分组或包进行传送。<br>4）传输层。传输层的任务就是负责向两个主机中进程之间的通信提供服务。<br>5）应用层。直接为用户的应用进程提供服务。</li>
+</ol>
 ]]></content>
       <categories>
         <category>计算机网络</category>
@@ -4510,7 +4544,49 @@
   <entry>
     <title>动态规划 medium</title>
     <url>/2020/04/19/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92medium/</url>
-    <content><![CDATA[<h4 id="279-完全平方数"><a href="#279-完全平方数" class="headerlink" title="279. 完全平方数"></a><a href="https://leetcode-cn.com/problems/perfect-squares/" target="_blank" rel="noopener">279. 完全平方数</a></h4><p>给定正整数 <em>n</em>，找到若干个完全平方数（比如 <code>1, 4, 9, 16, ...</code>）使得它们的和等于 <em>n</em>。你需要让组成和的完全平方数的个数最少。</p>
+    <content><![CDATA[<h4 id="62-不同路径"><a href="#62-不同路径" class="headerlink" title="62. 不同路径"></a><a href="https://leetcode-cn.com/problems/unique-paths/" target="_blank" rel="noopener">62. 不同路径</a></h4><p>一个机器人位于一个 <em>m x n</em> 网格的左上角 （起始点在下图中标记为“Start” ）。</p>
+<p>机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为“Finish”）。</p>
+<p>问总共有多少条不同的路径？</p>
+<p><img src="https://i.loli.net/2020/04/27/ymcKdA4V1LXFkaP.png" alt="img"></p>
+<p>例如，上图是一个7 x 3 的网格。有多少可能的路径？</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: m &#x3D; 3, n &#x3D; 2</span><br><span class="line">输出: 3</span><br><span class="line">解释:</span><br><span class="line">从左上角开始，总共有 3 条路径可以到达右下角。</span><br><span class="line">1. 向右 -&gt; 向右 -&gt; 向下</span><br><span class="line">2. 向右 -&gt; 向下 -&gt; 向右</span><br><span class="line">3. 向下 -&gt; 向右 -&gt; 向右</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: m &#x3D; 7, n &#x3D; 3</span><br><span class="line">输出: 28</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><p><code>1 &lt;= m, n &lt;= 100</code></p>
+</li>
+<li><p>题目数据保证答案小于等于 <code>2 * 10 ^ 9</code></p>
+</li>
+</ul>
+<p>我们使用 <code>dp[i][j]</code> 来存储到达 <code>(i,j)</code> 的最多路径，由于机器人只能向下或向右，则 <code>dp[i][j] = dp[i-1][j] + dp[i][j-1]</code> 。对于第一行 <code>dp[0][]</code> 和第一列 <code>dp[][0]</code> 只能有一条路径到达，所以它们的值全部为 1 。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">uniquePaths</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[][] counts = <span class="keyword">new</span> <span class="keyword">int</span>[n][m];</span><br><span class="line">        <span class="comment">//第一行和第一列全为 1 </span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; ++i)counts[i][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;m; ++i)counts[<span class="number">0</span>][i] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;n; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;m; j++)&#123;</span><br><span class="line">                <span class="comment">//dp[i][j] = dp[i-1][j] + dp[i][j-1]</span></span><br><span class="line">                counts[i][j] = counts[i-<span class="number">1</span>][j] + counts[i][j-<span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> counts[n-<span class="number">1</span>][m-<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>优化空间复杂度 为 O(n)</p>
+<p>由于只需要<code>dp[i-1][j]</code> 和 <code>dp[i][j-1]</code> ，我们只用使用一个一维数组存储上一行的数据。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">uniquePaths</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] cur = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">        Arrays.fill(cur,<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; m;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; n; j++)&#123;</span><br><span class="line">                <span class="comment">//cur[j] 为 dp[i-1][j]，cur[j-1] 为 dp[i][j-1]。</span></span><br><span class="line">                cur[j] += cur[j-<span class="number">1</span>] ;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cur[n-<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="63-不同路径-II"><a href="#63-不同路径-II" class="headerlink" title="63. 不同路径 II"></a><a href="https://leetcode-cn.com/problems/unique-paths-ii/" target="_blank" rel="noopener">63. 不同路径 II</a></h4><p>一个机器人位于一个 <em>m x n</em> 网格的左上角 （起始点在下图中标记为“Start” ）。</p>
+<p>机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为“Finish”）。</p>
+<p>现在考虑网格中有障碍物。那么从左上角到右下角将会有多少条不同的路径？</p>
+<p><img src="https://i.loli.net/2020/04/27/ymcKdA4V1LXFkaP.png" alt="img"></p>
+<p>网格中的障碍物和空位置分别用 <code>1</code> 和 <code>0</code> 来表示。</p>
+<p><strong>说明：</strong>m 和 <em>n</em> 的值均不超过 100。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入:</span><br><span class="line">[</span><br><span class="line">  [0,0,0],</span><br><span class="line">  [0,1,0],</span><br><span class="line">  [0,0,0]</span><br><span class="line">]</span><br><span class="line">输出: 2</span><br><span class="line">解释:</span><br><span class="line">3x3 网格的正中间有一个障碍物。</span><br><span class="line">从左上角到右下角一共有 2 条不同的路径：</span><br><span class="line">1. 向右 -&gt; 向右 -&gt; 向下 -&gt; 向下</span><br><span class="line">2. 向下 -&gt; 向下 -&gt; 向右 -&gt; 向右</span><br></pre></td></tr></table></figure>
+<p>此题相比 <a href="https://leetcode-cn.com/problems/unique-paths/" target="_blank" rel="noopener">不同路径</a> 多了一个障碍物判断。第一行第一列中只要有一个障碍物，后面的路径数全部为 0 。如果位置 <code>(i,j)</code>  上有障碍物，则路径数直接为 0 。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">uniquePathsWithObstacles</span><span class="params">(<span class="keyword">int</span>[][] obstacleGrid)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = obstacleGrid.length;</span><br><span class="line">        <span class="keyword">int</span> m = obstacleGrid[<span class="number">0</span>].length;</span><br><span class="line">        <span class="keyword">int</span>[][] counts = <span class="keyword">new</span> <span class="keyword">int</span>[n][m];</span><br><span class="line">        <span class="comment">//初始化第一列</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(obstacleGrid[i][<span class="number">0</span>] == <span class="number">1</span>)&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                counts[i][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//初始化第一行</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;m; ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(obstacleGrid[<span class="number">0</span>][i] == <span class="number">1</span>)&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                counts[<span class="number">0</span>][i] = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">		</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;n; ++i)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;m; j++)&#123;</span><br><span class="line">                <span class="comment">//有障碍物直接为 0 </span></span><br><span class="line">                <span class="keyword">if</span>(obstacleGrid[i][j] == <span class="number">1</span>)&#123;</span><br><span class="line">                    counts[i][j] = <span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="comment">//dp</span></span><br><span class="line">                    counts[i][j] = counts[i-<span class="number">1</span>][j]+counts[i][j-<span class="number">1</span>];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> counts[n-<span class="number">1</span>][m-<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="279-完全平方数"><a href="#279-完全平方数" class="headerlink" title="279. 完全平方数"></a><a href="https://leetcode-cn.com/problems/perfect-squares/" target="_blank" rel="noopener">279. 完全平方数</a></h4><p>给定正整数 <em>n</em>，找到若干个完全平方数（比如 <code>1, 4, 9, 16, ...</code>）使得它们的和等于 <em>n</em>。你需要让组成和的完全平方数的个数最少。</p>
 <p>动态转移方程为：<code>dp[i] = MIN(dp[i], dp[i - j * j] + 1)</code>，<code>i</code>表示当前数字，<code>j*j</code>表示平方数。</p>
 <p><strong>示例 1:</strong></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: n &#x3D; 12</span><br><span class="line">输出: 3 </span><br><span class="line">解释: 12 &#x3D; 4 + 4 + 4.</span><br></pre></td></tr></table></figure>
@@ -4519,6 +4595,7 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: n &#x3D; 13</span><br><span class="line">输出: 2</span><br><span class="line">解释: 13 &#x3D; 4 + 9.</span><br></pre></td></tr></table></figure>
 <p>使用 dp 数组来保存以当前下标为和的完全平方数的个数。依次对每个数判断是否可以使用之前的dp数组中的值加一个较大的完全平方数得到。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numSquares</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[n+<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; ++i)&#123;</span><br><span class="line">            <span class="comment">//最坏的情况，全部由 1 相加得到</span></span><br><span class="line">            dp[i] = i;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; i-j*j&gt;=<span class="number">0</span>; ++j)&#123;</span><br><span class="line">                <span class="comment">//尝试由 i-1, i-4, i-9 ...得到 i </span></span><br><span class="line">                dp[i] = Math.min(dp[i], dp[i-j*j]+<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
 
 
@@ -4554,8 +4631,34 @@
 
 
 
+<h4 id="面试题-08-11-硬币"><a href="#面试题-08-11-硬币" class="headerlink" title="面试题 08.11. 硬币"></a><a href="https://leetcode-cn.com/problems/coin-lcci/" target="_blank" rel="noopener">面试题 08.11. 硬币</a></h4><p>硬币。给定数量不限的硬币，币值为25分、10分、5分和1分，编写代码计算n分有几种表示法。(结果可能会很大，你需要将结果模上1000000007)</p>
+<p><strong>示例1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> 输入: n &#x3D; 5</span><br><span class="line"> 输出：2</span><br><span class="line"> 解释: 有两种方式可以凑成总金额:</span><br><span class="line">5&#x3D;5</span><br><span class="line">5&#x3D;1+1+1+1+1</span><br></pre></td></tr></table></figure>
 
+<p><strong>示例2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> 输入: n &#x3D; 10</span><br><span class="line"> 输出：4</span><br><span class="line"> 解释: 有四种方式可以凑成总金额:</span><br><span class="line">10&#x3D;10</span><br><span class="line">10&#x3D;5+5</span><br><span class="line">10&#x3D;5+1+1+1+1+1</span><br><span class="line">10&#x3D;1+1+1+1+1+1+1+1+1+1</span><br></pre></td></tr></table></figure>
 
+<p><strong>说明：</strong></p>
+<p>注意:</p>
+<p>你可以假设：</p>
+<ul>
+<li>0 &lt;= n (总金额) &lt;= 1000000</li>
+</ul>
+<p>完全背包问题即不限定硬币的个数去组合硬币达到指定的值。</p>
+<p>这道题为求组合成指定数额有几种情况，我们设置 dp 数组：dp[k]  为组成 k 面额的硬币情况数。</p>
+<p>设置基本情况：dp[0] = 1，这里 dp[0] 的含义不是 组成 0 的硬币种类为 0，二是作为完美能被一个硬币表示的情况为 1。即：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">while k - coin &#x3D;&#x3D; 0 :</span><br><span class="line">	dp[k] +&#x3D; dp[k - coin];</span><br><span class="line">	&#x3D;&gt;</span><br><span class="line">	dp[k] +&#x3D; dp[0];</span><br></pre></td></tr></table></figure>
+
+<p>我们可以得到 dp 方程 dp[k] += dp[k-coin]；</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">waysToChange</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> mod = <span class="number">1000000007</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span>[] coins = &#123;<span class="number">25</span>,<span class="number">10</span>,<span class="number">5</span>,<span class="number">1</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[n+<span class="number">1</span>];</span><br><span class="line">        <span class="comment">//刚好可以用一个硬币凑成的情况</span></span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> c=<span class="number">0</span>; c&lt;<span class="number">4</span>; ++c)&#123;</span><br><span class="line">            <span class="keyword">int</span> coin = coins[c];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=coin; i&lt;=n; ++i)&#123;</span><br><span class="line">                dp[i] = (dp[i] + dp[i - coin]) % mod;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>coins 数组中的硬币顺序必须是由大到小。</p>
+<p>如果硬币由小到大，我们求6的硬币情况数时，我们观察一下流程：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">前面5种情况数：dp[1,5] &#x3D; [1,1,1,1,2];</span><br><span class="line"></span><br><span class="line">coin &#x3D; 1:</span><br><span class="line">dp[6] +&#x3D; (dp[6 - coin] &#x3D;&gt; dp[5] &#x3D;&gt; 2);</span><br><span class="line">即拿到coin(1)的情况有两种 :</span><br><span class="line">	coin(1,1,1,1,1) + coin(1);</span><br><span class="line">	coin(5) + coin(1);</span><br><span class="line">	</span><br><span class="line">coin &#x3D; 5:</span><br><span class="line">dp[6] +&#x3D; (dp[6 - coin] &#x3D;&gt; dp[1] &#x3D;&gt; 1);</span><br><span class="line">即拿到coin（5）的情况有一种:</span><br><span class="line">	coin(1) + coin(5);</span><br><span class="line">但是事实却是6的情况只有两种，（1，1，1，1，1，1）和（1，5）。这里是把（1，5）和（5，1）前后顺序不同的情况重复算了1次。因此我们应该去考虑硬币顺序带来的影响。</span><br></pre></td></tr></table></figure>
+<p>正确答案：<br>于是我们先遍历硬币，保证在考虑一枚硬币的情况时，没有较大的硬币影响，这样，我们最终每种组合情况，都是以硬币的面额大小非递减组合。保证了同样的情况，调换顺序后重复计算的情况。</p>
+<p>这时候，我们求6的硬币情况数时，我们观察一下流程：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">coin &#x3D; 1:</span><br><span class="line">前面5种情况数：dp[1,5] &#x3D; [1,1,1,1,1];</span><br><span class="line"></span><br><span class="line">dp[6] +&#x3D; (dp[6 - coin] &#x3D;&gt; dp[5] &#x3D;&gt; 1);</span><br><span class="line">即拿到coin(1)的情况有一种 :</span><br><span class="line">	coin(1,1,1,1,1) + coin(1);</span><br><span class="line">	</span><br><span class="line">coin &#x3D; 5:</span><br><span class="line">前面5种情况数：dp[1,5] &#x3D; [1,1,1,1,2];</span><br><span class="line"></span><br><span class="line">dp[6] +&#x3D; (dp[6 - coin] &#x3D;&gt; dp[1] &#x3D;&gt; 1);</span><br><span class="line">即拿到coin（5）的情况有一种:</span><br><span class="line">	coin(1) + coin(5);</span><br><span class="line">此时，硬币组合情况，的确为正确的情况。</span><br></pre></td></tr></table></figure>
+<p>参考：<a href="https://leetcode-cn.com/problems/coin-lcci/solution/dong-tai-gui-hua-wan-quan-bei-bao-wen-ti-by-eddiev/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/coin-lcci/solution/dong-tai-gui-hua-wan-quan-bei-bao-wen-ti-by-eddiev/</a></p>
 ]]></content>
       <categories>
         <category>Leetcode</category>
@@ -4632,6 +4735,39 @@
       </categories>
       <tags>
         <tag>排序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>二分查找medium</title>
+    <url>/2020/04/27/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BEmedium/</url>
+    <content><![CDATA[<h4 id="33-搜索旋转排序数组"><a href="#33-搜索旋转排序数组" class="headerlink" title="33. 搜索旋转排序数组"></a><a href="https://leetcode-cn.com/problems/search-in-rotated-sorted-array/" target="_blank" rel="noopener">33. 搜索旋转排序数组</a></h4><p>假设按照升序排序的数组在预先未知的某个点上进行了旋转。</p>
+<p>( 例如，数组 <code>[0,1,2,4,5,6,7]</code> 可能变为 <code>[4,5,6,7,0,1,2]</code> )。</p>
+<p>搜索一个给定的目标值，如果数组中存在这个目标值，则返回它的索引，否则返回 <code>-1</code> 。</p>
+<p>你可以假设数组中不存在重复的元素。</p>
+<p>你的算法时间复杂度必须是 <em>O</em>(log <em>n</em>) 级别。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: nums &#x3D; [4,5,6,7,0,1,2], target &#x3D; 0</span><br><span class="line">输出: 4</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: nums &#x3D; [4,5,6,7,0,1,2], target &#x3D; 3</span><br><span class="line">输出: -1</span><br></pre></td></tr></table></figure>
+
+<p>由于题目要求时间复杂度为O(log n)，这提示我们使用二分查找。</p>
+<p>数组本身不是有序的，进行旋转后只是局部有序的，还能二分查找吗？</p>
+<p>可以发现，我们将数组从中间分成左右两部分后，左右部分中一定有一个部分是有序的。例如示例中我们从 <code>6</code> 这个位置分开为<code>[4,5,6]</code> 和 <code>[7,0,1,2]</code> ，其中左边 <code>[4,5,6]</code> 这个部分的数组是有序的。</p>
+<p>这启示我们可以在常规二分查找上改动，每次判断分割出来的两个部分，哪个是有序的，根据有序的部分改变二分搜索的上下界。</p>
+<ul>
+<li>如果 <code>[1, mid-1]</code> 是有序数组，且 <code>target</code>  的大小满足 <code>[nums[l], nums[mid])</code> ，则我们将搜索范围缩小到 <code>[1, mid-1]</code> ，否则在<code>[mid+1, r]</code> 中寻找。</li>
+<li>如果 <code>[mid, r]</code> 是有序数组，且 <code>target</code>  的大小满足 <code>[nums[mid+1], nums[r])</code> ，则我们将搜索范围缩小到 <code>[mid+1, r]</code> ，否则在<code>[1, mid-1]</code> 中寻找。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">search</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.length;</span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">0</span>)<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>, r = n - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(l &lt;= r)&#123;</span><br><span class="line">            <span class="keyword">int</span> mid = l + (r - l) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(nums[mid] == target)<span class="keyword">return</span> mid;</span><br><span class="line">            <span class="comment">//左边部分有序</span></span><br><span class="line">            <span class="keyword">if</span>(nums[<span class="number">0</span>] &lt;= nums[mid])&#123;</span><br><span class="line">                <span class="comment">//target 在有序部分</span></span><br><span class="line">                <span class="keyword">if</span>(nums[<span class="number">0</span>] &lt;= target &amp;&amp; target &lt;= nums[mid])&#123;</span><br><span class="line">                    r = mid - <span class="number">1</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;<span class="comment">//target 不在有序部分</span></span><br><span class="line">                    l = mid + <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;<span class="comment">//右边部分有序</span></span><br><span class="line">                 <span class="comment">//target 在有序部分</span></span><br><span class="line">                <span class="keyword">if</span>(nums[mid] &lt;= target &amp;&amp; target &lt;= nums[n-<span class="number">1</span>])&#123;</span><br><span class="line">                    l = mid + <span class="number">1</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;<span class="comment">//target 不在有序部分</span></span><br><span class="line">                    r = mid - <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
+        <tag>二分查找</tag>
       </tags>
   </entry>
 </search>

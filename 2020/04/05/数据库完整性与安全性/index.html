@@ -41,7 +41,7 @@
 <meta property="og:image" content="https://i.loli.net/2020/04/05/KzmCBDclWnp6hxR.png">
 <meta property="og:image" content="https://i.loli.net/2020/04/05/rSV8gNdlaT6vQwx.png">
 <meta property="article:published_time" content="2020-04-05T14:23:02.000Z">
-<meta property="article:modified_time" content="2020-04-20T03:45:00.025Z">
+<meta property="article:modified_time" content="2020-04-25T02:19:45.614Z">
 <meta property="article:author" content="hoo334">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.loli.net/2020/04/05/PMcSmGxa3O7JzBb.png">
@@ -234,7 +234,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-20 11:45:00" itemprop="dateModified" datetime="2020-04-20T11:45:00+08:00">2020-04-20</time>
+                <time title="Modified: 2020-04-25 10:19:45" itemprop="dateModified" datetime="2020-04-25T10:19:45+08:00">2020-04-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -303,7 +303,8 @@
 <p>​    1）检查主码是否唯一。如果不唯一则拒绝插入或修改。（索引或顺序查找）</p>
 <p>​    2）检查主码的各个属性是否为空，只要有一个为空则拒绝插入或修改。</p>
 <h4 id="参照完整性"><a href="#参照完整性" class="headerlink" title="参照完整性"></a>参照完整性</h4><p>​    参照完整性为若干个表中的相应元组建立联系。参照完整性定义是使用 create table 语句中的 foreign key 和 references 短语来实现，或通过 alter table 语句中的 add foreign key 来实现。</p>
-<pre><code>参照完整性的检查和违约处理：</code></pre><p>​    1）拒绝执行。如果发生了违约，阻止操作。</p>
+<p>​    参照完整性的检查和违约处理：</p>
+<p>​    1）拒绝执行。如果发生了违约，阻止操作。</p>
 <p>​    2）级联操作。当删除或修改被参照关系的某个元组造成了与参照关系的不一致时，则删除或修改参照表中所有不一致的元组。级联操作必须在定义外码时给出定义（在外码定义最后追加 on delete/update cascade）。</p>
 <p>​    3）设置为空值。如果外码可以为空，发生了违约则将外码置空。</p>
 <p>​    4）置空值删除。删除被参照关系的元组，并将被参照关系中相应元组的外码置空值。</p>
@@ -457,7 +458,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-count">67</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -470,7 +471,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
