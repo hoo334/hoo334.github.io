@@ -22,14 +22,14 @@
 
   <meta name="description" content="Leetcode medium 数组总结">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数组 medium">
+<meta property="og:title" content="数组 Medium">
 <meta property="og:url" content="http://yoursite.com/2020/04/17/%E6%95%B0%E7%BB%84Medium/index.html">
 <meta property="og:site_name" content="echo">
 <meta property="og:description" content="Leetcode medium 数组总结">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.loli.net/2020/04/21/23RAHzps9cYvGKC.jpg">
 <meta property="article:published_time" content="2020-04-17T02:51:13.000Z">
-<meta property="article:modified_time" content="2020-04-21T02:15:18.176Z">
+<meta property="article:modified_time" content="2020-04-29T03:16:06.969Z">
 <meta property="article:author" content="hoo334">
 <meta property="article:tag" content="数组">
 <meta name="twitter:card" content="summary">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>数组 medium | echo</title>
+  <title>数组 Medium | echo</title>
   
 
 
@@ -206,7 +206,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          数组 medium
+          数组 Medium
         </h1>
 
         <div class="post-meta">
@@ -223,7 +223,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-21 10:15:18" itemprop="dateModified" datetime="2020-04-21T10:15:18+08:00">2020-04-21</time>
+                <time title="Modified: 2020-04-29 11:16:06" itemprop="dateModified" datetime="2020-04-29T11:16:06+08:00">2020-04-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -302,7 +302,25 @@
 <p>以示例 3 来解释：我们生成的 odd 数组为 [-1, 3, 6, 10]，对其遍历一遍得到结果 (3 - (-1)) * (10-6) = 16。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numberOfSubarrays</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.length;</span><br><span class="line">        <span class="keyword">int</span>[] odd = <span class="keyword">new</span> <span class="keyword">int</span>[n+<span class="number">2</span>];</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">0</span>, ans = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//生成 odd 数组</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span> ; i &lt; n; ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>( (nums[i] &amp; <span class="number">1</span>) == <span class="number">1</span>)odd[++index] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//边界处理</span></span><br><span class="line">        odd[<span class="number">0</span>] = -<span class="number">1</span>; odd[++index] = n;</span><br><span class="line">		<span class="comment">//计算结果</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i+k &lt;= index; ++i)&#123;</span><br><span class="line">            ans += (odd[i] - odd[i-<span class="number">1</span>])*(odd[i+k] - odd[i+k-<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h4 id="面试题56-I-数组中数字出现的次数"><a href="#面试题56-I-数组中数字出现的次数" class="headerlink" title="面试题56 - I. 数组中数字出现的次数"></a><a href="https://leetcode-cn.com/problems/shu-zu-zhong-shu-zi-chu-xian-de-ci-shu-lcof/" target="_blank" rel="noopener">面试题56 - I. 数组中数字出现的次数</a></h4><p>一个整型数组 <code>nums</code> 里除两个数字之外，其他数字都出现了两次。请写程序找出这两个只出现一次的数字。要求时间复杂度是O(n)，空间复杂度是O(1)。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums &#x3D; [4,1,4,6]</span><br><span class="line">输出：[1,6] 或 [6,1]</span><br></pre></td></tr></table></figure>
 
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums &#x3D; [1,2,10,4,1,4,3,3]</span><br><span class="line">输出：[2,10] 或 [10,2]</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>限制：</strong></p>
+<ul>
+<li><code>2 &lt;= nums &lt;= 10000</code></li>
+</ul>
+<p>一个整型数组 <code>nums</code> 里除一个数字之外，其他数字都出现了两次。这个问题我们直接将 <code>nums</code> 数组中所有数字异或即可得到结果。现在只出现一次的数字有两个，我们再将所有数字进行异或即可得到两个只出现一次的数字的异或结果。</p>
+<p>如果将这两个数字分别分成两组，一组里面含有一个出现一次的数字。我们直接将两组中的所有数字异或即可得到结果。</p>
+<p>如何分组？我们从两个只出现一次的数字的异或结果入手，找出两个数字中不同的<strong>位</strong>（该位为 1 ）， 按照这个不同的位将所有数字分为两组。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">例如 [4,1,4,6] 数组中所有数字异或的结果为 1 ^ 6 &#x3D; 7</span><br><span class="line">将 7 表示为二进制 0111（忽略前面的 28 个 0）</span><br><span class="line">我们可以将数字的最后三位中任选一位作为分组的判断。</span><br><span class="line">例如将倒数第一位为 0 分为第一组 得到[4,4,6]</span><br><span class="line">将倒数第一位为 1 分为第二组 得到[1]</span><br><span class="line">分别将这两组中的数字全部异或即可得到结果 1 和 6。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] singleNumbers(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">        <span class="comment">//计算两个只出现一次数字的异或结果</span></span><br><span class="line">        <span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num : nums)&#123;</span><br><span class="line">            ret ^= num;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//找出用来分组的那一位</span></span><br><span class="line">        <span class="keyword">int</span> idx = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>((idx &amp; ret) == <span class="number">0</span>)&#123;</span><br><span class="line">            idx = idx &lt;&lt; <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="comment">//分组异或计算结果</span></span><br><span class="line">        <span class="keyword">int</span> a = <span class="number">0</span>, b = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num : nums)&#123;</span><br><span class="line">            <span class="keyword">if</span>((num &amp; idx) == <span class="number">0</span>)&#123;</span><br><span class="line">                a ^= num;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                b ^= num;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;a,b&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
     </div>
@@ -326,8 +344,8 @@
       <i class="fa fa-chevron-left"></i> Object
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/04/18/%E4%BA%8C%E5%8F%89%E6%A0%91medium/" rel="next" title="二叉树 medium">
-      二叉树 medium <i class="fa fa-chevron-right"></i>
+    <a href="/2020/04/18/%E4%BA%8C%E5%8F%89%E6%A0%91Medium/" rel="next" title="二叉树 Medium">
+      二叉树 Medium <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -387,7 +405,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#11-盛最多水的容器"><span class="nav-number">1.</span> <span class="nav-text">11. 盛最多水的容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#55-跳跃游戏"><span class="nav-number">2.</span> <span class="nav-text">55. 跳跃游戏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1248-统计「优美子数组」"><span class="nav-number">3.</span> <span class="nav-text">1248. 统计「优美子数组」</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#11-盛最多水的容器"><span class="nav-number">1.</span> <span class="nav-text">11. 盛最多水的容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#55-跳跃游戏"><span class="nav-number">2.</span> <span class="nav-text">55. 跳跃游戏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1248-统计「优美子数组」"><span class="nav-number">3.</span> <span class="nav-text">1248. 统计「优美子数组」</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#面试题56-I-数组中数字出现的次数"><span class="nav-number">4.</span> <span class="nav-text">面试题56 - I. 数组中数字出现的次数</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -403,7 +421,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-count">68</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
