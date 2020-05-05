@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hoo334.gitee.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="本文为复习计算机网络整理的资料。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="协议">
+<meta property="og:url" content="https://hoo334.gitee.io/2020/04/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/index.html">
+<meta property="og:site_name" content="echo">
+<meta property="og:description" content="本文为复习计算机网络整理的资料。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2020/04/04/YITdvmGgt7KWQy1.png">
+<meta property="article:published_time" content="2020-04-04T06:39:13.000Z">
+<meta property="article:modified_time" content="2020-04-19T06:43:43.963Z">
+<meta property="article:author" content="hoo334">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/04/04/YITdvmGgt7KWQy1.png">
+
+<link rel="canonical" href="https://hoo334.gitee.io/2020/04/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>协议 | echo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="echo" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">echo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">任生命穿梭 时间的角落 </p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoo334.gitee.io/2020/04/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar2.jpg">
+      <meta itemprop="name" content="hoo334">
+      <meta itemprop="description" content="To be a better man">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="echo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          协议
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-04-04 14:39:13" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-19 14:43:43" itemprop="dateModified" datetime="2020-04-19T14:43:43+08:00">2020-04-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">本文为复习计算机网络整理的资料。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="应用层协议：（应用程序）"><a href="#应用层协议：（应用程序）" class="headerlink" title="应用层协议：（应用程序）"></a><strong>应用层协议：（应用程序）</strong></h3><h4 id="使用TCP"><a href="#使用TCP" class="headerlink" title="使用TCP"></a>使用TCP</h4><p>　　HTTP（Hypertext Transfer Protocol ）超文本传输协议 &lt;端口号 80&gt;， 面向事务的应用层协议。</p>
+<p>　　FTP（File Transfer Protocol ）文件传输协议&lt;端口号21&gt;减少或消除不同操作系统下处理文件的不兼容性。 </p>
+<p>　　TELNET 远程登录协议 &lt;端口号23&gt; 。</p>
+<p>　　SMTP （Simple Mail Transfer Protocol ）简单邮件传输协议 &lt;端口号25&gt; 用于发送邮件。 </p>
+<p>　　POP3 (Post Office Protocol 3) 即邮局协议的第3 个版本，用于接受邮件。 </p>
+<p>　　IMAP4 (Internet Message Access Protocol 4) Internet 信息访问协议的第 4 版本 。</p>
+<h4 id="使用UDP"><a href="#使用UDP" class="headerlink" title="使用UDP"></a>使用UDP</h4><p>　　DHCP(Dynamic Host Configuration Protocol)动态主机分配协议，使用 UDP 协议工作，主要有两个用途：给内部网络或网络服务供应商自动分配 IP 地址，给用户或者内部网络管理员作为对所有计算机作中央管理的手段。实 现即插即用连网。 </p>
+<p>　　DNS(Domin Name System<em>)</em> 域名系统协议，同时占用TCP和UDP的 53 端口。区域传送使用TCP，<strong>域名解析使用UDP</strong>。书上没有写区域传送的内容，只讲了域名解析，我将DNS归于UDP中，其实是不对的。</p>
+<h3 id="传输层协议：（进程-端口）-数据单元：数据段"><a href="#传输层协议：（进程-端口）-数据单元：数据段" class="headerlink" title="传输层协议：（进程/端口） 数据单元：数据段"></a><strong>传输层协议：（进程/端口） 数据单元：数据段</strong></h3><p>　　TCP  （Transmission Control Protocol ）传输控制协议提供可靠的面向连接的服务，传输数据前须先建立连接，结束后释放。可靠的全双工信道。可靠、有序、无丢失、不重复。</p>
+<p>　　UDP (User Datagram Protocol ）用户数据报协议发送数据前无需建立连接，不使用拥塞控制，不保证可靠交付，最大努力交付。 </p>
+<p>　　RTP(Real-time Transport Protocol ）实时传送协议 。</p>
+<h3 id="网络层协议：（路由器）数据单元：数据报"><a href="#网络层协议：（路由器）数据单元：数据报" class="headerlink" title="网络层协议：（路由器）数据单元：数据报"></a><strong>网络层协议：（路由器）数据单元：数据报</strong></h3><p>　　IP (IPv4 · IPv6) (Internet Protocol) 网络之间互连的协议。</p>
+<p>　　ARP (Address Resolution Protocol) 即地址解析协议，实现通过IP 地址得 知其物理地址。 </p>
+<p>　　RARP (Reverse Address Resolution Protocol)反向地址转换协议允许局域 网的物理机器从网关服务器的 ARP 表或者缓存上请求其 IP地址。 </p>
+<p>　　 ICMP (Internet Control Message Protocol ）Internet 控制报文协议。它是TCP/IP 协议族的一个子协议，用于在IP 主机、路由器之间传递控制消息。</p>
+<p>　　 RIP (Router information protocol) 路由信息协议是一种在网关与主机之间交换路由选择信息的标准。 </p>
+<p>　　OSPF (Open Shortest Path First)开放式最短路径优先,分布式链路状态协议。 </p>
+<h3 id="数据链路层：（网卡、网桥、交换机）数据单元：帧"><a href="#数据链路层：（网卡、网桥、交换机）数据单元：帧" class="headerlink" title="数据链路层：（网卡、网桥、交换机）数据单元：帧"></a><strong>数据链路层：（网卡、网桥、交换机）数据单元：帧</strong></h3><p>　　ARQ（Automatic Repeat-reQuest ）自动重传请求协议，错误纠正协议之一，包括停止等待ARQ 协议和连续ARQ 协议，错误侦测、正面确认、逾时重传与负面确认继以重传等机制。</p>
+<p>　　纯 ALOHA 协议 ：不检测信道状态 直接发送 ，一段时间没收到确认 <strong>等待一段随机的时间</strong>后再发送，直到成功。</p>
+<p>　　时隙 ALOHA 协议 ：把所有各站在时间上同步起来，并将时间划分为一段段等长的时隙，规定只能在每个时隙开始才能发送一个帧。</p>
+<p>　　 CSMA/CD(Carrrier Sense Multiple Access with Collision Detection)载波监听多点接入/碰撞检测协议。<strong>以太网</strong>，总线型网络，协议的实质是载波监听和碰撞检测。载波监听即发数据前先检测总线上是否有其他计算机在发送数据，如暂时不发数据，避免碰撞。碰撞检测为计算机边发送数据边检测信道上的信号电压大小。 </p>
+<p>　　CSMA/CA(Carrier Sense Multiple Access with Collision Avoidence) <strong>无线局域网，</strong>CSMA/CA 采用二进制指数退避算法。任何一个站要发送数据帧时，不仅要等待一个时间间隔，还要进入争用窗口，并计算随机退避时间以便再次试图接入信道。</p>
+<p>　　PPP(Point-to-Ponit Protocol)点对点协议，<strong>广域网，面向字节</strong>，由三部分组成：一个将IP 数据报封装到串行链路的方法；一个用于建立、配置和测试数据链路连接的链路控制协议。</p>
+<p>　　HDLC  （High-Level Data Link Control ）高级数据链路控制，<strong>广域网，面向比特</strong>，同步网上传输数据的数据链路层协议。 </p>
+<p>　　 ATM  （Asynchronous Transfer Mode ）异步传递方式，建立在电路交换和分组交换的基础上的一种面向连接的快速分组交换技术。 “异步”是指将ATM 信元“异步插入”到同步的 SDH 比特流中。如同步插入则用户在每帧中所占的时隙相对位置固定不变。“同步”是指网络中各链路上的比特流都是受同一非常精确的主时钟的控制。Wi-Fi 、WiMAX 、DTM 、令牌环、以太网、FDDI 、帧中继、 GPRS 、 EVDO 、HSPA 、L2TP 、ISDN 。</p>
+<p>　　</p>
+<h3 id="物理层：（中继器、集线器）数据单元：比特"><a href="#物理层：（中继器、集线器）数据单元：比特" class="headerlink" title="物理层：（中继器、集线器）数据单元：比特"></a><strong>物理层：（中继器、集线器）数据单元：比特</strong></h3><p><img src="https://i.loli.net/2020/04/04/YITdvmGgt7KWQy1.png" alt="img"></p>
+<p> 参考：<a href="https://www.cnblogs.com/newsouls/p/5436266.html" target="_blank" rel="noopener">https://www.cnblogs.com/newsouls/p/5436266.html</a></p>
+<p>　　</p>
+<p>　　</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/04/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%A6%82%E8%BF%B0/" rel="prev" title="计算机网络体系结构">
+      <i class="fa fa-chevron-left"></i> 计算机网络体系结构
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/04/04/%E8%A7%A3%E5%86%B3Github%E8%AE%BF%E9%97%AE%E4%B8%8D%E4%BA%86%E7%9A%84%E9%97%AE%E9%A2%98/" rel="next" title="解决Github访问不了的问题">
+      解决Github访问不了的问题 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#应用层协议：（应用程序）"><span class="nav-number">1.</span> <span class="nav-text">应用层协议：（应用程序）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用TCP"><span class="nav-number">1.1.</span> <span class="nav-text">使用TCP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用UDP"><span class="nav-number">1.2.</span> <span class="nav-text">使用UDP</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#传输层协议：（进程-端口）-数据单元：数据段"><span class="nav-number">2.</span> <span class="nav-text">传输层协议：（进程&#x2F;端口） 数据单元：数据段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络层协议：（路由器）数据单元：数据报"><span class="nav-number">3.</span> <span class="nav-text">网络层协议：（路由器）数据单元：数据报</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据链路层：（网卡、网桥、交换机）数据单元：帧"><span class="nav-number">4.</span> <span class="nav-text">数据链路层：（网卡、网桥、交换机）数据单元：帧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#物理层：（中继器、集线器）数据单元：比特"><span class="nav-number">5.</span> <span class="nav-text">物理层：（中继器、集线器）数据单元：比特</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="hoo334"
+      src="/images/avatar2.jpg">
+  <p class="site-author-name" itemprop="name">hoo334</p>
+  <div class="site-description" itemprop="description">To be a better man</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">68</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/hoo334" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;hoo334" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>Gitee</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:liminghu98@foxmail.com" title="E-Mail → mailto:liminghu98@foxmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hoo334</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

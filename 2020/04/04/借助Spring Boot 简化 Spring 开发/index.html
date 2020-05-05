@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hoo334.gitee.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="SpringBoot 实战">
+<meta property="og:type" content="article">
+<meta property="og:title" content="借助Spring Boot 简化 Spring 开发">
+<meta property="og:url" content="https://hoo334.gitee.io/2020/04/04/%E5%80%9F%E5%8A%A9Spring%20Boot%20%E7%AE%80%E5%8C%96%20Spring%20%E5%BC%80%E5%8F%91/index.html">
+<meta property="og:site_name" content="echo">
+<meta property="og:description" content="SpringBoot 实战">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2020/04/04/jOsdNFPVnmoxHiL.png">
+<meta property="article:published_time" content="2020-04-04T06:39:13.000Z">
+<meta property="article:modified_time" content="2020-04-09T02:31:30.171Z">
+<meta property="article:author" content="hoo334">
+<meta property="article:tag" content="SpringBoot">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/04/04/jOsdNFPVnmoxHiL.png">
+
+<link rel="canonical" href="https://hoo334.gitee.io/2020/04/04/%E5%80%9F%E5%8A%A9Spring%20Boot%20%E7%AE%80%E5%8C%96%20Spring%20%E5%BC%80%E5%8F%91/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>借助Spring Boot 简化 Spring 开发 | echo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="echo" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">echo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">任生命穿梭 时间的角落 </p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoo334.gitee.io/2020/04/04/%E5%80%9F%E5%8A%A9Spring%20Boot%20%E7%AE%80%E5%8C%96%20Spring%20%E5%BC%80%E5%8F%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar2.jpg">
+      <meta itemprop="name" content="hoo334">
+      <meta itemprop="description" content="To be a better man">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="echo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          借助Spring Boot 简化 Spring 开发
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-04-04 14:39:13" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-09 10:31:30" itemprop="dateModified" datetime="2020-04-09T10:31:30+08:00">2020-04-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SpringBoot/" itemprop="url" rel="index"><span itemprop="name">SpringBoot</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">SpringBoot 实战</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="借助Spring-Boot-简化-Spring-开发"><a href="#借助Spring-Boot-简化-Spring-开发" class="headerlink" title="借助Spring Boot 简化 Spring 开发"></a>借助Spring Boot 简化 Spring 开发</h1><p>Spring Boot 是令人兴奋的新项目，它提供了四个主要的特性，能够改变开发Spring应用程序的方式。</p>
+<p>1、Spring Boot Starter： 他将常用的依赖分组进行了整合，将其合并到一个依赖中，这样就可以一次性添加到项目的Maven或Gradle构建中。</p>
+<p>2、自动配置： Spring Boot 的自动配置特性利用了Spring 4对条件化配置的支持，合理地推测应用所需的bean 并自动化配置它们。</p>
+<p>3、命令行接口： Spring 的 CLI 发挥了Groovy 编程语言的优势，并结合自动配置进一步简化 Spring 应用的开发。</p>
+<p>4、Actuator： 它为Spring Boot 应用添加了一定的管理特性。</p>
+<p>我们要从头开始编写一个新的 Spring 应用。这是一个 Web 项目，所以需要 Spring MVC 。同时还要有 REST API 将资源暴露为 JSON ，所以在构建中需要包含Jackson JSON 库</p>
+<p>首先让我们从添加依赖开始，新建一个 Gradle 项目，在 build.gradle dependency 添加以下内容：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">compile(<span class="string">"org.springframework.boot:spring-boot-starter-web:1.1.4.RELEASE"</span>)</span><br><span class="line">compile(<span class="string">"org.springframework.boot:spring-boot-starter-jdbc:1.1.4.RELEASE"</span>)</span><br><span class="line">compile(<span class="string">"org.thymeleaf:thymeleaf-spring4:2.1.2.RELEASE"</span>)</span><br><span class="line">compile(<span class="string">"com.h2database:h2:1.3.174"</span>)</span><br></pre></td></tr></table></figure>
+
+<p>Spring Boot 的 Starter 减少了构建中的依赖列表的长度，而 Spring Boot 的自动配置功能则缩减了 Spring 配置的数量。它在实现时，会考虑应用中的其他因素并推断你所需要的 Spring 配置。</p>
+<p>Spring Boot Starter 也会触发自动配置。例如在 Spring Boot 应用中，如果我们想使用 Spring MVC 的话，所需要做的仅仅是将 Web Starter 作为依赖放入到构建中。将 Web Starter 放入到构建中以后，它会自动添加 Spring MVC 依赖。如果 Spring Boot 的 Web 自动配置探测到 Spring MVC 位于类路径下，它将会自动配置支持 Spring MVC 的多个 bean，包括视图解析器、资源处理器、以及消息转换器等等。</p>
+<p>Spring Boot CLI 充分利用了Spring Boot Starter 和自动配置的魔力，并添加了一些 Groovy 的功能，它简化了 Spring 的开发流程，通过 CLI ，我们能够运行一个或多个 Groovy 脚本，并查看它是如何运行的。在应用的运行过程中，CLI 能够自动导入 Spring 类型并解析依赖。</p>
+<p>Spring Boot Actuator 为 Spring Boot 项目带来了很多有用的特性，包括：</p>
+<p>1、管理端点；</p>
+<p>2、合理的异常处理以及默认的“/error”映射端点；</p>
+<p>3、获取应用信息的“Info”端点；</p>
+<p>4、当启用Spring Security 时，会有一个审计事件框架。</p>
+<p>这里我们开发一个 Contacts 应用。</p>
+<p>ContactController 为 Contacts 应用处理基本的 Web 请求。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> contacts;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Controller;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMethod;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ContactController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> ContactRepository contactRepo;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ContactController</span><span class="params">(ContactRepository contactRepo)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.contactRepo = contactRepo;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(method = RequestMethod.GET)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">home</span><span class="params">(Map&lt;String,Object&gt; model)</span></span>&#123;</span><br><span class="line">        List&lt;Contact&gt; contacts = contactRepo.findAll();</span><br><span class="line">        model.put(<span class="string">"contacts"</span>,contacts);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"home"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(method = RequestMethod.POST)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">submit</span><span class="params">(Contact contact)</span></span>&#123;</span><br><span class="line">        contactRepo.save(contact);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"redirect:/"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>home()方法使用注入的 ContactRepository 来获取所有 Contact 对象的列表，并将它们放到模型当中，然后把请求转交给home视图。这个视图将会展现联系人的列表以及添加新的Contact 表单。submit()方法将会处理表单提交的POST请求，保存Contact，并重定向到首页。</p>
+<p>Contact 是一个简单的POJO</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> contacts;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Contact</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line">    <span class="keyword">private</span> String firstName;</span><br><span class="line">    <span class="keyword">private</span> String lastName;</span><br><span class="line">    <span class="keyword">private</span> String phoneNumber;</span><br><span class="line">    <span class="keyword">private</span> String emailAddress;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Long <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(Long id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getFirstName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> firstName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setFirstName</span><span class="params">(String firstName)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.firstName = firstName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getLastName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> lastName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setLastName</span><span class="params">(String lastName)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.lastName = lastName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPhoneNumber</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> phoneNumber;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPhoneNumber</span><span class="params">(String phoneNumber)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.phoneNumber = phoneNumber;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getEmailAddress</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> emailAddress;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setEmailAddress</span><span class="params">(String emailAddress)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.emailAddress = emailAddress;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>按照传统的方式，Java Web 应用会使用JSP作为视图层的技术。但是，Thymeleaf 的原生模板比 JSP 更加便于使用，而且它能够让我们以 HTML 的形式编写模板。鉴于此，我们会使用Thymeleaf 来定义 Contacts 应用的home视图。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">xmlns:th</span>=<span class="string">"http://www.thymeleaf.org"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Spring Boot Contacts<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">th:href</span>=<span class="string">"@&#123;/style.css&#125;"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>Spring Boot Contacts<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">"POST"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"firstName"</span>&gt;</span>First Name:<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"firstName"</span>&gt;</span><span class="tag">&lt;/<span class="name">input</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"lastName"</span>&gt;</span>Last Name:<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"lastName"</span>&gt;</span><span class="tag">&lt;/<span class="name">input</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"phoneNumber"</span>&gt;</span>Phone #:<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"phoneNumber"</span>&gt;</span><span class="tag">&lt;/<span class="name">input</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"emailAddress"</span>&gt;</span>Email:<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"emailAddress"</span>&gt;</span><span class="tag">&lt;/<span class="name">input</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span><span class="tag">&lt;/<span class="name">input</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">th:each</span>=<span class="string">"contact : $&#123;contacts&#125;"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"$&#123;contact.firstName&#125;"</span>&gt;</span>First<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"$&#123;contact.lastName&#125;"</span>&gt;</span>Last<span class="tag">&lt;/<span class="name">span</span>&gt;</span> :</span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"$&#123;contact.phoneNumber&#125;"</span>&gt;</span>phoneNumber<span class="tag">&lt;/<span class="name">span</span>&gt;</span>,</span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"$&#123;contact.emailAddress&#125;"</span>&gt;</span>emailAddress<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>只要我们将 Thymeleaf 添加到项目的类路径下，就启用了 Spring Boot 的自动配置。当应用运行时，Spring Boot 将会探测到类路径中的Thymeleaf，然后会自动配置视图解析器，模板解析器以及模板引擎，这些都是在 Spring MVC 中使用 Thymeleaf所需要的。因此，在我们的应用中，不需要使用显示 Spring 配置的方式来定义 Thymeleaf。</p>
+<p>ContactController 中 home() 方法返回的逻辑视图名为 home ，因此模板文件名为 home.html，自动配置的模板解析器会在指定的目录下查找Thymeleaf模板，这个目录也就是相对根类目录下的templates目录下 ，所以在Maven或Gradle项目中，我们需要将home.html放到“src / main / resources / templates” 中。这个模板中使用了style.css文件，我们倾向于将静态资源放入“src / main / resources / public”目录下。</p>
+<p>style.css</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#eeeeee</span>;</span><br><span class="line">  <span class="attribute">font-family</span>: sans-serif;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">label</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: inline-block;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">120px</span>;</span><br><span class="line">  <span class="attribute">text-align</span>: right;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>持久化数据</p>
+<p>ContactRepository 能够从数据库中存取 Contact</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> contacts;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.jdbc.core.JdbcTemplate;</span><br><span class="line"><span class="keyword">import</span> org.springframework.jdbc.core.RowMapper;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Repository;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.ResultSet;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ContactRepository</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> JdbcTemplate jdbc;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ContactRepository</span><span class="params">(JdbcTemplate jdbc)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.jdbc = jdbc;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Contact&gt; <span class="title">findAll</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> jdbc.query(<span class="string">"select id, firstName, lastName, phoneNumber, emailAddress from contacts order by lastName"</span>,</span><br><span class="line">                <span class="keyword">new</span> RowMapper&lt;Contact&gt;() &#123;</span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> Contact <span class="title">mapRow</span><span class="params">(ResultSet rs, <span class="keyword">int</span> rowNum)</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">                        Contact c = <span class="keyword">new</span> Contact();</span><br><span class="line">                        c.setId(rs.getLong(<span class="number">1</span>));</span><br><span class="line">                        c.setFirstName(rs.getString(<span class="number">2</span>));</span><br><span class="line">                        c.setLastName(rs.getString(<span class="number">3</span>));</span><br><span class="line">                        c.setPhoneNumber(rs.getString(<span class="number">4</span>));</span><br><span class="line">                        c.setEmailAddress(rs.getString(<span class="number">5</span>));</span><br><span class="line">                        <span class="keyword">return</span> c;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">save</span><span class="params">(Contact contact)</span></span>&#123;</span><br><span class="line">        jdbc.update(<span class="string">"insert into contacts(firstName,lastName,phoneNumber,emailAddress) values(?,?,?,?)"</span>,</span><br><span class="line">                contact.getFirstName(),contact.getLastName(),contact.getPhoneNumber(),contact.getEmailAddress());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>ContactRepository使用了@Repository注解，在组件扫描的时候他会被发现并创建为 Spring 应用上下文中的 bean。</p>
+<p>JdbcTemplate 呢？我们难道不用再Spring应用上下文中声明JdbcTemplate bean 吗？为了声明它， 我们是不是需要声明一个H2 DataSource？</p>
+<p>一切都不需要！！当 Spring Boot 嗅探到 Spring 的 JDBC 模块和H2 在类路径下的时候，自动配置就会发挥作用，将会自动配置 JdbcTemplate bean 和 H2 DataSource bean。</p>
+<p>我们需要自己创建contacts表的模式，Spring Boot 可不会知道 contacts 表会是什么样子。</p>
+<p>我们将一个名为schema.sql的脚本文件放入类路径根下，也就是Maven或Gradle项目目录下的”src/main/resources“目录下。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">create table <span class="title">contacts</span> <span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">    id identity,</span></span></span><br><span class="line"><span class="function"><span class="params">    firstName varchar(<span class="number">30</span>)</span> not <span class="keyword">null</span>,</span></span><br><span class="line"><span class="function">    lastName <span class="title">varchar</span><span class="params">(<span class="number">50</span>)</span> not <span class="keyword">null</span>,</span></span><br><span class="line"><span class="function">    phoneNumber <span class="title">varchar</span><span class="params">(<span class="number">13</span>)</span>,</span></span><br><span class="line"><span class="function">    emailAddress <span class="title">varchar</span><span class="params">(<span class="number">30</span>)</span></span></span><br><span class="line"><span class="function">)</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>我们需要一个特定的类来启动Spring Boot 项目。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> contacts;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.EnableAutoConfiguration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.ComponentScan;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ComponentScan</span></span><br><span class="line"><span class="meta">@EnableAutoConfiguration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(Application<span class="class">.<span class="keyword">class</span>,<span class="title">args</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>点击运行，打开浏览器输入localhost:8080就能进入Contacts应用。</p>
+<p> <img src="https://i.loli.net/2020/04/04/jOsdNFPVnmoxHiL.png" alt="img"></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/SpringBoot/" rel="tag"># SpringBoot</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/04/04/%E4%BD%BF%E7%94%A8%E5%AF%B9%E8%B1%A1-%E5%85%B3%E7%B3%BB%E6%98%A0%E5%B0%84%E6%8C%81%E4%B9%85%E5%8C%96%E6%95%B0%E6%8D%AE/" rel="prev" title="使用对象-关系映射持久化数据">
+      <i class="fa fa-chevron-left"></i> 使用对象-关系映射持久化数据
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/04/04/%E4%BD%BF%E7%94%A8NoSQL%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="next" title="使用NoSQL数据库">
+      使用NoSQL数据库 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#借助Spring-Boot-简化-Spring-开发"><span class="nav-number">1.</span> <span class="nav-text">借助Spring Boot 简化 Spring 开发</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="hoo334"
+      src="/images/avatar2.jpg">
+  <p class="site-author-name" itemprop="name">hoo334</p>
+  <div class="site-description" itemprop="description">To be a better man</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">68</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/hoo334" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;hoo334" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>Gitee</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:liminghu98@foxmail.com" title="E-Mail → mailto:liminghu98@foxmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hoo334</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
