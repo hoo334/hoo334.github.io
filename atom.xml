@@ -5,9 +5,9 @@
   <subtitle>任生命穿梭 时间的角落 </subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://hoo334.gitee.io/"/>
   <updated>2020-04-29T03:16:27.524Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://hoo334.gitee.io/</id>
   
   <author>
     <name>hoo334</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>二分查找 Hard</title>
-    <link href="http://yoursite.com/2020/04/29/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BEHard/"/>
-    <id>http://yoursite.com/2020/04/29/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BEHard/</id>
+    <link href="http://hoo334.gitee.io/2020/04/29/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BEHard/"/>
+    <id>http://hoo334.gitee.io/2020/04/29/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BEHard/</id>
     <published>2020-04-29T02:43:05.000Z</published>
     <updated>2020-04-29T03:16:27.524Z</updated>
     
@@ -32,19 +32,19 @@
     </summary>
     
     
-      <category term="Leetcode" scheme="http://yoursite.com/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="http://hoo334.gitee.io/categories/Leetcode/"/>
     
     
-      <category term="二分查找" scheme="http://yoursite.com/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"/>
+      <category term="二分查找" scheme="http://hoo334.gitee.io/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"/>
     
-      <category term="数组" scheme="http://yoursite.com/tags/%E6%95%B0%E7%BB%84/"/>
+      <category term="数组" scheme="http://hoo334.gitee.io/tags/%E6%95%B0%E7%BB%84/"/>
     
   </entry>
   
   <entry>
     <title>二分查找 Medium</title>
-    <link href="http://yoursite.com/2020/04/27/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BEMedium/"/>
-    <id>http://yoursite.com/2020/04/27/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BEMedium/</id>
+    <link href="http://hoo334.gitee.io/2020/04/27/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BEMedium/"/>
+    <id>http://hoo334.gitee.io/2020/04/27/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BEMedium/</id>
     <published>2020-04-27T01:21:09.000Z</published>
     <updated>2020-04-29T03:16:49.443Z</updated>
     
@@ -57,19 +57,19 @@
     </summary>
     
     
-      <category term="Leetcode" scheme="http://yoursite.com/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="http://hoo334.gitee.io/categories/Leetcode/"/>
     
     
-      <category term="二分查找" scheme="http://yoursite.com/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"/>
+      <category term="二分查找" scheme="http://hoo334.gitee.io/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"/>
     
-      <category term="数组" scheme="http://yoursite.com/tags/%E6%95%B0%E7%BB%84/"/>
+      <category term="数组" scheme="http://hoo334.gitee.io/tags/%E6%95%B0%E7%BB%84/"/>
     
   </entry>
   
   <entry>
     <title>排序算法</title>
-    <link href="http://yoursite.com/2020/04/22/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
-    <id>http://yoursite.com/2020/04/22/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</id>
+    <link href="http://hoo334.gitee.io/2020/04/22/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
+    <id>http://hoo334.gitee.io/2020/04/22/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</id>
     <published>2020-04-22T01:49:06.000Z</published>
     <updated>2020-04-22T02:36:55.666Z</updated>
     
@@ -82,17 +82,17 @@
     </summary>
     
     
-      <category term="数据结构" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+      <category term="数据结构" scheme="http://hoo334.gitee.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
     
-      <category term="排序" scheme="http://yoursite.com/tags/%E6%8E%92%E5%BA%8F/"/>
+      <category term="排序" scheme="http://hoo334.gitee.io/tags/%E6%8E%92%E5%BA%8F/"/>
     
   </entry>
   
   <entry>
     <title>DFS &amp; BFS Medium</title>
-    <link href="http://yoursite.com/2020/04/20/DFS&amp;BFSMedium/"/>
-    <id>http://yoursite.com/2020/04/20/DFS&amp;BFSMedium/</id>
+    <link href="http://hoo334.gitee.io/2020/04/20/DFS&amp;BFSMedium/"/>
+    <id>http://hoo334.gitee.io/2020/04/20/DFS&amp;BFSMedium/</id>
     <published>2020-04-20T03:28:20.000Z</published>
     <updated>2020-04-29T03:17:36.443Z</updated>
     
@@ -105,19 +105,19 @@
     </summary>
     
     
-      <category term="Leetcode" scheme="http://yoursite.com/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="http://hoo334.gitee.io/categories/Leetcode/"/>
     
     
-      <category term="DFS" scheme="http://yoursite.com/tags/DFS/"/>
+      <category term="DFS" scheme="http://hoo334.gitee.io/tags/DFS/"/>
     
-      <category term="BFS" scheme="http://yoursite.com/tags/BFS/"/>
+      <category term="BFS" scheme="http://hoo334.gitee.io/tags/BFS/"/>
     
   </entry>
   
   <entry>
     <title>动态规划 Medium</title>
-    <link href="http://yoursite.com/2020/04/19/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92Medium/"/>
-    <id>http://yoursite.com/2020/04/19/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92Medium/</id>
+    <link href="http://hoo334.gitee.io/2020/04/19/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92Medium/"/>
+    <id>http://hoo334.gitee.io/2020/04/19/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92Medium/</id>
     <published>2020-04-19T01:43:48.000Z</published>
     <updated>2020-04-29T03:16:40.288Z</updated>
     
@@ -130,19 +130,19 @@
     </summary>
     
     
-      <category term="Leetcode" scheme="http://yoursite.com/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="http://hoo334.gitee.io/categories/Leetcode/"/>
     
     
-      <category term="数组" scheme="http://yoursite.com/tags/%E6%95%B0%E7%BB%84/"/>
+      <category term="数组" scheme="http://hoo334.gitee.io/tags/%E6%95%B0%E7%BB%84/"/>
     
-      <category term="动态规划" scheme="http://yoursite.com/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+      <category term="动态规划" scheme="http://hoo334.gitee.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
   </entry>
   
   <entry>
     <title>二叉树 Hard</title>
-    <link href="http://yoursite.com/2020/04/18/%E4%BA%8C%E5%8F%89%E6%A0%91Hard/"/>
-    <id>http://yoursite.com/2020/04/18/%E4%BA%8C%E5%8F%89%E6%A0%91Hard/</id>
+    <link href="http://hoo334.gitee.io/2020/04/18/%E4%BA%8C%E5%8F%89%E6%A0%91Hard/"/>
+    <id>http://hoo334.gitee.io/2020/04/18/%E4%BA%8C%E5%8F%89%E6%A0%91Hard/</id>
     <published>2020-04-18T08:18:51.000Z</published>
     <updated>2020-04-29T03:17:20.656Z</updated>
     
@@ -155,17 +155,17 @@
     </summary>
     
     
-      <category term="Leetcode" scheme="http://yoursite.com/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="http://hoo334.gitee.io/categories/Leetcode/"/>
     
     
-      <category term="二叉树" scheme="http://yoursite.com/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+      <category term="二叉树" scheme="http://hoo334.gitee.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
     
   </entry>
   
   <entry>
     <title>二叉树 Medium</title>
-    <link href="http://yoursite.com/2020/04/18/%E4%BA%8C%E5%8F%89%E6%A0%91Medium/"/>
-    <id>http://yoursite.com/2020/04/18/%E4%BA%8C%E5%8F%89%E6%A0%91Medium/</id>
+    <link href="http://hoo334.gitee.io/2020/04/18/%E4%BA%8C%E5%8F%89%E6%A0%91Medium/"/>
+    <id>http://hoo334.gitee.io/2020/04/18/%E4%BA%8C%E5%8F%89%E6%A0%91Medium/</id>
     <published>2020-04-18T08:04:11.000Z</published>
     <updated>2020-04-29T03:16:59.610Z</updated>
     
@@ -178,17 +178,17 @@
     </summary>
     
     
-      <category term="Leetcode" scheme="http://yoursite.com/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="http://hoo334.gitee.io/categories/Leetcode/"/>
     
     
-      <category term="二叉树" scheme="http://yoursite.com/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+      <category term="二叉树" scheme="http://hoo334.gitee.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
     
   </entry>
   
   <entry>
     <title>数组 Medium</title>
-    <link href="http://yoursite.com/2020/04/17/%E6%95%B0%E7%BB%84Medium/"/>
-    <id>http://yoursite.com/2020/04/17/%E6%95%B0%E7%BB%84Medium/</id>
+    <link href="http://hoo334.gitee.io/2020/04/17/%E6%95%B0%E7%BB%84Medium/"/>
+    <id>http://hoo334.gitee.io/2020/04/17/%E6%95%B0%E7%BB%84Medium/</id>
     <published>2020-04-17T02:51:13.000Z</published>
     <updated>2020-04-29T03:16:06.969Z</updated>
     
@@ -201,17 +201,17 @@
     </summary>
     
     
-      <category term="Leetcode" scheme="http://yoursite.com/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="http://hoo334.gitee.io/categories/Leetcode/"/>
     
     
-      <category term="数组" scheme="http://yoursite.com/tags/%E6%95%B0%E7%BB%84/"/>
+      <category term="数组" scheme="http://hoo334.gitee.io/tags/%E6%95%B0%E7%BB%84/"/>
     
   </entry>
   
   <entry>
     <title>Object</title>
-    <link href="http://yoursite.com/2020/04/14/Object/"/>
-    <id>http://yoursite.com/2020/04/14/Object/</id>
+    <link href="http://hoo334.gitee.io/2020/04/14/Object/"/>
+    <id>http://hoo334.gitee.io/2020/04/14/Object/</id>
     <published>2020-04-14T12:46:18.000Z</published>
     <updated>2020-04-19T00:39:31.622Z</updated>
     
@@ -224,17 +224,17 @@
     </summary>
     
     
-      <category term="JDK 源码分析" scheme="http://yoursite.com/categories/JDK-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
+      <category term="JDK 源码分析" scheme="http://hoo334.gitee.io/categories/JDK-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
     
     
-      <category term="java.lang包" scheme="http://yoursite.com/tags/java-lang%E5%8C%85/"/>
+      <category term="java.lang包" scheme="http://hoo334.gitee.io/tags/java-lang%E5%8C%85/"/>
     
   </entry>
   
   <entry>
     <title>数组 Easy</title>
-    <link href="http://yoursite.com/2020/04/09/%E6%95%B0%E7%BB%84Easy/"/>
-    <id>http://yoursite.com/2020/04/09/%E6%95%B0%E7%BB%84Easy/</id>
+    <link href="http://hoo334.gitee.io/2020/04/09/%E6%95%B0%E7%BB%84Easy/"/>
+    <id>http://hoo334.gitee.io/2020/04/09/%E6%95%B0%E7%BB%84Easy/</id>
     <published>2020-04-09T01:41:01.000Z</published>
     <updated>2020-04-29T03:17:08.386Z</updated>
     
@@ -247,17 +247,17 @@
     </summary>
     
     
-      <category term="Leetcode" scheme="http://yoursite.com/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="http://hoo334.gitee.io/categories/Leetcode/"/>
     
     
-      <category term="数组" scheme="http://yoursite.com/tags/%E6%95%B0%E7%BB%84/"/>
+      <category term="数组" scheme="http://hoo334.gitee.io/tags/%E6%95%B0%E7%BB%84/"/>
     
   </entry>
   
   <entry>
     <title>动态规划 Easy</title>
-    <link href="http://yoursite.com/2020/04/08/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92Easy/"/>
-    <id>http://yoursite.com/2020/04/08/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92Easy/</id>
+    <link href="http://hoo334.gitee.io/2020/04/08/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92Easy/"/>
+    <id>http://hoo334.gitee.io/2020/04/08/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92Easy/</id>
     <published>2020-04-08T03:20:53.000Z</published>
     <updated>2020-04-29T03:17:28.729Z</updated>
     
@@ -270,19 +270,19 @@
     </summary>
     
     
-      <category term="Leetcode" scheme="http://yoursite.com/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="http://hoo334.gitee.io/categories/Leetcode/"/>
     
     
-      <category term="数组" scheme="http://yoursite.com/tags/%E6%95%B0%E7%BB%84/"/>
+      <category term="数组" scheme="http://hoo334.gitee.io/tags/%E6%95%B0%E7%BB%84/"/>
     
-      <category term="动态规划" scheme="http://yoursite.com/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+      <category term="动态规划" scheme="http://hoo334.gitee.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
   </entry>
   
   <entry>
     <title>事务管理与恢复</title>
-    <link href="http://yoursite.com/2020/04/06/%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86%E4%B8%8E%E6%81%A2%E5%A4%8D/"/>
-    <id>http://yoursite.com/2020/04/06/%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86%E4%B8%8E%E6%81%A2%E5%A4%8D/</id>
+    <link href="http://hoo334.gitee.io/2020/04/06/%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86%E4%B8%8E%E6%81%A2%E5%A4%8D/"/>
+    <id>http://hoo334.gitee.io/2020/04/06/%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86%E4%B8%8E%E6%81%A2%E5%A4%8D/</id>
     <published>2020-04-06T01:27:11.000Z</published>
     <updated>2020-04-26T03:33:20.490Z</updated>
     
@@ -295,15 +295,15 @@
     </summary>
     
     
-      <category term="数据库" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+      <category term="数据库" scheme="http://hoo334.gitee.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     
   </entry>
   
   <entry>
     <title>E-R 模型</title>
-    <link href="http://yoursite.com/2020/04/05/E-R-%E6%A8%A1%E5%9E%8B/"/>
-    <id>http://yoursite.com/2020/04/05/E-R-%E6%A8%A1%E5%9E%8B/</id>
+    <link href="http://hoo334.gitee.io/2020/04/05/E-R-%E6%A8%A1%E5%9E%8B/"/>
+    <id>http://hoo334.gitee.io/2020/04/05/E-R-%E6%A8%A1%E5%9E%8B/</id>
     <published>2020-04-05T14:23:02.000Z</published>
     <updated>2020-04-22T07:03:28.709Z</updated>
     
@@ -316,15 +316,15 @@
     </summary>
     
     
-      <category term="数据库" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+      <category term="数据库" scheme="http://hoo334.gitee.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     
   </entry>
   
   <entry>
     <title>数据库完整性与安全性</title>
-    <link href="http://yoursite.com/2020/04/05/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%8C%E6%95%B4%E6%80%A7%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/"/>
-    <id>http://yoursite.com/2020/04/05/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%8C%E6%95%B4%E6%80%A7%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/</id>
+    <link href="http://hoo334.gitee.io/2020/04/05/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%8C%E6%95%B4%E6%80%A7%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/"/>
+    <id>http://hoo334.gitee.io/2020/04/05/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%8C%E6%95%B4%E6%80%A7%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/</id>
     <published>2020-04-05T14:23:02.000Z</published>
     <updated>2020-04-25T02:19:45.614Z</updated>
     
@@ -337,15 +337,15 @@
     </summary>
     
     
-      <category term="数据库" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+      <category term="数据库" scheme="http://hoo334.gitee.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     
   </entry>
   
   <entry>
     <title>JVM 运行时数据区</title>
-    <link href="http://yoursite.com/2020/04/04/JVM%20%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA/"/>
-    <id>http://yoursite.com/2020/04/04/JVM%20%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA/</id>
+    <link href="http://hoo334.gitee.io/2020/04/04/JVM%20%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA/"/>
+    <id>http://hoo334.gitee.io/2020/04/04/JVM%20%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA/</id>
     <published>2020-04-04T06:39:13.000Z</published>
     <updated>2020-04-04T10:20:58.745Z</updated>
     
@@ -358,15 +358,15 @@
     </summary>
     
     
-      <category term="JVM" scheme="http://yoursite.com/categories/JVM/"/>
+      <category term="JVM" scheme="http://hoo334.gitee.io/categories/JVM/"/>
     
     
   </entry>
   
   <entry>
     <title>Git上传本地项目</title>
-    <link href="http://yoursite.com/2020/04/04/Git%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE/"/>
-    <id>http://yoursite.com/2020/04/04/Git%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE/</id>
+    <link href="http://hoo334.gitee.io/2020/04/04/Git%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE/"/>
+    <id>http://hoo334.gitee.io/2020/04/04/Git%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE/</id>
     <published>2020-04-04T06:39:13.000Z</published>
     <updated>2020-04-04T10:17:09.904Z</updated>
     
@@ -379,42 +379,19 @@
     </summary>
     
     
-      <category term="工具" scheme="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
+      <category term="工具" scheme="http://hoo334.gitee.io/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
-      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
+      <category term="Java" scheme="http://hoo334.gitee.io/tags/Java/"/>
     
-      <category term="Git" scheme="http://yoursite.com/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 深拷贝和浅拷贝</title>
-    <link href="http://yoursite.com/2020/04/04/Java%20%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D/"/>
-    <id>http://yoursite.com/2020/04/04/Java%20%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D/</id>
-    <published>2020-04-04T06:39:13.000Z</published>
-    <updated>2020-04-04T10:21:55.977Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Java-深拷贝和浅拷贝"><a href="#Java-深拷贝和浅拷贝" class="headerlink" title="Java 深拷贝和浅拷贝"></a>Java 深拷贝和浅拷贝</h1><p>　　在浅拷贝中，如果原型对象的成员变量是基本类型时，将复制一份给克隆对象；如果原型对象的成员变量是引用类型，则将引用对象的地址复制一份给克隆对象，也就是说原型对象和克隆对象的成员变量指向相同的内存地址。</p><p>　　对应的深拷贝，如果时成员变量为引用对象也复制一份给复制对象。</p><p>　　</p><p><strong>实现</strong></p><p>　　<strong>1、新建一个 Person 和 PersonId 类</strong></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">implements</span> <span class="title">Cloneable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">    <span class="keyword">private</span> PersonId personId;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name, <span class="keyword">int</span> age, <span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">        <span class="keyword">this</span>.personId = <span class="keyword">new</span> PersonId(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        personId.setId(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Person <span class="title">clone</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException </span>&#123;</span><br><span class="line">        Person cloned = (Person)<span class="keyword">super</span>.clone();</span><br><span class="line">        <span class="keyword">return</span> cloned;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Person&#123;"</span> +</span><br><span class="line">                <span class="string">"name='"</span> + name + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">", age="</span> + age +</span><br><span class="line">                <span class="string">", personId="</span> + personId +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PersonId</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PersonId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"PersonId&#123;"</span> +</span><br><span class="line">                <span class="string">"id="</span> + id +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>　　<strong>2、使用 CloneDemo 类来测试浅拷贝</strong></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CloneDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> CloneNotSupportedException </span>&#123;</span><br><span class="line">        Person person = <span class="keyword">new</span> Person(<span class="string">"zhangsan"</span>,<span class="number">20</span>,<span class="number">123</span>);</span><br><span class="line">        Person cloned = person.clone();</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"original: "</span>+person);</span><br><span class="line">        System.out.println(<span class="string">"cloned: "</span>+cloned);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"Modify Age and Id: "</span>);</span><br><span class="line">        cloned.setAge(<span class="number">55</span>);</span><br><span class="line">        cloned.setId(<span class="number">234</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"original: "</span>+person);</span><br><span class="line">        System.out.println(<span class="string">"cloned: "</span>+cloned);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>　　<strong>3、输出</strong></p><p><img src="https://i.loli.net/2020/04/04/rXmNxfSUGDFlCnW.png" alt="img"></p><p> 　可以看到我们修改了拷贝对象的年龄和ID，原始对象的年龄还是20，原始对象的ID却变成了我们修改后的值，我们并没有对原始对象的ID进行修改，这里说明浅拷贝对于对象仅仅是拷贝了一个对象的引用而已。</p><p>　　<strong>4、接下来我们修改 Person 类的 clone() 方法，实现深拷贝。</strong></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Person <span class="title">clone</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException </span>&#123;</span><br><span class="line">    Person cloned = (Person)<span class="keyword">super</span>.clone();</span><br><span class="line">    cloned.personId = personId.clone();</span><br><span class="line">    <span class="keyword">return</span> cloned;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>　　<strong>5、为了拷贝PersonId 的对象我们需要PersonId 类实现 Cloneable 接口</strong></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PersonId</span> <span class="keyword">implements</span> <span class="title">Cloneable</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PersonId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"PersonId&#123;"</span> +</span><br><span class="line">                <span class="string">"id="</span> + id +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> PersonId <span class="title">clone</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (PersonId)<span class="keyword">super</span>.clone();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>　　<strong>6、再次运行 CloneDemo 输出</strong></p><p><img src="https://i.loli.net/2020/04/04/3jUA4G2YcBlKQCq.png" alt="img"></p><p> 　可以看到 原始对象的ID 值没有被修改。</p><p>　　<strong>7、使用序列化实现深拷贝</strong></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">implements</span> <span class="title">Cloneable</span>, <span class="title">Serializable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">    <span class="keyword">private</span> PersonId personId;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name, <span class="keyword">int</span> age, <span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">        <span class="keyword">this</span>.personId = <span class="keyword">new</span> PersonId(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        personId.setId(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Person <span class="title">clone</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            ByteArrayOutputStream bout = <span class="keyword">new</span> ByteArrayOutputStream();</span><br><span class="line">            <span class="keyword">try</span>(ObjectOutputStream out = <span class="keyword">new</span> ObjectOutputStream(bout)) &#123;</span><br><span class="line">                out.writeObject(<span class="keyword">this</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">try</span>(InputStream bin = <span class="keyword">new</span> ByteArrayInputStream(bout.toByteArray()))&#123;</span><br><span class="line">                ObjectInputStream in = <span class="keyword">new</span> ObjectInputStream(bin);</span><br><span class="line">                <span class="keyword">return</span> (Person)in.readObject();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException | ClassNotFoundException e) &#123;</span><br><span class="line">            CloneNotSupportedException e2 = <span class="keyword">new</span> CloneNotSupportedException();</span><br><span class="line">            e2.initCause(e);</span><br><span class="line">            <span class="keyword">throw</span> e2;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Person&#123;"</span> +</span><br><span class="line">                <span class="string">"name='"</span> + name + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">", age="</span> + age +</span><br><span class="line">                <span class="string">", personId="</span> + personId +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PersonId</span> <span class="keyword">implements</span> <span class="title">Cloneable</span>,<span class="title">Serializable</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PersonId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"PersonId&#123;"</span> +</span><br><span class="line">                <span class="string">"id="</span> + id +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> PersonId <span class="title">clone</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (PersonId)<span class="keyword">super</span>.clone();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>　　所有写入流的对象都要实现 Serializable 接口。将 Person 对象写入流中然后再从流中读取出来实现深拷贝。</p><p>　　 输出：</p><p><img src="https://i.loli.net/2020/04/04/q4buBy96jFGdP73.png" alt="img"></p><p><strong>总结</strong></p><p>　　<strong>若要实现深拷贝，如果对象中引用了其他对象，必须将引用的对象也克隆。</strong></p><p>　　</p>]]></content>
-    
-    <summary type="html">
-    
-      Java 学习
-    
-    </summary>
-    
-    
-      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
-    
-    
-      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
+      <category term="Git" scheme="http://hoo334.gitee.io/tags/Git/"/>
     
   </entry>
   
   <entry>
     <title>利用gradle添加依赖</title>
-    <link href="http://yoursite.com/2020/04/04/Gradle%E4%BE%9D%E8%B5%96%E4%B8%8B%E8%BD%BD/"/>
-    <id>http://yoursite.com/2020/04/04/Gradle%E4%BE%9D%E8%B5%96%E4%B8%8B%E8%BD%BD/</id>
+    <link href="http://hoo334.gitee.io/2020/04/04/Gradle%E4%BE%9D%E8%B5%96%E4%B8%8B%E8%BD%BD/"/>
+    <id>http://hoo334.gitee.io/2020/04/04/Gradle%E4%BE%9D%E8%B5%96%E4%B8%8B%E8%BD%BD/</id>
     <published>2020-04-04T06:39:13.000Z</published>
     <updated>2020-04-04T10:14:40.428Z</updated>
     
@@ -427,19 +404,42 @@
     </summary>
     
     
-      <category term="工具" scheme="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
+      <category term="工具" scheme="http://hoo334.gitee.io/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
-      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
+      <category term="Java" scheme="http://hoo334.gitee.io/tags/Java/"/>
     
-      <category term="Gradle" scheme="http://yoursite.com/tags/Gradle/"/>
+      <category term="Gradle" scheme="http://hoo334.gitee.io/tags/Gradle/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 深拷贝和浅拷贝</title>
+    <link href="http://hoo334.gitee.io/2020/04/04/Java%20%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D/"/>
+    <id>http://hoo334.gitee.io/2020/04/04/Java%20%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D/</id>
+    <published>2020-04-04T06:39:13.000Z</published>
+    <updated>2020-04-04T10:21:55.977Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Java-深拷贝和浅拷贝"><a href="#Java-深拷贝和浅拷贝" class="headerlink" title="Java 深拷贝和浅拷贝"></a>Java 深拷贝和浅拷贝</h1><p>　　在浅拷贝中，如果原型对象的成员变量是基本类型时，将复制一份给克隆对象；如果原型对象的成员变量是引用类型，则将引用对象的地址复制一份给克隆对象，也就是说原型对象和克隆对象的成员变量指向相同的内存地址。</p><p>　　对应的深拷贝，如果时成员变量为引用对象也复制一份给复制对象。</p><p>　　</p><p><strong>实现</strong></p><p>　　<strong>1、新建一个 Person 和 PersonId 类</strong></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">implements</span> <span class="title">Cloneable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">    <span class="keyword">private</span> PersonId personId;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name, <span class="keyword">int</span> age, <span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">        <span class="keyword">this</span>.personId = <span class="keyword">new</span> PersonId(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        personId.setId(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Person <span class="title">clone</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException </span>&#123;</span><br><span class="line">        Person cloned = (Person)<span class="keyword">super</span>.clone();</span><br><span class="line">        <span class="keyword">return</span> cloned;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Person&#123;"</span> +</span><br><span class="line">                <span class="string">"name='"</span> + name + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">", age="</span> + age +</span><br><span class="line">                <span class="string">", personId="</span> + personId +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PersonId</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PersonId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"PersonId&#123;"</span> +</span><br><span class="line">                <span class="string">"id="</span> + id +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>　　<strong>2、使用 CloneDemo 类来测试浅拷贝</strong></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CloneDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> CloneNotSupportedException </span>&#123;</span><br><span class="line">        Person person = <span class="keyword">new</span> Person(<span class="string">"zhangsan"</span>,<span class="number">20</span>,<span class="number">123</span>);</span><br><span class="line">        Person cloned = person.clone();</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"original: "</span>+person);</span><br><span class="line">        System.out.println(<span class="string">"cloned: "</span>+cloned);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"Modify Age and Id: "</span>);</span><br><span class="line">        cloned.setAge(<span class="number">55</span>);</span><br><span class="line">        cloned.setId(<span class="number">234</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"original: "</span>+person);</span><br><span class="line">        System.out.println(<span class="string">"cloned: "</span>+cloned);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>　　<strong>3、输出</strong></p><p><img src="https://i.loli.net/2020/04/04/rXmNxfSUGDFlCnW.png" alt="img"></p><p> 　可以看到我们修改了拷贝对象的年龄和ID，原始对象的年龄还是20，原始对象的ID却变成了我们修改后的值，我们并没有对原始对象的ID进行修改，这里说明浅拷贝对于对象仅仅是拷贝了一个对象的引用而已。</p><p>　　<strong>4、接下来我们修改 Person 类的 clone() 方法，实现深拷贝。</strong></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Person <span class="title">clone</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException </span>&#123;</span><br><span class="line">    Person cloned = (Person)<span class="keyword">super</span>.clone();</span><br><span class="line">    cloned.personId = personId.clone();</span><br><span class="line">    <span class="keyword">return</span> cloned;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>　　<strong>5、为了拷贝PersonId 的对象我们需要PersonId 类实现 Cloneable 接口</strong></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PersonId</span> <span class="keyword">implements</span> <span class="title">Cloneable</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PersonId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"PersonId&#123;"</span> +</span><br><span class="line">                <span class="string">"id="</span> + id +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> PersonId <span class="title">clone</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (PersonId)<span class="keyword">super</span>.clone();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>　　<strong>6、再次运行 CloneDemo 输出</strong></p><p><img src="https://i.loli.net/2020/04/04/3jUA4G2YcBlKQCq.png" alt="img"></p><p> 　可以看到 原始对象的ID 值没有被修改。</p><p>　　<strong>7、使用序列化实现深拷贝</strong></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">implements</span> <span class="title">Cloneable</span>, <span class="title">Serializable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">    <span class="keyword">private</span> PersonId personId;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name, <span class="keyword">int</span> age, <span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">        <span class="keyword">this</span>.personId = <span class="keyword">new</span> PersonId(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        personId.setId(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Person <span class="title">clone</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            ByteArrayOutputStream bout = <span class="keyword">new</span> ByteArrayOutputStream();</span><br><span class="line">            <span class="keyword">try</span>(ObjectOutputStream out = <span class="keyword">new</span> ObjectOutputStream(bout)) &#123;</span><br><span class="line">                out.writeObject(<span class="keyword">this</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">try</span>(InputStream bin = <span class="keyword">new</span> ByteArrayInputStream(bout.toByteArray()))&#123;</span><br><span class="line">                ObjectInputStream in = <span class="keyword">new</span> ObjectInputStream(bin);</span><br><span class="line">                <span class="keyword">return</span> (Person)in.readObject();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException | ClassNotFoundException e) &#123;</span><br><span class="line">            CloneNotSupportedException e2 = <span class="keyword">new</span> CloneNotSupportedException();</span><br><span class="line">            e2.initCause(e);</span><br><span class="line">            <span class="keyword">throw</span> e2;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Person&#123;"</span> +</span><br><span class="line">                <span class="string">"name='"</span> + name + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">", age="</span> + age +</span><br><span class="line">                <span class="string">", personId="</span> + personId +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PersonId</span> <span class="keyword">implements</span> <span class="title">Cloneable</span>,<span class="title">Serializable</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PersonId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"PersonId&#123;"</span> +</span><br><span class="line">                <span class="string">"id="</span> + id +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> PersonId <span class="title">clone</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (PersonId)<span class="keyword">super</span>.clone();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>　　所有写入流的对象都要实现 Serializable 接口。将 Person 对象写入流中然后再从流中读取出来实现深拷贝。</p><p>　　 输出：</p><p><img src="https://i.loli.net/2020/04/04/q4buBy96jFGdP73.png" alt="img"></p><p><strong>总结</strong></p><p>　　<strong>若要实现深拷贝，如果对象中引用了其他对象，必须将引用的对象也克隆。</strong></p><p>　　</p>]]></content>
+    
+    <summary type="html">
+    
+      Java 学习
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="http://hoo334.gitee.io/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="http://hoo334.gitee.io/tags/Java/"/>
     
   </entry>
   
   <entry>
     <title>下载文泉学堂 PDF</title>
-    <link href="http://yoursite.com/2020/04/04/%E4%B8%8B%E8%BD%BD%E6%96%87%E6%B3%89%E5%AD%A6%E5%A0%82%20PDF/"/>
-    <id>http://yoursite.com/2020/04/04/%E4%B8%8B%E8%BD%BD%E6%96%87%E6%B3%89%E5%AD%A6%E5%A0%82%20PDF/</id>
+    <link href="http://hoo334.gitee.io/2020/04/04/%E4%B8%8B%E8%BD%BD%E6%96%87%E6%B3%89%E5%AD%A6%E5%A0%82%20PDF/"/>
+    <id>http://hoo334.gitee.io/2020/04/04/%E4%B8%8B%E8%BD%BD%E6%96%87%E6%B3%89%E5%AD%A6%E5%A0%82%20PDF/</id>
     <published>2020-04-04T06:39:13.000Z</published>
     <updated>2020-04-04T10:27:19.900Z</updated>
     
@@ -452,15 +452,15 @@
     </summary>
     
     
-      <category term="工具" scheme="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
+      <category term="工具" scheme="http://hoo334.gitee.io/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
   </entry>
   
   <entry>
     <title>Spring之旅</title>
-    <link href="http://yoursite.com/2020/04/04/Spring%E4%B9%8B%E6%97%85/"/>
-    <id>http://yoursite.com/2020/04/04/Spring%E4%B9%8B%E6%97%85/</id>
+    <link href="http://hoo334.gitee.io/2020/04/04/Spring%E4%B9%8B%E6%97%85/"/>
+    <id>http://hoo334.gitee.io/2020/04/04/Spring%E4%B9%8B%E6%97%85/</id>
     <published>2020-04-04T06:39:13.000Z</published>
     <updated>2020-04-04T10:47:32.509Z</updated>
     
@@ -473,10 +473,10 @@
     </summary>
     
     
-      <category term="Spring" scheme="http://yoursite.com/categories/Spring/"/>
+      <category term="Spring" scheme="http://hoo334.gitee.io/categories/Spring/"/>
     
     
-      <category term="Spring" scheme="http://yoursite.com/tags/Spring/"/>
+      <category term="Spring" scheme="http://hoo334.gitee.io/tags/Spring/"/>
     
   </entry>
   
