@@ -5,9 +5,9 @@
   <subtitle>任生命穿梭 时间的角落 </subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://hoo334.gitee.io/"/>
+  <link href="https://hoo334.github.io/"/>
   <updated>2020-04-29T03:16:27.524Z</updated>
-  <id>https://hoo334.gitee.io/</id>
+  <id>https://hoo334.github.io/</id>
   
   <author>
     <name>hoo334</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>二分查找 Hard</title>
-    <link href="https://hoo334.gitee.io/2020/04/29/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BEHard/"/>
-    <id>https://hoo334.gitee.io/2020/04/29/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BEHard/</id>
+    <link href="https://hoo334.github.io/2020/04/29/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BEHard/"/>
+    <id>https://hoo334.github.io/2020/04/29/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BEHard/</id>
     <published>2020-04-29T02:43:05.000Z</published>
     <updated>2020-04-29T03:16:27.524Z</updated>
     
@@ -32,19 +32,19 @@
     </summary>
     
     
-      <category term="Leetcode" scheme="https://hoo334.gitee.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://hoo334.github.io/categories/Leetcode/"/>
     
     
-      <category term="二分查找" scheme="https://hoo334.gitee.io/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"/>
+      <category term="二分查找" scheme="https://hoo334.github.io/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"/>
     
-      <category term="数组" scheme="https://hoo334.gitee.io/tags/%E6%95%B0%E7%BB%84/"/>
+      <category term="数组" scheme="https://hoo334.github.io/tags/%E6%95%B0%E7%BB%84/"/>
     
   </entry>
   
   <entry>
     <title>二分查找 Medium</title>
-    <link href="https://hoo334.gitee.io/2020/04/27/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BEMedium/"/>
-    <id>https://hoo334.gitee.io/2020/04/27/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BEMedium/</id>
+    <link href="https://hoo334.github.io/2020/04/27/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BEMedium/"/>
+    <id>https://hoo334.github.io/2020/04/27/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BEMedium/</id>
     <published>2020-04-27T01:21:09.000Z</published>
     <updated>2020-04-29T03:16:49.443Z</updated>
     
@@ -57,19 +57,19 @@
     </summary>
     
     
-      <category term="Leetcode" scheme="https://hoo334.gitee.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://hoo334.github.io/categories/Leetcode/"/>
     
     
-      <category term="二分查找" scheme="https://hoo334.gitee.io/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"/>
+      <category term="二分查找" scheme="https://hoo334.github.io/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"/>
     
-      <category term="数组" scheme="https://hoo334.gitee.io/tags/%E6%95%B0%E7%BB%84/"/>
+      <category term="数组" scheme="https://hoo334.github.io/tags/%E6%95%B0%E7%BB%84/"/>
     
   </entry>
   
   <entry>
     <title>排序算法</title>
-    <link href="https://hoo334.gitee.io/2020/04/22/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
-    <id>https://hoo334.gitee.io/2020/04/22/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</id>
+    <link href="https://hoo334.github.io/2020/04/22/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
+    <id>https://hoo334.github.io/2020/04/22/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</id>
     <published>2020-04-22T01:49:06.000Z</published>
     <updated>2020-04-22T02:36:55.666Z</updated>
     
@@ -82,17 +82,17 @@
     </summary>
     
     
-      <category term="数据结构" scheme="https://hoo334.gitee.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+      <category term="数据结构" scheme="https://hoo334.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
     
-      <category term="排序" scheme="https://hoo334.gitee.io/tags/%E6%8E%92%E5%BA%8F/"/>
+      <category term="排序" scheme="https://hoo334.github.io/tags/%E6%8E%92%E5%BA%8F/"/>
     
   </entry>
   
   <entry>
     <title>DFS &amp; BFS Medium</title>
-    <link href="https://hoo334.gitee.io/2020/04/20/DFS&amp;BFSMedium/"/>
-    <id>https://hoo334.gitee.io/2020/04/20/DFS&amp;BFSMedium/</id>
+    <link href="https://hoo334.github.io/2020/04/20/DFS&amp;BFSMedium/"/>
+    <id>https://hoo334.github.io/2020/04/20/DFS&amp;BFSMedium/</id>
     <published>2020-04-20T03:28:20.000Z</published>
     <updated>2020-04-29T03:17:36.443Z</updated>
     
@@ -105,19 +105,19 @@
     </summary>
     
     
-      <category term="Leetcode" scheme="https://hoo334.gitee.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://hoo334.github.io/categories/Leetcode/"/>
     
     
-      <category term="DFS" scheme="https://hoo334.gitee.io/tags/DFS/"/>
+      <category term="DFS" scheme="https://hoo334.github.io/tags/DFS/"/>
     
-      <category term="BFS" scheme="https://hoo334.gitee.io/tags/BFS/"/>
+      <category term="BFS" scheme="https://hoo334.github.io/tags/BFS/"/>
     
   </entry>
   
   <entry>
     <title>动态规划 Medium</title>
-    <link href="https://hoo334.gitee.io/2020/04/19/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92Medium/"/>
-    <id>https://hoo334.gitee.io/2020/04/19/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92Medium/</id>
+    <link href="https://hoo334.github.io/2020/04/19/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92Medium/"/>
+    <id>https://hoo334.github.io/2020/04/19/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92Medium/</id>
     <published>2020-04-19T01:43:48.000Z</published>
     <updated>2020-04-29T03:16:40.288Z</updated>
     
@@ -130,19 +130,19 @@
     </summary>
     
     
-      <category term="Leetcode" scheme="https://hoo334.gitee.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://hoo334.github.io/categories/Leetcode/"/>
     
     
-      <category term="数组" scheme="https://hoo334.gitee.io/tags/%E6%95%B0%E7%BB%84/"/>
+      <category term="数组" scheme="https://hoo334.github.io/tags/%E6%95%B0%E7%BB%84/"/>
     
-      <category term="动态规划" scheme="https://hoo334.gitee.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+      <category term="动态规划" scheme="https://hoo334.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
   </entry>
   
   <entry>
     <title>二叉树 Hard</title>
-    <link href="https://hoo334.gitee.io/2020/04/18/%E4%BA%8C%E5%8F%89%E6%A0%91Hard/"/>
-    <id>https://hoo334.gitee.io/2020/04/18/%E4%BA%8C%E5%8F%89%E6%A0%91Hard/</id>
+    <link href="https://hoo334.github.io/2020/04/18/%E4%BA%8C%E5%8F%89%E6%A0%91Hard/"/>
+    <id>https://hoo334.github.io/2020/04/18/%E4%BA%8C%E5%8F%89%E6%A0%91Hard/</id>
     <published>2020-04-18T08:18:51.000Z</published>
     <updated>2020-04-29T03:17:20.656Z</updated>
     
@@ -155,17 +155,17 @@
     </summary>
     
     
-      <category term="Leetcode" scheme="https://hoo334.gitee.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://hoo334.github.io/categories/Leetcode/"/>
     
     
-      <category term="二叉树" scheme="https://hoo334.gitee.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+      <category term="二叉树" scheme="https://hoo334.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
     
   </entry>
   
   <entry>
     <title>二叉树 Medium</title>
-    <link href="https://hoo334.gitee.io/2020/04/18/%E4%BA%8C%E5%8F%89%E6%A0%91Medium/"/>
-    <id>https://hoo334.gitee.io/2020/04/18/%E4%BA%8C%E5%8F%89%E6%A0%91Medium/</id>
+    <link href="https://hoo334.github.io/2020/04/18/%E4%BA%8C%E5%8F%89%E6%A0%91Medium/"/>
+    <id>https://hoo334.github.io/2020/04/18/%E4%BA%8C%E5%8F%89%E6%A0%91Medium/</id>
     <published>2020-04-18T08:04:11.000Z</published>
     <updated>2020-04-29T03:16:59.610Z</updated>
     
@@ -178,17 +178,17 @@
     </summary>
     
     
-      <category term="Leetcode" scheme="https://hoo334.gitee.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://hoo334.github.io/categories/Leetcode/"/>
     
     
-      <category term="二叉树" scheme="https://hoo334.gitee.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+      <category term="二叉树" scheme="https://hoo334.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
     
   </entry>
   
   <entry>
     <title>数组 Medium</title>
-    <link href="https://hoo334.gitee.io/2020/04/17/%E6%95%B0%E7%BB%84Medium/"/>
-    <id>https://hoo334.gitee.io/2020/04/17/%E6%95%B0%E7%BB%84Medium/</id>
+    <link href="https://hoo334.github.io/2020/04/17/%E6%95%B0%E7%BB%84Medium/"/>
+    <id>https://hoo334.github.io/2020/04/17/%E6%95%B0%E7%BB%84Medium/</id>
     <published>2020-04-17T02:51:13.000Z</published>
     <updated>2020-04-29T03:16:06.969Z</updated>
     
@@ -201,17 +201,17 @@
     </summary>
     
     
-      <category term="Leetcode" scheme="https://hoo334.gitee.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://hoo334.github.io/categories/Leetcode/"/>
     
     
-      <category term="数组" scheme="https://hoo334.gitee.io/tags/%E6%95%B0%E7%BB%84/"/>
+      <category term="数组" scheme="https://hoo334.github.io/tags/%E6%95%B0%E7%BB%84/"/>
     
   </entry>
   
   <entry>
     <title>Object</title>
-    <link href="https://hoo334.gitee.io/2020/04/14/Object/"/>
-    <id>https://hoo334.gitee.io/2020/04/14/Object/</id>
+    <link href="https://hoo334.github.io/2020/04/14/Object/"/>
+    <id>https://hoo334.github.io/2020/04/14/Object/</id>
     <published>2020-04-14T12:46:18.000Z</published>
     <updated>2020-04-19T00:39:31.622Z</updated>
     
@@ -224,17 +224,17 @@
     </summary>
     
     
-      <category term="JDK 源码分析" scheme="https://hoo334.gitee.io/categories/JDK-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
+      <category term="JDK 源码分析" scheme="https://hoo334.github.io/categories/JDK-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
     
     
-      <category term="java.lang包" scheme="https://hoo334.gitee.io/tags/java-lang%E5%8C%85/"/>
+      <category term="java.lang包" scheme="https://hoo334.github.io/tags/java-lang%E5%8C%85/"/>
     
   </entry>
   
   <entry>
     <title>数组 Easy</title>
-    <link href="https://hoo334.gitee.io/2020/04/09/%E6%95%B0%E7%BB%84Easy/"/>
-    <id>https://hoo334.gitee.io/2020/04/09/%E6%95%B0%E7%BB%84Easy/</id>
+    <link href="https://hoo334.github.io/2020/04/09/%E6%95%B0%E7%BB%84Easy/"/>
+    <id>https://hoo334.github.io/2020/04/09/%E6%95%B0%E7%BB%84Easy/</id>
     <published>2020-04-09T01:41:01.000Z</published>
     <updated>2020-04-29T03:17:08.386Z</updated>
     
@@ -247,17 +247,17 @@
     </summary>
     
     
-      <category term="Leetcode" scheme="https://hoo334.gitee.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://hoo334.github.io/categories/Leetcode/"/>
     
     
-      <category term="数组" scheme="https://hoo334.gitee.io/tags/%E6%95%B0%E7%BB%84/"/>
+      <category term="数组" scheme="https://hoo334.github.io/tags/%E6%95%B0%E7%BB%84/"/>
     
   </entry>
   
   <entry>
     <title>动态规划 Easy</title>
-    <link href="https://hoo334.gitee.io/2020/04/08/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92Easy/"/>
-    <id>https://hoo334.gitee.io/2020/04/08/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92Easy/</id>
+    <link href="https://hoo334.github.io/2020/04/08/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92Easy/"/>
+    <id>https://hoo334.github.io/2020/04/08/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92Easy/</id>
     <published>2020-04-08T03:20:53.000Z</published>
     <updated>2020-04-29T03:17:28.729Z</updated>
     
@@ -270,19 +270,19 @@
     </summary>
     
     
-      <category term="Leetcode" scheme="https://hoo334.gitee.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://hoo334.github.io/categories/Leetcode/"/>
     
     
-      <category term="数组" scheme="https://hoo334.gitee.io/tags/%E6%95%B0%E7%BB%84/"/>
+      <category term="数组" scheme="https://hoo334.github.io/tags/%E6%95%B0%E7%BB%84/"/>
     
-      <category term="动态规划" scheme="https://hoo334.gitee.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+      <category term="动态规划" scheme="https://hoo334.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
   </entry>
   
   <entry>
     <title>事务管理与恢复</title>
-    <link href="https://hoo334.gitee.io/2020/04/06/%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86%E4%B8%8E%E6%81%A2%E5%A4%8D/"/>
-    <id>https://hoo334.gitee.io/2020/04/06/%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86%E4%B8%8E%E6%81%A2%E5%A4%8D/</id>
+    <link href="https://hoo334.github.io/2020/04/06/%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86%E4%B8%8E%E6%81%A2%E5%A4%8D/"/>
+    <id>https://hoo334.github.io/2020/04/06/%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86%E4%B8%8E%E6%81%A2%E5%A4%8D/</id>
     <published>2020-04-06T01:27:11.000Z</published>
     <updated>2020-04-26T03:33:20.490Z</updated>
     
@@ -295,15 +295,15 @@
     </summary>
     
     
-      <category term="数据库" scheme="https://hoo334.gitee.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+      <category term="数据库" scheme="https://hoo334.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     
   </entry>
   
   <entry>
     <title>E-R 模型</title>
-    <link href="https://hoo334.gitee.io/2020/04/05/E-R-%E6%A8%A1%E5%9E%8B/"/>
-    <id>https://hoo334.gitee.io/2020/04/05/E-R-%E6%A8%A1%E5%9E%8B/</id>
+    <link href="https://hoo334.github.io/2020/04/05/E-R-%E6%A8%A1%E5%9E%8B/"/>
+    <id>https://hoo334.github.io/2020/04/05/E-R-%E6%A8%A1%E5%9E%8B/</id>
     <published>2020-04-05T14:23:02.000Z</published>
     <updated>2020-04-22T07:03:28.709Z</updated>
     
@@ -316,15 +316,15 @@
     </summary>
     
     
-      <category term="数据库" scheme="https://hoo334.gitee.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+      <category term="数据库" scheme="https://hoo334.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     
   </entry>
   
   <entry>
     <title>数据库完整性与安全性</title>
-    <link href="https://hoo334.gitee.io/2020/04/05/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%8C%E6%95%B4%E6%80%A7%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/"/>
-    <id>https://hoo334.gitee.io/2020/04/05/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%8C%E6%95%B4%E6%80%A7%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/</id>
+    <link href="https://hoo334.github.io/2020/04/05/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%8C%E6%95%B4%E6%80%A7%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/"/>
+    <id>https://hoo334.github.io/2020/04/05/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%8C%E6%95%B4%E6%80%A7%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/</id>
     <published>2020-04-05T14:23:02.000Z</published>
     <updated>2020-04-25T02:19:45.614Z</updated>
     
@@ -337,86 +337,15 @@
     </summary>
     
     
-      <category term="数据库" scheme="https://hoo334.gitee.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>利用gradle添加依赖</title>
-    <link href="https://hoo334.gitee.io/2020/04/04/Gradle%E4%BE%9D%E8%B5%96%E4%B8%8B%E8%BD%BD/"/>
-    <id>https://hoo334.gitee.io/2020/04/04/Gradle%E4%BE%9D%E8%B5%96%E4%B8%8B%E8%BD%BD/</id>
-    <published>2020-04-04T06:39:13.000Z</published>
-    <updated>2020-04-04T10:14:40.428Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="利用gradle添加依赖"><a href="#利用gradle添加依赖" class="headerlink" title="利用gradle添加依赖"></a>利用gradle添加依赖</h1><p>1、新建一个gradle项目</p><p>可以看到build.gradle</p><p><img src="https://i.loli.net/2020/04/04/qxOINuGoR7pAsE2.png" alt="img"></p><p> 2、编写gradle.properties</p><p><img src="https://i.loli.net/2020/04/04/Bj2opT4nKwUvLyq.png" alt="img"></p><p> 3、修改build.gradle编译jar，利用${key} 来获取key的值</p><p><img src="https://i.loli.net/2020/04/04/AjhOQ9rK3IHnL8D.png" alt="img"></p><p> 4、等待gradle自动导入</p><p><img src="https://i.loli.net/2020/04/04/WKCFrN3MavV6ncg.png" alt="img"></p><p> 可以看到已经导入完成，开始玩耍。。。</p><p>如果遇到依赖下载慢的情况 在build.gradle文件repositories加入：           </p><p>maven{ url’<a href="http://maven.aliyun.com/nexus/content/groups/public/&#39;}" target="_blank" rel="noopener">http://maven.aliyun.com/nexus/content/groups/public/&#39;}</a></p><p>使用阿里云的maven仓库</p><p>mavenLocal()可以让项目先检查本地的仓库，有的话不用下载。</p>]]></content>
-    
-    <summary type="html">
-    
-      Gradle 构件工具
-    
-    </summary>
-    
-    
-      <category term="工具" scheme="https://hoo334.gitee.io/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="Java" scheme="https://hoo334.gitee.io/tags/Java/"/>
-    
-      <category term="Gradle" scheme="https://hoo334.gitee.io/tags/Gradle/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Git上传本地项目</title>
-    <link href="https://hoo334.gitee.io/2020/04/04/Git%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE/"/>
-    <id>https://hoo334.gitee.io/2020/04/04/Git%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE/</id>
-    <published>2020-04-04T06:39:13.000Z</published>
-    <updated>2020-04-04T10:17:09.904Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Git上传本地项目"><a href="#Git上传本地项目" class="headerlink" title="Git上传本地项目"></a>Git上传本地项目</h1><p><strong>如何将本地项目push到GitHub上？</strong></p><p>GitHub新建一个 repostory 找到URL 例如：<a href="https://github.com/hoo334/test.git" target="_blank" rel="noopener">https://github.com/hoo334/test.git</a></p><p>找到项目文件夹 右键git bash here</p><p><strong>git init</strong></p><p>*<em>git add . *</em></p><p><strong>git commit -m “提交信息”</strong></p><p><strong>git remote add origin URL</strong></p><p><strong>git push -u origin master</strong></p><p><strong>提交更新到Github</strong></p><p><strong>git status （可选 查看更改文件）</strong></p><p><strong>git add 你想要提交更改的文件 或者git add .</strong></p><p><strong>git commit -m “提交信息”</strong></p><p><strong>git push  origin master</strong></p><p><strong>如果操作失误就直接删掉目录内的.git整个文件夹 重新git init。</strong></p>]]></content>
-    
-    <summary type="html">
-    
-      Git
-    
-    </summary>
-    
-    
-      <category term="工具" scheme="https://hoo334.gitee.io/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="Java" scheme="https://hoo334.gitee.io/tags/Java/"/>
-    
-      <category term="Git" scheme="https://hoo334.gitee.io/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JVM 运行时数据区</title>
-    <link href="https://hoo334.gitee.io/2020/04/04/JVM%20%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA/"/>
-    <id>https://hoo334.gitee.io/2020/04/04/JVM%20%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA/</id>
-    <published>2020-04-04T06:39:13.000Z</published>
-    <updated>2020-04-04T10:20:58.745Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="JVM-运行时数据区"><a href="#JVM-运行时数据区" class="headerlink" title="JVM 运行时数据区"></a>JVM 运行时数据区</h1><p><img src="https://i.loli.net/2020/03/24/ML2CpVz6XdqoJkl.png" alt=""></p><p> <img src="https://i.loli.net/2020/03/24/VfYt7yh4pav9ure.png" alt=""></p>]]></content>
-    
-    <summary type="html">
-    
-      JVM学习
-    
-    </summary>
-    
-    
-      <category term="JVM" scheme="https://hoo334.gitee.io/categories/JVM/"/>
+      <category term="数据库" scheme="https://hoo334.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     
   </entry>
   
   <entry>
     <title>Java 深拷贝和浅拷贝</title>
-    <link href="https://hoo334.gitee.io/2020/04/04/Java%20%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D/"/>
-    <id>https://hoo334.gitee.io/2020/04/04/Java%20%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D/</id>
+    <link href="https://hoo334.github.io/2020/04/04/Java%20%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D/"/>
+    <id>https://hoo334.github.io/2020/04/04/Java%20%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D/</id>
     <published>2020-04-04T06:39:13.000Z</published>
     <updated>2020-04-04T10:21:55.977Z</updated>
     
@@ -429,38 +358,42 @@
     </summary>
     
     
-      <category term="Java" scheme="https://hoo334.gitee.io/categories/Java/"/>
+      <category term="Java" scheme="https://hoo334.github.io/categories/Java/"/>
     
     
-      <category term="Java" scheme="https://hoo334.gitee.io/tags/Java/"/>
+      <category term="Java" scheme="https://hoo334.github.io/tags/Java/"/>
     
   </entry>
   
   <entry>
-    <title>SQL语言</title>
-    <link href="https://hoo334.gitee.io/2020/04/04/SQL%E8%AF%AD%E8%A8%80/"/>
-    <id>https://hoo334.gitee.io/2020/04/04/SQL%E8%AF%AD%E8%A8%80/</id>
+    <title>Git上传本地项目</title>
+    <link href="https://hoo334.github.io/2020/04/04/Git%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE/"/>
+    <id>https://hoo334.github.io/2020/04/04/Git%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE/</id>
     <published>2020-04-04T06:39:13.000Z</published>
-    <updated>2020-04-21T14:27:10.227Z</updated>
+    <updated>2020-04-04T10:17:09.904Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="SQL-概述"><a href="#SQL-概述" class="headerlink" title="SQL 概述"></a>SQL 概述</h3><p>　　SQL 语言由 4 部分组成，包括数据定义语言 DDL、数据操纵语言 DML、数据控制语言和其他。</p><p>　　1）数据定义语言（Data Definition Language，DDL）：主要用于定义数据库的逻辑结构，包括数据库，基本表，视图和索引等，扩展 DDL 还支持存储过程、函数、对象、触发器等的定义。DDL 包括 3 类语言，即定义、修改和删除。</p><p>　　2）数据操纵语言（Data Manipulation Language，DML）：主要用于对数据库的数据进行检索和更新，其中更新操作包括插入、删除和修改数据。</p><p>　　3）数据控制语言（Data Control Language，DCL）：主要用于对数据库的对象进行授权、用户维护（包括创建、修改和删除）、完整性规则定义和事务定义等。</p><p>　　4）其他：主要是嵌入式 SQL 语言和动态 SQL 语言的定义。</p><p>　　</p><p>　　SQL特点：风格统一。高度非过程化。面向集合的操作方式。同一种语法结构提供两种使用方式（独立使用SQL对数据库进行操作，嵌入到高级语言中）。语言简洁，易学易用。</p><p>　　SQL主要动词：</p><p>　　1）数据查询：select；</p><p>　　2）数据定义：create、alter、drop；</p><p>　　3）数据操纵：insert、update、delete；</p><p>　　4）数据控制：grant、revoke；</p><h3 id="简单查询"><a href="#简单查询" class="headerlink" title="简单查询"></a>简单查询</h3><p>　　where 子句可以实现关系代数中的选择运算，用于查询满足选择条件的元组。where 子句中常用的查询条件如下所示：</p><p><img src="https://i.loli.net/2020/04/04/5NmKQzuGXSE8p3H.png" alt="img"></p><p> 　% 表示任意长度的字符串，_表示任意一个字符， escape ‘ \ ‘ 表示 \ 后的符号不是通配符。</p><p><img src="https://i.loli.net/2020/04/04/bJOVFf4XQM53hxK.png" alt="img"></p><h3 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h3><p>　　外连接：</p><p>　　1）左外连接</p><p>　　　　select xxx </p><p>　　　　from 表a <strong>left outer join</strong> 表b <strong>on</strong> a.xx=b.xx</p><p>　　2）右外连接</p><p>　　　　select xxx </p><p>　　　　from 表a <strong>right outer join</strong> 表b <strong>on</strong> a.xx=b.xx</p><p> 　3）全外连接</p><p>　　　　select xxx </p><p>　　　　from 表a <strong>full outer join</strong> 表b <strong>on</strong> a.xx=b.xx</p><h3 id="嵌套子查询"><a href="#嵌套子查询" class="headerlink" title="嵌套子查询"></a>嵌套子查询</h3><h4 id="使用-in-的子查询"><a href="#使用-in-的子查询" class="headerlink" title="使用 in 的子查询"></a>使用 in 的子查询</h4><p><img src="https://i.loli.net/2020/04/04/Ut6bKM5lAWsTPiL.png" alt="img"></p><p> <img src="https://i.loli.net/2020/04/04/Hm7MZoWqi2VEt9F.png" alt="img"></p><p><img src="https://i.loli.net/2020/04/04/BhbMpFjTZxcPXUn.png" alt="img"></p><p> <img src="https://i.loli.net/2020/04/04/Sq2ceb7Lfpahj8E.png" alt="img"></p><h4 id="使用比较运算符的子查询"><a href="#使用比较运算符的子查询" class="headerlink" title="使用比较运算符的子查询"></a>使用比较运算符的子查询</h4><p><img src="https://i.loli.net/2020/04/04/vt87Oam4YzwJxES.png" alt="img"></p><p><img src="https://i.loli.net/2020/04/04/OdEwbPAcBqGKonx.png" alt="img"></p><h4 id="使用存在量词-exists-的子查询"><a href="#使用存在量词-exists-的子查询" class="headerlink" title="使用存在量词 exists 的子查询"></a>使用存在量词 exists 的子查询</h4><p>　　SQL 查询提供量词运算。量词有两种：一是存在量词，二是全程量词。全程量词可以用存在量词替代，故 SQL 语句仅提供存在量词的运算，使用谓词 exists 表示，全称量词转化通过 not exists 谓词来实现。</p><p><img src="https://i.loli.net/2020/04/04/hM1PlF8UboEXQqe.png" alt="img"></p><p><img src="https://i.loli.net/2020/04/04/KN9bScEkCjZJhMf.png" alt="img"></p><p><img src="https://i.loli.net/2020/04/04/XEBS7msaRO3tfek.png" alt="img"></p><h3 id="聚合查询"><a href="#聚合查询" class="headerlink" title="聚合查询"></a>聚合查询</h3><h4 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h4><p><img src="https://i.loli.net/2020/04/04/bLqFIkXJCKAzrGa.png" alt="img"></p><p> 　如果指定 distinct 谓词，表示在计算时首先消除&lt;列名&gt;取重复值的元组，然后再进行统计。</p><h4 id="分组聚合"><a href="#分组聚合" class="headerlink" title="分组聚合"></a>分组聚合</h4><p>　　在 SQL 查询中，往往需要对数据进行分组运算，分组运算的目的是为了细化聚合函数的作用对象。如果不对查询结果进行分组，则聚合函数作用于整个查询结果；如果对查询结果进行分组，则聚合函数分别作用于每个组，查询结果是按组聚合输出。SQL 语句中通过 group by 和having 子句来实现分组运算，其中：</p><p>　　group by 子句对查询结果按某一列或某几列进行分组，值相等的分为一组；</p><p>　　having 子句对分组的结果进行选择，仅输出满足条件的组。该子句必须与group by 子句配合使用。</p><p><img src="https://i.loli.net/2020/04/04/mWZfg9ps8JA73nF.png" alt="img"></p><p> 　聚合函数可以直接使用在 having 子句中，也可以用于子查询中，但<strong>在 where 子句中不可以直接使用聚合函数。</strong></p><h4 id="复杂查询"><a href="#复杂查询" class="headerlink" title="复杂查询"></a>复杂查询</h4><p><img src="https://i.loli.net/2020/04/04/h7m4821v9RjIJGN.png" alt="img"></p><p><img src="https://i.loli.net/2020/04/04/heOE2QcbPfitLYI.png" alt="img"></p><p> 或者</p><p>　　select studentNo, avg(score) as avgScore</p><p>　　from score </p><p>　　group by studentNo</p><p>　　having count(*) &gt;5</p><p>　　order by avgScore</p><p>　　limit 0,1</p><p><img src="https://i.loli.net/2020/04/04/NRbIMlTqom1LdJS.png" alt="img"></p><p><img src="https://i.loli.net/2020/04/04/kT2RU6ud3DBzLAf.png" alt="img"></p><h3 id="集合运算"><a href="#集合运算" class="headerlink" title="集合运算"></a>集合运算</h3><p>　　SQL 支持集合运算。select 语句查询的结果是集合，多个 select 语句的结果可以进行集合操作，传统的集合操作主要包括并 union、交 intersect、差 except 运算，<strong>在执行集合运算时要求参与运算的查询结果的列数一样，其对应列的数据类型必须一致。</strong></p><p><img src="https://i.loli.net/2020/04/04/QvEbtCTGPunSkRr.png" alt="img"></p><h3 id="SQL-查询一般格式"><a href="#SQL-查询一般格式" class="headerlink" title="SQL 查询一般格式"></a>SQL 查询一般格式</h3><p><img src="https://i.loli.net/2020/04/04/d5JLQ4SFejksW8t.png" alt="img"></p><h3 id="SQL-数据定义语言"><a href="#SQL-数据定义语言" class="headerlink" title="SQL 数据定义语言"></a>SQL 数据定义语言</h3><p>　　数据库中的关系集合必须由数据定义语言 DDL 来定义，包括：数据库模式、关系模式、每个属性的值域、完整性约束、每个关系的索引集合和关系的物理存储结构等。</p><p><img src="https://i.loli.net/2020/04/04/IADEaU95sFGYO8Q.png" alt="img"></p><h4 id="数据库的定义"><a href="#数据库的定义" class="headerlink" title="数据库的定义"></a>数据库的定义</h4><h5 id="数据库的创建"><a href="#数据库的创建" class="headerlink" title="数据库的创建"></a>数据库的创建</h5><p><img src="https://i.loli.net/2020/04/04/oZAH7Sla91zNXuF.png" alt="img"></p><h5 id="数据库的删除"><a href="#数据库的删除" class="headerlink" title="数据库的删除"></a>数据库的删除</h5><p><img src="https://i.loli.net/2020/04/04/QXKwkRidjT6Aq4L.png" alt="img"></p><h4 id="基本表的定义"><a href="#基本表的定义" class="headerlink" title="基本表的定义"></a>基本表的定义</h4><h5 id="创建基本表"><a href="#创建基本表" class="headerlink" title="创建基本表"></a>创建基本表</h5><p><img src="https://i.loli.net/2020/04/04/6rCEphyxYKgv3bi.png" alt="img"></p><p><img src="https://i.loli.net/2020/04/04/BNoTkclZdWVqS3L.png" alt="img"></p><p> <img src="https://i.loli.net/2020/04/04/ntiAphIVuWEmoXP.png" alt="img"></p><h5 id="基本表的修改"><a href="#基本表的修改" class="headerlink" title="基本表的修改"></a>基本表的修改</h5><p><img src="https://i.loli.net/2020/04/04/A9nHdB8csqLz6p5.png" alt="img"></p><p>　　 基本表在修改过程中，不可以删除列，一次仅执行一种操作。</p><h5 id="基本表的删除"><a href="#基本表的删除" class="headerlink" title="基本表的删除"></a>基本表的删除</h5><p>　　<img src="https://i.loli.net/2020/04/04/ZO6B1CmIU9dGKEe.png" alt="img"></p><p> 　若选择 restrict ，则该表的删除有限制条件，即该表不能有视图，触发器以及被他表所引用，该项为默认项。</p><p>　　若选择 cascade， 则该表的删除没有限制条件，在删除基本表的同时，也删除建立在该表上的所有索引，完整性规则，触发器和视图。</p><h4 id="索引的定义"><a href="#索引的定义" class="headerlink" title="索引的定义"></a>索引的定义</h4><p>　　如果数据有序，则检索速度是非常快的，对表中的记录进行排序有两种方案：一是对记录进行物理上的重新组织。二是不改变物理顺序，通过建立索引来实现数据记录的重新排列，称为逻辑排序。</p><p>　　一张表可以建立多个索引，可以从不同的角度加快查询速度，如果索引建立的比较多，会给数据维护带来较大的系统开销。</p><p>　　索引通常是由指针构成的记录，指针逻辑上按照索引关键字进行排序，但不改变表中记录的物理顺序。索引和基本表分别存储。</p><p>　　如果索引文件中的记录按照某个搜索码值指定的顺序物理存储，那么该搜索码对应的索引就称为<strong>主索引</strong>，也叫<strong>聚集索引</strong>。搜索码值顺序与索引文件中记录的物理顺序不同的那些索引称为<strong>辅助索引</strong>或<strong>非聚集索引</strong>。</p><h5 id="索引的建立"><a href="#索引的建立" class="headerlink" title="索引的建立"></a>索引的建立</h5><p><img src="https://i.loli.net/2020/04/04/B3SlMcuEm9wDe4s.png" alt="img"></p><h5 id="索引的删除"><a href="#索引的删除" class="headerlink" title="索引的删除"></a>索引的删除</h5><p>　　索引一旦建立，用户就不需要管理它，由系统自动维护。如果某个关系经常要执行插入、删除和修改操作，系统会花费很多时间来维护索引，从而降低基本表的更新速度，因此可删除那些不经常使用的索引。删除索引的语法为：</p><p><img src="https://i.loli.net/2020/04/04/OUpFAjhemWIoxsi.png" alt="img"></p><h3 id="SQL-数据更新语言"><a href="#SQL-数据更新语言" class="headerlink" title="SQL 数据更新语言"></a>SQL 数据更新语言</h3><p>　　SQL 数据更新语句包括 3 条：插入 insert、删除 delete、修改 update。</p><h4 id="插入数据"><a href="#插入数据" class="headerlink" title="　　插入数据"></a>　　插入数据</h4><h5 id="插入一条元组"><a href="#插入一条元组" class="headerlink" title="插入一条元组"></a>插入一条元组</h5><p><img src="https://i.loli.net/2020/04/04/6vrnQYmcUW9O31k.png" alt="img"></p><h5 id="插入多条元组"><a href="#插入多条元组" class="headerlink" title="插入多条元组"></a>插入多条元组</h5><p><img src="https://i.loli.net/2020/04/04/HfeLn6dDRWCwyAZ.png" alt="img"></p><h4 id="删除数据"><a href="#删除数据" class="headerlink" title="　删除数据"></a>　删除数据</h4><p>　　<img src="https://i.loli.net/2020/04/04/9yTpORSIfmKBXYj.png" alt="img"></p><h4 id="修改数据"><a href="#修改数据" class="headerlink" title="　　修改数据"></a>　　修改数据</h4><p><img src="https://i.loli.net/2020/04/04/5mzi2Dy9jEgW3t4.png" alt="img"></p><h3 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h3><p>　　视图是虚表，是从一个或几个基本表（或视图）中导出的表，在系统的数据字典中仅存放了视图的定义，不存放视图对应的数据。</p><h4 id="定义视图"><a href="#定义视图" class="headerlink" title="定义视图"></a>定义视图</h4><p><img src="https://i.loli.net/2020/04/04/R9MgBo7XGwK2Y8a.png" alt="img"></p><p> 　with check option ：当对视图进行插入、删除和更新操作时必须满足视图定义的谓词条件。</p><p><img src="https://i.loli.net/2020/04/04/eETgZ48mJ17ASh3.png" alt="img"></p><h4 id="查询视图"><a href="#查询视图" class="headerlink" title="查询视图"></a>查询视图</h4><p>　　查询是对视图进行的最主要的操作。从用户的角度来看，查询视图与查询基本表的方式是完全一样的。</p><h4 id="更新视图"><a href="#更新视图" class="headerlink" title="更新视图"></a>更新视图</h4><p>　　更新视图指通过视图来插入、删除和修改基本表中的数据。由于视图是一个虚表，不实际存放数据，对视图的更新最终要转换为对基本表的更新，因此，如果视图的定义中包含了表达式，或聚合运算，或消除重复值运算，则不能对视图进行更新操作。</p><h4 id="删除视图"><a href="#删除视图" class="headerlink" title="删除视图"></a>删除视图</h4><p><img src="https://i.loli.net/2020/04/04/FiN2qdoAf8LMkCu.png" alt="img"></p><h3 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h3><p><img src="https://i.loli.net/2020/04/04/VeDnJizjmpqPsXB.png" alt="img"></p><p> 　1）查询在2005-2008 年之间没有归还图书的读者编号、读者姓名、读者工作单位、图书编号、图书名称和借书日期。</p><p>　　分析：将读者、借阅、书籍三个关系连接起来然后判断书籍是否应该在 2005~2008年之间归还且书籍归还日期为空。</p><p>　　select rd.readerNo, rd.readerName, rd.workUnit, bk.bookNo, bk.bookName, br.borrowDate</p><p>　　from Reader rd, Borrow br, Book bk</p><p>　　where rd.readerNo=br.readerNo and br.bookNo=bk.bookNo and year(shouldDate) between 2005 and 2008 and br.returnDate is null</p><p>　　2)查询没有借书的读者姓名（分别用 in 子查询和存在量词子查询表达）。</p><p>　　分析：首先在借阅表中找出所有借过书还没有归还的读者号，然后判断每一个读者的读者号是否在前面找出的读者号里面，不在则代表没有借书。</p><p>　　select readerName</p><p>　　from Reader</p><p>　　where readerNo not in(</p><p>　　select distinct readerNo</p><p>　　from Borrow</p><p>　　where returnDate is null ); </p><p>　　select readerName</p><p>　　from Reader</p><p>　　where not exists (</p><p>　　select *</p><p>　　from Borrow</p><p>　　where Reader.readerNo=Borrow.readerNo and returnDate is null );</p><p>　　3)查询既借阅了“离散数学”又借阅了“数据库系统概念”两本书的读者编号、读者姓名、借书日期和图书名称。</p><p>　　分析：先找出借阅了离散数学的读者编号，再去看该读者是否借阅了数据库系统概念。</p><p>　　select rd.readerNo, rd.readerName, br.borrowDate, bk.bookName</p><p>　　from Reader rd, Borrow br, Book bk</p><p>　　where rd.readerNo=br.readerNo and br.bookNo=bk.bookNo and bookName=’离散数学’</p><p>　　and exists (</p><p>　　select * </p><p>　　from Borrow, Book</p><p>　　where Borrow.bookNo=Book.bookNo and rd.readerNo=Borrow.readerNo and Book.bookName=’数据库系统概念’ );</p><p>　　4）查询没有借阅’“经济管理”类图书的读者编号、读者姓名和出生日期（分别用 in 子查询和存在量词子查询表达）。</p><p>　　分析：先找出借阅了经济管理类书籍的读者号，然后判断每一个读者编号是否在前面找到的读者号中。</p><p>　　select readerNo, readerName, substring(identitycard,7,8) as birthday</p><p>　　from Reader</p><p>　　where readerNo not in (</p><p>　　select readerNo</p><p>　　from Borrow</p><p>　　where bookNo in(</p><p>　　select bookNo</p><p>　　from Book</p><p>　　where classNo in(</p><p>　　select classNo</p><p>　　from BookClass</p><p>　　where className=’经济管理’ )));</p><p>　　</p><p>　　</p><p>　　select readerNo, readerName, reader, substring(identitycard,7,8) as birthday</p><p>　　from Reader</p><p>　　where not exists(</p><p>　　select *</p><p>　　from Borrow br, Book bk, BookClass bc</p><p>　　where br.bookNo=bk.bookNo and bk.classNo=bc.classNo and bc,className=’经济管理’ and br.readerNo = Reader.readerNo);</p><p>　　</p><p>　　5)查询至少借阅了“马永强”所借的所有图书的读者编号、读者姓名、和工作单位。</p><p>　　分析：马永强所借的书他都借过 即 没有马永强借的书是他没有借的</p><p>　　select readerNo, readerName, workUnit</p><p>　　from Reader r1        //遍历每一位读者</p><p>　　where r1.readerNo not in(</p><p>　　select readerNo</p><p>　　from Borrow b1    //读者借书</p><p>　　where not exists(</p><p>　　select *</p><p>　　from Reader r2</p><p>　　where r2.readerName=’马永强’ and not exists(</p><p>　　select *</p><p>　　from Borrow b2      //马永强借书</p><p>　　where r2.readerNo=b2.readerNo and b1.bookNo=b2.bookNo and b2.returnDate is null)));</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="Git上传本地项目"><a href="#Git上传本地项目" class="headerlink" title="Git上传本地项目"></a>Git上传本地项目</h1><p><strong>如何将本地项目push到GitHub上？</strong></p><p>GitHub新建一个 repostory 找到URL 例如：<a href="https://github.com/hoo334/test.git" target="_blank" rel="noopener">https://github.com/hoo334/test.git</a></p><p>找到项目文件夹 右键git bash here</p><p><strong>git init</strong></p><p>*<em>git add . *</em></p><p><strong>git commit -m “提交信息”</strong></p><p><strong>git remote add origin URL</strong></p><p><strong>git push -u origin master</strong></p><p><strong>提交更新到Github</strong></p><p><strong>git status （可选 查看更改文件）</strong></p><p><strong>git add 你想要提交更改的文件 或者git add .</strong></p><p><strong>git commit -m “提交信息”</strong></p><p><strong>git push  origin master</strong></p><p><strong>如果操作失误就直接删掉目录内的.git整个文件夹 重新git init。</strong></p>]]></content>
     
     <summary type="html">
     
-      本文为复习数据库整理的资料。
+      Git
     
     </summary>
     
     
-      <category term="数据库" scheme="https://hoo334.gitee.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+      <category term="工具" scheme="https://hoo334.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
     
+    
+      <category term="Java" scheme="https://hoo334.github.io/tags/Java/"/>
+    
+      <category term="Git" scheme="https://hoo334.github.io/tags/Git/"/>
     
   </entry>
   
   <entry>
     <title>Spring+JDBC征服数据库</title>
-    <link href="https://hoo334.gitee.io/2020/04/04/Spring+JDBC%E5%BE%81%E6%9C%8D%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    <id>https://hoo334.gitee.io/2020/04/04/Spring+JDBC%E5%BE%81%E6%9C%8D%E6%95%B0%E6%8D%AE%E5%BA%93/</id>
+    <link href="https://hoo334.github.io/2020/04/04/Spring+JDBC%E5%BE%81%E6%9C%8D%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    <id>https://hoo334.github.io/2020/04/04/Spring+JDBC%E5%BE%81%E6%9C%8D%E6%95%B0%E6%8D%AE%E5%BA%93/</id>
     <published>2020-04-04T06:39:13.000Z</published>
     <updated>2020-04-04T10:47:08.473Z</updated>
     
@@ -473,10 +406,77 @@
     </summary>
     
     
-      <category term="Spring" scheme="https://hoo334.gitee.io/categories/Spring/"/>
+      <category term="Spring" scheme="https://hoo334.github.io/categories/Spring/"/>
     
     
-      <category term="Spring" scheme="https://hoo334.gitee.io/tags/Spring/"/>
+      <category term="Spring" scheme="https://hoo334.github.io/tags/Spring/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用gradle添加依赖</title>
+    <link href="https://hoo334.github.io/2020/04/04/Gradle%E4%BE%9D%E8%B5%96%E4%B8%8B%E8%BD%BD/"/>
+    <id>https://hoo334.github.io/2020/04/04/Gradle%E4%BE%9D%E8%B5%96%E4%B8%8B%E8%BD%BD/</id>
+    <published>2020-04-04T06:39:13.000Z</published>
+    <updated>2020-04-04T10:14:40.428Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="利用gradle添加依赖"><a href="#利用gradle添加依赖" class="headerlink" title="利用gradle添加依赖"></a>利用gradle添加依赖</h1><p>1、新建一个gradle项目</p><p>可以看到build.gradle</p><p><img src="https://i.loli.net/2020/04/04/qxOINuGoR7pAsE2.png" alt="img"></p><p> 2、编写gradle.properties</p><p><img src="https://i.loli.net/2020/04/04/Bj2opT4nKwUvLyq.png" alt="img"></p><p> 3、修改build.gradle编译jar，利用${key} 来获取key的值</p><p><img src="https://i.loli.net/2020/04/04/AjhOQ9rK3IHnL8D.png" alt="img"></p><p> 4、等待gradle自动导入</p><p><img src="https://i.loli.net/2020/04/04/WKCFrN3MavV6ncg.png" alt="img"></p><p> 可以看到已经导入完成，开始玩耍。。。</p><p>如果遇到依赖下载慢的情况 在build.gradle文件repositories加入：           </p><p>maven{ url’<a href="http://maven.aliyun.com/nexus/content/groups/public/&#39;}" target="_blank" rel="noopener">http://maven.aliyun.com/nexus/content/groups/public/&#39;}</a></p><p>使用阿里云的maven仓库</p><p>mavenLocal()可以让项目先检查本地的仓库，有的话不用下载。</p>]]></content>
+    
+    <summary type="html">
+    
+      Gradle 构件工具
+    
+    </summary>
+    
+    
+      <category term="工具" scheme="https://hoo334.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="Java" scheme="https://hoo334.github.io/tags/Java/"/>
+    
+      <category term="Gradle" scheme="https://hoo334.github.io/tags/Gradle/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JVM 运行时数据区</title>
+    <link href="https://hoo334.github.io/2020/04/04/JVM%20%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA/"/>
+    <id>https://hoo334.github.io/2020/04/04/JVM%20%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA/</id>
+    <published>2020-04-04T06:39:13.000Z</published>
+    <updated>2020-04-04T10:20:58.745Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="JVM-运行时数据区"><a href="#JVM-运行时数据区" class="headerlink" title="JVM 运行时数据区"></a>JVM 运行时数据区</h1><p><img src="https://i.loli.net/2020/03/24/ML2CpVz6XdqoJkl.png" alt=""></p><p> <img src="https://i.loli.net/2020/03/24/VfYt7yh4pav9ure.png" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      JVM学习
+    
+    </summary>
+    
+    
+      <category term="JVM" scheme="https://hoo334.github.io/categories/JVM/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>SQL语言</title>
+    <link href="https://hoo334.github.io/2020/04/04/SQL%E8%AF%AD%E8%A8%80/"/>
+    <id>https://hoo334.github.io/2020/04/04/SQL%E8%AF%AD%E8%A8%80/</id>
+    <published>2020-04-04T06:39:13.000Z</published>
+    <updated>2020-04-21T14:27:10.227Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="SQL-概述"><a href="#SQL-概述" class="headerlink" title="SQL 概述"></a>SQL 概述</h3><p>　　SQL 语言由 4 部分组成，包括数据定义语言 DDL、数据操纵语言 DML、数据控制语言和其他。</p><p>　　1）数据定义语言（Data Definition Language，DDL）：主要用于定义数据库的逻辑结构，包括数据库，基本表，视图和索引等，扩展 DDL 还支持存储过程、函数、对象、触发器等的定义。DDL 包括 3 类语言，即定义、修改和删除。</p><p>　　2）数据操纵语言（Data Manipulation Language，DML）：主要用于对数据库的数据进行检索和更新，其中更新操作包括插入、删除和修改数据。</p><p>　　3）数据控制语言（Data Control Language，DCL）：主要用于对数据库的对象进行授权、用户维护（包括创建、修改和删除）、完整性规则定义和事务定义等。</p><p>　　4）其他：主要是嵌入式 SQL 语言和动态 SQL 语言的定义。</p><p>　　</p><p>　　SQL特点：风格统一。高度非过程化。面向集合的操作方式。同一种语法结构提供两种使用方式（独立使用SQL对数据库进行操作，嵌入到高级语言中）。语言简洁，易学易用。</p><p>　　SQL主要动词：</p><p>　　1）数据查询：select；</p><p>　　2）数据定义：create、alter、drop；</p><p>　　3）数据操纵：insert、update、delete；</p><p>　　4）数据控制：grant、revoke；</p><h3 id="简单查询"><a href="#简单查询" class="headerlink" title="简单查询"></a>简单查询</h3><p>　　where 子句可以实现关系代数中的选择运算，用于查询满足选择条件的元组。where 子句中常用的查询条件如下所示：</p><p><img src="https://i.loli.net/2020/04/04/5NmKQzuGXSE8p3H.png" alt="img"></p><p> 　% 表示任意长度的字符串，_表示任意一个字符， escape ‘ \ ‘ 表示 \ 后的符号不是通配符。</p><p><img src="https://i.loli.net/2020/04/04/bJOVFf4XQM53hxK.png" alt="img"></p><h3 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h3><p>　　外连接：</p><p>　　1）左外连接</p><p>　　　　select xxx </p><p>　　　　from 表a <strong>left outer join</strong> 表b <strong>on</strong> a.xx=b.xx</p><p>　　2）右外连接</p><p>　　　　select xxx </p><p>　　　　from 表a <strong>right outer join</strong> 表b <strong>on</strong> a.xx=b.xx</p><p> 　3）全外连接</p><p>　　　　select xxx </p><p>　　　　from 表a <strong>full outer join</strong> 表b <strong>on</strong> a.xx=b.xx</p><h3 id="嵌套子查询"><a href="#嵌套子查询" class="headerlink" title="嵌套子查询"></a>嵌套子查询</h3><h4 id="使用-in-的子查询"><a href="#使用-in-的子查询" class="headerlink" title="使用 in 的子查询"></a>使用 in 的子查询</h4><p><img src="https://i.loli.net/2020/04/04/Ut6bKM5lAWsTPiL.png" alt="img"></p><p> <img src="https://i.loli.net/2020/04/04/Hm7MZoWqi2VEt9F.png" alt="img"></p><p><img src="https://i.loli.net/2020/04/04/BhbMpFjTZxcPXUn.png" alt="img"></p><p> <img src="https://i.loli.net/2020/04/04/Sq2ceb7Lfpahj8E.png" alt="img"></p><h4 id="使用比较运算符的子查询"><a href="#使用比较运算符的子查询" class="headerlink" title="使用比较运算符的子查询"></a>使用比较运算符的子查询</h4><p><img src="https://i.loli.net/2020/04/04/vt87Oam4YzwJxES.png" alt="img"></p><p><img src="https://i.loli.net/2020/04/04/OdEwbPAcBqGKonx.png" alt="img"></p><h4 id="使用存在量词-exists-的子查询"><a href="#使用存在量词-exists-的子查询" class="headerlink" title="使用存在量词 exists 的子查询"></a>使用存在量词 exists 的子查询</h4><p>　　SQL 查询提供量词运算。量词有两种：一是存在量词，二是全程量词。全程量词可以用存在量词替代，故 SQL 语句仅提供存在量词的运算，使用谓词 exists 表示，全称量词转化通过 not exists 谓词来实现。</p><p><img src="https://i.loli.net/2020/04/04/hM1PlF8UboEXQqe.png" alt="img"></p><p><img src="https://i.loli.net/2020/04/04/KN9bScEkCjZJhMf.png" alt="img"></p><p><img src="https://i.loli.net/2020/04/04/XEBS7msaRO3tfek.png" alt="img"></p><h3 id="聚合查询"><a href="#聚合查询" class="headerlink" title="聚合查询"></a>聚合查询</h3><h4 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h4><p><img src="https://i.loli.net/2020/04/04/bLqFIkXJCKAzrGa.png" alt="img"></p><p> 　如果指定 distinct 谓词，表示在计算时首先消除&lt;列名&gt;取重复值的元组，然后再进行统计。</p><h4 id="分组聚合"><a href="#分组聚合" class="headerlink" title="分组聚合"></a>分组聚合</h4><p>　　在 SQL 查询中，往往需要对数据进行分组运算，分组运算的目的是为了细化聚合函数的作用对象。如果不对查询结果进行分组，则聚合函数作用于整个查询结果；如果对查询结果进行分组，则聚合函数分别作用于每个组，查询结果是按组聚合输出。SQL 语句中通过 group by 和having 子句来实现分组运算，其中：</p><p>　　group by 子句对查询结果按某一列或某几列进行分组，值相等的分为一组；</p><p>　　having 子句对分组的结果进行选择，仅输出满足条件的组。该子句必须与group by 子句配合使用。</p><p><img src="https://i.loli.net/2020/04/04/mWZfg9ps8JA73nF.png" alt="img"></p><p> 　聚合函数可以直接使用在 having 子句中，也可以用于子查询中，但<strong>在 where 子句中不可以直接使用聚合函数。</strong></p><h4 id="复杂查询"><a href="#复杂查询" class="headerlink" title="复杂查询"></a>复杂查询</h4><p><img src="https://i.loli.net/2020/04/04/h7m4821v9RjIJGN.png" alt="img"></p><p><img src="https://i.loli.net/2020/04/04/heOE2QcbPfitLYI.png" alt="img"></p><p> 或者</p><p>　　select studentNo, avg(score) as avgScore</p><p>　　from score </p><p>　　group by studentNo</p><p>　　having count(*) &gt;5</p><p>　　order by avgScore</p><p>　　limit 0,1</p><p><img src="https://i.loli.net/2020/04/04/NRbIMlTqom1LdJS.png" alt="img"></p><p><img src="https://i.loli.net/2020/04/04/kT2RU6ud3DBzLAf.png" alt="img"></p><h3 id="集合运算"><a href="#集合运算" class="headerlink" title="集合运算"></a>集合运算</h3><p>　　SQL 支持集合运算。select 语句查询的结果是集合，多个 select 语句的结果可以进行集合操作，传统的集合操作主要包括并 union、交 intersect、差 except 运算，<strong>在执行集合运算时要求参与运算的查询结果的列数一样，其对应列的数据类型必须一致。</strong></p><p><img src="https://i.loli.net/2020/04/04/QvEbtCTGPunSkRr.png" alt="img"></p><h3 id="SQL-查询一般格式"><a href="#SQL-查询一般格式" class="headerlink" title="SQL 查询一般格式"></a>SQL 查询一般格式</h3><p><img src="https://i.loli.net/2020/04/04/d5JLQ4SFejksW8t.png" alt="img"></p><h3 id="SQL-数据定义语言"><a href="#SQL-数据定义语言" class="headerlink" title="SQL 数据定义语言"></a>SQL 数据定义语言</h3><p>　　数据库中的关系集合必须由数据定义语言 DDL 来定义，包括：数据库模式、关系模式、每个属性的值域、完整性约束、每个关系的索引集合和关系的物理存储结构等。</p><p><img src="https://i.loli.net/2020/04/04/IADEaU95sFGYO8Q.png" alt="img"></p><h4 id="数据库的定义"><a href="#数据库的定义" class="headerlink" title="数据库的定义"></a>数据库的定义</h4><h5 id="数据库的创建"><a href="#数据库的创建" class="headerlink" title="数据库的创建"></a>数据库的创建</h5><p><img src="https://i.loli.net/2020/04/04/oZAH7Sla91zNXuF.png" alt="img"></p><h5 id="数据库的删除"><a href="#数据库的删除" class="headerlink" title="数据库的删除"></a>数据库的删除</h5><p><img src="https://i.loli.net/2020/04/04/QXKwkRidjT6Aq4L.png" alt="img"></p><h4 id="基本表的定义"><a href="#基本表的定义" class="headerlink" title="基本表的定义"></a>基本表的定义</h4><h5 id="创建基本表"><a href="#创建基本表" class="headerlink" title="创建基本表"></a>创建基本表</h5><p><img src="https://i.loli.net/2020/04/04/6rCEphyxYKgv3bi.png" alt="img"></p><p><img src="https://i.loli.net/2020/04/04/BNoTkclZdWVqS3L.png" alt="img"></p><p> <img src="https://i.loli.net/2020/04/04/ntiAphIVuWEmoXP.png" alt="img"></p><h5 id="基本表的修改"><a href="#基本表的修改" class="headerlink" title="基本表的修改"></a>基本表的修改</h5><p><img src="https://i.loli.net/2020/04/04/A9nHdB8csqLz6p5.png" alt="img"></p><p>　　 基本表在修改过程中，不可以删除列，一次仅执行一种操作。</p><h5 id="基本表的删除"><a href="#基本表的删除" class="headerlink" title="基本表的删除"></a>基本表的删除</h5><p>　　<img src="https://i.loli.net/2020/04/04/ZO6B1CmIU9dGKEe.png" alt="img"></p><p> 　若选择 restrict ，则该表的删除有限制条件，即该表不能有视图，触发器以及被他表所引用，该项为默认项。</p><p>　　若选择 cascade， 则该表的删除没有限制条件，在删除基本表的同时，也删除建立在该表上的所有索引，完整性规则，触发器和视图。</p><h4 id="索引的定义"><a href="#索引的定义" class="headerlink" title="索引的定义"></a>索引的定义</h4><p>　　如果数据有序，则检索速度是非常快的，对表中的记录进行排序有两种方案：一是对记录进行物理上的重新组织。二是不改变物理顺序，通过建立索引来实现数据记录的重新排列，称为逻辑排序。</p><p>　　一张表可以建立多个索引，可以从不同的角度加快查询速度，如果索引建立的比较多，会给数据维护带来较大的系统开销。</p><p>　　索引通常是由指针构成的记录，指针逻辑上按照索引关键字进行排序，但不改变表中记录的物理顺序。索引和基本表分别存储。</p><p>　　如果索引文件中的记录按照某个搜索码值指定的顺序物理存储，那么该搜索码对应的索引就称为<strong>主索引</strong>，也叫<strong>聚集索引</strong>。搜索码值顺序与索引文件中记录的物理顺序不同的那些索引称为<strong>辅助索引</strong>或<strong>非聚集索引</strong>。</p><h5 id="索引的建立"><a href="#索引的建立" class="headerlink" title="索引的建立"></a>索引的建立</h5><p><img src="https://i.loli.net/2020/04/04/B3SlMcuEm9wDe4s.png" alt="img"></p><h5 id="索引的删除"><a href="#索引的删除" class="headerlink" title="索引的删除"></a>索引的删除</h5><p>　　索引一旦建立，用户就不需要管理它，由系统自动维护。如果某个关系经常要执行插入、删除和修改操作，系统会花费很多时间来维护索引，从而降低基本表的更新速度，因此可删除那些不经常使用的索引。删除索引的语法为：</p><p><img src="https://i.loli.net/2020/04/04/OUpFAjhemWIoxsi.png" alt="img"></p><h3 id="SQL-数据更新语言"><a href="#SQL-数据更新语言" class="headerlink" title="SQL 数据更新语言"></a>SQL 数据更新语言</h3><p>　　SQL 数据更新语句包括 3 条：插入 insert、删除 delete、修改 update。</p><h4 id="插入数据"><a href="#插入数据" class="headerlink" title="　　插入数据"></a>　　插入数据</h4><h5 id="插入一条元组"><a href="#插入一条元组" class="headerlink" title="插入一条元组"></a>插入一条元组</h5><p><img src="https://i.loli.net/2020/04/04/6vrnQYmcUW9O31k.png" alt="img"></p><h5 id="插入多条元组"><a href="#插入多条元组" class="headerlink" title="插入多条元组"></a>插入多条元组</h5><p><img src="https://i.loli.net/2020/04/04/HfeLn6dDRWCwyAZ.png" alt="img"></p><h4 id="删除数据"><a href="#删除数据" class="headerlink" title="　删除数据"></a>　删除数据</h4><p>　　<img src="https://i.loli.net/2020/04/04/9yTpORSIfmKBXYj.png" alt="img"></p><h4 id="修改数据"><a href="#修改数据" class="headerlink" title="　　修改数据"></a>　　修改数据</h4><p><img src="https://i.loli.net/2020/04/04/5mzi2Dy9jEgW3t4.png" alt="img"></p><h3 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h3><p>　　视图是虚表，是从一个或几个基本表（或视图）中导出的表，在系统的数据字典中仅存放了视图的定义，不存放视图对应的数据。</p><h4 id="定义视图"><a href="#定义视图" class="headerlink" title="定义视图"></a>定义视图</h4><p><img src="https://i.loli.net/2020/04/04/R9MgBo7XGwK2Y8a.png" alt="img"></p><p> 　with check option ：当对视图进行插入、删除和更新操作时必须满足视图定义的谓词条件。</p><p><img src="https://i.loli.net/2020/04/04/eETgZ48mJ17ASh3.png" alt="img"></p><h4 id="查询视图"><a href="#查询视图" class="headerlink" title="查询视图"></a>查询视图</h4><p>　　查询是对视图进行的最主要的操作。从用户的角度来看，查询视图与查询基本表的方式是完全一样的。</p><h4 id="更新视图"><a href="#更新视图" class="headerlink" title="更新视图"></a>更新视图</h4><p>　　更新视图指通过视图来插入、删除和修改基本表中的数据。由于视图是一个虚表，不实际存放数据，对视图的更新最终要转换为对基本表的更新，因此，如果视图的定义中包含了表达式，或聚合运算，或消除重复值运算，则不能对视图进行更新操作。</p><h4 id="删除视图"><a href="#删除视图" class="headerlink" title="删除视图"></a>删除视图</h4><p><img src="https://i.loli.net/2020/04/04/FiN2qdoAf8LMkCu.png" alt="img"></p><h3 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h3><p><img src="https://i.loli.net/2020/04/04/VeDnJizjmpqPsXB.png" alt="img"></p><p> 　1）查询在2005-2008 年之间没有归还图书的读者编号、读者姓名、读者工作单位、图书编号、图书名称和借书日期。</p><p>　　分析：将读者、借阅、书籍三个关系连接起来然后判断书籍是否应该在 2005~2008年之间归还且书籍归还日期为空。</p><p>　　select rd.readerNo, rd.readerName, rd.workUnit, bk.bookNo, bk.bookName, br.borrowDate</p><p>　　from Reader rd, Borrow br, Book bk</p><p>　　where rd.readerNo=br.readerNo and br.bookNo=bk.bookNo and year(shouldDate) between 2005 and 2008 and br.returnDate is null</p><p>　　2)查询没有借书的读者姓名（分别用 in 子查询和存在量词子查询表达）。</p><p>　　分析：首先在借阅表中找出所有借过书还没有归还的读者号，然后判断每一个读者的读者号是否在前面找出的读者号里面，不在则代表没有借书。</p><p>　　select readerName</p><p>　　from Reader</p><p>　　where readerNo not in(</p><p>　　select distinct readerNo</p><p>　　from Borrow</p><p>　　where returnDate is null ); </p><p>　　select readerName</p><p>　　from Reader</p><p>　　where not exists (</p><p>　　select *</p><p>　　from Borrow</p><p>　　where Reader.readerNo=Borrow.readerNo and returnDate is null );</p><p>　　3)查询既借阅了“离散数学”又借阅了“数据库系统概念”两本书的读者编号、读者姓名、借书日期和图书名称。</p><p>　　分析：先找出借阅了离散数学的读者编号，再去看该读者是否借阅了数据库系统概念。</p><p>　　select rd.readerNo, rd.readerName, br.borrowDate, bk.bookName</p><p>　　from Reader rd, Borrow br, Book bk</p><p>　　where rd.readerNo=br.readerNo and br.bookNo=bk.bookNo and bookName=’离散数学’</p><p>　　and exists (</p><p>　　select * </p><p>　　from Borrow, Book</p><p>　　where Borrow.bookNo=Book.bookNo and rd.readerNo=Borrow.readerNo and Book.bookName=’数据库系统概念’ );</p><p>　　4）查询没有借阅’“经济管理”类图书的读者编号、读者姓名和出生日期（分别用 in 子查询和存在量词子查询表达）。</p><p>　　分析：先找出借阅了经济管理类书籍的读者号，然后判断每一个读者编号是否在前面找到的读者号中。</p><p>　　select readerNo, readerName, substring(identitycard,7,8) as birthday</p><p>　　from Reader</p><p>　　where readerNo not in (</p><p>　　select readerNo</p><p>　　from Borrow</p><p>　　where bookNo in(</p><p>　　select bookNo</p><p>　　from Book</p><p>　　where classNo in(</p><p>　　select classNo</p><p>　　from BookClass</p><p>　　where className=’经济管理’ )));</p><p>　　</p><p>　　</p><p>　　select readerNo, readerName, reader, substring(identitycard,7,8) as birthday</p><p>　　from Reader</p><p>　　where not exists(</p><p>　　select *</p><p>　　from Borrow br, Book bk, BookClass bc</p><p>　　where br.bookNo=bk.bookNo and bk.classNo=bc.classNo and bc,className=’经济管理’ and br.readerNo = Reader.readerNo);</p><p>　　</p><p>　　5)查询至少借阅了“马永强”所借的所有图书的读者编号、读者姓名、和工作单位。</p><p>　　分析：马永强所借的书他都借过 即 没有马永强借的书是他没有借的</p><p>　　select readerNo, readerName, workUnit</p><p>　　from Reader r1        //遍历每一位读者</p><p>　　where r1.readerNo not in(</p><p>　　select readerNo</p><p>　　from Borrow b1    //读者借书</p><p>　　where not exists(</p><p>　　select *</p><p>　　from Reader r2</p><p>　　where r2.readerName=’马永强’ and not exists(</p><p>　　select *</p><p>　　from Borrow b2      //马永强借书</p><p>　　where r2.readerNo=b2.readerNo and b1.bookNo=b2.bookNo and b2.returnDate is null)));</p>]]></content>
+    
+    <summary type="html">
+    
+      本文为复习数据库整理的资料。
+    
+    </summary>
+    
+    
+      <category term="数据库" scheme="https://hoo334.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
     
   </entry>
   
