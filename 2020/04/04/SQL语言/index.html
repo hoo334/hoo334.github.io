@@ -65,7 +65,7 @@
 <meta property="og:image" content="https://i.loli.net/2020/04/04/FiN2qdoAf8LMkCu.png">
 <meta property="og:image" content="https://i.loli.net/2020/04/04/VeDnJizjmpqPsXB.png">
 <meta property="article:published_time" content="2020-04-04T06:39:13.000Z">
-<meta property="article:modified_time" content="2020-04-21T14:27:10.227Z">
+<meta property="article:modified_time" content="2020-05-08T09:42:22.758Z">
 <meta property="article:author" content="hoo334">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.loli.net/2020/04/04/5NmKQzuGXSE8p3H.png">
@@ -258,7 +258,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-21 22:27:10" itemprop="dateModified" datetime="2020-04-21T22:27:10+08:00">2020-04-21</time>
+                <time title="Modified: 2020-05-08 17:42:22" itemprop="dateModified" datetime="2020-05-08T17:42:22+08:00">2020-05-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -314,7 +314,7 @@
 <p> <img src="https://i.loli.net/2020/04/04/Sq2ceb7Lfpahj8E.png" alt="img"></p>
 <h4 id="使用比较运算符的子查询"><a href="#使用比较运算符的子查询" class="headerlink" title="使用比较运算符的子查询"></a>使用比较运算符的子查询</h4><p><img src="https://i.loli.net/2020/04/04/vt87Oam4YzwJxES.png" alt="img"></p>
 <p><img src="https://i.loli.net/2020/04/04/OdEwbPAcBqGKonx.png" alt="img"></p>
-<h4 id="使用存在量词-exists-的子查询"><a href="#使用存在量词-exists-的子查询" class="headerlink" title="使用存在量词 exists 的子查询"></a>使用存在量词 exists 的子查询</h4><p>　　SQL 查询提供量词运算。量词有两种：一是存在量词，二是全程量词。全程量词可以用存在量词替代，故 SQL 语句仅提供存在量词的运算，使用谓词 exists 表示，全称量词转化通过 not exists 谓词来实现。</p>
+<h4 id="使用存在量词-exists-的子查询"><a href="#使用存在量词-exists-的子查询" class="headerlink" title="使用存在量词 exists 的子查询"></a>使用存在量词 exists 的子查询</h4><p>　　SQL 查询提供量词运算。量词有两种：一是存在量词，二是全称量词。全程量词可以用存在量词替代，故 SQL 语句仅提供存在量词的运算，使用谓词 exists 表示，全称量词转化通过 not exists 谓词来实现。</p>
 <p><img src="https://i.loli.net/2020/04/04/hM1PlF8UboEXQqe.png" alt="img"></p>
 <p><img src="https://i.loli.net/2020/04/04/KN9bScEkCjZJhMf.png" alt="img"></p>
 <p><img src="https://i.loli.net/2020/04/04/XEBS7msaRO3tfek.png" alt="img"></p>
@@ -354,7 +354,7 @@
 <h4 id="索引的定义"><a href="#索引的定义" class="headerlink" title="索引的定义"></a>索引的定义</h4><p>　　如果数据有序，则检索速度是非常快的，对表中的记录进行排序有两种方案：一是对记录进行物理上的重新组织。二是不改变物理顺序，通过建立索引来实现数据记录的重新排列，称为逻辑排序。</p>
 <p>　　一张表可以建立多个索引，可以从不同的角度加快查询速度，如果索引建立的比较多，会给数据维护带来较大的系统开销。</p>
 <p>　　索引通常是由指针构成的记录，指针逻辑上按照索引关键字进行排序，但不改变表中记录的物理顺序。索引和基本表分别存储。</p>
-<p>　　如果索引文件中的记录按照某个搜索码值指定的顺序物理存储，那么该搜索码对应的索引就称为<strong>主索引</strong>，也叫<strong>聚集索引</strong>。搜索码值顺序与索引文件中记录的物理顺序不同的那些索引称为<strong>辅助索引</strong>或<strong>非聚集索引</strong>。</p>
+<p>　　如果索引文件中的记录<strong>按照某个搜索码值指定的顺序物理存储</strong>，那么该搜索码对应的索引就称为<strong>主索引</strong>，也叫<strong>聚集索引</strong>。<strong>搜索码值顺序与索引文件中记录的物理顺序不同</strong>的那些索引称为<strong>辅助索引</strong>或<strong>非聚集索引</strong>。</p>
 <h5 id="索引的建立"><a href="#索引的建立" class="headerlink" title="索引的建立"></a>索引的建立</h5><p><img src="https://i.loli.net/2020/04/04/B3SlMcuEm9wDe4s.png" alt="img"></p>
 <h5 id="索引的删除"><a href="#索引的删除" class="headerlink" title="索引的删除"></a>索引的删除</h5><p>　　索引一旦建立，用户就不需要管理它，由系统自动维护。如果某个关系经常要执行插入、删除和修改操作，系统会花费很多时间来维护索引，从而降低基本表的更新速度，因此可删除那些不经常使用的索引。删除索引的语法为：</p>
 <p><img src="https://i.loli.net/2020/04/04/OUpFAjhemWIoxsi.png" alt="img"></p>
@@ -532,20 +532,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">68</span>
+          <span class="site-state-item-count">70</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

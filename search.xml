@@ -123,7 +123,7 @@
 <p> <img src="https://i.loli.net/2020/04/04/Sq2ceb7Lfpahj8E.png" alt="img"></p>
 <h4 id="使用比较运算符的子查询"><a href="#使用比较运算符的子查询" class="headerlink" title="使用比较运算符的子查询"></a>使用比较运算符的子查询</h4><p><img src="https://i.loli.net/2020/04/04/vt87Oam4YzwJxES.png" alt="img"></p>
 <p><img src="https://i.loli.net/2020/04/04/OdEwbPAcBqGKonx.png" alt="img"></p>
-<h4 id="使用存在量词-exists-的子查询"><a href="#使用存在量词-exists-的子查询" class="headerlink" title="使用存在量词 exists 的子查询"></a>使用存在量词 exists 的子查询</h4><p>　　SQL 查询提供量词运算。量词有两种：一是存在量词，二是全程量词。全程量词可以用存在量词替代，故 SQL 语句仅提供存在量词的运算，使用谓词 exists 表示，全称量词转化通过 not exists 谓词来实现。</p>
+<h4 id="使用存在量词-exists-的子查询"><a href="#使用存在量词-exists-的子查询" class="headerlink" title="使用存在量词 exists 的子查询"></a>使用存在量词 exists 的子查询</h4><p>　　SQL 查询提供量词运算。量词有两种：一是存在量词，二是全称量词。全程量词可以用存在量词替代，故 SQL 语句仅提供存在量词的运算，使用谓词 exists 表示，全称量词转化通过 not exists 谓词来实现。</p>
 <p><img src="https://i.loli.net/2020/04/04/hM1PlF8UboEXQqe.png" alt="img"></p>
 <p><img src="https://i.loli.net/2020/04/04/KN9bScEkCjZJhMf.png" alt="img"></p>
 <p><img src="https://i.loli.net/2020/04/04/XEBS7msaRO3tfek.png" alt="img"></p>
@@ -163,7 +163,7 @@
 <h4 id="索引的定义"><a href="#索引的定义" class="headerlink" title="索引的定义"></a>索引的定义</h4><p>　　如果数据有序，则检索速度是非常快的，对表中的记录进行排序有两种方案：一是对记录进行物理上的重新组织。二是不改变物理顺序，通过建立索引来实现数据记录的重新排列，称为逻辑排序。</p>
 <p>　　一张表可以建立多个索引，可以从不同的角度加快查询速度，如果索引建立的比较多，会给数据维护带来较大的系统开销。</p>
 <p>　　索引通常是由指针构成的记录，指针逻辑上按照索引关键字进行排序，但不改变表中记录的物理顺序。索引和基本表分别存储。</p>
-<p>　　如果索引文件中的记录按照某个搜索码值指定的顺序物理存储，那么该搜索码对应的索引就称为<strong>主索引</strong>，也叫<strong>聚集索引</strong>。搜索码值顺序与索引文件中记录的物理顺序不同的那些索引称为<strong>辅助索引</strong>或<strong>非聚集索引</strong>。</p>
+<p>　　如果索引文件中的记录<strong>按照某个搜索码值指定的顺序物理存储</strong>，那么该搜索码对应的索引就称为<strong>主索引</strong>，也叫<strong>聚集索引</strong>。<strong>搜索码值顺序与索引文件中记录的物理顺序不同</strong>的那些索引称为<strong>辅助索引</strong>或<strong>非聚集索引</strong>。</p>
 <h5 id="索引的建立"><a href="#索引的建立" class="headerlink" title="索引的建立"></a>索引的建立</h5><p><img src="https://i.loli.net/2020/04/04/B3SlMcuEm9wDe4s.png" alt="img"></p>
 <h5 id="索引的删除"><a href="#索引的删除" class="headerlink" title="索引的删除"></a>索引的删除</h5><p>　　索引一旦建立，用户就不需要管理它，由系统自动维护。如果某个关系经常要执行插入、删除和修改操作，系统会花费很多时间来维护索引，从而降低基本表的更新速度，因此可删除那些不经常使用的索引。删除索引的语法为：</p>
 <p><img src="https://i.loli.net/2020/04/04/OUpFAjhemWIoxsi.png" alt="img"></p>
@@ -507,8 +507,9 @@
   </entry>
   <entry>
     <title>事务管理与恢复</title>
-    <url>/2020/04/06/%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86%E4%B8%8E%E6%81%A2%E5%A4%8D/</url>
-    <content><![CDATA[<h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h3><h4 id="事务概念"><a href="#事务概念" class="headerlink" title="事务概念"></a>事务概念</h4><p>​    对于用户而言，事务是具有完整逻辑意义的数据库操作序列的集合。对于数据库管理系统而言，事务则是一个读写操作序列。这些操作是一个不可分割的逻辑工作单元，要么都做，要么都不做。</p>
+    <url>/2020/05/05/%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86%E4%B8%8E%E6%81%A2%E5%A4%8D/</url>
+    <content><![CDATA[<p>title: 事务管理与恢复<br>date: 2020-04-06 09:27:11<br>categories: 数据库<br>description: 本文是复习数据库整理的资料</p>
+<h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h3><h4 id="事务概念"><a href="#事务概念" class="headerlink" title="事务概念"></a>事务概念</h4><p>​    对于用户而言，事务是具有完整逻辑意义的数据库操作序列的集合。对于数据库管理系统而言，事务则是一个读写操作序列。这些操作是一个不可分割的逻辑工作单元，要么都做，要么都不做。</p>
 <p>​    通常有有两种类型的事务结束语句：</p>
 <p>​    1）事务提交（commit）：将成功完成事务的执行结果（即更新）永久化，并释放事务占有的全部资源。</p>
 <p>​    2）事务回滚（rollback）：中止当前事务、撤销其对数据库所做的更新，并释放事务占有的全部资源。</p>
@@ -569,6 +570,47 @@
 <p>​    1）可能导致死锁，即持有锁的事务出现相互等待都不能继续执行。解除死锁的一个简单方法是超时机制。如果一个事务为某个锁等待的时间过长，可以悲观得认为死锁已经发生，回滚该事务并重启。</p>
 <p>​    2）不能避免读脏数据。</p>
 <p>​    另一个两阶段封锁得变体是强两阶段封锁协议，它要求事务提交之前不得释放任何锁。事务可以按其提交得顺序串行化。</p>
+<h4 id="封锁协议总结"><a href="#封锁协议总结" class="headerlink" title="封锁协议总结"></a>封锁协议总结</h4><p>在运用 X 锁和 S 锁这两种基本封锁对数据对象加锁时，还要约定一些规则。例如，何时申请 X 锁和 S 锁、封锁时间、何时释放等。这些规则称为封锁协议。</p>
+<p>对并发操作的不正确调度可能会带来脏读、丢失修改、不可重复读等不一致性问题。三级封锁协议分别在不同程度上解决了这些问题，为并发操作的正确调度提供一定的保证。</p>
+<ol>
+<li>一级封锁协议，事务 T 在修改数据 R 之前必须先对其加 X 锁，直到事务结束才释放。事务结束包括正常结束（COMMIT）和非正常结束（ROLLBACK）。</li>
+<li>二级封锁协议，在一级封锁协议基础上增加事务 T 在读取数据 R 之前必须先对其加 S 锁，读完后即可释放 S 锁。</li>
+<li>三级封锁协议，在一级封锁协议基础上增加事务 T 在读取数据 R 之前必须先对其加 S 锁，直到事务结束才释放。</li>
+</ol>
+<p><img src="https://i.loli.net/2020/05/11/RkMmTrJnKHz3OWl.png" alt="image-20200511093025700"></p>
+<p>总结：三个等级的封锁协议都是事务结束后释放 X 锁，不同的是一级封锁对于读取数据不加 S 锁，二级封锁加 S 锁，但在读取操作结束后就释放，三级封锁加 S 锁，在事务结束后释放。一级封锁保证不会丢失修改，二级封锁保证不会丢失修改和脏读，三级封锁保证不会丢失修改、脏读和可重复读。</p>
+<p><img src="https://i.loli.net/2020/05/11/GvaPKLouCjOWF9s.png" alt="image-20200511095857695"></p>
+<h4 id="活锁与死锁"><a href="#活锁与死锁" class="headerlink" title="活锁与死锁"></a>活锁与死锁</h4><p>活锁就是一个事务一直处于“饥饿”状态。死锁即为临界资源的循环占用。</p>
+<p><img src="https://i.loli.net/2020/05/11/F5Vo6EMKPB9akYb.png" alt="image-20200511100149015"></p>
+<p>避免出现“饥饿”现象的最简方法为采用 FCFS 策略。</p>
+<p>避免死锁的方法有<strong>预防死锁</strong>和<strong>诊断并解除死锁</strong>两种。</p>
+<p>预防死锁：</p>
+<ol>
+<li>一次封锁法，每个事务必须一次将所有使用的数据全部加锁。</li>
+<li>顺序封锁法，对数据对象规定一个封锁顺序，所有事务都按这个顺序实施封锁。</li>
+</ol>
+<p>诊断和解除死锁</p>
+<ol>
+<li>超时法，如果一个事务的等待时间超过了规定的时限，就认为发生了死锁。</li>
+<li>等待图法，出现环则发现死锁。</li>
+</ol>
+<h4 id="封锁的粒度"><a href="#封锁的粒度" class="headerlink" title="封锁的粒度"></a>封锁的粒度</h4><p>封锁对象的大小称为封锁粒度。封锁对象可以是逻辑单元，也可以是物理单元。封锁粒度与系统的并发度和并发控制的开销密切相关，封锁的粒度越大，并发度越小，系统的开销也越小；封锁的粒度越小，并发度较高，系统开销也较大。</p>
+<h5 id="多粒度封锁"><a href="#多粒度封锁" class="headerlink" title="多粒度封锁"></a>多粒度封锁</h5><p>多粒度树的根结点是整个数据库，表示最大的数据粒度。叶节点表示最小的数据粒度。</p>
+<p>多粒度封锁协议允许多粒度树中的每个结点被独立地加锁，对一个结点加锁意味着这个结点所有子节点也被加以同样类型的锁。在多粒度封锁中，一个数据对象可能以两种方式封锁：显式封锁和隐式封锁。显示封锁是应事务的要求直接加到数据对象上的锁；隐式封锁是该数据对象没有被独立加锁，由于其上级结点加锁而使该数据对象加上了锁。</p>
+<p><img src="https://i.loli.net/2020/05/11/Mix5FDt8dfVoYwX.png" alt="image-20200511122559581"></p>
+<h5 id="意向锁"><a href="#意向锁" class="headerlink" title="意向锁"></a>意向锁</h5><p>意向共享锁（Intent Share Lock，IS 锁）意向排他锁（Intent Exclusive Lock，IX 锁）；共享意向排他锁（Share Intent Exclusive Lock，SIX 锁）。</p>
+<ol>
+<li>IS 锁，如果对一个数据对象加 IS 锁，表示它的子结点拟加 S 锁。</li>
+<li>IX 锁，如果对一个数据对象加 IX 锁，表示它的子结点拟加 X 锁。</li>
+<li>SIX 锁，如果对一个数据对象加 SIX 锁，表示对它加 S 锁，再加 IX 锁。</li>
+</ol>
+<p>在具有意向锁的多粒度封锁方法中，任意事务 T 要对一个数据对象加锁，必须先对它的上层结点加意向锁。申请封锁时应该按自上而下的次序进行，释放封锁时则应该按自下而上的次序进行。</p>
+<p><img src="https://i.loli.net/2020/05/11/WrXlch5Ly9KAwoS.png" alt="image-20200511123052840"></p>
+<p>图 b 中，所谓锁的强度是指它对其他锁的排斥程度。一个事务在申请封锁时以强锁代替弱锁是安全的，反之则不然。</p>
+<h4 id="其他并发控制机制"><a href="#其他并发控制机制" class="headerlink" title="其他并发控制机制"></a>其他并发控制机制</h4><p>并发控制的方法除了封锁技术外还有时间戳方法、乐观控制法和多版本并发控制等。</p>
+<p>时间戳方法给每一个事务盖上一个时标，即事务开始执行的时间。每个事务具有唯一的时间戳，并按照这个时间戳来解决事务的冲突操作。</p>
+<p>乐观控制阀认为书屋执行时很少发生冲突，不对事务进行特殊的管制，而是让它自由执行，事务提交前再进行正确性检查。如果发生冲突则回滚事务。</p>
+<p>多版本并发控制是指数据库中通过维护数据对象的多个版本信息来实现高效并发控制的一种策略。</p>
 <h3 id="恢复与备份"><a href="#恢复与备份" class="headerlink" title="恢复与备份"></a>恢复与备份</h3><h4 id="故障分类及恢复策略"><a href="#故障分类及恢复策略" class="headerlink" title="故障分类及恢复策略"></a>故障分类及恢复策略</h4><p>​    1）事务故障。事务未运行至正常终止点就夭折了。</p>
 <p>​    2）系统故障。突发事件导致系统停止运行。</p>
 <p>​    3）介质故障。硬件损坏。</p>
@@ -611,9 +653,6 @@
 <p>​    具体进行数据备份时可以有两种方式，一种是全备份，一种是增量备份。</p>
 <p>​    全备份是指每次备份全部数据库，而增量备份只备份上次备份后更新过的数据。</p>
 ]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
   </entry>
   <entry>
     <title>事务</title>
@@ -963,6 +1002,32 @@
 
 <p>我们也可以模仿二叉树遍历，只是先遍历右子结点然后遍历左子结点。同时在遍历的过程中保存每一层的第一个结点值。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">rightSideView</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        helper(root, <span class="number">1</span>, res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">helper</span><span class="params">(TreeNode root, <span class="keyword">int</span> level, List&lt;Integer&gt; res)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="comment">/*</span></span><br><span class="line"><span class="comment">            假设二叉树深度为 i ，res 数组的大小为 i。</span></span><br><span class="line"><span class="comment">            当 res.size() 小于当前访问的层数时就代表这是最右侧结点。</span></span><br><span class="line"><span class="comment">            */</span></span><br><span class="line">            <span class="keyword">if</span>(res.size() &lt; level)&#123;</span><br><span class="line">                res.add(root.val);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//先遍历右子结点</span></span><br><span class="line">            helper(root.right, level+<span class="number">1</span>, res);</span><br><span class="line">            <span class="comment">//后遍历左子结点</span></span><br><span class="line">            helper(root.left, level+<span class="number">1</span>, res);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="236-二叉树的最近公共祖先"><a href="#236-二叉树的最近公共祖先" class="headerlink" title="236. 二叉树的最近公共祖先"></a><a href="https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/" target="_blank" rel="noopener">236. 二叉树的最近公共祖先</a></h4><p>给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。</p>
+<p><a href="https://baike.baidu.com/item/最近公共祖先/8918834?fr=aladdin" target="_blank" rel="noopener">百度百科</a>中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（<strong>一个节点也可以是它自己的祖先</strong>）。”</p>
+<p>例如，给定如下二叉树: root = [3,5,1,6,2,0,8,null,null,7,4]</p>
+<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/15/binarytree.png" alt="img"></p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: root &#x3D; [3,5,1,6,2,0,8,null,null,7,4], p &#x3D; 5, q &#x3D; 1</span><br><span class="line">输出: 3</span><br><span class="line">解释: 节点 5 和节点 1 的最近公共祖先是节点 3。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: root &#x3D; [3,5,1,6,2,0,8,null,null,7,4], p &#x3D; 5, q &#x3D; 4</span><br><span class="line">输出: 5</span><br><span class="line">解释: 节点 5 和节点 4 的最近公共祖先是节点 5。因为根据定义最近公共祖先节点可以为节点本身。</span><br></pre></td></tr></table></figure>
+
+<p><strong>说明:</strong></p>
+<ul>
+<li>所有节点的值都是唯一的。</li>
+<li>p、q 为不同节点且均存在于给定的二叉树中。</li>
+</ul>
+<p>思路一</p>
+<p>我们可以遍历所有结点，并判断 p 或 q 是否在它的左右子树上，或者这个结点就是 p 或 q 。定义 fx表示 x 结点的子树中是否包含 p 节点或 q节点。fl 代表 x 结点的左子树上是否有 p 或 q 结点，fr 代表 x 结点的右子树上是否有 p 或 q 结点。我们有两种情况：</p>
+<ul>
+<li>p 和 q 分别在 x 结点的左右子树上，即 fl &amp;&amp; fr == true</li>
+<li>结点 x 就是 p 或 q，此时 x== p || x==q 为true，若在 x 结点的左子树或右子树上找到另一个结点，则 x 就是最近公共祖先。</li>
+</ul>
+<p>总结判断条件：(f1 &amp;&amp; fr) || [ (x==p || x==q) &amp;&amp; ( fl || fr) ] 。由于是自底向上判断的，在所有满足条件的公共祖先中一定是深度最大的祖先被访问到。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> TreeNode res;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">lowestCommonAncestor</span><span class="params">(TreeNode root, TreeNode p, TreeNode q)</span> </span>&#123;</span><br><span class="line">        dfs(root, p, q);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">dfs</span><span class="params">(TreeNode root, TreeNode p, TreeNode q)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="comment">//先判断左右子树，再判断当前结点情况</span></span><br><span class="line">        <span class="keyword">boolean</span> left = dfs(root.left, p, q);</span><br><span class="line">        <span class="keyword">boolean</span> right = dfs(root.right, p, q);</span><br><span class="line">        <span class="comment">//判断条件</span></span><br><span class="line">        <span class="keyword">if</span>((left &amp;&amp; right) || (root.val == p.val || root.val == q.val) &amp;&amp; (left || right))&#123;</span><br><span class="line">            res = root;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//返回 x 结点的左右子树 是否包含 p 或 q 结点</span></span><br><span class="line">        <span class="keyword">return</span> left || right || root.val == p.val || root.val == q.val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -1340,7 +1405,7 @@
 <h4 id="关系模式"><a href="#关系模式" class="headerlink" title="关系模式"></a>关系模式</h4><p>　　关系完整性的约束条件：</p>
 <p>　　1）实体完整性。主码不能为空。</p>
 <p>　　2）参照完整性。外码要么为空要么能等于被参照关系的某个元组的主码。</p>
-<p>　　3）用户自定义完整性。限制关系中某些属性的值复合业务语义要求。如限制性别为男或女。</p>
+<p>　　3）用户自定义完整性。限制关系中某些属性的值符合业务语义要求。如限制性别为男或女。</p>
 <p>　　</p>
 <h3 id="关系操作"><a href="#关系操作" class="headerlink" title="关系操作"></a>关系操作</h3><p>　　关系操作有查询操作和更新操作两大类。查询操作又可分为选择、投影、连接、除、并、交、差、笛卡儿积等。其中<strong>选择、投影、集合并、集合差和笛卡儿积是 5 种基本关系操作</strong>。</p>
 <p>​        关系代数</p>
@@ -2729,7 +2794,7 @@
     <url>/2020/04/04/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/</url>
     <content><![CDATA[<h3 id="数据库系统的作用"><a href="#数据库系统的作用" class="headerlink" title="数据库系统的作用"></a>数据库系统的作用</h3><h4 id="数据与数据管理"><a href="#数据与数据管理" class="headerlink" title="数据与数据管理"></a>数据与数据管理</h4><p>　　1）数据。描述事物的符号记录称为数据。数据是数据库中存储的对象，也是数据库管理系统处理的对象。数据和关于数据的解释是不可分的。</p>
 <p>　　2）数据管理。数据处理是指对各种数据进行采集、存储、检索、加工、传播和应用等一系列活动的总和。数据管理是对数据进行有效的分类、组织、编码、存储、检索、维护和应用，它是数据处理的中心问题。</p>
-<h4 id="数据管理技术的产生与发展"><a href="#数据管理技术的产生与发展" class="headerlink" title="数据管理技术的产生与发展"></a>数据管理技术的产生与发展</h4><p>　　1）人工管理阶段。面向应用程序，一个数据集只能对应一个程序，没有相应的软件系统专门负责数据的管理工作。当多个应用程序设计某些相同的数据时，必须由各自的应用程序分别定义和管理这些数据，无法共享利用，存在大量冗余。</p>
+<h4 id="数据管理技术的产生与发展"><a href="#数据管理技术的产生与发展" class="headerlink" title="数据管理技术的产生与发展"></a>数据管理技术的产生与发展</h4><p>　　1）人工管理阶段。面向应用程序，一个数据集只能对应一个程序，没有相应的软件系统专门负责数据的管理工作。当多个应用程序涉及某些相同的数据时，必须由各自的应用程序分别定义和管理这些数据，无法共享利用，存在大量冗余。</p>
 <p>　　2）文件系统阶段。利用文件系统管理数据就是由专门的软件对数据进行统一管理。对于一个特定的应用，数据被集中组织存放在多个数据文件组中，并针对该文件组来开发特定的应用程序。文件系统利用“按文件名访问，按记录进行存取”的管理技术，可以对文件进行修改、插入和删除。</p>
 <p>　　文件系统的弊端：数据共享性差，数据冗余和不一致。数据独立性差。数据孤立。数据获取困难。完整性问题（也称为一致性约束）。原子性问题。并发访问异常。安全性问题。</p>
 <p>　　3）数据库管理系统阶段。数据库管理系统是由一个相互关联的数据的集合和一组用以访问、管理和控制这些数据的程序组成。这个数据集合通常称为数据库。</p>
@@ -2741,7 +2806,7 @@
 <p>　　<strong>逻辑独立性</strong>是指用户的应用程序与数据的逻辑结构是相互独立的。</p>
 <p>　　d.数据由数据库管理系统统一管理和控制</p>
 <p>　　DBMS 必须提供：<strong>数据的安全性保护。数据的完整性检查。并发控制。数据库恢复。</strong></p>
-<h3 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h3><p>　　数据模型是一个描述数据语义数据与数据之间联系数据操作，以及一致性（完整性）约束的概念工具的集合。通过数据模型可以对现实世界的数据特征进行抽象。</p>
+<h3 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h3><p>　　数据模型是一个描述数据语义、数据与数据之间联系、数据操作，以及一致性（完整性）约束的概念工具的集合。通过数据模型可以对现实世界的数据特征进行抽象。</p>
 <h4 id="数据模型的分类"><a href="#数据模型的分类" class="headerlink" title="数据模型的分类"></a>数据模型的分类</h4><p>　　数据模型应满足三方面的要求：一是能比较真实地模拟现实世界；二是容易被人所理解；三是便于在计算机上实现。</p>
 <p>　　1）<strong>概念模型</strong>。又称信息模型，它按用户的观点或认识对现实世界的数据和信息进行建模，主要用于数据库设计。常用的概念模型有 E-R 模型，OO 模型。</p>
 <p>　　2）<strong>逻辑模型</strong>。逻辑层是数据抽象的中间层，用于描述数据库数据的整体逻辑结构。该层的数据抽象称为逻辑数据模型。它是用户通过数据库管理系统看到的现实世界，是按计算机系统的观点对数据建模，即数据的计算机实现形式，主要用于 DBMS 的实现。</p>
@@ -2761,7 +2826,7 @@
 <h5 id="数据库的两层映像功能与数据独立性"><a href="#数据库的两层映像功能与数据独立性" class="headerlink" title="数据库的两层映像功能与数据独立性"></a><strong>数据库的两层映像功能与数据独立性</strong></h5><p>　　1）<strong>外模式/模式映像</strong>。定义了外模式与模式之间的对应关系。当模式改变时，由数据库管理员对各个外模式/模式的映像作相应的改变，可以保持外模式不变。<strong>保证了数据与程序的逻辑独立性，简称为数据的逻辑独立性。</strong></p>
 <p>　　2）<strong>模式/内模式映像</strong>。当数据库的存储结构改变了，由数据库管理员对模式。内模式映像作相应的改变，可以使模式保持不变。<strong>保证了数据与程序的物理独立性，简称为数据的物理独立性。</strong></p>
 <h3 id="数据库系统"><a href="#数据库系统" class="headerlink" title="数据库系统"></a>数据库系统</h3><h4 id="数据库系统组成"><a href="#数据库系统组成" class="headerlink" title="数据库系统组成"></a>数据库系统组成</h4><p>　　从DBMS角度来看：数据库系统结构是外模式/模式/内模式的三级模式；从用户角度看：数据库系统分为单用户结构、主从式结构、分布式结构、客户/服务器、浏览器/应用服务器/数据库服务器等结构。</p>
-<p>　　数据库中包含 4 类数据：用户数据、元数据、索引和元数据。用户数据就是通过结构化的关系（二维表）组织的所有业务数据的集合；元数据是对关系数据库结构的描述数据和数据库的有关统计数据，也成为数据字典；索引是为了改进数据库的性能和可访问性而建立的附件数据；应用元数据是用户窗体、报表、查询和其他形式的应用组件。</p>
+<p>　　数据库中包含 4 类数据：用户数据、元数据、索引和应用元数据。用户数据就是通过结构化的关系（二维表）组织的所有业务数据的集合；元数据是对关系数据库结构的描述数据和数据库的有关统计数据，也成为数据字典；索引是为了改进数据库的性能和可访问性而建立的附件数据；应用元数据是用户窗体、报表、查询和其他形式的应用组件。</p>
 <h4 id="数据库管理系统"><a href="#数据库管理系统" class="headerlink" title="数据库管理系统"></a>数据库管理系统</h4><h5 id="DBMS-的功能"><a href="#DBMS-的功能" class="headerlink" title="DBMS 的功能"></a><strong>DBMS 的功能</strong></h5><p>　　1）数据定义。DBMS 提供数据定义语言（Data Definition Language，DDL），用户通过它可以方便的对数据库中的数据对象进行定义。</p>
 <p>　　2）数据组织、存储和管理。DBMS 分类组织、存储和管理各种数据，包括数据字典、用户数据、数据的存取路径等。</p>
 <p>　　3）数据操纵。DBMS 还提供数据操纵语言（Data Manipulation Language，DML）用户通过它实现增删改查。</p>
@@ -4853,6 +4918,240 @@
       </categories>
       <tags>
         <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>微机原理复习</title>
+    <url>/2020/05/09/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E5%A4%8D%E4%B9%A0/</url>
+    <content><![CDATA[<h3 id="计算机工作原理"><a href="#计算机工作原理" class="headerlink" title="计算机工作原理"></a>计算机工作原理</h3><p>冯诺依曼计算机体系结构：输入设备、输出设备、存储器、运算器和控制器。</p>
+<h3 id="8086"><a href="#8086" class="headerlink" title="8086"></a>8086</h3><p>共 20 根地址线，16根数据线。地址线 20 根代表可寻址的空间为 1MB，数据线为 16 根代表处理器字长为 16位。</p>
+<h4 id="地址线和数据线"><a href="#地址线和数据线" class="headerlink" title="地址线和数据线"></a>地址线和数据线</h4><ul>
+<li>AD0 — AD7 低 8 位地址和低 8 位数据信号分时复用，传递地址信号位单向，传送数据信号时为双向。</li>
+<li>A16 — A19 高 4 位地址信号，与状态信号分时复用。</li>
+<li>A8 — A15  8 位地址信号。</li>
+</ul>
+<h4 id="控制信号和状态信号"><a href="#控制信号和状态信号" class="headerlink" title="控制信号和状态信号"></a>控制信号和状态信号</h4><p><img src="https://i.loli.net/2020/05/09/SEzlOaAqhcmHfRM.png" alt="image-20200509141827458"></p>
+<h4 id="内部寄存器"><a href="#内部寄存器" class="headerlink" title="内部寄存器"></a>内部寄存器</h4><p>含 14 个 16 位寄存器，按功能可分为三类：8 个通用寄存器、4 个段寄存器和 2 个控制寄存器。</p>
+<h5 id="通用寄存器"><a href="#通用寄存器" class="headerlink" title="通用寄存器"></a>通用寄存器</h5><ul>
+<li><p>数据寄存器：AX、BX、CX、DX。</p>
+</li>
+<li><p>地址指针寄存器：SP、BP。</p>
+</li>
+<li><p>变址寄存器：SI、DI。</p>
+</li>
+</ul>
+<p>AX：累加器。所有 I/O 指令都通过 AX 与接口传送信息，中间运算结果也多放于 AX 中。</p>
+<p>BX：基址寄存器。在间接寻址中用于存放基地址。</p>
+<p>CX：计数寄存器。用于在循环或串操作指令中存放计数值。</p>
+<p>DX：数据寄存器。在间接寻址的 I/O 指令中存放 I/O 端口地址，在 32 位乘除法运算时，存放高 16 位数。</p>
+<p>SP：堆栈指针寄存器，其内容为栈顶的偏移地址。</p>
+<p>BP：基址指针寄存器，常用于在访问内存时存放内存单元的偏移地址。</p>
+<p>BX 用于数据段，BP 用于堆栈段。</p>
+<p>SI：源变址寄存器</p>
+<p>DI：目标变址寄存器</p>
+<h5 id="控制寄存器"><a href="#控制寄存器" class="headerlink" title="控制寄存器"></a>控制寄存器</h5><ul>
+<li>CF 进位标志位；</li>
+<li>PF 奇偶标志位；</li>
+<li>AF 辅助进位位；</li>
+<li>ZF 零标志位，当运算结果为零时置 1 ；</li>
+<li>SF 符号标志位，运算结果最高位为 1 时，SF = 1；</li>
+<li>OF 溢出标志位。</li>
+<li></li>
+</ul>
+<h5 id="段寄存器"><a href="#段寄存器" class="headerlink" title="段寄存器"></a>段寄存器</h5><ul>
+<li>CS 代码段寄存器，存放代码段的段基地址。</li>
+<li>DS 数据段寄存器，存放数据段的段基地址。</li>
+<li>ES 附加段寄存器，存放数据段的段基地址。</li>
+<li>SS 堆栈段寄存器，存放堆栈段的段基地址。</li>
+</ul>
+<h3 id="寻址方式"><a href="#寻址方式" class="headerlink" title="寻址方式"></a>寻址方式</h3><h4 id="立即寻址"><a href="#立即寻址" class="headerlink" title="立即寻址"></a>立即寻址</h4><p>例如 MOV AX，1200H。仅适合于源操作数。</p>
+<h4 id="寄存器寻址"><a href="#寄存器寻址" class="headerlink" title="寄存器寻址"></a>寄存器寻址</h4><p>例如 MOV AX，BX。参加操作的操作数在 CPU 的通用寄存器中。</p>
+<h4 id="直接寻址"><a href="#直接寻址" class="headerlink" title="直接寻址"></a>直接寻址</h4><p>例如 MOV AX，[1200H]。指令中直接给出操作数的偏移地址。</p>
+<h4 id="寄存器间接寻址"><a href="#寄存器间接寻址" class="headerlink" title="寄存器间接寻址"></a>寄存器间接寻址</h4><p>例如 MOV AX，[BX]。参加操作的操作数放在内存中，其偏移地址为指令中寄存器的内容。</p>
+<p>存放偏移地址的寄存器称为间址寄存器，它们分别是 BX，BP，SI，DI。</p>
+<p>操作数的段地址取决于选择哪一个间址寄存器。当选择 BX，SI，DI 时默认在数据段。当选择 BP 时默认在堆栈段。</p>
+<h4 id="寄存器相对寻址"><a href="#寄存器相对寻址" class="headerlink" title="寄存器相对寻址"></a>寄存器相对寻址</h4><p>例如 MOV AX，[BX+DATA]。操作数的偏移地址为寄存器的内容加上一个位移量。</p>
+<p>基址寄存器为 BX 时默认在数据段；基址寄存器为 BP 时，默认在堆栈段。</p>
+<h4 id="基址变址寻址"><a href="#基址变址寻址" class="headerlink" title="基址变址寻址"></a>基址变址寻址</h4><p>例如 MOV AX，[BP+DI+DATA]。操作数的偏移地址为基址寄存器内容+变址寄存器内容+位移量。操作数的段地址由选择的基址寄存器决定。</p>
+<h3 id="8086-指令系统"><a href="#8086-指令系统" class="headerlink" title="8086 指令系统"></a>8086 指令系统</h3><p>从功能上包括六大类：</p>
+<p>数据传送、算术运算、逻辑运算和移位、串操作、程序控制和处理器控制。</p>
+<h4 id="数据传送指令"><a href="#数据传送指令" class="headerlink" title="数据传送指令"></a>数据传送指令</h4><p>包括通用数据传送、输入输出、地址传送和标志位操作。</p>
+<h5 id="通用数据传送"><a href="#通用数据传送" class="headerlink" title="通用数据传送"></a>通用数据传送</h5><p><strong>该类指令的执行对标志位不产生影响。</strong></p>
+<p>mov 指令</p>
+<p>MOV dest,   src</p>
+<p>两操作数 字长必须相同，两操作数<strong>不允许同时为存储器操作数</strong>、不允许同时为段寄存器，在源操作数是立即数时，目标操作数不能是段寄存器。</p>
+<p>入栈/出栈指令</p>
+<p>PUSH oprd </p>
+<p>POP oprd</p>
+<p>oprd 为 16 位寄存器或存储器两单元，不能为立即数。</p>
+<p>交换指令</p>
+<p>XCHG REG, MEM/REG</p>
+<p>两个操作数必须有一个是寄存器操作数，不允许使用段寄存器。</p>
+<p>查表指令</p>
+<p>XLAT</p>
+<p>用 BX 的内容代表表格首地址，AL 内容为表内位移量，BX+AL得到要查找元素的偏移地址。将 BX+AL 所指单元的内容送 AL。</p>
+<h5 id="输入输出指令"><a href="#输入输出指令" class="headerlink" title="输入输出指令"></a>输入输出指令</h5><p>输入指令：IN acc，PORT</p>
+<p>输出指令：OUT PORT，acc</p>
+<p>根据端口地址码的长度，指令有两种不同的端口地址表现形式。</p>
+<ul>
+<li>直接寻址。端口地址为 8 位时，指令中直接给出 8 位端口地址，寻址 256 个端口。</li>
+<li>间接寻址。端口地址为 16 位时，指令中的端口地址必须由 DX 指定；可寻址 64K 个端口。</li>
+</ul>
+<h5 id="地址传送指令"><a href="#地址传送指令" class="headerlink" title="地址传送指令"></a>地址传送指令</h5><p>取偏移地址指令 LEA。计算 MEM 相对于 REG 的偏移地址。</p>
+<p>LEA REG,   MEM</p>
+<p>将变量的 16 位偏移地址取出送目标寄存器。源操作数必须是一个存储器操作数，目标操作数通常是间址寄存器。</p>
+<h4 id="算术运算指令"><a href="#算术运算指令" class="headerlink" title="算术运算指令"></a>算术运算指令</h4><p>算术运算指令的执行大多对状态标志位会产生影响。</p>
+<h5 id="加法指令"><a href="#加法指令" class="headerlink" title="加法指令"></a>加法指令</h5><p>普通加法指令 </p>
+<p>ADD oprd1,oprd2 </p>
+<p>oprd1 = oprd1 + oprd2</p>
+<p>带进位的加法指令 </p>
+<p>ADC oprd1,oprd2 </p>
+<p>oprd1 = oprd1+oprd2+CF</p>
+<p>自增指令</p>
+<p>INC oprd</p>
+<p>oprd += 1</p>
+<h5 id="减法指令"><a href="#减法指令" class="headerlink" title="减法指令"></a>减法指令</h5><p>普通减法指令</p>
+<p>SUB oprd1, oprd2</p>
+<p>oprd1 = oprd1 - oprd2</p>
+<p>考虑借位的减法指令</p>
+<p>SBB oprd1, oprd2</p>
+<p>oprd1 = oprd1 - oprd2 - CF</p>
+<p>自减指令</p>
+<p>DEC oprd</p>
+<p>oprd -= 1</p>
+<p>取反指令</p>
+<p>NEG oprd</p>
+<p>oprd = 0-oprd</p>
+<p>比较指令</p>
+<p>CMP oprd1, oprd2</p>
+<p>oprd1 - oprd2</p>
+<p><strong>影响标志位</strong> 如果 oprd1 &gt; oprd2 则 CF = 0 </p>
+<h5 id="乘法指令"><a href="#乘法指令" class="headerlink" title="乘法指令"></a>乘法指令</h5><p>无符号乘法指令 MUL</p>
+<p>MUL oprd</p>
+<p>oprd 为字节数   AX = AL * oprd</p>
+<p>oprd 为 16 位数 DX AX = AX * oprd</p>
+<h5 id="除法指令"><a href="#除法指令" class="headerlink" title="除法指令"></a>除法指令</h5><p>DIV oprd</p>
+<p>若 oprd 是字节数 执行 AL / oprd。结果 AL 为商， AH 为余数</p>
+<p>若 oprd 是双字节数执行 DX AX / oprd。结果 AX 为商，DX 为余数。</p>
+<h4 id="逻辑运算和移位指令"><a href="#逻辑运算和移位指令" class="headerlink" title="逻辑运算和移位指令"></a>逻辑运算和移位指令</h4><h5 id="逻辑运算"><a href="#逻辑运算" class="headerlink" title="逻辑运算"></a>逻辑运算</h5><p>AND oprd1, oprd2</p>
+<p>OR oprd1, oprd2</p>
+<p>NOT oprd 操作数按位取反再送回原地址，操作数不能为立即数，指令的执行对标志位无影响。</p>
+<p>XOR oprd1, oprd2 两操作数异或，结果送目标地址</p>
+<p>TEST oprd1, oprd2 将执行 “与” 操作，但运算的结果不送回目标地址。</p>
+<h5 id="移位指令"><a href="#移位指令" class="headerlink" title="移位指令"></a>移位指令</h5><p>逻辑左移 SHL 、逻辑右移 SHR：将移动的位补 0 ，移除的位到 CF。</p>
+<p>算术左移SAL、算术右移SAR：符号位不动，移动的位补 0 ，移除的位到 CF 。</p>
+<p>不带进位循环左移ROL、不带进位循环右移ROR：将移除的位同时加到 CF 和被移动的位。</p>
+<p>带进位循环左移 RCL、带进位循环右移 RCR：CF 参与循环移位，向左循环移位则 CF 在最左边（向右循环则 CF 在最右边）。</p>
+<h4 id="程序控制指令"><a href="#程序控制指令" class="headerlink" title="程序控制指令"></a>程序控制指令</h4><h5 id="转移指令"><a href="#转移指令" class="headerlink" title="转移指令"></a>转移指令</h5><p>无条件转移指令 JMP oprd 。oprd 是 16 位偏移地址。</p>
+<p>条件转移指令</p>
+<p>JC/JNC、JZ/JNZ、JO/JNO、JP/JPE分别判断 CF、ZF、OF、PF 是否为 1 /为 0 。</p>
+<h5 id="循环控制指令"><a href="#循环控制指令" class="headerlink" title="循环控制指令"></a>循环控制指令</h5><p>LOOP 循环次数由 CX 决定。用法 LOOP Label</p>
+<h5 id="过程调用和返回"><a href="#过程调用和返回" class="headerlink" title="过程调用和返回"></a>过程调用和返回</h5><p>调用 CALL PROC</p>
+<p>返回 RET，一般位于子程序的最后</p>
+]]></content>
+      <categories>
+        <category>复试</category>
+      </categories>
+      <tags>
+        <tag>计算机组成原理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>操作系统</title>
+    <url>/2020/05/10/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</url>
+    <content><![CDATA[<h2 id="计算机系统概述"><a href="#计算机系统概述" class="headerlink" title="计算机系统概述"></a>计算机系统概述</h2><h3 id="操作系统基本概念"><a href="#操作系统基本概念" class="headerlink" title="操作系统基本概念"></a>操作系统基本概念</h3><p>操作系统特征：<strong>并发</strong>和<strong>共享</strong>。</p>
+<h3 id="操作系统的目标和功能"><a href="#操作系统的目标和功能" class="headerlink" title="操作系统的目标和功能"></a>操作系统的目标和功能</h3><ul>
+<li>资源管理：处理机管理、存储器管理、文件管理、设备管理。</li>
+<li>用户与硬件的接口：命令接口、程序接口（系统调用）。</li>
+</ul>
+<h3 id="操作系统的分类和发展"><a href="#操作系统的分类和发展" class="headerlink" title="操作系统的分类和发展"></a>操作系统的分类和发展</h3><ol>
+<li>手工操作阶段（无操作系统）</li>
+<li>批处理阶段（操作系统开始阶段）解决人机矛盾和CPU和I/O速度不匹配的问题。分为单道批处理和多道批处理系统（内存中只能保持一道作业和能保持多道作业）。</li>
+<li>分时操作系统。将 CPU 时间分为许多时间片，采用时间片轮转法，支持多道程序设计的系统。</li>
+<li>实时操作系统。</li>
+<li>网络操作系统和分布式操作系统。</li>
+</ol>
+<h3 id="中断和异常"><a href="#中断和异常" class="headerlink" title="中断和异常"></a>中断和异常</h3><p>中断也称为外中断，指来自 CPU 执行指令以外的事情发生，如 I/O 中断。时钟中断表示固定的时间片已到。</p>
+<p>异常也称为内中断，指源自CPU执行指令或内存内部的时间，如程序的非法操作码、地址越界、算术溢出、缺页等引起的事件。</p>
+<h3 id="系统调用"><a href="#系统调用" class="headerlink" title="系统调用"></a>系统调用</h3><p>系统调用可视为特殊的公共子程序。凡是与资源有关的操作（如存储分配、进行 I/O 传输及管理文件等），都必须通过系统调用方式向操作系统提出服务请求。</p>
+<h3 id="核心态与用户态"><a href="#核心态与用户态" class="headerlink" title="核心态与用户态"></a>核心态与用户态</h3><p>系统调用需要使用某些特权指令才能完成，需要由操作系统内核程序负责完成。用户程序通过执行访管指令来发起系统调用，请求操作系统提供服务。执行操作系统内核应用程序时，CPU 会在核心态，执行用户程序时在用户态。</p>
+<p>用户态转向核心态：系统调用、发生中断和异常、执行特权指令、进程状态变换。</p>
+<h2 id="进程的管理"><a href="#进程的管理" class="headerlink" title="进程的管理"></a>进程的管理</h2><h3 id="进程与线程"><a href="#进程与线程" class="headerlink" title="进程与线程"></a>进程与线程</h3><p>进程的特征：动态性、并发性、独立性、异步性、结构性。进程实体都是由程序段、数据段和进程控制块三部分组成的。</p>
+<h3 id="进程的状态与转换"><a href="#进程的状态与转换" class="headerlink" title="进程的状态与转换"></a>进程的状态与转换</h3><p>运行态：单处理机环境下，每个时刻最多只能有一个进程处于运行态。</p>
+<p>就绪态：进程已经准备运行，等待 CPU 调度。</p>
+<p>阻塞态：进程正在等待某一事件而暂停运行。</p>
+<p>进程三大状态之间的转换忽略。</p>
+<h3 id="线程概念和多线程模型"><a href="#线程概念和多线程模型" class="headerlink" title="线程概念和多线程模型"></a>线程概念和多线程模型</h3><p>引入线程的目的是为了更好地使用多道程序并发执行，提高资源利用率和系统吞吐率。引进线程地目的则是为了减少程序在并发执行时所付出地时空开销，提高操作系统地并发性能。</p>
+<h3 id="处理机调度"><a href="#处理机调度" class="headerlink" title="处理机调度"></a>处理机调度</h3><ol>
+<li>作业调度。又称高级调度，从外存上处于后备状态地作业中挑选一个或多个作业，给他们分配内存、输入/输出等必要的资源，并建立相应的进程。</li>
+<li>内存调度。又称中级调度，其作用是提高内存利用率和系统吞吐量。将暂时不能运行的进程调至外存等待，当运行条件已经具备，再将就绪进程重新调入内存。</li>
+<li>进程调度。又称低级调度，按照某种方法和策略从就绪队列中选取一个进程，将处理机分配给它。</li>
+</ol>
+<h3 id="典型的调度算法"><a href="#典型的调度算法" class="headerlink" title="典型的调度算法"></a>典型的调度算法</h3><h4 id="先来先服务算法"><a href="#先来先服务算法" class="headerlink" title="先来先服务算法"></a>先来先服务算法</h4><p>FCFS 调度算法既可以用于作业调度，又可以用于进程调度。算法简单，效率较低。<strong>对长作业比较有利，对短作业不利；有利于 CPU 繁忙型作业，不利于 I/O繁忙型作业</strong>。</p>
+<h4 id="短作业优先"><a href="#短作业优先" class="headerlink" title="短作业优先"></a>短作业优先</h4><p>短作业优先算法从后备队列中选择一个或若干估计运行时间最短作业，将它们调入内存运行。对长作业不利，会导致“饥饿”现象，SJF 调度算法的平均等待时间、平均周转时间最少。</p>
+<h4 id="优先级调度算法"><a href="#优先级调度算法" class="headerlink" title="优先级调度算法"></a>优先级调度算法</h4><p>既可用于作业调度，又可用于进程调度，优先级描述作业运行的紧迫程度。按高优先级进程能否抢占正在执行的进程分为剥夺式优先级调度算法和非剥夺优先级调度算法。根据优先级是否改变分为动态优先级和静态优先级。</p>
+<h4 id="高响应比优先调度算法"><a href="#高响应比优先调度算法" class="headerlink" title="高响应比优先调度算法"></a>高响应比优先调度算法</h4><p>用于作业调度，是对FCFS调度算法和SJF调度算法的一种综合平衡，同时还考虑了每个作业的等待时间和估计运行时间。<br>$$<br>响应比R_p=\frac{等待时间+要求服务时间}{要求服务时间}<br>$$</p>
+<h4 id="时间片轮转法"><a href="#时间片轮转法" class="headerlink" title="时间片轮转法"></a>时间片轮转法</h4><p>主要适用于分时系统，系统将所搜就绪进程按时间的先后顺序排成一个队列，进程调度程序选择就绪进程依次执行一个时间片。时间片很大时退化为 FCFS 算法，时间片很小时导致进程切换开销过大。</p>
+<h4 id="多级反馈队列调度算法"><a href="#多级反馈队列调度算法" class="headerlink" title="多级反馈队列调度算法"></a>多级反馈队列调度算法</h4><p>时间片轮转法和优先级调度算法的综合与发展。通过动态调整进程优先级和时间片大小，多级反馈队列可以兼顾多方面的系统目标。设置多个就绪队列，并为每个队列赋予不同的优先级，在优先级越高的队列中，每个进程运行的时间片越小。</p>
+<h3 id="进程的同步"><a href="#进程的同步" class="headerlink" title="进程的同步"></a>进程的同步</h3><h4 id="进程同步的基本概念"><a href="#进程同步的基本概念" class="headerlink" title="进程同步的基本概念"></a>进程同步的基本概念</h4><p>临界资源：一次只允许一个进程使用的资源称为临界资源。</p>
+<p>临界区：访问临界资源的那段代码。</p>
+<p>同步：直接制约关系，为完成某任务而建立的两个或多个进程，这些进程因为需要在某些位置上协调它们的工作次序而等待、传递信息所产生的制约关系。进程之间的直接制约关系源于它们之间的合作。</p>
+<p>互斥：间接制约关系。当一个进程进入临界区使用临界资源时，另一个进程必须等待，当占用临界区资源的进程退出临界区后，另一个进程才允许访问此临界资源。</p>
+<h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><p>多个进程因竞争资源而造成的一种相互等待的情况，若无外力作用，这些进程都将无法向前推进。</p>
+<h4 id="死锁产生的必要条件"><a href="#死锁产生的必要条件" class="headerlink" title="死锁产生的必要条件"></a>死锁产生的必要条件</h4><ul>
+<li>互斥条件</li>
+<li>不可抢占条件</li>
+<li>请求并保持条件</li>
+<li>循环等待条件</li>
+</ul>
+<h4 id="死锁的处理策略"><a href="#死锁的处理策略" class="headerlink" title="死锁的处理策略"></a>死锁的处理策略</h4><ol>
+<li>死锁预防，破环产生死锁 4 个条件中的一个或几个。</li>
+<li>死锁避免，在动态分配资源过程中，用某种方法防止系统进入不安全状态。<strong>银行家算法</strong></li>
+<li>死锁的检测及解除，通过系统检查出死锁的发生，采取某种措施解除死锁。</li>
+</ol>
+<h2 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h2><h3 id="内存管理概念"><a href="#内存管理概念" class="headerlink" title="内存管理概念"></a>内存管理概念</h3><h4 id="内存管理的功能"><a href="#内存管理的功能" class="headerlink" title="内存管理的功能"></a>内存管理的功能</h4><ol>
+<li>内存空间的分配与回收，由操作系统完成主存储器空间的分配与管理。</li>
+<li>地址转换，在多道程序环境下，程序中的逻辑地址与内存中的物理地址不可能一致，存储器管理须提供地址变换功能，将逻辑地址转换为响应的物理地址。</li>
+<li>内存空间的扩充，利用虚拟存储技术</li>
+<li>存储保护，保证各道作业在各自的存储空间内运行，互不干扰。</li>
+</ol>
+<h4 id="程序的装入和链接"><a href="#程序的装入和链接" class="headerlink" title="程序的装入和链接"></a>程序的装入和链接</h4><p>将源程序变为可在内存中执行的程序，一般需要以下几个步骤：</p>
+<ul>
+<li>编译，将用户源代码编译成若干目标模块，形成<strong>逻辑地址</strong>。</li>
+<li>链接，将编译后的目标模块及所需要的库函数链接在一起，形成整个完整的装入模块。</li>
+<li>装入，将完整的装入模块装入内存。</li>
+</ul>
+<p>链接分为三种：</p>
+<ol>
+<li>静态链接，在程序运行前，链接库函数。</li>
+<li>装入时动态链接，在程序装入内存时，将库函数链接。</li>
+<li>运行时动态链接，在程序执行时，将库函数链接。</li>
+</ol>
+<p>装入分三种：</p>
+<ol>
+<li>绝对装入，逻辑地址和物理地址完全相同。</li>
+<li>可重定位装入。将装入模块装入内存适当的位置，装入时对指令和数据的修改过程称为重定位。地址变化通常是在装入时一次完成。</li>
+<li>动态运行时装入，装入程序把装入模块装入内存后，并不立即把模块中的相对地址转换为绝对地址，在程序运行的过程中才进行地址的转换。</li>
+</ol>
+<h4 id="连续分配管理方式"><a href="#连续分配管理方式" class="headerlink" title="连续分配管理方式"></a>连续分配管理方式</h4><ol>
+<li>单一连续分配。在内存中永远只有一道程序，不会产生越界访问。</li>
+<li>固定分区分配。将内存划分为若干固定大小的区域，每个分区只装入一道作业。</li>
+<li>动态分区分配。在进程装入内存时，根据进程的大小动态地建立分区。</li>
+</ol>
+<p>动态分区的分配策略：</p>
+<ul>
+<li>首次适应算法，空闲分区按<strong>地址递增</strong>的次序链接，分配时按顺序查找，找到大小能满足要求的第一个空闲分区。</li>
+<li>最佳适应算法，空闲分区按<strong>分区大小递增</strong>的次序链接，找到第一个能满足要求的分区。</li>
+<li>最坏适应算法，空闲分区按<strong>分区大小递减</strong>的次序链接，找到第一个能满足要求的分区。</li>
+<li>临近适应算法，分配内存时从上一次查找结束的位置开始继续查找。</li>
+</ul>
+<h4 id="非连续分配管理方式"><a href="#非连续分配管理方式" class="headerlink" title="非连续分配管理方式"></a>非连续分配管理方式</h4><p>非连续分配允许将一个程序分散地装入不相邻的内存分区。</p>
+]]></content>
+      <categories>
+        <category>复试</category>
+      </categories>
+      <tags>
+        <tag>OS</tag>
       </tags>
   </entry>
 </search>

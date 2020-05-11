@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"hoo334.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="本文是复习数据库整理的资料">
+  <meta name="description" content="title: 事务管理与恢复date: 2020-04-06 09:27:11categories: 数据库description: 本文是复习数据库整理的资料 事务事务概念​    对于用户而言，事务是具有完整逻辑意义的数据库操作序列的集合。对于数据库管理系统而言，事务则是一个读写操作序列。这些操作是一个不可分割的逻辑工作单元，要么都做，要么都不做。 ​    通常有有两种类型的事务结束语句：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="事务管理与恢复">
-<meta property="og:url" content="https://hoo334.github.io/2020/04/06/%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86%E4%B8%8E%E6%81%A2%E5%A4%8D/index.html">
+<meta property="og:url" content="https://hoo334.github.io/2020/05/05/%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86%E4%B8%8E%E6%81%A2%E5%A4%8D/index.html">
 <meta property="og:site_name" content="echo">
-<meta property="og:description" content="本文是复习数据库整理的资料">
+<meta property="og:description" content="title: 事务管理与恢复date: 2020-04-06 09:27:11categories: 数据库description: 本文是复习数据库整理的资料 事务事务概念​    对于用户而言，事务是具有完整逻辑意义的数据库操作序列的集合。对于数据库管理系统而言，事务则是一个读写操作序列。这些操作是一个不可分割的逻辑工作单元，要么都做，要么都不做。 ​    通常有有两种类型的事务结束语句：">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.loli.net/2020/04/06/KOWfz9e1juAwros.png">
 <meta property="og:image" content="https://i.loli.net/2020/04/06/4C2VSsKYmMUngI8.png">
@@ -34,16 +34,21 @@
 <meta property="og:image" content="https://i.loli.net/2020/04/06/sNHdY7A2PhBy3ET.png">
 <meta property="og:image" content="https://i.loli.net/2020/04/06/JX7bQ8va4hoMHNK.png">
 <meta property="og:image" content="https://i.loli.net/2020/04/06/6OxDya25XE3bVAo.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/11/RkMmTrJnKHz3OWl.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/11/GvaPKLouCjOWF9s.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/11/F5Vo6EMKPB9akYb.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/11/Mix5FDt8dfVoYwX.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/11/WrXlch5Ly9KAwoS.png">
 <meta property="og:image" content="https://i.loli.net/2020/04/06/GZAjXMbNu4z7apB.png">
 <meta property="og:image" content="https://i.loli.net/2020/04/06/TcfswaB6NqoKzdp.png">
 <meta property="og:image" content="https://i.loli.net/2020/04/06/TgmJlz6Qevkprni.png">
-<meta property="article:published_time" content="2020-04-06T01:27:11.000Z">
-<meta property="article:modified_time" content="2020-04-26T03:33:20.490Z">
+<meta property="article:published_time" content="2020-05-05T14:39:14.947Z">
+<meta property="article:modified_time" content="2020-05-11T04:37:13.447Z">
 <meta property="article:author" content="hoo334">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.loli.net/2020/04/06/KOWfz9e1juAwros.png">
 
-<link rel="canonical" href="https://hoo334.github.io/2020/04/06/%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86%E4%B8%8E%E6%81%A2%E5%A4%8D/">
+<link rel="canonical" href="https://hoo334.github.io/2020/05/05/%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86%E4%B8%8E%E6%81%A2%E5%A4%8D/">
 
 
 <script id="page-configurations">
@@ -201,7 +206,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://hoo334.github.io/2020/04/06/%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86%E4%B8%8E%E6%81%A2%E5%A4%8D/">
+    <link itemprop="mainEntityOfPage" href="https://hoo334.github.io/2020/05/05/%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86%E4%B8%8E%E6%81%A2%E5%A4%8D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar2.jpg">
@@ -224,27 +229,17 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2020-04-06 09:27:11" itemprop="dateCreated datePublished" datetime="2020-04-06T09:27:11+08:00">2020-04-06</time>
+              <time title="Created: 2020-05-05 22:39:14" itemprop="dateCreated datePublished" datetime="2020-05-05T22:39:14+08:00">2020-05-05</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-26 11:33:20" itemprop="dateModified" datetime="2020-04-26T11:33:20+08:00">2020-04-26</time>
+                <time title="Modified: 2020-05-11 12:37:13" itemprop="dateModified" datetime="2020-05-11T12:37:13+08:00">2020-05-11</time>
               </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
-                </span>
-            </span>
 
           
-            <div class="post-description">本文是复习数据库整理的资料</div>
 
         </div>
       </header>
@@ -255,7 +250,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h3><h4 id="事务概念"><a href="#事务概念" class="headerlink" title="事务概念"></a>事务概念</h4><p>​    对于用户而言，事务是具有完整逻辑意义的数据库操作序列的集合。对于数据库管理系统而言，事务则是一个读写操作序列。这些操作是一个不可分割的逻辑工作单元，要么都做，要么都不做。</p>
+        <p>title: 事务管理与恢复<br>date: 2020-04-06 09:27:11<br>categories: 数据库<br>description: 本文是复习数据库整理的资料</p>
+<h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h3><h4 id="事务概念"><a href="#事务概念" class="headerlink" title="事务概念"></a>事务概念</h4><p>​    对于用户而言，事务是具有完整逻辑意义的数据库操作序列的集合。对于数据库管理系统而言，事务则是一个读写操作序列。这些操作是一个不可分割的逻辑工作单元，要么都做，要么都不做。</p>
 <p>​    通常有有两种类型的事务结束语句：</p>
 <p>​    1）事务提交（commit）：将成功完成事务的执行结果（即更新）永久化，并释放事务占有的全部资源。</p>
 <p>​    2）事务回滚（rollback）：中止当前事务、撤销其对数据库所做的更新，并释放事务占有的全部资源。</p>
@@ -316,6 +312,47 @@
 <p>​    1）可能导致死锁，即持有锁的事务出现相互等待都不能继续执行。解除死锁的一个简单方法是超时机制。如果一个事务为某个锁等待的时间过长，可以悲观得认为死锁已经发生，回滚该事务并重启。</p>
 <p>​    2）不能避免读脏数据。</p>
 <p>​    另一个两阶段封锁得变体是强两阶段封锁协议，它要求事务提交之前不得释放任何锁。事务可以按其提交得顺序串行化。</p>
+<h4 id="封锁协议总结"><a href="#封锁协议总结" class="headerlink" title="封锁协议总结"></a>封锁协议总结</h4><p>在运用 X 锁和 S 锁这两种基本封锁对数据对象加锁时，还要约定一些规则。例如，何时申请 X 锁和 S 锁、封锁时间、何时释放等。这些规则称为封锁协议。</p>
+<p>对并发操作的不正确调度可能会带来脏读、丢失修改、不可重复读等不一致性问题。三级封锁协议分别在不同程度上解决了这些问题，为并发操作的正确调度提供一定的保证。</p>
+<ol>
+<li>一级封锁协议，事务 T 在修改数据 R 之前必须先对其加 X 锁，直到事务结束才释放。事务结束包括正常结束（COMMIT）和非正常结束（ROLLBACK）。</li>
+<li>二级封锁协议，在一级封锁协议基础上增加事务 T 在读取数据 R 之前必须先对其加 S 锁，读完后即可释放 S 锁。</li>
+<li>三级封锁协议，在一级封锁协议基础上增加事务 T 在读取数据 R 之前必须先对其加 S 锁，直到事务结束才释放。</li>
+</ol>
+<p><img src="https://i.loli.net/2020/05/11/RkMmTrJnKHz3OWl.png" alt="image-20200511093025700"></p>
+<p>总结：三个等级的封锁协议都是事务结束后释放 X 锁，不同的是一级封锁对于读取数据不加 S 锁，二级封锁加 S 锁，但在读取操作结束后就释放，三级封锁加 S 锁，在事务结束后释放。一级封锁保证不会丢失修改，二级封锁保证不会丢失修改和脏读，三级封锁保证不会丢失修改、脏读和可重复读。</p>
+<p><img src="https://i.loli.net/2020/05/11/GvaPKLouCjOWF9s.png" alt="image-20200511095857695"></p>
+<h4 id="活锁与死锁"><a href="#活锁与死锁" class="headerlink" title="活锁与死锁"></a>活锁与死锁</h4><p>活锁就是一个事务一直处于“饥饿”状态。死锁即为临界资源的循环占用。</p>
+<p><img src="https://i.loli.net/2020/05/11/F5Vo6EMKPB9akYb.png" alt="image-20200511100149015"></p>
+<p>避免出现“饥饿”现象的最简方法为采用 FCFS 策略。</p>
+<p>避免死锁的方法有<strong>预防死锁</strong>和<strong>诊断并解除死锁</strong>两种。</p>
+<p>预防死锁：</p>
+<ol>
+<li>一次封锁法，每个事务必须一次将所有使用的数据全部加锁。</li>
+<li>顺序封锁法，对数据对象规定一个封锁顺序，所有事务都按这个顺序实施封锁。</li>
+</ol>
+<p>诊断和解除死锁</p>
+<ol>
+<li>超时法，如果一个事务的等待时间超过了规定的时限，就认为发生了死锁。</li>
+<li>等待图法，出现环则发现死锁。</li>
+</ol>
+<h4 id="封锁的粒度"><a href="#封锁的粒度" class="headerlink" title="封锁的粒度"></a>封锁的粒度</h4><p>封锁对象的大小称为封锁粒度。封锁对象可以是逻辑单元，也可以是物理单元。封锁粒度与系统的并发度和并发控制的开销密切相关，封锁的粒度越大，并发度越小，系统的开销也越小；封锁的粒度越小，并发度较高，系统开销也较大。</p>
+<h5 id="多粒度封锁"><a href="#多粒度封锁" class="headerlink" title="多粒度封锁"></a>多粒度封锁</h5><p>多粒度树的根结点是整个数据库，表示最大的数据粒度。叶节点表示最小的数据粒度。</p>
+<p>多粒度封锁协议允许多粒度树中的每个结点被独立地加锁，对一个结点加锁意味着这个结点所有子节点也被加以同样类型的锁。在多粒度封锁中，一个数据对象可能以两种方式封锁：显式封锁和隐式封锁。显示封锁是应事务的要求直接加到数据对象上的锁；隐式封锁是该数据对象没有被独立加锁，由于其上级结点加锁而使该数据对象加上了锁。</p>
+<p><img src="https://i.loli.net/2020/05/11/Mix5FDt8dfVoYwX.png" alt="image-20200511122559581"></p>
+<h5 id="意向锁"><a href="#意向锁" class="headerlink" title="意向锁"></a>意向锁</h5><p>意向共享锁（Intent Share Lock，IS 锁）意向排他锁（Intent Exclusive Lock，IX 锁）；共享意向排他锁（Share Intent Exclusive Lock，SIX 锁）。</p>
+<ol>
+<li>IS 锁，如果对一个数据对象加 IS 锁，表示它的子结点拟加 S 锁。</li>
+<li>IX 锁，如果对一个数据对象加 IX 锁，表示它的子结点拟加 X 锁。</li>
+<li>SIX 锁，如果对一个数据对象加 SIX 锁，表示对它加 S 锁，再加 IX 锁。</li>
+</ol>
+<p>在具有意向锁的多粒度封锁方法中，任意事务 T 要对一个数据对象加锁，必须先对它的上层结点加意向锁。申请封锁时应该按自上而下的次序进行，释放封锁时则应该按自下而上的次序进行。</p>
+<p><img src="https://i.loli.net/2020/05/11/WrXlch5Ly9KAwoS.png" alt="image-20200511123052840"></p>
+<p>图 b 中，所谓锁的强度是指它对其他锁的排斥程度。一个事务在申请封锁时以强锁代替弱锁是安全的，反之则不然。</p>
+<h4 id="其他并发控制机制"><a href="#其他并发控制机制" class="headerlink" title="其他并发控制机制"></a>其他并发控制机制</h4><p>并发控制的方法除了封锁技术外还有时间戳方法、乐观控制法和多版本并发控制等。</p>
+<p>时间戳方法给每一个事务盖上一个时标，即事务开始执行的时间。每个事务具有唯一的时间戳，并按照这个时间戳来解决事务的冲突操作。</p>
+<p>乐观控制阀认为书屋执行时很少发生冲突，不对事务进行特殊的管制，而是让它自由执行，事务提交前再进行正确性检查。如果发生冲突则回滚事务。</p>
+<p>多版本并发控制是指数据库中通过维护数据对象的多个版本信息来实现高效并发控制的一种策略。</p>
 <h3 id="恢复与备份"><a href="#恢复与备份" class="headerlink" title="恢复与备份"></a>恢复与备份</h3><h4 id="故障分类及恢复策略"><a href="#故障分类及恢复策略" class="headerlink" title="故障分类及恢复策略"></a>故障分类及恢复策略</h4><p>​    1）事务故障。事务未运行至正常终止点就夭折了。</p>
 <p>​    2）系统故障。突发事件导致系统停止运行。</p>
 <p>​    3）介质故障。硬件损坏。</p>
@@ -372,12 +409,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/04/05/E-R-%E6%A8%A1%E5%9E%8B/" rel="prev" title="E-R 模型">
-      <i class="fa fa-chevron-left"></i> E-R 模型
+    <a href="/2020/04/29/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BEHard/" rel="prev" title="二分查找 Hard">
+      <i class="fa fa-chevron-left"></i> 二分查找 Hard
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/04/08/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92Easy/" rel="next" title="动态规划 Easy">
-      动态规划 Easy <i class="fa fa-chevron-right"></i>
+    <a href="/2020/05/09/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E5%A4%8D%E4%B9%A0/" rel="next" title="微机原理复习">
+      微机原理复习 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -437,7 +474,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#事务"><span class="nav-number">1.</span> <span class="nav-text">事务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#事务概念"><span class="nav-number">1.1.</span> <span class="nav-text">事务概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事务特性"><span class="nav-number">1.2.</span> <span class="nav-text">事务特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事务并发执行与调度"><span class="nav-number">1.3.</span> <span class="nav-text">事务并发执行与调度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事务调度及正确性准则"><span class="nav-number">1.4.</span> <span class="nav-text">事务调度及正确性准则</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#判断调度是否可串行化的方法"><span class="nav-number">1.4.1.</span> <span class="nav-text">判断调度是否可串行化的方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#并发控制"><span class="nav-number">2.</span> <span class="nav-text">并发控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基于封锁的协议"><span class="nav-number">2.1.</span> <span class="nav-text">基于封锁的协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#两阶段封锁协议"><span class="nav-number">2.2.</span> <span class="nav-text">两阶段封锁协议</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#恢复与备份"><span class="nav-number">3.</span> <span class="nav-text">恢复与备份</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#故障分类及恢复策略"><span class="nav-number">3.1.</span> <span class="nav-text">故障分类及恢复策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事务访问数据方式"><span class="nav-number">3.2.</span> <span class="nav-text">事务访问数据方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于日志的故障恢复策略"><span class="nav-number">3.3.</span> <span class="nav-text">基于日志的故障恢复策略</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#UNDO-操作"><span class="nav-number">3.3.1.</span> <span class="nav-text">UNDO 操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#REDO-操作"><span class="nav-number">3.3.2.</span> <span class="nav-text">REDO 操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#并发执行事务的基本恢复过程"><span class="nav-number">3.3.3.</span> <span class="nav-text">并发执行事务的基本恢复过程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#检查点"><span class="nav-number">3.4.</span> <span class="nav-text">检查点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#备份与介质故障恢复"><span class="nav-number">3.5.</span> <span class="nav-text">备份与介质故障恢复</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#事务"><span class="nav-number">1.</span> <span class="nav-text">事务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#事务概念"><span class="nav-number">1.1.</span> <span class="nav-text">事务概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事务特性"><span class="nav-number">1.2.</span> <span class="nav-text">事务特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事务并发执行与调度"><span class="nav-number">1.3.</span> <span class="nav-text">事务并发执行与调度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事务调度及正确性准则"><span class="nav-number">1.4.</span> <span class="nav-text">事务调度及正确性准则</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#判断调度是否可串行化的方法"><span class="nav-number">1.4.1.</span> <span class="nav-text">判断调度是否可串行化的方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#并发控制"><span class="nav-number">2.</span> <span class="nav-text">并发控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基于封锁的协议"><span class="nav-number">2.1.</span> <span class="nav-text">基于封锁的协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#两阶段封锁协议"><span class="nav-number">2.2.</span> <span class="nav-text">两阶段封锁协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#封锁协议总结"><span class="nav-number">2.3.</span> <span class="nav-text">封锁协议总结</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#活锁与死锁"><span class="nav-number">2.4.</span> <span class="nav-text">活锁与死锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#封锁的粒度"><span class="nav-number">2.5.</span> <span class="nav-text">封锁的粒度</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#多粒度封锁"><span class="nav-number">2.5.1.</span> <span class="nav-text">多粒度封锁</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#意向锁"><span class="nav-number">2.5.2.</span> <span class="nav-text">意向锁</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他并发控制机制"><span class="nav-number">2.6.</span> <span class="nav-text">其他并发控制机制</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#恢复与备份"><span class="nav-number">3.</span> <span class="nav-text">恢复与备份</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#故障分类及恢复策略"><span class="nav-number">3.1.</span> <span class="nav-text">故障分类及恢复策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事务访问数据方式"><span class="nav-number">3.2.</span> <span class="nav-text">事务访问数据方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于日志的故障恢复策略"><span class="nav-number">3.3.</span> <span class="nav-text">基于日志的故障恢复策略</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#UNDO-操作"><span class="nav-number">3.3.1.</span> <span class="nav-text">UNDO 操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#REDO-操作"><span class="nav-number">3.3.2.</span> <span class="nav-text">REDO 操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#并发执行事务的基本恢复过程"><span class="nav-number">3.3.3.</span> <span class="nav-text">并发执行事务的基本恢复过程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#检查点"><span class="nav-number">3.4.</span> <span class="nav-text">检查点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#备份与介质故障恢复"><span class="nav-number">3.5.</span> <span class="nav-text">备份与介质故障恢复</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -453,20 +490,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">68</span>
+          <span class="site-state-item-count">70</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
