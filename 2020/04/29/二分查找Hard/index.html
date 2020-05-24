@@ -28,7 +28,7 @@
 <meta property="og:description" content="Leetcode hard 二分查找总结">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-04-29T02:43:05.000Z">
-<meta property="article:modified_time" content="2020-04-29T03:16:27.524Z">
+<meta property="article:modified_time" content="2020-05-24T03:13:54.653Z">
 <meta property="article:author" content="hoo334">
 <meta property="article:tag" content="二分查找">
 <meta property="article:tag" content="数组">
@@ -214,10 +214,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-04-29 10:43:05 / Modified: 11:16:27" itemprop="dateCreated datePublished" datetime="2020-04-29T10:43:05+08:00">2020-04-29</time>
+              <time title="Created: 2020-04-29 10:43:05" itemprop="dateCreated datePublished" datetime="2020-04-29T10:43:05+08:00">2020-04-29</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-05-24 11:13:54" itemprop="dateModified" datetime="2020-05-24T11:13:54+08:00">2020-05-24</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -240,7 +246,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h4 id="1095-山脉数组中查找目标值"><a href="#1095-山脉数组中查找目标值" class="headerlink" title="1095. 山脉数组中查找目标值"></a><a href="https://leetcode-cn.com/problems/find-in-mountain-array/" target="_blank" rel="noopener">1095. 山脉数组中查找目标值</a></h4><p>（这是一个 <strong>交互式问题</strong> ）</p>
+        <h4 id="4-寻找两个正序数组的中位数"><a href="#4-寻找两个正序数组的中位数" class="headerlink" title="4. 寻找两个正序数组的中位数"></a><a href="https://leetcode-cn.com/problems/median-of-two-sorted-arrays/" target="_blank" rel="noopener">4. 寻找两个正序数组的中位数</a></h4><p>给定两个大小为 m 和 n 的正序（从小到大）数组 <code>nums1</code> 和 <code>nums2</code>。</p>
+<p>请你找出这两个正序数组的中位数，并且要求算法的时间复杂度为 O(log(m + n))。</p>
+<p>你可以假设 <code>nums1</code> 和 <code>nums2</code> 不会同时为空。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nums1 &#x3D; [1, 3]</span><br><span class="line">nums2 &#x3D; [2]</span><br><span class="line"></span><br><span class="line">则中位数是 2.0</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nums1 &#x3D; [1, 2]</span><br><span class="line">nums2 &#x3D; [3, 4]</span><br><span class="line"></span><br><span class="line">则中位数是 (2 + 3)&#x2F;2 &#x3D; 2.5</span><br></pre></td></tr></table></figure>
+
+<p>先考虑一个有序数组中查找中位数的情况：当数组元素为奇数时，取最中间的一个元素；当数组元素为偶数时，取最中间的两个元素的平均值。</p>
+<p>有两个有序数组时我们先计算出总数组的长度，在两个数组中间画一条分割线，当两条分割线左侧的元素个数为总数组长度的一半时，在分割线左右的四个元素则是构成中位数的元素。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">findMedianSortedArrays</span><span class="params">(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span>[] nums2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums1.length &gt; nums2.length)&#123;</span><br><span class="line">            <span class="keyword">return</span> findMedianSortedArrays(nums2, nums1);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> m = nums1.length;</span><br><span class="line">        <span class="keyword">int</span> n = nums2.length;</span><br><span class="line">        <span class="comment">//分割线左边的所有元素需要满足的个数(m + n + 1) / 2</span></span><br><span class="line">        <span class="keyword">int</span> totalLeft = (m + n + <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">        <span class="comment">//在 nums1 的区间 [0, m]里查找恰当的分割线</span></span><br><span class="line">        <span class="comment">//使得 nums1[i - 1] &lt;= nums2[j] &amp;&amp; nums2[j - 1] &lt;= nums1[i]</span></span><br><span class="line">        <span class="comment">//在较小长度的数组使用二分查找</span></span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = m;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">            <span class="comment">//向上取整</span></span><br><span class="line">            <span class="keyword">int</span> i = left + (right - left + <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">int</span> j = totalLeft - i;</span><br><span class="line">            <span class="comment">//搜索分割线位置</span></span><br><span class="line">            <span class="keyword">if</span>(nums1[i - <span class="number">1</span>] &gt; nums2[j])&#123;<span class="comment">//不满足交叉小于的情况</span></span><br><span class="line">                <span class="comment">//下一轮搜索区间 [left, i - 1]</span></span><br><span class="line">                right = i - <span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">//下一轮搜索区间 [i, right]</span></span><br><span class="line">                left = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> i = left;</span><br><span class="line">        <span class="keyword">int</span> j = totalLeft - i;</span><br><span class="line">        <span class="keyword">int</span> nums1LeftMax = i == <span class="number">0</span> ? Integer.MIN_VALUE : nums1[i - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">int</span> nums1RightMin = i == m ? Integer.MAX_VALUE : nums1[i];</span><br><span class="line">        <span class="keyword">int</span> nums2LeftMax = j == <span class="number">0</span> ? Integer.MIN_VALUE : nums2[j - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">int</span> nums2RightMIn = j == n ? Integer.MAX_VALUE : nums2[j];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>((m + n) % <span class="number">2</span> == <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> Math.max(nums1LeftMax, nums2LeftMax);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> (<span class="keyword">double</span>)((Math.max(nums1LeftMax,nums2LeftMax) + Math.min(nums1RightMin, nums2RightMIn))) / <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度是 O( log( min(<em>m</em>,n) ) )，空间复杂度：O(1)。</p>
+<h4 id="1095-山脉数组中查找目标值"><a href="#1095-山脉数组中查找目标值" class="headerlink" title="1095. 山脉数组中查找目标值"></a><a href="https://leetcode-cn.com/problems/find-in-mountain-array/" target="_blank" rel="noopener">1095. 山脉数组中查找目标值</a></h4><p>（这是一个 <strong>交互式问题</strong> ）</p>
 <p>给你一个 <strong>山脉数组</strong> <code>mountainArr</code>，请你返回能够使得 <code>mountainArr.get(index)</code> <strong>等于</strong> <code>target</code> <strong>最小</strong> 的下标 <code>index</code> 值。</p>
 <p>如果不存在这样的下标 <code>index</code>，就请返回 <code>-1</code>。</p>
 <p>何为山脉数组？如果数组 <code>A</code> 是一个山脉数组的话，那它满足如下条件：</p>
@@ -370,7 +390,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1095-山脉数组中查找目标值"><span class="nav-number">1.</span> <span class="nav-text">1095. 山脉数组中查找目标值</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-寻找两个正序数组的中位数"><span class="nav-number">1.</span> <span class="nav-text">4. 寻找两个正序数组的中位数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1095-山脉数组中查找目标值"><span class="nav-number">2.</span> <span class="nav-text">1095. 山脉数组中查找目标值</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
