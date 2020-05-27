@@ -29,7 +29,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.loli.net/2020/04/21/23RAHzps9cYvGKC.jpg">
 <meta property="article:published_time" content="2020-04-17T02:51:13.000Z">
-<meta property="article:modified_time" content="2020-04-29T03:16:06.969Z">
+<meta property="article:modified_time" content="2020-05-27T01:23:27.631Z">
 <meta property="article:author" content="hoo334">
 <meta property="article:tag" content="数组">
 <meta name="twitter:card" content="summary">
@@ -223,7 +223,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-29 11:16:06" itemprop="dateModified" datetime="2020-04-29T11:16:06+08:00">2020-04-29</time>
+                <time title="Modified: 2020-05-27 09:23:27" itemprop="dateModified" datetime="2020-05-27T09:23:27+08:00">2020-05-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -273,6 +273,26 @@
 
 
 
+<h4 id="974-和可被-K-整除的子数组"><a href="#974-和可被-K-整除的子数组" class="headerlink" title="974. 和可被 K 整除的子数组"></a><a href="https://leetcode-cn.com/problems/subarray-sums-divisible-by-k/" target="_blank" rel="noopener">974. 和可被 K 整除的子数组</a></h4><p>给定一个整数数组 <code>A</code>，返回其中元素之和可被 <code>K</code> 整除的（连续、非空）子数组的数目。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入：A &#x3D; [4,5,0,-2,-3,1], K &#x3D; 5</span><br><span class="line">输出：7</span><br><span class="line">解释：</span><br><span class="line">有 7 个子数组满足其元素之和可被 K &#x3D; 5 整除：</span><br><span class="line">[4, 5, 0, -2, -3, 1], [5], [5, 0], [5, 0, -2, -3], [0], [0, -2, -3], [-2, -3]</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong></p>
+<ol>
+<li><code>1 &lt;= A.length &lt;= 30000</code></li>
+<li><code>-10000 &lt;= A[i] &lt;= 10000</code></li>
+<li><code>2 &lt;= K &lt;= 10000</code></li>
+</ol>
+<p>暴力解法：使用两个循环枚举子数组的起点和终点，统计子数组的和并判断是否整除 k 。时间复杂度 O(n^3) 空间复杂度 O(1)。</p>
+<p>暴力解法优化：使用一个数组存储前缀和 p[i] 表示[0…i]的数字之和，p[j] - p[i] 表示一个子数组的和。时间复杂度 O(n^2) 空间复杂度 O(n)。</p>
+<p>哈希表：使用哈希表存储，以前缀和模 K 的值为键，其值出现的次数为值。在遍历数组的同时更新。我们需要对哈希表初始化，即余数为 0 出现的次数为 1 。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">subarraysDivByK</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">        Map&lt;Integer, Integer&gt; record = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>, ans = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//初始化</span></span><br><span class="line">        record.put(<span class="number">0</span>,<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> e : A)&#123;</span><br><span class="line">            sum += e;</span><br><span class="line">            <span class="comment">//Java 负数取模产生负数，需要纠正</span></span><br><span class="line">            <span class="keyword">int</span> mod = (sum % K + K) % K;</span><br><span class="line">            <span class="comment">//得到前缀和模 K 的值出现的次数</span></span><br><span class="line">            <span class="keyword">int</span> times = record.getOrDefault(mod, <span class="number">0</span>);</span><br><span class="line">            <span class="comment">//更新结果和以 mod 为余数的前缀和出现的次数</span></span><br><span class="line">            ans += times;</span><br><span class="line">            record.put(mod, times + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度 O(n) 遍历一次数组，空间复杂度 O( min (n, k) ) 模 k 得到的余数最多有 k 个。</p>
+<p>我们还可以先生成哈希表，得到前缀和模 k 的值出现的次数 n，对于这个值，和可被 k 整除的子数组的个数为 n(n-1)/2，类似于冒泡排序的两两比较。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">subarraysDivByK</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">        Map&lt;Integer, Integer&gt; record = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>, ans = <span class="number">0</span>;</span><br><span class="line">        record.put(<span class="number">0</span>,<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> e : A)&#123;</span><br><span class="line">            sum += e;</span><br><span class="line">            <span class="comment">//Java 负数取模产生负数，需要纠正</span></span><br><span class="line">            <span class="keyword">int</span> mod = (sum % K + K) % K;</span><br><span class="line">            record.put(mod, record.getOrDefault(mod, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(Map.Entry&lt;Integer, Integer&gt; entry : record.entrySet())&#123;</span><br><span class="line">            ans += entry.getValue() * (entry.getValue() - <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度和空间复杂度同上。</p>
 <h4 id="1248-统计「优美子数组」"><a href="#1248-统计「优美子数组」" class="headerlink" title="1248. 统计「优美子数组」"></a><a href="https://leetcode-cn.com/problems/count-number-of-nice-subarrays/" target="_blank" rel="noopener">1248. 统计「优美子数组」</a></h4><p>给你一个整数数组 <code>nums</code> 和一个整数 <code>k</code>。</p>
 <p>如果某个 <strong>连续</strong> 子数组中恰好有 <code>k</code> 个奇数数字，我们就认为这个子数组是「<strong>优美子数组</strong>」。</p>
 <p>请返回这个数组中「优美子数组」的数目。</p>
@@ -405,7 +425,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#11-盛最多水的容器"><span class="nav-number">1.</span> <span class="nav-text">11. 盛最多水的容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#55-跳跃游戏"><span class="nav-number">2.</span> <span class="nav-text">55. 跳跃游戏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1248-统计「优美子数组」"><span class="nav-number">3.</span> <span class="nav-text">1248. 统计「优美子数组」</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#面试题56-I-数组中数字出现的次数"><span class="nav-number">4.</span> <span class="nav-text">面试题56 - I. 数组中数字出现的次数</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#11-盛最多水的容器"><span class="nav-number">1.</span> <span class="nav-text">11. 盛最多水的容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#55-跳跃游戏"><span class="nav-number">2.</span> <span class="nav-text">55. 跳跃游戏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#974-和可被-K-整除的子数组"><span class="nav-number">3.</span> <span class="nav-text">974. 和可被 K 整除的子数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1248-统计「优美子数组」"><span class="nav-number">4.</span> <span class="nav-text">1248. 统计「优美子数组」</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#面试题56-I-数组中数字出现的次数"><span class="nav-number">5.</span> <span class="nav-text">面试题56 - I. 数组中数字出现的次数</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
