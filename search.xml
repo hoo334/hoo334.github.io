@@ -2213,7 +2213,83 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">wiggleMaxLength</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums.length &lt; <span class="number">2</span>)</span><br><span class="line">            <span class="keyword">return</span> nums.length;</span><br><span class="line">        <span class="keyword">int</span> up = <span class="number">1</span>, down = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length; ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] &gt; nums[i-<span class="number">1</span>])&#123;</span><br><span class="line">                up = down + <span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(nums[i] &lt; nums[i-<span class="number">1</span>])&#123;</span><br><span class="line">                down = up + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Math.max(up, down);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>时间复杂度为O(n)，空间复杂度为 O(1)。</p>
-<h4 id="面试题-08-11-硬币"><a href="#面试题-08-11-硬币" class="headerlink" title="面试题 08.11. 硬币"></a><a href="https://leetcode-cn.com/problems/coin-lcci/" target="_blank" rel="noopener">面试题 08.11. 硬币</a></h4><p>硬币。给定数量不限的硬币，币值为25分、10分、5分和1分，编写代码计算n分有几种表示法。(结果可能会很大，你需要将结果模上1000000007)</p>
+<h4 id="837-新21点"><a href="#837-新21点" class="headerlink" title="837. 新21点"></a><a href="https://leetcode-cn.com/problems/new-21-game/" target="_blank" rel="noopener">837. 新21点</a></h4><p>爱丽丝参与一个大致基于纸牌游戏 “21点” 规则的游戏，描述如下：</p>
+<p>爱丽丝以 <code>0</code> 分开始，并在她的得分少于 <code>K</code> 分时抽取数字。 抽取时，她从 <code>[1, W]</code> 的范围中随机获得一个整数作为分数进行累计，其中 <code>W</code> 是整数。 每次抽取都是独立的，其结果具有相同的概率。</p>
+<p>当爱丽丝获得不少于 <code>K</code> 分时，她就停止抽取数字。 爱丽丝的分数不超过 <code>N</code> 的概率是多少？</p>
+<p><strong>示例</strong> <strong>1**</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：N &#x3D; 10, K &#x3D; 1, W &#x3D; 10</span><br><span class="line">输出：1.00000</span><br><span class="line">说明：爱丽丝得到一张卡，然后停止。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例</strong> <strong>2</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：N &#x3D; 6, K &#x3D; 1, W &#x3D; 10</span><br><span class="line">输出：0.60000</span><br><span class="line">说明：爱丽丝得到一张卡，然后停止。</span><br><span class="line">在 W &#x3D; 10 的 6 种可能下，她的得分不超过 N &#x3D; 6 分。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例</strong> <strong>3</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：N &#x3D; 21, K &#x3D; 17, W &#x3D; 10</span><br><span class="line">输出：0.73278</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong></p>
+<ol>
+<li><code>0 &lt;= K &lt;= N &lt;= 10000</code></li>
+<li><code>1 &lt;= W &lt;= 10000</code></li>
+<li>如果答案与正确答案的误差不超过 <code>10^-5</code>，则该答案将被视为正确答案通过。</li>
+<li>此问题的判断限制时间已经减少。</li>
+</ol>
+<p>爱丽丝获胜的概率只和下一轮开始前的得分有关，因此根据得分计算概率。令 dp[x] 表示从得分为 x 的情况开始游戏并且获胜的概率，目标是求 dp[0] 的值。</p>
+<p>根据游戏规则，当分数大于等于 K 时，游戏结束，游戏结束时，如果分数不超过 N 则获胜，分数超过 N 则失败。</p>
+<p>对于示例  3 ，我们可以列出以下表格</p>
+<table>
+<thead>
+<tr>
+<th>0</th>
+<th>…</th>
+<th>15</th>
+<th>16</th>
+<th>17</th>
+<th>18</th>
+<th>19</th>
+<th>20</th>
+<th>21</th>
+<th>22</th>
+<th>23</th>
+<th>24</th>
+<th>25</th>
+<th>26</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td>0.5</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody></table>
+<p>抽到的最大数字为 16 + 10，当最后结果为 17 ~ 21 时获胜概率为 1 （结果小于等于 N），当最后结果为 22 ~ 26 时获胜概率为 0 （结果大于N）。</p>
+<p>则 dp[16] = ( dp[16+1] + dp[16+2] + … +dp[16+10] ) / 10，结果为 0.5。</p>
+<p>dp[15] = ( dp[15+1] + dp[15+2] + … +dp[15+10] ) / 10，结果为 0.55。</p>
+<p>得到公式</p>
+<p>dp[x] = ( dp[x+1] + dp[x+2] + … +dp[x+W] ) / 10。</p>
+<p>我们可以使用两层循环来求解，但会超出时间限制。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">new21Game</span><span class="params">(<span class="keyword">int</span> N, <span class="keyword">int</span> K, <span class="keyword">int</span> W)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(K == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1.0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//初始化 dp 数组最后 W 个元素</span></span><br><span class="line">        <span class="keyword">double</span>[] dp = <span class="keyword">new</span> <span class="keyword">double</span>[K + W];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = K; i &lt;= N &amp;&amp; i &lt; K + W; i++)&#123;</span><br><span class="line">            dp[i] = <span class="number">1.0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//从后往前按照公式依次计算 dp 数组中的值</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = K - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= W; j++)&#123;</span><br><span class="line">                dp[i] += dp[i + j] / W;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度是 O(N+KW) ，空间复杂度 O(n)。</p>
+<p>上述dp[15] 和 dp[16]公式相减得到：</p>
+<p>dp[15] = dp[16] - dp[16 + 10] / 10 + dp[16] / 10;</p>
+<p>更一般地得到：</p>
+<p>dp[x] =dp[x+1] - dp[x+1+W] / W +dp[x+1] / W。其中 x 取值范围为 [0, K-1)。</p>
+<p>只有当 x 在[N, min(K + W + 1)] 范围内时才有 dp[x] = 1,因此可以在 O(1) 时间复杂度求出 dp[K - 1]。</p>
+<p>dp[k - 1] = (min(N, K + W - 1) - K + 1) / W  = ( min(N - K + 1, W) )  / W。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">new21Game</span><span class="params">(<span class="keyword">int</span> N, <span class="keyword">int</span> K, <span class="keyword">int</span> W)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(K == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1.0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">double</span>[] dp = <span class="keyword">new</span> <span class="keyword">double</span>[K + W];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = K; i &lt;= N &amp;&amp; i &lt; K + W; i++)&#123;</span><br><span class="line">            dp[i] = <span class="number">1.0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//计算 dp[K - 1]</span></span><br><span class="line">        dp[K - <span class="number">1</span>] = <span class="number">1.0</span> * Math.min(N - K + <span class="number">1</span>, W) / W;</span><br><span class="line">        <span class="comment">//利用公式计算 dp 数组</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = K - <span class="number">2</span>; i &gt;= <span class="number">0</span>; i--)&#123;</span><br><span class="line">            dp[i] = dp[i + <span class="number">1</span>] - (dp[i + W + <span class="number">1</span>] - dp[i + <span class="number">1</span>]) / W;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度是 <em>O</em>(min(<em>N</em>,<em>K</em>+<em>W</em>))，空间复杂度 O(K+W)。</p>
+<h4 id="面试题-08-11-硬币N"><a href="#面试题-08-11-硬币N" class="headerlink" title="面试题 08.11. 硬币N"></a><a href="https://leetcode-cn.com/problems/coin-lcci/" target="_blank" rel="noopener">面试题 08.11. 硬币N</a></h4><p>硬币。给定数量不限的硬币，币值为25分、10分、5分和1分，编写代码计算n分有几种表示法。(结果可能会很大，你需要将结果模上1000000007)</p>
 <p><strong>示例1:</strong></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> 输入: n &#x3D; 5</span><br><span class="line"> 输出：2</span><br><span class="line"> 解释: 有两种方式可以凑成总金额:</span><br><span class="line">5&#x3D;5</span><br><span class="line">5&#x3D;1+1+1+1+1</span><br></pre></td></tr></table></figure>
 
@@ -3678,6 +3754,27 @@
 
 
 
+<h4 id="238-除自身以外数组的乘积"><a href="#238-除自身以外数组的乘积" class="headerlink" title="238. 除自身以外数组的乘积"></a><a href="https://leetcode-cn.com/problems/product-of-array-except-self/" target="_blank" rel="noopener">238. 除自身以外数组的乘积</a></h4><p>给你一个长度为 <em>n</em> 的整数数组 <code>nums</code>，其中 <em>n</em> &gt; 1，返回输出数组 <code>output</code> ，其中 <code>output[i]</code> 等于 <code>nums</code> 中除 <code>nums[i]</code> 之外其余各元素的乘积。</p>
+<p> <strong>示例:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: [1,2,3,4]</span><br><span class="line">输出: [24,12,8,6]</span><br></pre></td></tr></table></figure>
+
+<p> <strong>提示：</strong>题目数据保证数组之中任意元素的全部前缀元素和后缀（甚至是整个数组）的乘积都在 32 位整数范围内。</p>
+<p><strong>说明:</strong> 请<strong>不要使用除法，</strong>且在 O(<em>n</em>) 时间复杂度内完成此题。</p>
+<p><strong>进阶：</strong><br>你可以在常数空间复杂度内完成这个题目吗？（ 出于对空间复杂度分析的目的，输出数组<strong>不被视为</strong>额外空间。）</p>
+<p>一看到这个题，我们立刻想到求出数组中所有元素的乘积然后除以对应位置的元素，得到除自身以外的数组的乘积，但是很遗憾，我们并不能使用除法。</p>
+<p>看到题目的提示中前缀和后缀，我们想到除自身以外数组的乘积就是数组中一个元素的前缀积乘后缀积，示例中元素 1 的前缀元素为 1 ，后缀元素为 2，3，4，最后得到结果 1 * 24 = 24。元素 3 的前缀元素为 1， 2，后缀元素为 4，最后得到结果 2 * 4 = 8。</p>
+<p>我们可以先生成前缀积数组和后缀积数组，求两数组中对应位置元素的积就得到最后的答案。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] productExceptSelf(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">        <span class="keyword">int</span> len = nums.length;</span><br><span class="line">        <span class="keyword">int</span>[] L = <span class="keyword">new</span> <span class="keyword">int</span>[len];</span><br><span class="line">        <span class="keyword">int</span>[] R = <span class="keyword">new</span> <span class="keyword">int</span>[len];</span><br><span class="line">        <span class="keyword">int</span>[] ans = <span class="keyword">new</span> <span class="keyword">int</span>[len];</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 生成前缀数组</span></span><br><span class="line">        L[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len; i++)&#123;</span><br><span class="line">            L[i] = L[i - <span class="number">1</span>] * nums[i - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 生成后缀数组</span></span><br><span class="line">        R[len - <span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = len - <span class="number">2</span>; i &gt;= <span class="number">0</span>; i--)&#123;</span><br><span class="line">            R[i] = R[i + <span class="number">1</span>] * nums[i + <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; len; i++)&#123;</span><br><span class="line">            ans[i] = L[i] * R[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度 O(n)，空间复杂度O(n)。</p>
+<p>我们可以直接使用 ans 数组来代替前缀数组，最后直接使用 ans 数组乘后缀数组得到结果。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] productExceptSelf(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">        <span class="keyword">int</span> len = nums.length;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span>[] R = <span class="keyword">new</span> <span class="keyword">int</span>[len];</span><br><span class="line">        <span class="keyword">int</span>[] ans = <span class="keyword">new</span> <span class="keyword">int</span>[len];</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 生成前缀数组</span></span><br><span class="line">        ans[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len; i++)&#123;</span><br><span class="line">            ans[i] = ans[i - <span class="number">1</span>] * nums[i - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 生成后缀数组</span></span><br><span class="line">        R[len - <span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = len - <span class="number">2</span>; i &gt;= <span class="number">0</span>; i--)&#123;</span><br><span class="line">            R[i] = R[i + <span class="number">1</span>] * nums[i + <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; len; i++)&#123;</span><br><span class="line">            ans[i] *= R[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间和空间复杂度不变。</p>
+<p>更进一步，我们可以使用一个元素 R 来代替 后缀数组，在每次遍历时更新 R 的值即可实现和后缀数组相同的效果。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] productExceptSelf(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">        <span class="keyword">int</span> len = nums.length;</span><br><span class="line">        <span class="keyword">int</span>[] ans = <span class="keyword">new</span> <span class="keyword">int</span>[len];</span><br><span class="line">        <span class="keyword">int</span> R = <span class="number">1</span>;</span><br><span class="line">        <span class="comment">// 生成前缀数组</span></span><br><span class="line">        ans[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len; i++)&#123;</span><br><span class="line">            ans[i] = ans[i - <span class="number">1</span>] * nums[i - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = len - <span class="number">1</span> ; i &gt;= <span class="number">0</span>; i--)&#123;</span><br><span class="line">            ans[i] *= R;</span><br><span class="line">            R *= nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度 O(n)，空间复杂度O(1)。</p>
 <h4 id="974-和可被-K-整除的子数组"><a href="#974-和可被-K-整除的子数组" class="headerlink" title="974. 和可被 K 整除的子数组"></a><a href="https://leetcode-cn.com/problems/subarray-sums-divisible-by-k/" target="_blank" rel="noopener">974. 和可被 K 整除的子数组</a></h4><p>给定一个整数数组 <code>A</code>，返回其中元素之和可被 <code>K</code> 整除的（连续、非空）子数组的数目。</p>
 <p><strong>示例：</strong></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：A &#x3D; [4,5,0,-2,-3,1], K &#x3D; 5</span><br><span class="line">输出：7</span><br><span class="line">解释：</span><br><span class="line">有 7 个子数组满足其元素之和可被 K &#x3D; 5 整除：</span><br><span class="line">[4, 5, 0, -2, -3, 1], [5], [5, 0], [5, 0, -2, -3], [0], [0, -2, -3], [-2, -3]</span><br></pre></td></tr></table></figure>
