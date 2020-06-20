@@ -6015,4 +6015,63 @@
         <tag>并查集</tag>
       </tags>
   </entry>
+  <entry>
+    <title>动态规划 Hard</title>
+    <url>/2020/06/20/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92Hard/</url>
+    <content><![CDATA[<h4 id="10-正则表达式匹配"><a href="#10-正则表达式匹配" class="headerlink" title="10. 正则表达式匹配"></a><a href="https://leetcode-cn.com/problems/regular-expression-matching/" target="_blank" rel="noopener">10. 正则表达式匹配</a></h4><p>给你一个字符串 <code>s</code> 和一个字符规律 <code>p</code>，请你来实现一个支持 <code>&#39;.&#39;</code> 和 <code>&#39;*&#39;</code> 的正则表达式匹配。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#39;.&#39; 匹配任意单个字符</span><br><span class="line">&#39;*&#39; 匹配零个或多个前面的那一个元素</span><br></pre></td></tr></table></figure>
+
+<p>所谓匹配，是要涵盖 <strong>整个</strong> 字符串 <code>s</code>的，而不是部分字符串。</p>
+<p><strong>说明:</strong></p>
+<ul>
+<li><code>s</code> 可能为空，且只包含从 <code>a-z</code> 的小写字母。</li>
+<li><code>p</code> 可能为空，且只包含从 <code>a-z</code> 的小写字母，以及字符 <code>.</code> 和 <code>*</code>。</li>
+</ul>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入:</span><br><span class="line">s &#x3D; &quot;aa&quot;</span><br><span class="line">p &#x3D; &quot;a&quot;</span><br><span class="line">输出: false</span><br><span class="line">解释: &quot;a&quot; 无法匹配 &quot;aa&quot; 整个字符串。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入:</span><br><span class="line">s &#x3D; &quot;aa&quot;</span><br><span class="line">p &#x3D; &quot;a*&quot;</span><br><span class="line">输出: true</span><br><span class="line">解释: 因为 &#39;*&#39; 代表可以匹配零个或多个前面的那一个元素, 在这里前面的元素就是 &#39;a&#39;。因此，字符串 &quot;aa&quot; 可被视为 &#39;a&#39; 重复了一次。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入:</span><br><span class="line">s &#x3D; &quot;ab&quot;</span><br><span class="line">p &#x3D; &quot;.*&quot;</span><br><span class="line">输出: true</span><br><span class="line">解释: &quot;.*&quot; 表示可匹配零个或多个（&#39;*&#39;）任意字符（&#39;.&#39;）。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 4:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入:</span><br><span class="line">s &#x3D; &quot;aab&quot;</span><br><span class="line">p &#x3D; &quot;c*a*b&quot;</span><br><span class="line">输出: true</span><br><span class="line">解释: 因为 &#39;*&#39; 表示零个或多个，这里 &#39;c&#39; 为 0 个, &#39;a&#39; 被重复一次。因此可以匹配字符串 &quot;aab&quot;。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 5:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入:</span><br><span class="line">s &#x3D; &quot;mississippi&quot;</span><br><span class="line">p &#x3D; &quot;mis*is*p*.&quot;</span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure>
+
+<p>我们每次从字符串  p 中取出一个字符或者字符 + 星号的组合，并在 s 中进行匹配。对于 p 中的一个字符，它只能匹配 s 中的一个字符；对于字符和星号的组合，它可以在 s 中匹配任意个字符。因此，我们考虑使用动态规划，对匹配的方案进行枚举。</p>
+<p>我们使用 <code>f[i][j]</code> 表示 s 的前 i 个字符与 p 中的前 j 个字符是否能够匹配。在进行状态转移时，我们考虑 p 的第 j 个字符的匹配情况：</p>
+<ul>
+<li>如果 p 的第 j 个字符是一个小写字母，那么必须在 s 中匹配一个相同的小写字母即：</li>
+</ul>
+<p><img src="https://i.loli.net/2020/06/20/ag1jy63GdvwDWB2.png" alt="image-20200620105517136"></p>
+<p>如果 s 的第 i 个字符与 p 的第 j 个字符不同则返回 false，如果它们相同，则匹配结果等于两个字符串前面部分匹配的结果</p>
+<ul>
+<li><p>如果 p 的第 j 个字符是 <code>*</code> ，那么就表示我们可以对 p 的 <code>j-1</code> 个字符匹配任意次。在匹配 0 次的情况下：<code>f[i][j] = f[i][j-2]</code> （直接丢弃这个字母加星号的组合）；在匹配 1 次的情况下：<code>f[i][j] = f[i-1][j-2], if s[i] = p[j-1]</code>；在匹配 2 次的情况下：<code>f[i][j] = f[i-2][j-2], if s[i-1] = s[i] = p[j-1]</code>；在匹配 3 次的情况下：<code>f[i][j] = f[i-3][j-2], if s[i-2] = s[i-1] = s[i] = p[j-1]</code>……</p>
+<p>仔细思考，字母 + 星号只有两种情况：</p>
+<ul>
+<li>匹配 s 末尾的一个字符，将该字符扔掉，该组合继续匹配</li>
+<li>不匹配字符，将组合扔掉，不再进行匹配</li>
+</ul>
+</li>
+</ul>
+<p><img src="C:%5CUsers%5C15723%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200620111004440.png" alt="image-20200620111004440"></p>
+<p><code>f[i][j] = f[i-1][j], if s[i] = p[j-1]</code> 代表扔掉 s 末尾的一个字符，继续匹配；<code>f[i][j] = f[i][j-2], if s[i] = p[j-1]</code>代表扔掉组合，不再匹配。</p>
+<p>最终的状态转移方程如下：</p>
+<p><img src="https://i.loli.net/2020/06/20/35y2B8oDbgKqvL1.png" alt="image-20200620111757955"><br>字符串的字符下标是从 0 开始的，在实现上面的状态转移方程时，需要注意状态中每一维下标与实际字符下标的对应关系。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isMatch</span><span class="params">(String s, String p)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = s.length();</span><br><span class="line">        <span class="keyword">int</span> n = p.length();</span><br><span class="line">		<span class="comment">//初试化 dp 数组，两个字符串为空时，匹配成功</span></span><br><span class="line">        <span class="keyword">boolean</span>[][] f = <span class="keyword">new</span> <span class="keyword">boolean</span>[m + <span class="number">1</span>][n + <span class="number">1</span>];</span><br><span class="line">        f[<span class="number">0</span>][<span class="number">0</span>] = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= m; i++)&#123;</span><br><span class="line">            <span class="comment">//s 为空，p 不为空情况下，f[0] 全为false</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++)&#123;</span><br><span class="line">                <span class="comment">// p[j] 为 * 号</span></span><br><span class="line">                <span class="keyword">if</span>(p.charAt(j - <span class="number">1</span>) == <span class="string">'*'</span>)&#123;</span><br><span class="line">                    <span class="comment">// s[i] == p[j-1] ??? 能否匹配字母+星号组合中的字母</span></span><br><span class="line">                    <span class="keyword">if</span>(matches(s, p, i, j - <span class="number">1</span>))&#123;</span><br><span class="line">                        f[i][j] = f[i][j - <span class="number">2</span>] || f[i - <span class="number">1</span>][j];</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        <span class="comment">//丢弃组合</span></span><br><span class="line">                        f[i][j] = f[i][j - <span class="number">2</span>];</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;<span class="comment">// p[j] 不为 * 号</span></span><br><span class="line">                    <span class="keyword">if</span>(matches(s, p, i, j))&#123;</span><br><span class="line">                        f[i][j] = f[i - <span class="number">1</span>][j - <span class="number">1</span>];</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> f[m][n];</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//判断s[i - 1] 和 p[j - 1]是否相等</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">matches</span><span class="params">(String s, String p, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(i == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(p.charAt(j - <span class="number">1</span>) == <span class="string">'.'</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> s.charAt(i - <span class="number">1</span>) == p.charAt(j - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度 O(mn)，空间复杂度O(mn)。</p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
+        <tag>动态规划</tag>
+      </tags>
+  </entry>
 </search>
