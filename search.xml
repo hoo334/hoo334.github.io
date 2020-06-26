@@ -6188,4 +6188,37 @@
         <tag>动态规划</tag>
       </tags>
   </entry>
+  <entry>
+    <title>链表Easy</title>
+    <url>/2020/06/26/%E9%93%BE%E8%A1%A8Easy/</url>
+    <content><![CDATA[<h4 id="面试题-02-01-移除重复节点"><a href="#面试题-02-01-移除重复节点" class="headerlink" title="面试题 02.01. 移除重复节点"></a><a href="https://leetcode-cn.com/problems/remove-duplicate-node-lcci/" target="_blank" rel="noopener">面试题 02.01. 移除重复节点</a></h4><p>编写代码，移除未排序链表中的重复节点。保留最开始出现的节点。</p>
+<p><strong>示例1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：[1, 2, 3, 3, 2, 1]</span><br><span class="line">输出：[1, 2, 3]</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：[1, 1, 1, 1, 2]</span><br><span class="line">输出：[1, 2]</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong></p>
+<ol>
+<li>链表长度在[0, 20000]范围内。</li>
+<li>链表元素在[0, 20000]范围内。</li>
+</ol>
+<p><strong>进阶：</strong></p>
+<p>如果不得使用临时缓冲区，该怎么解决？</p>
+<p>我们可以使用哈希表来存储不重复的结点元素，在遍历过程中只用O(1) 时间就可判断出该结点是否重复。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">removeDuplicateNodes</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//判空处理</span></span><br><span class="line">        <span class="keyword">if</span>(head == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode p = head;</span><br><span class="line">        Map&lt;Integer,Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="comment">//将第一个结点放入 HashMap</span></span><br><span class="line">        map.put(head.val, <span class="number">1</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(p.next != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="comment">//判断结点是否重复</span></span><br><span class="line">            <span class="keyword">if</span>(!map.containsKey(p.next.val))&#123;</span><br><span class="line">                <span class="comment">//不重复，将结点值加入 HashMap</span></span><br><span class="line">                map.put(p.next.val, <span class="number">1</span>);</span><br><span class="line">                p = p.next;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">//重复，删除下一个结点</span></span><br><span class="line">                p.next = p.next.next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度 O(n)，空间复杂度O(n)。</p>
+<p>我们也可以直接使用暴力求解，在遍历链表的每个结点时，使用另一个指针，遍历当前结点之后的所有结点，若与当前结点值相同则删除。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">removeDuplicateNodes</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        ListNode p = head, q = head;</span><br><span class="line">        <span class="keyword">while</span>(p != <span class="keyword">null</span>)&#123;</span><br><span class="line">            q = p;</span><br><span class="line">            <span class="comment">//删除后续结点中与 p 指向的结点值相同的结点</span></span><br><span class="line">            <span class="keyword">while</span>(q.next != <span class="keyword">null</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(q.next.val == p.val)&#123;</span><br><span class="line">                    q.next = q.next.next;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    q = q.next;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            p = p.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(n^2)，空间复杂度O(1)。</p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>链表</tag>
+      </tags>
+  </entry>
 </search>
