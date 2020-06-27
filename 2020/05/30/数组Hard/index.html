@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://i.loli.net/2020/05/30/pCdscWKFb4qRMNP.png">
 <meta property="og:image" content="https://i.loli.net/2020/05/30/Nmh9znMFBDqGJ7b.png">
 <meta property="article:published_time" content="2020-05-30T02:32:06.000Z">
-<meta property="article:modified_time" content="2020-06-08T00:51:19.368Z">
+<meta property="article:modified_time" content="2020-06-27T01:43:09.049Z">
 <meta property="article:author" content="hoo334">
 <meta property="article:tag" content="数组">
 <meta property="article:tag" content="栈">
@@ -225,7 +225,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-08 08:51:19" itemprop="dateModified" datetime="2020-06-08T08:51:19+08:00">2020-06-08</time>
+                <time title="Modified: 2020-06-27 09:43:09" itemprop="dateModified" datetime="2020-06-27T09:43:09+08:00">2020-06-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -249,7 +249,38 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h4 id="84-柱状图中最大的矩形"><a href="#84-柱状图中最大的矩形" class="headerlink" title="84. 柱状图中最大的矩形"></a><a href="https://leetcode-cn.com/problems/largest-rectangle-in-histogram/" target="_blank" rel="noopener">84. 柱状图中最大的矩形</a></h4><p>给定 <em>n</em> 个非负整数，用来表示柱状图中各个柱子的高度。每个柱子彼此相邻，且宽度为 1 。</p>
+        <h4 id="41-缺失的第一个正数"><a href="#41-缺失的第一个正数" class="headerlink" title="41. 缺失的第一个正数"></a><a href="https://leetcode-cn.com/problems/first-missing-positive/" target="_blank" rel="noopener">41. 缺失的第一个正数</a></h4><p>给你一个未排序的整数数组，请你找出其中没有出现的最小的正整数。</p>
+<p> <strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,2,0]</span><br><span class="line">输出: 3</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [3,4,-1,1]</span><br><span class="line">输出: 2</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [7,8,9,11,12]</span><br><span class="line">输出: 1</span><br></pre></td></tr></table></figure>
+
+<p> <strong>提示：</strong></p>
+<p>你的算法的时间复杂度应为O(<em>n</em>)，并且只能使用常数级别的额外空间。</p>
+<p>如果没有时空复杂度要求可以很容易实现：</p>
+<ul>
+<li>将数组所有数放入哈希表，从 1 开始枚举正整数，并判断其是否在哈希表中。</li>
+<li>将从 1 开始枚举正整数，遍历数组判断其是否存在。</li>
+</ul>
+<p>第一种方法时间复杂度O(n)，空间复杂度O(n)；第二种方法时间复杂度O(n^2)，空间复杂度O(1)。</p>
+<p>此题要求时间复杂度O(n)，空间复杂度O(1)。如果题目给的数组是不可修改的，那么不存在满足要求的算法，如果我们可以修改给定的数组，那么可以做到满足要求的算法。</p>
+<p><strong>方法一：哈希表</strong></p>
+<p>我们可以将给定数组当作哈希表。对于一个长度为 N 的数组来说，没有出现的最小正整数只能在[1, N + 1] 中出现。如果[1, N]都出现，那么答案为 N + 1，否则答案是 [1, N] 中没有出现的最小正整数。这样一来，我们将所有在 [1, N] 中的数放入哈希表，正好数组的长度为 N ，我们可以将其设计为哈希表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">遍历数组，对于遍历到的数 x ，如果 x ∈ [1, N]，将数组中第 x - 1 个位置（下标从 0 开始）上的数变为负数。在遍历结束后，如果所有位置都为负数，那么答案是 N + 1，否则答案是正数的位置加 1 。</span><br></pre></td></tr></table></figure>
+<p>对于数组中的负数我们首先将其变为 N + 1 ，然后遍历数组将[1, N] 中出现的数字对应的位置上的数字变为负数，再次遍历数组，数组中数字为正数的位置加 1 即为结果，全为负数则结果为 N + 1。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">firstMissingPositive</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.length;</span><br><span class="line">        <span class="comment">//将所有负数变为 n + 1</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] &lt;= <span class="number">0</span>)&#123;</span><br><span class="line">                nums[i] = n + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="comment">//上标记</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">            <span class="comment">//数组中数字可以为负数，应对其取绝对值</span></span><br><span class="line">            <span class="keyword">int</span> x = Math.abs(nums[i]);</span><br><span class="line">            <span class="keyword">if</span>(x &lt; n + <span class="number">1</span>)&#123;</span><br><span class="line">                nums[x - <span class="number">1</span>] = -Math.abs(nums[x - <span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="comment">//再次遍历数组，得到答案</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> i + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> n + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(n)，空间复杂度O(1)。</p>
+<p><strong>方法二：置换</strong></p>
+<p>与方法一类似，将数组当作哈希表，我们将下标为<code>x - 1</code> 的位置放数字 <code>x</code>。我们对数组进行一次遍历，如果遍历到的数字 x = nums[i] 且 x ∈ [1, N] ，我们直到 x 应该放置在 x - 1 位置上，那么我们交换 nums[i] 和 nums[x - 1]，这样 x 就出现在了正确的位置，注意当 nums[i] == nums[x - 1] 时应该直接进行下次遍历，不再交换。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">firstMissingPositive</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.length;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">            <span class="keyword">while</span>(nums[i] &gt; <span class="number">0</span> &amp;&amp; nums[i] &lt;= n &amp;&amp; nums[nums[i] - <span class="number">1</span>] != nums[i])&#123;</span><br><span class="line">                <span class="keyword">int</span> temp = nums[nums[i] - <span class="number">1</span>];</span><br><span class="line">                nums[nums[i] - <span class="number">1</span>] = nums[i];</span><br><span class="line">                nums[i] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] != i + <span class="number">1</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> i + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> n + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(n)，最多进行 n 次交换。空间复杂度O(1)。</p>
+<h4 id="84-柱状图中最大的矩形"><a href="#84-柱状图中最大的矩形" class="headerlink" title="84. 柱状图中最大的矩形"></a><a href="https://leetcode-cn.com/problems/largest-rectangle-in-histogram/" target="_blank" rel="noopener">84. 柱状图中最大的矩形</a></h4><p>给定 <em>n</em> 个非负整数，用来表示柱状图中各个柱子的高度。每个柱子彼此相邻，且宽度为 1 。</p>
 <p>求在该柱状图中，能够勾勒出来的矩形的最大面积。</p>
 <p><img src="https://i.loli.net/2020/05/30/pCdscWKFb4qRMNP.png" alt="img"></p>
 <p>以上是柱状图的示例，其中每个柱子的宽度为 1，给定的高度为 <code>[2,1,5,6,2,3]</code>。</p>
@@ -375,7 +406,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#84-柱状图中最大的矩形"><span class="nav-number">1.</span> <span class="nav-text">84. 柱状图中最大的矩形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#128-最长连续序列"><span class="nav-number">2.</span> <span class="nav-text">128. 最长连续序列</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#41-缺失的第一个正数"><span class="nav-number">1.</span> <span class="nav-text">41. 缺失的第一个正数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#84-柱状图中最大的矩形"><span class="nav-number">2.</span> <span class="nav-text">84. 柱状图中最大的矩形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#128-最长连续序列"><span class="nav-number">3.</span> <span class="nav-text">128. 最长连续序列</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
