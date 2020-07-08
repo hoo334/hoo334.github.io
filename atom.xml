@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hoo334.github.io/"/>
-  <updated>2020-07-07T01:39:59.143Z</updated>
+  <updated>2020-07-08T00:59:11.372Z</updated>
   <id>https://hoo334.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>跳水板</title>
+    <link href="https://hoo334.github.io/2020/07/08/%E8%B7%B3%E6%B0%B4%E6%9D%BF/"/>
+    <id>https://hoo334.github.io/2020/07/08/%E8%B7%B3%E6%B0%B4%E6%9D%BF/</id>
+    <published>2020-07-08T00:49:30.000Z</published>
+    <updated>2020-07-08T00:59:11.372Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="面试题-16-11-跳水板"><a href="#面试题-16-11-跳水板" class="headerlink" title="面试题 16.11. 跳水板"></a><a href="https://leetcode-cn.com/problems/diving-board-lcci/" target="_blank" rel="noopener">面试题 16.11. 跳水板</a></h4><p>你正在使用一堆木板建造跳水板。有两种类型的木板，其中长度较短的木板长度为<code>shorter</code>，长度较长的木板长度为<code>longer</code>。你必须正好使用<code>k</code>块木板。编写一个方法，生成跳水板所有可能的长度。</p><p>返回的长度需要从小到大排列。</p><p><strong>示例：</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">shorter &#x3D; 1</span><br><span class="line">longer &#x3D; 2</span><br><span class="line">k &#x3D; 3</span><br><span class="line">输出： &#123;3,4,5,6&#125;</span><br></pre></td></tr></table></figure><p><strong>提示：</strong></p><ul><li>0 &lt; shorter &lt;= longer</li><li>0 &lt;= k &lt;= 100000</li></ul><p>提示中给出了相关信息，我们考虑特殊情况：</p><ol><li>k == 0，直接返回一个空数组；</li><li>shorter == longer，直接返回 shorter * k，只存在这一个长度。</li></ol><p>剩下的一般情况 shorter &lt; longer 且 k != 0，我们直接可以使用一次循环即可，数组第一个元素为 shorter * k，第二个元素为 shorter * (k - 1) + longer，第三个元素为 shorter * (k - 2) + longer * 2 … 最后一个元素为 longer * k，一共 k + 1 个元素。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] divingBoard(<span class="keyword">int</span> shorter, <span class="keyword">int</span> longer, <span class="keyword">int</span> k) &#123;</span><br><span class="line">        <span class="keyword">if</span>(k == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(shorter == longer)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;shorter * k&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[] ans = <span class="keyword">new</span> <span class="keyword">int</span>[k + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= k; i++)&#123;</span><br><span class="line">            ans[i] = shorter * (k - i) + longer * i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>时间复杂度O(n)，空间复杂度O(1)。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;面试题-16-11-跳水板&quot;&gt;&lt;a href=&quot;#面试题-16-11-跳水板&quot; class=&quot;headerlink&quot; title=&quot;面试题 16.11. 跳水板&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/divi
+      
+    
+    </summary>
+    
+    
+      <category term="Leetcode" scheme="https://hoo334.github.io/categories/Leetcode/"/>
+    
+    
+      <category term="数组" scheme="https://hoo334.github.io/tags/%E6%95%B0%E7%BB%84/"/>
+    
+      <category term="Leetcode Easy" scheme="https://hoo334.github.io/tags/Leetcode-Easy/"/>
+    
+  </entry>
   
   <entry>
     <title>路径总和</title>
@@ -524,31 +552,6 @@
       <category term="动态规划" scheme="https://hoo334.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
       <category term="Leetcode Medium" scheme="https://hoo334.github.io/tags/Leetcode-Medium/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>二叉树的后序遍历</title>
-    <link href="https://hoo334.github.io/2020/07/01/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/"/>
-    <id>https://hoo334.github.io/2020/07/01/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/</id>
-    <published>2020-07-01T02:39:24.000Z</published>
-    <updated>2020-07-02T04:18:34.860Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="145-二叉树的后序遍历"><a href="#145-二叉树的后序遍历" class="headerlink" title="145. 二叉树的后序遍历"></a><a href="https://leetcode-cn.com/problems/binary-tree-postorder-traversal/" target="_blank" rel="noopener">145. 二叉树的后序遍历</a></h4><p>给定一个二叉树，返回它的 <em>后序</em> 遍历。</p> <a id="more"></a><p><strong>示例:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,null,2,3]  </span><br><span class="line">   1</span><br><span class="line">    \</span><br><span class="line">     2</span><br><span class="line">    &#x2F;</span><br><span class="line">   3 </span><br><span class="line"></span><br><span class="line">输出: [3,2,1]</span><br></pre></td></tr></table></figure><p><strong>进阶:</strong> 递归算法很简单，你可以通过迭代算法完成吗？</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    * 后序遍历 “左右根”。需要一个栈来保存根结点，</span></span><br><span class="line"><span class="comment">    * 还需要一个指针来记录上一个访问的结点来判断是否访问过根结点的右子结点。</span></span><br><span class="line"><span class="comment">    * 当访问过树的最右叶子结点后，弹出根结点。</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">postorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        Stack&lt;TreeNode&gt; s = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        TreeNode lastPrintNode = <span class="keyword">null</span>;</span><br><span class="line">        </span><br><span class="line">       <span class="keyword">while</span>(root != <span class="keyword">null</span> || ! s.isEmpty())&#123;</span><br><span class="line">           <span class="keyword">if</span>(root != <span class="keyword">null</span>)&#123;</span><br><span class="line">               <span class="comment">//根结点入栈</span></span><br><span class="line">               s.push(root);</span><br><span class="line">               <span class="comment">//继续入栈根结点的左子结点</span></span><br><span class="line">               root = root.left;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">else</span>&#123;</span><br><span class="line">               <span class="comment">//无左子结点，将根结点复制一份</span></span><br><span class="line">               root = s.peek();</span><br><span class="line">               <span class="comment">//查看右子结点是否为空或右子结点已经访问过</span></span><br><span class="line">               <span class="keyword">if</span>(root.right == <span class="keyword">null</span> || root.right == lastPrintNode)&#123;</span><br><span class="line">                   <span class="comment">//根结点出栈</span></span><br><span class="line">                    s.pop(); </span><br><span class="line">                   <span class="comment">//访问根结点</span></span><br><span class="line">                    res.add(root.val); </span><br><span class="line">                   <span class="comment">//更新上一个访问过的结点</span></span><br><span class="line">                    lastPrintNode = root; </span><br><span class="line">                   <span class="comment">//取根结点的根节点访问</span></span><br><span class="line">                    root = <span class="keyword">null</span>;</span><br><span class="line">               &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                   <span class="comment">//右子结点不为空，访问右子结点</span></span><br><span class="line">                   root = root.right;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>时间复杂度O(n)，空间复杂度最坏保存整个树O(n)。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;145-二叉树的后序遍历&quot;&gt;&lt;a href=&quot;#145-二叉树的后序遍历&quot; class=&quot;headerlink&quot; title=&quot;145. 二叉树的后序遍历&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/binary-tree-postorder-traversal/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;145. 二叉树的后序遍历&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;给定一个二叉树，返回它的 &lt;em&gt;后序&lt;/em&gt; 遍历。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Leetcode" scheme="https://hoo334.github.io/categories/Leetcode/"/>
-    
-    
-      <category term="二叉树" scheme="https://hoo334.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
-    
-      <category term="Leetcode Hard" scheme="https://hoo334.github.io/tags/Leetcode-Hard/"/>
     
   </entry>
   
