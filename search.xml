@@ -7335,6 +7335,8 @@
     <title>字典树</title>
     <url>/2020/07/09/%E5%AD%97%E5%85%B8%E6%A0%91/</url>
     <content><![CDATA[<h3 id="Trie-字典树"><a href="#Trie-字典树" class="headerlink" title="Trie 字典树"></a>Trie 字典树</h3><p>Trie 字典树主要用于存储字符串，Trie 的每个 Node 保存一个字符。用链表来描述的话，一个字符串就是一个链表。每个 Node 都保存了它的所有子结点。</p>
+<a id="more"></a>
+
 <p>下图为 see、pain、panda、dog构成的字典树</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> root</span><br><span class="line">&#x2F;  |  \</span><br><span class="line">     s   p   d</span><br><span class="line">     |   |   |</span><br><span class="line">     e   a   o</span><br><span class="line">     |  &#x2F; \  |</span><br><span class="line">     e i   n g</span><br><span class="line">      &#x2F;     \</span><br><span class="line">     n       d</span><br><span class="line">              \</span><br><span class="line">               a</span><br></pre></td></tr></table></figure>
 
