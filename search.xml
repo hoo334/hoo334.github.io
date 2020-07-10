@@ -7418,6 +7418,8 @@
 <li>你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。</li>
 <li>卖出股票后，你无法在第二天买入股票 (即冷冻期为 1 天)。</li>
 </ul>
+<a id="more"></a>
+
 <p><strong>示例:</strong></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: [1,2,3,0,2]</span><br><span class="line">输出: 3 </span><br><span class="line">解释: 对应的交易状态为: [买入, 卖出, 冷冻期, 买入, 卖出]</span><br></pre></td></tr></table></figure>
 
@@ -7438,8 +7440,6 @@
 </li>
 <li><p>对于<code>f[i][1]</code>，我们在第 i 天结束之后在冷冻期，证明在第 i 天卖出了股票，说明第 i - 1 天必须持有股票，对应的状态为 <code>f[i - 1][0]</code>加上卖出股票的正收益。状态转移方程为：<br>$$<br>f[i][1] = f[i - 1][0] + prices[i]<br>$$</p>
 </li>
-</ul>
-<ul>
 <li><p>对于<code>f[i][2]</code>，我们在第 i 天结束之后不在冷冻期，可能在第 i - 1 天也是没有股票，不在冷冻期的状态转移过来，对应<code>f[i - 1][2]</code>；或者是第 i - 1 天无股票，在冷冻期的状态转移过来，对应<code>f[i - 1][1]</code>。状态转移方程为：<br>$$<br>f[i][2] = max(f[i - 1][2], f[i - 1][1])<br>$$<br>最终的答案为：<br>$$<br>max(f[n - 1][1], f[n - 1][2])<br>$$<br>如果在最后一天手里仍有股票是没有任何意义的。</p>
 <p>我们可以初始化第 0 天的条件：<code>f[0][0]=-prices[0]</code>，<code>&#39;f[0][1]=0</code>，<code>f[0][2]=0</code></p>
 <p>第 0 天有股票的负收益为 -prices[0]，第 0 天无股票的收益为 0 。</p>

@@ -212,7 +212,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-07-10 11:01:03 / Modified: 11:29:27" itemprop="dateCreated datePublished" datetime="2020-07-10T11:01:03+08:00">2020-07-10</time>
+              <time title="Created: 2020-07-10 11:01:03 / Modified: 16:33:56" itemprop="dateCreated datePublished" datetime="2020-07-10T11:01:03+08:00">2020-07-10</time>
             </span>
 
           
@@ -232,41 +232,14 @@
 <li>你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。</li>
 <li>卖出股票后，你无法在第二天买入股票 (即冷冻期为 1 天)。</li>
 </ul>
-<p><strong>示例:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,2,3,0,2]</span><br><span class="line">输出: 3 </span><br><span class="line">解释: 对应的交易状态为: [买入, 卖出, 冷冻期, 买入, 卖出]</span><br></pre></td></tr></table></figure>
-
-<p>将「买入」和「卖出」分开考虑，「买入」为负收益，「卖出」为正收益。我们需要尽可能地降低负收益而提高正收益，我们可以使用动态规划，维护股市中每一天结束后可以获得的「累计最大收益」，并以此进行状态转移，得到最终的答案。</p>
-<p>我们使用 f[i] 表示<strong>第 i 天结束之后</strong>的「累计最大收益」。根据题目描述，我们有三种状态：</p>
-<ol>
-<li><p>有股票 记为 <code>f[i][0]</code>;</p>
-</li>
-<li><p>不在冷冻期，有股票，记为 <code>f[i][1]</code>;</p>
-</li>
-<li><p>不在冷冻期，无股票，记为 <code>f[i][2]</code>;</p>
-</li>
-</ol>
-<p>这里的处于冷冻期指在第 i 天结束之后的状态。也就是说：第 i 天结束之后处于冷冻期，那么第 i + 1 天将无法买入股票。</p>
-<p>状态转移分析：</p>
-<ul>
-<li><p>对于<code>f[i][0]</code>，第 i 天的股票可以是第 i - 1 天已经持有的，对应 <code>f[i - 1][0]</code>；或者是第 i 天买入的，第 i 天能买入股票证明第 i - 1 天没有股票且不能在冷冻期，对应<code>f[i - 1][2]</code>，加上买股票的负收益。因此状态转移方程为：<br>$$<br>f[i][0] = max(f[i - 1][0], f[i - 1][2] - prices[i])<br>$$</p>
-</li>
-<li><p>对于<code>f[i][1]</code>，我们在第 i 天结束之后在冷冻期，证明在第 i 天卖出了股票，说明第 i - 1 天必须持有股票，对应的状态为 <code>f[i - 1][0]</code>加上卖出股票的正收益。状态转移方程为：<br>$$<br>f[i][1] = f[i - 1][0] + prices[i]<br>$$</p>
-</li>
-</ul>
-<ul>
-<li><p>对于<code>f[i][2]</code>，我们在第 i 天结束之后不在冷冻期，可能在第 i - 1 天也是没有股票，不在冷冻期的状态转移过来，对应<code>f[i - 1][2]</code>；或者是第 i - 1 天无股票，在冷冻期的状态转移过来，对应<code>f[i - 1][1]</code>。状态转移方程为：<br>$$<br>f[i][2] = max(f[i - 1][2], f[i - 1][1])<br>$$<br>最终的答案为：<br>$$<br>max(f[n - 1][1], f[n - 1][2])<br>$$<br>如果在最后一天手里仍有股票是没有任何意义的。</p>
-<p>我们可以初始化第 0 天的条件：<code>f[0][0]=-prices[0]</code>，<code>&#39;f[0][1]=0</code>，<code>f[0][2]=0</code></p>
-<p>第 0 天有股票的负收益为 -prices[0]，第 0 天无股票的收益为 0 。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = prices.length;</span><br><span class="line">        <span class="keyword">if</span>(n &lt;= <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[n][<span class="number">3</span>];</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = -prices[<span class="number">0</span>];</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">2</span>] = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++)&#123;</span><br><span class="line">            dp[i][<span class="number">0</span>] = Math.max(dp[i - <span class="number">1</span>][<span class="number">0</span>], dp[i - <span class="number">1</span>][<span class="number">2</span>] - prices[i]);</span><br><span class="line">            dp[i][<span class="number">1</span>] = dp[i - <span class="number">1</span>][<span class="number">0</span>] + prices[i];</span><br><span class="line">            dp[i][<span class="number">2</span>] = Math.max(dp[i - <span class="number">1</span>][<span class="number">2</span>], dp[i - <span class="number">1</span>][<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Math.max(dp[n - <span class="number">1</span>][<span class="number">1</span>], dp[n - <span class="number">1</span>][<span class="number">2</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>时间复杂度O(n)，空间复杂度O(n)。</p>
-<p>注意到第 i 天的状态只与第 i - 1 天的状态有关，我们可以将空间复杂度优化到常数级。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = prices.length;</span><br><span class="line">        <span class="keyword">if</span>(n &lt;= <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> one = -prices[<span class="number">0</span>], two = <span class="number">0</span>, three = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> newOne = Math.max(one, three - prices[i]);</span><br><span class="line">            <span class="keyword">int</span> newTwo = one + prices[i];</span><br><span class="line">            <span class="keyword">int</span> newThree = Math.max(three, two);</span><br><span class="line"></span><br><span class="line">            one = newOne;</span><br><span class="line">            two = newTwo;</span><br><span class="line">            three = newThree;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Math.max(two, three);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>时间复杂度O(n)，空间复杂度O(1)。</p>
-</li>
-</ul>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/07/10/%E6%9C%80%E4%BD%B3%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E6%97%B6%E6%9C%BA%E5%90%AB%E5%86%B7%E5%86%BB%E6%9C%9F/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
