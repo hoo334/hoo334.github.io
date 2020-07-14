@@ -7591,4 +7591,45 @@
         <tag>哈希表</tag>
       </tags>
   </entry>
+  <entry>
+    <title>三角形最小路径和</title>
+    <url>/2020/07/14/%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/</url>
+    <content><![CDATA[<h4 id="120-三角形最小路径和"><a href="#120-三角形最小路径和" class="headerlink" title="120. 三角形最小路径和"></a><a href="https://leetcode-cn.com/problems/triangle/" target="_blank" rel="noopener">120. 三角形最小路径和</a></h4><p>给定一个三角形，找出自顶向下的最小路径和。每一步只能移动到下一行中相邻的结点上。</p>
+<p><strong>相邻的结点</strong> 在这里指的是 <code>下标</code> 与 <code>上一层结点下标</code> 相同或者等于 <code>上一层结点下标 + 1</code> 的两个结点。</p>
+ <a id="more"></a>
+
+<p>例如，给定三角形：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[</span><br><span class="line">     [2],</span><br><span class="line">    [3,4],</span><br><span class="line">   [6,5,7],</span><br><span class="line">  [4,1,8,3]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>自顶向下的最小路径和为 <code>11</code>（即，<strong>2</strong> + <strong>3</strong> + <strong>5</strong> + <strong>1</strong> = 11）。</p>
+<p> <strong>说明：</strong></p>
+<p>如果你可以只使用 <em>O</em>(<em>n</em>) 的额外空间（<em>n</em> 为三角形的总行数）来解决这个问题，那么你的算法会很加分。</p>
+<p>我们使用 <code>f[i][j]</code>来表示从三角形顶部走到位置<code>(i, j)</code>的最小路径和。这里的 <code>i</code> 和 <code>j</code> 指的是三角形中第<code>i</code>行第<code>j</code>列（从 0 开始编号）的的位置。</p>
+<p>由于每一步只能移动到下一个相邻的结点，要到位置<code>(i, j)</code>，上一步位置就只能在<code>(i - 1, j)</code>或<code>(i - 1, j - 1)</code>中选择。我们在两者之间找一个路径和比较小的来转移，状态方程为：<br>$$<br>f[i][j] = min(f[i -1][j - 1], f[i - 1][j]) + c[i][j]<br>$$<br>其中<code>c[i][j]</code>表示位置<code>(i, j)</code>对应的元素值。</p>
+<p>注意边界条件：</p>
+<ul>
+<li><p>当 j == 0 时，没有左上结点，只能从上一个结点转移过来，状态转移方程为：<br>$$<br>f[i][j] = f[i - 1][j] + c[i][j]<br>$$</p>
+</li>
+<li><p>当 j == i 时，没有上结点，只能从左上结点转移过来，状态转移方程为：</p>
+</li>
+</ul>
+<p>$$<br>f[i][j] = f[i - 1][j - 1] + c[i][j]<br>$$</p>
+<p>最终的答案为 <code>f[n - 1][0]</code> 到 <code>f[n - 1][n - 1]</code> 的最小值，其中  n 是三角形的行数。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minimumTotal</span><span class="params">(List&lt;List&lt;Integer&gt;&gt; triangle)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = triangle.size();</span><br><span class="line">        <span class="keyword">if</span>(m == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> n = triangle.get(m - <span class="number">1</span>).size();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[m][n];</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = triangle.get(<span class="number">0</span>).get(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; m; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i + <span class="number">1</span>; j++)&#123;</span><br><span class="line">                <span class="keyword">int</span> up = j != i ? dp[i - <span class="number">1</span>][j] : Integer.MAX_VALUE;</span><br><span class="line">                <span class="keyword">int</span> upLeft = j - <span class="number">1</span> &gt;= <span class="number">0</span> ? dp[i - <span class="number">1</span>][j - <span class="number">1</span>] : Integer.MAX_VALUE;</span><br><span class="line"></span><br><span class="line">                dp[i][j] = triangle.get(i).get(j) + Math.min(up, upLeft); </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> min = dp[m - <span class="number">1</span>][<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++)&#123;</span><br><span class="line">            min = Math.min(min, dp[m - <span class="number">1</span>][i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> min;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(n^2)，空间复杂度O(n^2)。</p>
+<p>我们可以看到 dp 数组中第 i 行的值只与第 i - 1 行的值有关，我们可以只使用一个一维数组存储。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minimumTotal</span><span class="params">(List&lt;List&lt;Integer&gt;&gt; triangle)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = triangle.size();</span><br><span class="line">        <span class="keyword">if</span>(m == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> n = triangle.get(m - <span class="number">1</span>).size();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">        dp[<span class="number">0</span>]= triangle.get(<span class="number">0</span>).get(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">int</span> up = <span class="number">0</span>, upLeft = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; m; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i + <span class="number">1</span>; j++)&#123;</span><br><span class="line">                up = dp[j];</span><br><span class="line">                <span class="keyword">if</span>(j == <span class="number">0</span>)&#123;</span><br><span class="line">                    dp[j] = up + triangle.get(i).get(j);</span><br><span class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>(j == i)&#123;</span><br><span class="line">                    dp[j] = upLeft + triangle.get(i).get(j);</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    dp[j] = Math.min(up, upLeft) + triangle.get(i).get(j);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">//第 j + 1 个元素的左上元素等于第 j 个元素上方的元素</span></span><br><span class="line">                upLeft = up;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> min = dp[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++)&#123;</span><br><span class="line">            min = Math.min(min, dp[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> min;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(n^2)，空间复杂度O(n)。</p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
+        <tag>动态规划</tag>
+        <tag>Leetcode Medium</tag>
+      </tags>
+  </entry>
 </search>
