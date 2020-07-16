@@ -27,15 +27,16 @@
 <meta property="og:site_name" content="echo">
 <meta property="og:description" content="Trie 字典树Trie 字典树主要用于存储字符串，Trie 的每个 Node 保存一个字符。用链表来描述的话，一个字符串就是一个链表。每个 Node 都保存了它的所有子结点。">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2020/07/16/qdBE8bhZ1YWNljX.png">
 <meta property="og:image" content="https://i.loli.net/2020/07/09/n83K4Jy1CehpM2k.png">
 <meta property="og:image" content="https://i.loli.net/2020/07/09/e9UgSvrRf7ZcCL5.png">
 <meta property="og:image" content="https://i.loli.net/2020/07/09/wpfGd5lLsO82yQI.png">
 <meta property="article:published_time" content="2020-07-09T04:31:04.000Z">
-<meta property="article:modified_time" content="2020-07-16T01:23:55.768Z">
+<meta property="article:modified_time" content="2020-07-16T03:21:56.336Z">
 <meta property="article:author" content="hoo334">
 <meta property="article:tag" content="字典树">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2020/07/09/n83K4Jy1CehpM2k.png">
+<meta name="twitter:image" content="https://i.loli.net/2020/07/16/qdBE8bhZ1YWNljX.png">
 
 <link rel="canonical" href="https://hoo334.github.io/2020/07/09/%E5%AD%97%E5%85%B8%E6%A0%91/">
 
@@ -225,7 +226,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-07-16 09:23:55" itemprop="dateModified" datetime="2020-07-16T09:23:55+08:00">2020-07-16</time>
+                <time title="Modified: 2020-07-16 11:21:56" itemprop="dateModified" datetime="2020-07-16T11:21:56+08:00">2020-07-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -259,8 +260,7 @@
 <a id="more"></a>
 
 <p>下图为 see、pain、panda、dog构成的字典树</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"> root</span><br><span class="line">&#x2F;  |  \</span><br><span class="line">     s   p   d</span><br><span class="line">     |   |   |</span><br><span class="line">     e   a   o</span><br><span class="line">     |  &#x2F; \  |</span><br><span class="line">     e i   n g</span><br><span class="line">      &#x2F;     \</span><br><span class="line">     n       d</span><br><span class="line">              \</span><br><span class="line">               a</span><br></pre></td></tr></table></figure>
-
+<p><img src="https://i.loli.net/2020/07/16/qdBE8bhZ1YWNljX.png" alt="image-20200716101933071"></p>
 <h4 id="结点设置"><a href="#结点设置" class="headerlink" title="结点设置"></a>结点设置</h4><ol>
 <li>是否存在以该结点为最后字符的单词，标识位 isEnd；</li>
 <li>当前结点的所有子节点，使用Map存储，当字符串中全为小写字母时可以用数组代替。</li>
