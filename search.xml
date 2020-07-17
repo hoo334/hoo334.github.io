@@ -698,7 +698,7 @@
 <p>​    2）缓冲区管理器所管理的内存地址空间——数据缓冲区。</p>
 <p>​    3）事务的局部地址空间——事务工作区。</p>
 <p>​    当事务要读取数据库元素时，首先必须将该元素从物理数据库读取到数据缓冲区中，除非它已经在缓冲区中，然后再将缓冲区中的内容读到事务工作区中。</p>
-<p><img src="https://i.loli.net/2020/04/06/GZAjXMbNu4z7apB.png" alt="image-20200406111338451"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/GZAjXMbNu4z7apB.png" alt="image-20200406111338451"></p>
 <p><img src="https://gitee.com/hoo334/picgo/raw/master//img/TcfswaB6NqoKzdp.png" alt="image-20200406111426865"></p>
 <h4 id="基于日志的故障恢复策略"><a href="#基于日志的故障恢复策略" class="headerlink" title="基于日志的故障恢复策略"></a>基于日志的故障恢复策略</h4><p>​    日志是 DBMS 记录数据库全部更新操作的序列文件。通常一个数据库系统只有一个日志文件，为所有事务共享，其主要特点有：</p>
 <p>​    1）日志文件记录了数据库的全部更新顺序。</p>
@@ -2918,7 +2918,7 @@
 <h4 id="执行存储过程"><a href="#执行存储过程" class="headerlink" title="执行存储过程"></a>执行存储过程</h4><p>​    存储过程创建后存放在数据库中，当要使用存储过程时，必须执行命令 execute。</p>
 <p><img src="https://gitee.com/hoo334/picgo/raw/master//img/GlUWZ8rtMVhSO5y.png" alt="image-20200405200618013"></p>
 <h4 id="修改和删除存储过程"><a href="#修改和删除存储过程" class="headerlink" title="修改和删除存储过程"></a>修改和删除存储过程</h4><h5 id="修改存储过程"><a href="#修改存储过程" class="headerlink" title="修改存储过程"></a>修改存储过程</h5><p><img src="https://gitee.com/hoo334/picgo/raw/master//img/z1no7G8baR5Yp9t.png" alt="image-20200405200745811"></p>
-<p><img src="https://i.loli.net/2020/04/05/s79bqRDMnWKrEvm.png" alt="image-20200405200755212"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/s79bqRDMnWKrEvm.png" alt="image-20200405200755212"></p>
 <h5 id="删除存储过程"><a href="#删除存储过程" class="headerlink" title="删除存储过程"></a>删除存储过程</h5><p>​    drop procedure &lt; procedureName &gt;</p>
 <h3 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h3><p>​    触发器是用户定义在关系表上的一类由事件驱动的存储过程，由服务器自动激活。触发器可以进行更为复杂的检查和操作，具有更精细和强大的数据控制能力。</p>
 <p>​    有两个特殊的表用在触发器语句中，不同的数据库其名称不一样。以SQL Server 为例介绍触发器。</p>
@@ -3400,7 +3400,7 @@
 <h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>我们将创建一个 <em>Shape</em> 接口和实现了 <em>Shape</em> 接口的实体类。然后我们创建一个实现了 <em>Shape</em> 接口的抽象装饰类 <em>ShapeDecorator*，并把 *Shape</em> 对象作为它的实例变量。</p>
 <p><em>RedShapeDecorator</em> 是实现了 <em>ShapeDecorator</em> 的实体类。</p>
 <p><em>DecoratorPatternDemo*，我们的演示类使用 *RedShapeDecorator</em> 来装饰 <em>Shape</em> 对象。</p>
-<p><img src="E:%5CTyporaPics%5Ch5SvMjW6mnIqJ7u.png" alt="img"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/h5SvMjW6mnIqJ7u.png" alt="img"></p>
 <p> 1、创建一个接口</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -3417,7 +3417,7 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DecoratorPatternDemo</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Shape circle = <span class="keyword">new</span> Circle();</span><br><span class="line">        ShapeDecorator redCircle = <span class="keyword">new</span> RedShapeDecorator(<span class="keyword">new</span> Circle());</span><br><span class="line">        ShapeDecorator redRectangle = <span class="keyword">new</span> RedShapeDecorator(<span class="keyword">new</span> Rectangle());</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"Circle with normal boarder"</span>);</span><br><span class="line">        circle.draw();</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"\nCircle of red boarder"</span>);</span><br><span class="line">        redCircle.draw();</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"\nRectangle of red boarder"</span>);</span><br><span class="line">        redRectangle.draw();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>输出</p>
-<p><img src="E:%5CTyporaPics%5C97bGozjSDYws2Zy.png" alt="img"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/97bGozjSDYws2Zy.png" alt="img"></p>
 <p> 我们使用 RedShapeDecorator 装饰类来对 Shape 对象扩展红色的功能，而不是使用RedCircle 继承 Circle 这种方法，避免了子类膨胀。</p>
 <p>参考：<a href="https://www.runoob.com/design-pattern/decorator-pattern.html" target="_blank" rel="noopener">https://www.runoob.com/design-pattern/decorator-pattern.html</a></p>
 ]]></content>
