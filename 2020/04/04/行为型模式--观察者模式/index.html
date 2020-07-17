@@ -27,13 +27,13 @@
 <meta property="og:site_name" content="echo">
 <meta property="og:description" content="Java 设计模式">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.loli.net/2020/04/04/2ZDW8mdXlScM7jg.png">
-<meta property="og:image" content="https://i.loli.net/2020/04/04/Zm32V8BShouLqGA.png">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/2ZDW8mdXlScM7jg.png">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/Zm32V8BShouLqGA.png">
 <meta property="article:published_time" content="2020-04-04T06:39:13.000Z">
-<meta property="article:modified_time" content="2020-04-04T11:06:41.296Z">
+<meta property="article:modified_time" content="2020-07-17T11:30:05.284Z">
 <meta property="article:author" content="hoo334">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2020/04/04/2ZDW8mdXlScM7jg.png">
+<meta name="twitter:image" content="https://gitee.com/hoo334/picgo/raw/master//img/2ZDW8mdXlScM7jg.png">
 
 <link rel="canonical" href="https://hoo334.github.io/2020/04/04/%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F--%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/">
 
@@ -215,10 +215,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-04-04 14:39:13 / Modified: 19:06:41" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
+              <time title="Created: 2020-04-04 14:39:13" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-17 19:30:05" itemprop="dateModified" datetime="2020-07-17T19:30:05+08:00">2020-07-17</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -267,7 +273,7 @@
 <p><strong>注意事项：</strong> 1、JAVA 中已经有了对观察者模式的支持类。 2、避免循环引用。 3、如果顺序执行，某一观察者错误会导致系统卡壳，一般采用异步方式。</p>
 <h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>观察者模式使用三个类 Subject、Observer 和 Client。Subject 对象带有绑定观察者到 Client 对象和从 Client 对象解绑观察者的方法。我们创建 <em>Subject</em> 类、<em>Observer</em> 抽象类和扩展了抽象类 <em>Observer</em> 的实体类。</p>
 <p><em>ObserverPatternDemo*，我们的演示类使用 *Subject</em> 和实体类对象来演示观察者模式。</p>
-<p><img src="https://i.loli.net/2020/04/04/2ZDW8mdXlScM7jg.png" alt="img"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/2ZDW8mdXlScM7jg.png" alt="img"></p>
 <p> 1、创建 Subject 类</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Subject</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Observer&gt; observers = <span class="keyword">new</span> ArrayList&lt;Observer&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> state;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">attach</span><span class="params">(Observer observer)</span></span>&#123;</span><br><span class="line">        observers.add(observer);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">notifyAllObservers</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (Observer observer : observers) &#123;</span><br><span class="line">            observer.update();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getState</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> state;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setState</span><span class="params">(<span class="keyword">int</span> state)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.state = state;</span><br><span class="line">        notifyAllObservers();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -281,7 +287,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ObserverPatternDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Subject subject = <span class="keyword">new</span> Subject();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">new</span> HexObserver(subject);</span><br><span class="line">        <span class="keyword">new</span> OctalObserver(subject);</span><br><span class="line">        <span class="keyword">new</span> BinaryObserver(subject);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"First state change: 15"</span>);</span><br><span class="line">        subject.setState(<span class="number">15</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"Second state change: 10"</span>);</span><br><span class="line">        subject.setState(<span class="number">10</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>输出</p>
-<p><img src="https://i.loli.net/2020/04/04/Zm32V8BShouLqGA.png" alt="img"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/Zm32V8BShouLqGA.png" alt="img"></p>
 <p> 我们使用 BinaryObserver、OctalObserver 和 HexObserver 来“观察” Subject 对象的情况，当 Subject 的状态改变时就调用 notifyAllObservers()方法。</p>
 <p>参考：<a href="https://www.runoob.com/design-pattern/state-pattern.html" target="_blank" rel="noopener">https://www.runoob.com/design-pattern/state-pattern.html</a></p>
 

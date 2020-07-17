@@ -27,12 +27,12 @@
 <meta property="og:site_name" content="echo">
 <meta property="og:description" content="Java 设计模式">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.loli.net/2020/04/04/Px9WFvJVqliNUpw.png">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/Px9WFvJVqliNUpw.png">
 <meta property="article:published_time" content="2020-04-04T06:39:13.000Z">
-<meta property="article:modified_time" content="2020-04-04T11:13:03.297Z">
+<meta property="article:modified_time" content="2020-07-17T10:00:10.984Z">
 <meta property="article:author" content="hoo334">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2020/04/04/Px9WFvJVqliNUpw.png">
+<meta name="twitter:image" content="https://gitee.com/hoo334/picgo/raw/master//img/Px9WFvJVqliNUpw.png">
 
 <link rel="canonical" href="https://hoo334.github.io/2020/04/04/%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F--%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">
 
@@ -214,10 +214,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-04-04 14:39:13 / Modified: 19:13:03" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
+              <time title="Created: 2020-04-04 14:39:13" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-17 18:00:10" itemprop="dateModified" datetime="2020-07-17T18:00:10+08:00">2020-07-17</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -263,7 +269,7 @@
 <p>　　应用场景：1）要求生产唯一序列号。2）WEB 中的计数器，不用每次刷新都在数据库里加一次，用单例先缓存起来。3）创建的一个对象需要消耗的资源过多，比如 I/O 与数据库的连接等。</p>
 <p><strong>实现</strong></p>
 <p>　　我们将创建一个 <em>SingleObject</em> 类。<em>SingleObject</em> 类有它的私有构造函数和本身的一个静态实例。<em>SingleObject</em> 类提供了一个静态方法，供外界获取它的静态实例。<em>SingletonPatternDemo*，我们的演示类使用 *SingleObject</em> 类来获取 <em>SingleObject</em> 对象。</p>
-<p><img src="https://i.loli.net/2020/04/04/Px9WFvJVqliNUpw.png" alt="img"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/Px9WFvJVqliNUpw.png" alt="img"></p>
 <p> 　1、创建一个Singleton 类。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingleObject</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> SingleObject instance = <span class="keyword">new</span> SingleObject();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">SingleObject</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingleObject <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showMessage</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"hello world!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 

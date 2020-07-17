@@ -27,13 +27,13 @@
 <meta property="og:site_name" content="echo">
 <meta property="og:description" content="Java 设计模式">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.loli.net/2020/04/04/sFxj37SopKEcz5T.png">
-<meta property="og:image" content="https://i.loli.net/2020/04/04/qnfFXHh23agZoIO.png">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/sFxj37SopKEcz5T.png">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/qnfFXHh23agZoIO.png">
 <meta property="article:published_time" content="2020-04-04T06:39:13.000Z">
-<meta property="article:modified_time" content="2020-04-04T11:01:35.481Z">
+<meta property="article:modified_time" content="2020-07-17T10:10:30.681Z">
 <meta property="article:author" content="hoo334">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2020/04/04/sFxj37SopKEcz5T.png">
+<meta name="twitter:image" content="https://gitee.com/hoo334/picgo/raw/master//img/sFxj37SopKEcz5T.png">
 
 <link rel="canonical" href="https://hoo334.github.io/2020/04/04/%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F--%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/">
 
@@ -215,10 +215,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-04-04 14:39:13 / Modified: 19:01:35" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
+              <time title="Created: 2020-04-04 14:39:13" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-17 18:10:30" itemprop="dateModified" datetime="2020-07-17T18:10:30+08:00">2020-07-17</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -260,7 +266,7 @@
 <p><strong>注意事项：</strong> 1、和适配器模式的区别：适配器模式主要改变所考虑对象的接口，而代理模式不能改变所代理类的接口。 2、和装饰器模式的区别：装饰器模式为了增强功能，而代理模式是为了加以控制。</p>
 <h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>我们将创建一个 <em>Image</em> 接口和实现了 <em>Image</em> 接口的实体类。<em>ProxyImage</em> 是一个代理类，减少 <em>RealImage</em> 对象加载的内存占用。</p>
 <p><em>ProxyPatternDemo*，我们的演示类使用 *ProxyImage</em> 来获取要加载的 <em>Image</em> 对象，并按照需求进行显示。</p>
-<p><img src="https://i.loli.net/2020/04/04/sFxj37SopKEcz5T.png" alt="img"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/sFxj37SopKEcz5T.png" alt="img"></p>
 <p> 1、创建一个接口</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Image</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -271,7 +277,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProxyPatternDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Image image = <span class="keyword">new</span> ProxyImage(<span class="string">"test.jpg"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//从磁盘加载</span></span><br><span class="line">        image.display();</span><br><span class="line">        <span class="comment">//不需要从磁盘加载</span></span><br><span class="line">        image.display();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>输出：</p>
-<p><img src="https://i.loli.net/2020/04/04/qnfFXHh23agZoIO.png" alt="img"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/qnfFXHh23agZoIO.png" alt="img"></p>
 <p> 参考：<a href="https://www.runoob.com/design-pattern/proxy-pattern.html" target="_blank" rel="noopener">https://www.runoob.com/design-pattern/proxy-pattern.html</a></p>
 
     </div>

@@ -27,13 +27,13 @@
 <meta property="og:site_name" content="echo">
 <meta property="og:description" content="Java 设计模式">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.loli.net/2020/04/04/AxBCiwfhDro5vUI.png">
-<meta property="og:image" content="https://i.loli.net/2020/04/04/qXJ7ojevdfKGLl5.png">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/AxBCiwfhDro5vUI.png">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/qXJ7ojevdfKGLl5.png">
 <meta property="article:published_time" content="2020-04-04T06:39:13.000Z">
-<meta property="article:modified_time" content="2020-04-04T10:59:17.002Z">
+<meta property="article:modified_time" content="2020-07-17T10:11:53.403Z">
 <meta property="article:author" content="hoo334">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2020/04/04/AxBCiwfhDro5vUI.png">
+<meta name="twitter:image" content="https://gitee.com/hoo334/picgo/raw/master//img/AxBCiwfhDro5vUI.png">
 
 <link rel="canonical" href="https://hoo334.github.io/2020/04/04/%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F--%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/">
 
@@ -215,10 +215,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-04-04 14:39:13 / Modified: 18:59:17" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
+              <time title="Created: 2020-04-04 14:39:13" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-17 18:11:53" itemprop="dateModified" datetime="2020-07-17T18:11:53+08:00">2020-07-17</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -263,7 +269,7 @@
 <p>我们还有另一个接口 <em>AdvancedMediaPlayer</em> 和实现了 <em>AdvancedMediaPlayer</em> 接口的实体类。该类可以播放 vlc 和 mp4 格式的文件。</p>
 <p>我们想要让 <em>AudioPlayer</em> 播放其他格式的音频文件。为了实现这个功能，我们需要创建一个实现了 <em>MediaPlayer</em> 接口的适配器类 <em>MediaAdapter*，并使用 *AdvancedMediaPlayer</em> 对象来播放所需的格式。</p>
 <p><em>AudioPlayer</em> 使用适配器类 <em>MediaAdapter</em> 传递所需的音频类型，不需要知道能播放所需格式音频的实际类。<em>AdapterPatternDemo*，我们的演示类使用 *AudioPlayer</em> 类来播放各种格式。</p>
-<p><img src="https://i.loli.net/2020/04/04/AxBCiwfhDro5vUI.png" alt="img"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/AxBCiwfhDro5vUI.png" alt="img"></p>
 <p> 　1、为媒体播放器和更高级的媒体播放器创建接口</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MediaPlayer</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">play</span><span class="params">(String audioType,String fileName)</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">AdvancedMediaPlayer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">playVlc</span><span class="params">(String fileName)</span></span>;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">playMp4</span><span class="params">(String fileName)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -280,7 +286,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AdapterPatternDemo</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        AudioPlayer audioPlayer = <span class="keyword">new</span> AudioPlayer();</span><br><span class="line"></span><br><span class="line">        audioPlayer.play(<span class="string">"mp3"</span>, <span class="string">"beyond the horizon.mp3"</span>);</span><br><span class="line">        audioPlayer.play(<span class="string">"mp4"</span>, <span class="string">"alone.mp4"</span>);</span><br><span class="line">        audioPlayer.play(<span class="string">"vlc"</span>, <span class="string">"far far away.vlc"</span>);</span><br><span class="line">        audioPlayer.play(<span class="string">"avi"</span>, <span class="string">"mind me.avi"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>　　输出：</p>
-<p><img src="https://i.loli.net/2020/04/04/qXJ7ojevdfKGLl5.png" alt="img"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/qXJ7ojevdfKGLl5.png" alt="img"></p>
 <p> 参考：<a href="https://www.runoob.com/design-pattern/adapter-pattern.html" target="_blank" rel="noopener">https://www.runoob.com/design-pattern/adapter-pattern.html</a></p>
 
     </div>

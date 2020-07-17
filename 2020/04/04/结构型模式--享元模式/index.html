@@ -27,13 +27,13 @@
 <meta property="og:site_name" content="echo">
 <meta property="og:description" content="Java 设计模式">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.loli.net/2020/04/04/mkq83nVXFwSI6Kp.png">
-<meta property="og:image" content="https://i.loli.net/2020/04/04/E7unTaG5r1qLNU6.png">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/mkq83nVXFwSI6Kp.png">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/E7unTaG5r1qLNU6.png">
 <meta property="article:published_time" content="2020-04-04T06:39:13.000Z">
-<meta property="article:modified_time" content="2020-04-04T10:57:36.915Z">
+<meta property="article:modified_time" content="2020-07-17T10:12:31.802Z">
 <meta property="article:author" content="hoo334">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2020/04/04/mkq83nVXFwSI6Kp.png">
+<meta name="twitter:image" content="https://gitee.com/hoo334/picgo/raw/master//img/mkq83nVXFwSI6Kp.png">
 
 <link rel="canonical" href="https://hoo334.github.io/2020/04/04/%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F--%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F/">
 
@@ -215,10 +215,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-04-04 14:39:13 / Modified: 18:57:36" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
+              <time title="Created: 2020-04-04 14:39:13" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-17 18:12:31" itemprop="dateModified" datetime="2020-07-17T18:12:31+08:00">2020-07-17</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -262,7 +268,7 @@
 <h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>我们将创建一个 <em>Shape</em> 接口和实现了 <em>Shape</em> 接口的实体类 <em>Circle</em>。下一步是定义工厂类 <em>ShapeFactory</em>。</p>
 <p><em>ShapeFactory</em> 有一个 <em>Circle</em> 的 <em>HashMap*，其中键名为 *Circle</em> 对象的颜色。无论何时接收到请求，都会创建一个特定颜色的圆。<em>ShapeFactory</em> 检查它的 <em>HashMap</em> 中的 circle 对象，如果找到 <em>Circle</em> 对象，则返回该对象，否则将创建一个存储在 hashmap 中以备后续使用的新对象，并把该对象返回到客户端。</p>
 <p><em>FlyWeightPatternDemo*，我们的演示类使用 *ShapeFactory</em> 来获取 <em>Shape</em> 对象。它将向 <em>ShapeFactory</em> 传递信息（<em>red / green / blue/ black / white</em>），以便获取它所需对象的颜色。</p>
-<p><img src="https://i.loli.net/2020/04/04/mkq83nVXFwSI6Kp.png" alt="img"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/mkq83nVXFwSI6Kp.png" alt="img"></p>
 <p> 1、创建一个接口</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -276,7 +282,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FlyWeightDemo</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String colors[]=&#123;<span class="string">"Red"</span>,<span class="string">"Green"</span>,<span class="string">"Blue"</span>,<span class="string">"White"</span>,<span class="string">"Black"</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++) &#123;</span><br><span class="line">            Circle circle = (Circle)ShapeFactory.getShape(getRandomColor());</span><br><span class="line">            circle.setRadius(<span class="number">100</span>);</span><br><span class="line">            circle.setX(getRandomX());</span><br><span class="line">            circle.setY(getRandomY());</span><br><span class="line">            circle.draw();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">getRandomColor</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> colors[(<span class="keyword">int</span>)Math.random()* colors.length];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getRandomX</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">int</span>)(Math.random()*<span class="number">100</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getRandomY</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">int</span>)(Math.random()*<span class="number">100</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>输出</p>
-<p><img src="https://i.loli.net/2020/04/04/E7unTaG5r1qLNU6.png" alt="img"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/E7unTaG5r1qLNU6.png" alt="img"></p>
 <p> 我们重用了 key 为红色的圆。</p>
 
     </div>

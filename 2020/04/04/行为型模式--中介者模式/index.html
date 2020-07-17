@@ -27,13 +27,13 @@
 <meta property="og:site_name" content="echo">
 <meta property="og:description" content="Java 设计模式">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.loli.net/2020/04/04/OhHFloWqvdMENpI.png">
-<meta property="og:image" content="https://i.loli.net/2020/04/04/jNMSEFBdg6qp8m2.png">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/OhHFloWqvdMENpI.png">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/jNMSEFBdg6qp8m2.png">
 <meta property="article:published_time" content="2020-04-04T06:39:13.000Z">
-<meta property="article:modified_time" content="2020-04-04T11:03:39.580Z">
+<meta property="article:modified_time" content="2020-07-17T11:31:39.868Z">
 <meta property="article:author" content="hoo334">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2020/04/04/OhHFloWqvdMENpI.png">
+<meta name="twitter:image" content="https://gitee.com/hoo334/picgo/raw/master//img/OhHFloWqvdMENpI.png">
 
 <link rel="canonical" href="https://hoo334.github.io/2020/04/04/%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F--%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F/">
 
@@ -215,10 +215,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-04-04 14:39:13 / Modified: 19:03:39" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
+              <time title="Created: 2020-04-04 14:39:13" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-17 19:31:39" itemprop="dateModified" datetime="2020-07-17T19:31:39+08:00">2020-07-17</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -262,7 +268,7 @@
 <p><strong>注意事项：</strong>不应当在职责混乱的时候使用。</p>
 <h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>我们通过聊天室实例来演示中介者模式。实例中，多个用户可以向聊天室发送消息，聊天室向所有的用户显示消息。我们将创建两个类 <em>ChatRoom</em> 和 <em>User<em>。</em>User</em> 对象使用 <em>ChatRoom</em> 方法来分享他们的消息。</p>
 <p><em>MediatorPatternDemo*，我们的演示类使用 *User</em> 对象来显示他们之间的通信。</p>
-<p><img src="https://i.loli.net/2020/04/04/OhHFloWqvdMENpI.png" alt="img"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/OhHFloWqvdMENpI.png" alt="img"></p>
 <p> 1、创建中介类</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ChatRoom</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">showMessage</span><span class="params">(User user, String message)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="keyword">new</span> Date().toString()+<span class="string">"["</span>+user.getName()+<span class="string">"] :"</span>+message);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -273,7 +279,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MediatorPatternDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        User robert = <span class="keyword">new</span> User(<span class="string">"Robert"</span>);</span><br><span class="line">        User john = <span class="keyword">new</span> User(<span class="string">"John"</span>);</span><br><span class="line">        robert.sendMessage(<span class="string">"Hi, John"</span>);</span><br><span class="line">        john.sendMessage(<span class="string">"Hello, Robert"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>输出</p>
-<p><img src="https://i.loli.net/2020/04/04/jNMSEFBdg6qp8m2.png" alt="img"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/jNMSEFBdg6qp8m2.png" alt="img"></p>
 <p> 参考：<a href="https://www.runoob.com/design-pattern/mediator-pattern.html" target="_blank" rel="noopener">https://www.runoob.com/design-pattern/mediator-pattern.html</a></p>
 
     </div>

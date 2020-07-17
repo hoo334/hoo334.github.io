@@ -27,16 +27,16 @@
 <meta property="og:site_name" content="echo">
 <meta property="og:description" content="Trie 字典树Trie 字典树主要用于存储字符串，Trie 的每个 Node 保存一个字符。用链表来描述的话，一个字符串就是一个链表。每个 Node 都保存了它的所有子结点。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.loli.net/2020/07/16/qdBE8bhZ1YWNljX.png">
-<meta property="og:image" content="https://i.loli.net/2020/07/09/n83K4Jy1CehpM2k.png">
-<meta property="og:image" content="https://i.loli.net/2020/07/09/e9UgSvrRf7ZcCL5.png">
-<meta property="og:image" content="https://i.loli.net/2020/07/09/wpfGd5lLsO82yQI.png">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/qdBE8bhZ1YWNljX.png">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/n83K4Jy1CehpM2k.png">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/e9UgSvrRf7ZcCL5.png">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/wpfGd5lLsO82yQI.png">
 <meta property="article:published_time" content="2020-07-09T04:31:04.000Z">
-<meta property="article:modified_time" content="2020-07-16T03:21:56.336Z">
+<meta property="article:modified_time" content="2020-07-17T11:35:32.581Z">
 <meta property="article:author" content="hoo334">
 <meta property="article:tag" content="字典树">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2020/07/16/qdBE8bhZ1YWNljX.png">
+<meta name="twitter:image" content="https://gitee.com/hoo334/picgo/raw/master//img/qdBE8bhZ1YWNljX.png">
 
 <link rel="canonical" href="https://hoo334.github.io/2020/07/09/%E5%AD%97%E5%85%B8%E6%A0%91/">
 
@@ -226,7 +226,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-07-16 11:21:56" itemprop="dateModified" datetime="2020-07-16T11:21:56+08:00">2020-07-16</time>
+                <time title="Modified: 2020-07-17 19:35:32" itemprop="dateModified" datetime="2020-07-17T19:35:32+08:00">2020-07-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -260,7 +260,7 @@
 <a id="more"></a>
 
 <p>下图为 see、pain、panda、dog构成的字典树</p>
-<p><img src="https://i.loli.net/2020/07/16/qdBE8bhZ1YWNljX.png" alt="image-20200716101933071"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/qdBE8bhZ1YWNljX.png" alt="image-20200716101933071"></p>
 <h4 id="结点设置"><a href="#结点设置" class="headerlink" title="结点设置"></a>结点设置</h4><ol>
 <li>是否存在以该结点为最后字符的单词，标识位 isEnd；</li>
 <li>当前结点的所有子节点，使用Map存储，当字符串中全为小写字母时可以用数组代替。</li>
@@ -274,9 +274,9 @@
 <li>要删除的单词对应字典树中的<strong>所有</strong>结点<strong>都</strong>没有分支，直接删除整个链表。</li>
 <li>要删除的单词对应字典树中的结点有分支，删除单词对应字典树链表上的最后一个分支结点到末尾结点。</li>
 </ol>
-<p><img src="https://i.loli.net/2020/07/09/n83K4Jy1CehpM2k.png" alt="第一种情况"></p>
-<p><img src="https://i.loli.net/2020/07/09/e9UgSvrRf7ZcCL5.png" alt="第二种情况"></p>
-<p><img src="https://i.loli.net/2020/07/09/wpfGd5lLsO82yQI.png" alt="第三种情况"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/n83K4Jy1CehpM2k.png" alt="第一种情况"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/e9UgSvrRf7ZcCL5.png" alt="第二种情况"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/wpfGd5lLsO82yQI.png" alt="第三种情况"></p>
 <p>第一张图中存在 panda、pan 两个单词，我们需要删除 pan ，直接将 字母 n 的 isEnd 标志位设为false。</p>
 <p>第二张图中存在 see 这个单词，并且其链表路径上没有任何分支，直接删除整个链表。</p>
 <p>第三张图中存在 pain、panda、pad三个单词，这三个单词在字母 a 处分叉，要删除 pad ，直接将 字符串 pad 中 a 后的字符（d）删除。</p>

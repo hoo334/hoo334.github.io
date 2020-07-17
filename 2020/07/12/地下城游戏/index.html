@@ -27,14 +27,14 @@
 <meta property="og:site_name" content="echo">
 <meta property="og:description" content="174. 地下城游戏一些恶魔抓住了公主（P）并将她关在了地下城的右下角。地下城是由 M x N 个房间组成的二维网格。我们英勇的骑士（K）最初被安置在左上角的房间里，他必须穿过地下城并通过对抗恶魔来拯救公主。 骑士的初始健康点数为一个正整数。如果他的健康点数在某一时刻降至 0 或以下，他会立即死亡。 有些房间由恶魔守卫，因此骑士在进入这些房间时会失去健康点数（若房间里的值为负整数，则表示骑士将损失">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.loli.net/2020/07/12/uTlo1kQfOin2vp3.png">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/uTlo1kQfOin2vp3.png">
 <meta property="article:published_time" content="2020-07-12T03:40:31.000Z">
-<meta property="article:modified_time" content="2020-07-15T02:08:27.872Z">
+<meta property="article:modified_time" content="2020-07-17T10:03:31.727Z">
 <meta property="article:author" content="hoo334">
 <meta property="article:tag" content="动态规划">
 <meta property="article:tag" content="Leetcode Hard">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2020/07/12/uTlo1kQfOin2vp3.png">
+<meta name="twitter:image" content="https://gitee.com/hoo334/picgo/raw/master//img/uTlo1kQfOin2vp3.png">
 
 <link rel="canonical" href="https://hoo334.github.io/2020/07/12/%E5%9C%B0%E4%B8%8B%E5%9F%8E%E6%B8%B8%E6%88%8F/">
 
@@ -224,7 +224,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-07-15 10:08:27" itemprop="dateModified" datetime="2020-07-15T10:08:27+08:00">2020-07-15</time>
+                <time title="Modified: 2020-07-17 18:03:31" itemprop="dateModified" datetime="2020-07-17T18:03:31+08:00">2020-07-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -287,7 +287,7 @@
 <li>任何房间都可能对骑士的健康点数造成威胁，也可能增加骑士的健康点数，包括骑士进入的左上角房间以及公主被监禁的右下角房间。</li>
 </ul>
 <p>很容易想到使用动态规划，我们先尝试从左上到右下的顺序进行动态规划，对于每一条路径，我们需要同时记录两个值。第一个是「从出发点到当前点的路径和」，第二个是「从出发点到当前点所需的最小初始值」，这两个值的重要程度相同。</p>
-<p><img src="https://i.loli.net/2020/07/12/uTlo1kQfOin2vp3.png" alt="image-20200712115157247"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/uTlo1kQfOin2vp3.png" alt="image-20200712115157247"></p>
 <ul>
 <li>绿色路径，「从出发点到当前点的路径和」为 1 ，「从出发点到当前点所需的最小初始值」为 3。</li>
 <li>蓝色路径，「从出发点到当前点的路径和」为 -1 ，「从出发点到当前点所需的最小初始值」为 2。</li>

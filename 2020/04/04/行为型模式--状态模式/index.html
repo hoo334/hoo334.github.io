@@ -27,13 +27,13 @@
 <meta property="og:site_name" content="echo">
 <meta property="og:description" content="Java 设计模式">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.loli.net/2020/04/04/pFTBsYkxqvEe3mb.png">
-<meta property="og:image" content="https://i.loli.net/2020/04/04/HXnQLia8GxKF3Sj.png">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/pFTBsYkxqvEe3mb.png">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/HXnQLia8GxKF3Sj.png">
 <meta property="article:published_time" content="2020-04-04T06:39:13.000Z">
-<meta property="article:modified_time" content="2020-04-04T11:02:34.086Z">
+<meta property="article:modified_time" content="2020-07-17T11:32:00.655Z">
 <meta property="article:author" content="hoo334">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2020/04/04/pFTBsYkxqvEe3mb.png">
+<meta name="twitter:image" content="https://gitee.com/hoo334/picgo/raw/master//img/pFTBsYkxqvEe3mb.png">
 
 <link rel="canonical" href="https://hoo334.github.io/2020/04/04/%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F--%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/">
 
@@ -215,10 +215,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-04-04 14:39:13 / Modified: 19:02:34" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
+              <time title="Created: 2020-04-04 14:39:13" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-17 19:32:00" itemprop="dateModified" datetime="2020-07-17T19:32:00+08:00">2020-07-17</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -261,7 +267,7 @@
 <p><strong>注意事项：</strong>在行为受状态约束的时候使用状态模式，而且状态不超过 5 个。</p>
 <h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>我们将创建一个 <em>State</em> 接口和实现了 <em>State</em> 接口的实体状态类。<em>Context</em> 是一个带有某个状态的类。</p>
 <p><em>StatePatternDemo*，我们的演示类使用 *Context</em> 和状态对象来演示 Context 在状态改变时的行为变化。</p>
-<p><img src="https://i.loli.net/2020/04/04/pFTBsYkxqvEe3mb.png" alt="img"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/pFTBsYkxqvEe3mb.png" alt="img"></p>
 <p> 1、创建一个接口</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">State</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doAction</span><span class="params">(Context context)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -276,7 +282,7 @@
 
 <p>当状态 State 改变后，对象的toString方法也发生了变化。</p>
 <p>输出</p>
-<p><img src="https://i.loli.net/2020/04/04/HXnQLia8GxKF3Sj.png" alt="img"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/HXnQLia8GxKF3Sj.png" alt="img"></p>
 <p>参考：<a href="https://www.runoob.com/design-pattern/state-pattern.html" target="_blank" rel="noopener">https://www.runoob.com/design-pattern/state-pattern.html</a></p>
 
     </div>

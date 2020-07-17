@@ -27,13 +27,13 @@
 <meta property="og:site_name" content="echo">
 <meta property="og:description" content="Java 设计模式">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.loli.net/2020/04/04/xZSyeB81snaL2Pp.png">
-<meta property="og:image" content="https://i.loli.net/2020/04/04/47dmlKVrqYuaUxF.png">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/xZSyeB81snaL2Pp.png">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/47dmlKVrqYuaUxF.png">
 <meta property="article:published_time" content="2020-04-04T06:39:13.000Z">
-<meta property="article:modified_time" content="2020-04-04T11:06:02.326Z">
+<meta property="article:modified_time" content="2020-07-17T11:30:23.244Z">
 <meta property="article:author" content="hoo334">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2020/04/04/xZSyeB81snaL2Pp.png">
+<meta name="twitter:image" content="https://gitee.com/hoo334/picgo/raw/master//img/xZSyeB81snaL2Pp.png">
 
 <link rel="canonical" href="https://hoo334.github.io/2020/04/04/%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F--%E8%A7%A3%E9%87%8A%E5%99%A8%E6%A8%A1%E5%BC%8F/">
 
@@ -215,10 +215,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-04-04 14:39:13 / Modified: 19:06:02" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
+              <time title="Created: 2020-04-04 14:39:13" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-17 19:30:23" itemprop="dateModified" datetime="2020-07-17T19:30:23+08:00">2020-07-17</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -261,7 +267,7 @@
 <p><strong>注意事项：</strong>可利用场景比较少，JAVA 中如果碰到可以用 expression4J 代替。</p>
 <h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>我们将创建一个接口 <em>Expression</em> 和实现了 <em>Expression</em> 接口的实体类。定义作为上下文中主要解释器的 <em>TerminalExpression</em> 类。其他的类 <em>OrExpression<em>、</em>AndExpression</em> 用于创建组合式表达式。</p>
 <p><em>InterpreterPatternDemo*，我们的演示类使用 *Expression</em> 类创建规则和演示表达式的解析。</p>
-<p><img src="https://i.loli.net/2020/04/04/xZSyeB81snaL2Pp.png" alt="img"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/xZSyeB81snaL2Pp.png" alt="img"></p>
 <p> 1、创建一个表达式接口</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Expression</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">interpret</span><span class="params">(String context)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -272,7 +278,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InterpreterPatternDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Expression <span class="title">getMaleExpression</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Expression robert = <span class="keyword">new</span> TerminalExpression(<span class="string">"Robert"</span>);</span><br><span class="line">        Expression john = <span class="keyword">new</span> TerminalExpression(<span class="string">"John"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> OrExpression(robert,john);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Expression <span class="title">getMarriedWomanExpression</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Expression julie = <span class="keyword">new</span> TerminalExpression(<span class="string">"Julie"</span>);</span><br><span class="line">        Expression married = <span class="keyword">new</span> TerminalExpression(<span class="string">"Married"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> AndExpression(julie,married);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Expression isMale = getMaleExpression();</span><br><span class="line">    Expression isMarriedWoman = getMarriedWomanExpression();</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"John is male? "</span>+isMale.interpret(<span class="string">"John"</span>));</span><br><span class="line">        System.out.println(<span class="string">"Julie is a married women? "</span>+isMarriedWoman.interpret(<span class="string">"Married Julie"</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>输出：</p>
-<p><img src="https://i.loli.net/2020/04/04/47dmlKVrqYuaUxF.png" alt="img"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/47dmlKVrqYuaUxF.png" alt="img"></p>
 <p> 参考：<a href="https://www.runoob.com/design-pattern/interpreter-pattern.html" target="_blank" rel="noopener">https://www.runoob.com/design-pattern/interpreter-pattern.html</a></p>
 
     </div>

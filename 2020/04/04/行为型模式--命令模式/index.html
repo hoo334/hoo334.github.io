@@ -27,13 +27,13 @@
 <meta property="og:site_name" content="echo">
 <meta property="og:description" content="Java 设计模式">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.loli.net/2020/04/04/AeWPFhvN1DkM6KZ.png">
-<meta property="og:image" content="https://i.loli.net/2020/04/04/IgkvH23pxEWoKDc.png">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/AeWPFhvN1DkM6KZ.png">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/IgkvH23pxEWoKDc.png">
 <meta property="article:published_time" content="2020-04-04T06:39:13.000Z">
-<meta property="article:modified_time" content="2020-04-04T11:05:09.210Z">
+<meta property="article:modified_time" content="2020-07-17T11:30:44.012Z">
 <meta property="article:author" content="hoo334">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2020/04/04/AeWPFhvN1DkM6KZ.png">
+<meta name="twitter:image" content="https://gitee.com/hoo334/picgo/raw/master//img/AeWPFhvN1DkM6KZ.png">
 
 <link rel="canonical" href="https://hoo334.github.io/2020/04/04/%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F--%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F/">
 
@@ -215,10 +215,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-04-04 14:39:13 / Modified: 19:05:09" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
+              <time title="Created: 2020-04-04 14:39:13" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-17 19:30:44" itemprop="dateModified" datetime="2020-07-17T19:30:44+08:00">2020-07-17</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -261,7 +267,7 @@
 <p><strong>注意事项：</strong>系统需要支持命令的撤销(Undo)操作和恢复(Redo)操作，也可以考虑使用命令模式，见命令模式的扩展。</p>
 <h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>我们首先创建作为命令的接口 <em>Order*，然后创建作为请求的 *Stock</em> 类。实体命令类 <em>BuyStock</em> 和 <em>SellStock*，实现了 *Order</em> 接口，将执行实际的命令处理。创建作为调用对象的类 <em>Broker</em>，它接受订单并能下订单。</p>
 <p><em>Broker</em> 对象使用命令模式，基于命令的类型确定哪个对象执行哪个命令。<em>CommandPatternDemo*，我们的演示类使用 *Broker</em> 类来演示命令模式。</p>
-<p><img src="https://i.loli.net/2020/04/04/AeWPFhvN1DkM6KZ.png" alt="img"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/AeWPFhvN1DkM6KZ.png" alt="img"></p>
 <p> 1、创建一个命令接口</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Order</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -278,7 +284,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CommandPatternDemo</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Stock abcStock = <span class="keyword">new</span> Stock();</span><br><span class="line"></span><br><span class="line">        BuyStock buyStockOrder = <span class="keyword">new</span> BuyStock(abcStock);</span><br><span class="line">        SellStock sellStockOrder = <span class="keyword">new</span> SellStock(abcStock);</span><br><span class="line"></span><br><span class="line">        Broker broker = <span class="keyword">new</span> Broker();</span><br><span class="line">        broker.takeOrder(buyStockOrder);</span><br><span class="line">        broker.takeOrder(sellStockOrder);</span><br><span class="line"></span><br><span class="line">        broker.placeOrders();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>输出</p>
-<p><img src="https://i.loli.net/2020/04/04/IgkvH23pxEWoKDc.png" alt="img"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/IgkvH23pxEWoKDc.png" alt="img"></p>
 <p> 参考：<a href="https://www.runoob.com/design-pattern/command-pattern.html" target="_blank" rel="noopener">https://www.runoob.com/design-pattern/command-pattern.html</a></p>
 
     </div>

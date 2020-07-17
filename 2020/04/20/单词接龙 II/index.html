@@ -27,15 +27,15 @@
 <meta property="og:site_name" content="echo">
 <meta property="og:description" content="126. 单词接龙 II给定两个单词（beginWord 和 endWord）和一个字典 *wordList，找出所有从 *beginWord 到 endWord 的最短转换序列。转换需遵循如下规则：  每次转换只能改变一个字母。  转换过程中的中间单词必须是字典中的单词。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.loli.net/2020/06/07/z5qoG1lrcUI78LP.png">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/z5qoG1lrcUI78LP.png">
 <meta property="article:published_time" content="2020-04-20T03:28:20.000Z">
-<meta property="article:modified_time" content="2020-07-03T02:44:09.092Z">
+<meta property="article:modified_time" content="2020-07-17T10:02:41.825Z">
 <meta property="article:author" content="hoo334">
 <meta property="article:tag" content="DFS">
 <meta property="article:tag" content="BFS">
 <meta property="article:tag" content="Leetcode Hard">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2020/06/07/z5qoG1lrcUI78LP.png">
+<meta name="twitter:image" content="https://gitee.com/hoo334/picgo/raw/master//img/z5qoG1lrcUI78LP.png">
 
 <link rel="canonical" href="https://hoo334.github.io/2020/04/20/%E5%8D%95%E8%AF%8D%E6%8E%A5%E9%BE%99%20II/">
 
@@ -225,7 +225,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-07-03 10:44:09" itemprop="dateModified" datetime="2020-07-03T10:44:09+08:00">2020-07-03</time>
+                <time title="Modified: 2020-07-17 18:02:41" itemprop="dateModified" datetime="2020-07-17T18:02:41+08:00">2020-07-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -279,7 +279,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">beginWord &#x3D; &quot;hit&quot;</span><br><span class="line">endWord &#x3D; &quot;cog&quot;</span><br><span class="line">wordList &#x3D; [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;,&quot;log&quot;]</span><br><span class="line"></span><br><span class="line">输出: []</span><br><span class="line"></span><br><span class="line">解释: endWord &quot;cog&quot; 不在字典中，所以不存在符合要求的转换序列。</span><br></pre></td></tr></table></figure>
 
 <p> 本题要求的是最短转换序列，看到最短首先想到的就是<strong>BFS</strong> 。想到 BFS 就能想到图。我们需要建立图的模型：将每个单词抽象为一个点，如果两个单词可以只改变一个字母进行转换，那么说明它们之间有一条双向边。因此只要把满足转换条件的点相连，就形成了一张图。如下图（来自<a href="https://leetcode-cn.com/problems/word-ladder-ii/solution/dan-ci-jie-long-ii-by-leetcode-solution/" target="_blank" rel="noopener">Leetcode</a>）</p>
-<p><img src="https://i.loli.net/2020/06/07/z5qoG1lrcUI78LP.png" alt="image-20200607171920249"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/z5qoG1lrcUI78LP.png" alt="image-20200607171920249"></p>
 <p>有了上图我们以 <code>hit</code> 为图的起点，以<code>cog</code> 为终点进行广度优先搜索，寻找 hit 到 cog 的最短路径。</p>
 <p>方便起见，我们先给每一个单词标号，即给每个单词分配一个 id。创建一个由单词 word到 id 对应的映射 wordId，并将 beginWord 与 wordList 中所有的单词都加入这个映射中。之后我们检查 endWord 是否在该映射内，若不存在，则输入无解。我们可以使用哈希表实现上面的映射关系。</p>
 <p>同理我们可以创建一个由对应 id 到 word 的映射 idWord，方便最后输出结果。由于 id 实际上是整数且连续，所以这个映射用数组实现即可。</p>

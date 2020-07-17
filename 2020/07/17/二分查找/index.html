@@ -28,7 +28,7 @@
 <meta property="og:description" content="在有序数组种，常用二分查找场景：寻找一个数、寻找左侧边界、寻找右侧边界。在二分查找算法的细节主要有两点：「while 循环中的的不等号是否带等号」，「边界的取值问题」。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-17T02:02:36.000Z">
-<meta property="article:modified_time" content="2020-07-17T05:07:07.868Z">
+<meta property="article:modified_time" content="2020-07-17T05:12:40.060Z">
 <meta property="article:author" content="hoo334">
 <meta property="article:tag" content="二分查找">
 <meta name="twitter:card" content="summary">
@@ -215,7 +215,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-07-17 10:02:36 / Modified: 13:07:07" itemprop="dateCreated datePublished" datetime="2020-07-17T10:02:36+08:00">2020-07-17</time>
+              <time title="Created: 2020-07-17 10:02:36 / Modified: 13:12:40" itemprop="dateCreated datePublished" datetime="2020-07-17T10:02:36+08:00">2020-07-17</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -278,7 +278,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[1, 2, 2, 2, 3, 3, 4, 5, 14, 33, 44, 77, 77, 100]</span><br><span class="line">searching left bound 2 index: 1</span><br><span class="line">searching left bound 77 index: 11</span><br><span class="line">searching left bound 1 index: 0</span><br></pre></td></tr></table></figure>
 
 <p>在找到 target 时，没有立刻返回，而是缩小搜索区间的右侧，从右侧逼近，达到锁定左侧边界的目的。</p>
-<h4 id="寻找右侧边界"><a href="#寻找右侧边界" class="headerlink" title="寻找右侧边界"></a>寻找右侧边界</h4><p>二分查找数组中从右至左等于 target 的第一个值的下标，没有则返回 -1。</p>
+<h3 id="寻找右侧边界"><a href="#寻找右侧边界" class="headerlink" title="寻找右侧边界"></a>寻找右侧边界</h3><p>二分查找数组中从右至左等于 target 的第一个值的下标，没有则返回 -1。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public static int binarySearchRightBoundNum(int[] nums, int target) &#123;</span><br><span class="line">    int left &#x3D; 0, right &#x3D; nums.length; &#x2F;&#x2F; 搜索区间为 [left, right)</span><br><span class="line">    while (left &lt; right) &#123; &#x2F;&#x2F;左闭右开区间，当 left &#x3D;&#x3D; right 时，区间内已经没有值</span><br><span class="line">        int mid &#x3D; left + (right - left) &#x2F; 2;</span><br><span class="line">        if (nums[mid] &#x3D;&#x3D; target) &#123;</span><br><span class="line">            left &#x3D; mid + 1;&#x2F;&#x2F;左侧逼近，下一个搜索区间[mid + 1, right)</span><br><span class="line">        &#125; else if (nums[mid] &lt; target) &#123;</span><br><span class="line">            left &#x3D; mid + 1;&#x2F;&#x2F;搜索区间变成[mid + 1, right]</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            &#x2F;&#x2F;因为右开区间，搜索区间为[left, mid)，如果为 right &#x3D; mid - 1，</span><br><span class="line">            &#x2F;&#x2F;区间为[left, mid - 1)，我们会漏掉 mid - 1位置的值</span><br><span class="line">            right &#x3D; mid;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 目前的 nums[left] 左边的部分的值都是大于等于 target</span><br><span class="line">    if(left &#x3D;&#x3D; 0)&#123;&#x2F;&#x2F;target 小于所有值</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        &#x2F;&#x2F;返回最后一个等于 target 值的下标</span><br><span class="line">        return nums[left - 1] &#x3D;&#x3D; target ? left - 1 : -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>输出</p>
@@ -365,7 +365,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#二分查找框架"><span class="nav-number">1.</span> <span class="nav-text">二分查找框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#寻找有序数组"><span class="nav-number">2.</span> <span class="nav-text">寻找有序数组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#关于-left-lt-right-和-left-lt-right"><span class="nav-number">2.1.</span> <span class="nav-text">关于 left &lt;&#x3D; right 和 left &lt; right</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关于left、right-取值问题"><span class="nav-number">2.2.</span> <span class="nav-text">关于left、right 取值问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#寻找左侧边界"><span class="nav-number">3.</span> <span class="nav-text">寻找左侧边界</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#寻找右侧边界"><span class="nav-number">3.1.</span> <span class="nav-text">寻找右侧边界</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#二分查找框架"><span class="nav-number">1.</span> <span class="nav-text">二分查找框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#寻找有序数组"><span class="nav-number">2.</span> <span class="nav-text">寻找有序数组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#关于-left-lt-right-和-left-lt-right"><span class="nav-number">2.1.</span> <span class="nav-text">关于 left &lt;&#x3D; right 和 left &lt; right</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关于left、right-取值问题"><span class="nav-number">2.2.</span> <span class="nav-text">关于left、right 取值问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#寻找左侧边界"><span class="nav-number">3.</span> <span class="nav-text">寻找左侧边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#寻找右侧边界"><span class="nav-number">4.</span> <span class="nav-text">寻找右侧边界</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

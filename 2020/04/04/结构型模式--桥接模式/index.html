@@ -27,13 +27,13 @@
 <meta property="og:site_name" content="echo">
 <meta property="og:description" content="Java 设计模式">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.loli.net/2020/04/04/glISfaxoyCGMEwv.png">
-<meta property="og:image" content="https://i.loli.net/2020/04/04/qZgEOrWUYe3VmzN.png">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/glISfaxoyCGMEwv.png">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/qZgEOrWUYe3VmzN.png">
 <meta property="article:published_time" content="2020-04-04T06:39:13.000Z">
-<meta property="article:modified_time" content="2020-04-04T10:59:56.264Z">
+<meta property="article:modified_time" content="2020-07-17T10:11:34.984Z">
 <meta property="article:author" content="hoo334">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2020/04/04/glISfaxoyCGMEwv.png">
+<meta name="twitter:image" content="https://gitee.com/hoo334/picgo/raw/master//img/glISfaxoyCGMEwv.png">
 
 <link rel="canonical" href="https://hoo334.github.io/2020/04/04/%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F--%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/">
 
@@ -215,10 +215,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-04-04 14:39:13 / Modified: 18:59:56" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
+              <time title="Created: 2020-04-04 14:39:13" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-17 18:11:34" itemprop="dateModified" datetime="2020-07-17T18:11:34+08:00">2020-07-17</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -262,7 +268,7 @@
 <p><strong>使用场景：</strong> 1、如果一个系统需要在构件的抽象化角色和具体化角色之间增加更多的灵活性，避免在两个层次之间建立静态的继承联系，通过桥接模式可以使它们在抽象层建立一个关联关系。 2、对于那些不希望使用继承或因为多层次继承导致系统类的个数急剧增加的系统，桥接模式尤为适用。 3、一个类存在两个独立变化的维度，且这两个维度都需要进行扩展。</p>
 <p><strong>注意事项：</strong>对于两个独立变化的维度，使用桥接模式再适合不过了。</p>
 <h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>我们有一个作为桥接实现的 <em>DrawAPI</em> 接口和实现了 <em>DrawAPI</em> 接口的实体类 <em>RedCircle<em>、</em>GreenCircle<em>。</em>Shape</em> 是一个抽象类，将使用 <em>DrawAPI</em> 的对象。<em>BridgePatternDemo*，我们的演示类使用 *Shape</em> 类来画出不同颜色的圆。</p>
-<p><img src="https://i.loli.net/2020/04/04/glISfaxoyCGMEwv.png" alt="img"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/glISfaxoyCGMEwv.png" alt="img"></p>
 <p>1、创建桥接接口</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">DrawAPI</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">(<span class="keyword">int</span> radius, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -279,7 +285,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BridgePatternDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Shape redCircle = <span class="keyword">new</span> Circle(<span class="number">100</span>,<span class="number">100</span>,<span class="number">10</span>,<span class="keyword">new</span> RedCircle());</span><br><span class="line">        Shape blueCircle = <span class="keyword">new</span> Circle(<span class="number">100</span>,<span class="number">100</span>,<span class="number">10</span>,<span class="keyword">new</span> BlueCircle());</span><br><span class="line"></span><br><span class="line">        redCircle.draw();</span><br><span class="line">        blueCircle.draw();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>输出：</p>
-<p><img src="https://i.loli.net/2020/04/04/qZgEOrWUYe3VmzN.png" alt="img"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/qZgEOrWUYe3VmzN.png" alt="img"></p>
 <p>我们将Circle的抽象和具体的实现分离开，DrawAPI 作为桥接接口，具体的实现类实现 DrawAPI 的接口，当需要画各种类型的圆时通过 DrawAPI 来实现。对比传统的 RedCircle 继承 Circle 类 的方法比较起来，当继承 Circle 类的实体类多起来之后更加容易维护。</p>
 <p>参考：<a href="https://www.runoob.com/design-pattern/bridge-pattern.html" target="_blank" rel="noopener">https://www.runoob.com/design-pattern/bridge-pattern.html</a></p>
 

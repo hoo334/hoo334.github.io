@@ -27,17 +27,17 @@
 <meta property="og:site_name" content="echo">
 <meta property="og:description" content="Gradle 构件工具">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.loli.net/2020/04/04/qxOINuGoR7pAsE2.png">
-<meta property="og:image" content="https://i.loli.net/2020/04/04/Bj2opT4nKwUvLyq.png">
-<meta property="og:image" content="https://i.loli.net/2020/04/04/AjhOQ9rK3IHnL8D.png">
-<meta property="og:image" content="https://i.loli.net/2020/04/04/WKCFrN3MavV6ncg.png">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/qxOINuGoR7pAsE2.png">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/Bj2opT4nKwUvLyq.png">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/AjhOQ9rK3IHnL8D.png">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/WKCFrN3MavV6ncg.png">
 <meta property="article:published_time" content="2020-04-04T06:39:13.000Z">
-<meta property="article:modified_time" content="2020-04-04T10:14:40.428Z">
+<meta property="article:modified_time" content="2020-07-17T09:20:27.859Z">
 <meta property="article:author" content="hoo334">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="Gradle">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2020/04/04/qxOINuGoR7pAsE2.png">
+<meta name="twitter:image" content="https://gitee.com/hoo334/picgo/raw/master//img/qxOINuGoR7pAsE2.png">
 
 <link rel="canonical" href="https://hoo334.github.io/2020/04/04/Gradle%E4%BE%9D%E8%B5%96%E4%B8%8B%E8%BD%BD/">
 
@@ -219,10 +219,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-04-04 14:39:13 / Modified: 18:14:40" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
+              <time title="Created: 2020-04-04 14:39:13" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-17 17:20:27" itemprop="dateModified" datetime="2020-07-17T17:20:27+08:00">2020-07-17</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -254,13 +260,13 @@
       
         <h1 id="利用gradle添加依赖"><a href="#利用gradle添加依赖" class="headerlink" title="利用gradle添加依赖"></a>利用gradle添加依赖</h1><p>1、新建一个gradle项目</p>
 <p>可以看到build.gradle</p>
-<p><img src="https://i.loli.net/2020/04/04/qxOINuGoR7pAsE2.png" alt="img"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/qxOINuGoR7pAsE2.png" alt="img"></p>
 <p> 2、编写gradle.properties</p>
-<p><img src="https://i.loli.net/2020/04/04/Bj2opT4nKwUvLyq.png" alt="img"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/Bj2opT4nKwUvLyq.png" alt="img"></p>
 <p> 3、修改build.gradle编译jar，利用${key} 来获取key的值</p>
-<p><img src="https://i.loli.net/2020/04/04/AjhOQ9rK3IHnL8D.png" alt="img"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/AjhOQ9rK3IHnL8D.png" alt="img"></p>
 <p> 4、等待gradle自动导入</p>
-<p><img src="https://i.loli.net/2020/04/04/WKCFrN3MavV6ncg.png" alt="img"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/WKCFrN3MavV6ncg.png" alt="img"></p>
 <p> 可以看到已经导入完成，开始玩耍。。。</p>
 <p>如果遇到依赖下载慢的情况 在build.gradle文件repositories加入：           </p>
 <p>maven{ url’<a href="http://maven.aliyun.com/nexus/content/groups/public/&#39;}" target="_blank" rel="noopener">http://maven.aliyun.com/nexus/content/groups/public/&#39;}</a></p>

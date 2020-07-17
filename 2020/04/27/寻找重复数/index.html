@@ -27,15 +27,15 @@
 <meta property="og:site_name" content="echo">
 <meta property="og:description" content="287. 寻找重复数给定一个包含 n + 1 个整数的数组 nums*，其数字都在 1 到 *n 之间（包括 1 和 n），可知至少存在一个重复的整数。假设只有一个重复的整数，找出这个重复的数。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.loli.net/2020/05/26/O28ubKGxAYr14n7.png">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/O28ubKGxAYr14n7.png">
 <meta property="article:published_time" content="2020-04-27T01:21:09.000Z">
-<meta property="article:modified_time" content="2020-07-03T02:34:09.507Z">
+<meta property="article:modified_time" content="2020-07-17T11:32:14.203Z">
 <meta property="article:author" content="hoo334">
 <meta property="article:tag" content="二分查找">
 <meta property="article:tag" content="数组">
 <meta property="article:tag" content="Leetcode Medium">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2020/05/26/O28ubKGxAYr14n7.png">
+<meta name="twitter:image" content="https://gitee.com/hoo334/picgo/raw/master//img/O28ubKGxAYr14n7.png">
 
 <link rel="canonical" href="https://hoo334.github.io/2020/04/27/%E5%AF%BB%E6%89%BE%E9%87%8D%E5%A4%8D%E6%95%B0/">
 
@@ -225,7 +225,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-07-03 10:34:09" itemprop="dateModified" datetime="2020-07-03T10:34:09+08:00">2020-07-03</time>
+                <time title="Modified: 2020-07-17 19:32:14" itemprop="dateModified" datetime="2020-07-17T19:32:14+08:00">2020-07-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -306,7 +306,7 @@
 <p>方法二：快慢指针</p>
 <p>快慢指针通常用来判断链表中是否有环，我们可以对 nums 数组建图每个位置 i 连一条 i -&gt; nums[i]的边，由于存在重复的数字target，target 位置至少有两条指向它的边，因此存在环，就转换为找环的入口问题。</p>
 <p>以示例 1 为例我们建立得到的图如下</p>
-<p><img src="https://i.loli.net/2020/05/26/O28ubKGxAYr14n7.png" alt="image-20200526115632169"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/O28ubKGxAYr14n7.png" alt="image-20200526115632169"></p>
 <p>我们可以先使用快慢指针走进环中，再将慢指针放到起点，快慢指针一起走，直到快慢指针相遇就是结果。</p>
 <p>为什么将慢指针放到起点一起走，直到快慢指针相遇就是结果呢？。</p>
 <p>假设环长为 <em>L</em>，从起点到环的入口的步数是 <em>a</em>，从环的入口继续走 <em>b</em> 步到达相遇位置，从相遇位置继续走 <em>c</em> 步回到环的入口。快指针比慢指针多走了 <em>k</em> 圈。表示为 2(<em>a</em>+<em>b</em>)=<em>a</em>+<em>b</em>+<em>k</em> <em>L</em>。进而得到 <em>a</em>=(<em>k</em>−1)<em>L</em>+(<em>L</em>−<em>b</em>)=(<em>k</em>−1)<em>L</em>+<em>c</em></p>

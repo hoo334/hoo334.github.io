@@ -27,13 +27,13 @@
 <meta property="og:site_name" content="echo">
 <meta property="og:description" content="Java 设计模式">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.loli.net/2020/04/04/pkLONuI2i1VD3gG.png">
-<meta property="og:image" content="https://i.loli.net/2020/04/04/otRQndqHTA9iU1K.png">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/pkLONuI2i1VD3gG.png">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/otRQndqHTA9iU1K.png">
 <meta property="article:published_time" content="2020-04-04T06:39:13.000Z">
-<meta property="article:modified_time" content="2020-04-04T11:10:56.464Z">
+<meta property="article:modified_time" content="2020-07-17T11:28:52.504Z">
 <meta property="article:author" content="hoo334">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2020/04/04/pkLONuI2i1VD3gG.png">
+<meta name="twitter:image" content="https://gitee.com/hoo334/picgo/raw/master//img/pkLONuI2i1VD3gG.png">
 
 <link rel="canonical" href="https://hoo334.github.io/2020/04/04/%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F--%E5%A4%87%E5%BF%98%E5%BD%95%E6%A8%A1%E5%BC%8F/">
 
@@ -215,10 +215,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-04-04 14:39:13 / Modified: 19:10:56" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
+              <time title="Created: 2020-04-04 14:39:13" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-17 19:28:52" itemprop="dateModified" datetime="2020-07-17T19:28:52+08:00">2020-07-17</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -261,7 +267,7 @@
 <p><strong>注意事项：</strong> 1、为了符合迪米特原则，还要增加一个管理备忘录的类。 2、为了节约内存，可使用原型模式+备忘录模式。</p>
 <h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>备忘录模式使用三个类 <em>Memento<em>、</em>Originator</em> 和 <em>CareTaker</em>。Memento 包含了要被恢复的对象的状态。Originator 创建并在 Memento 对象中存储状态。Caretaker 对象负责从 Memento 中恢复对象的状态。</p>
 <p><em>MementoPatternDemo*，我们的演示类使用 *CareTaker</em> 和 <em>Originator</em> 对象来显示对象的状态恢复。</p>
-<p><img src="https://i.loli.net/2020/04/04/pkLONuI2i1VD3gG.png" alt="img"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/pkLONuI2i1VD3gG.png" alt="img"></p>
 <p> 1、创建 Memento 类</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Memento</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String state;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Memento</span><span class="params">(String state)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.state = state;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getState</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> state;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -275,7 +281,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MementoPatternDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Originator originator = <span class="keyword">new</span> Originator();</span><br><span class="line">        CareTaker careTaker = <span class="keyword">new</span> CareTaker();</span><br><span class="line"></span><br><span class="line">        originator.setState(<span class="string">"State #1"</span>);</span><br><span class="line">        originator.setState(<span class="string">"State #2"</span>);</span><br><span class="line">        careTaker.add(originator.saveStateToMemento());</span><br><span class="line">        originator.setState(<span class="string">"State #3"</span>);</span><br><span class="line">        careTaker.add(originator.saveStateToMemento());</span><br><span class="line">        originator.setState(<span class="string">"State #4"</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"Current State: "</span>+originator.getState());</span><br><span class="line">        originator.getStateFromMemento(careTaker.get(<span class="number">0</span>));</span><br><span class="line">        System.out.println(<span class="string">"First saved state: "</span>+originator.getState());</span><br><span class="line">        originator.getStateFromMemento(careTaker.get(<span class="number">1</span>));</span><br><span class="line">        System.out.println(<span class="string">"Second saved state: "</span>+originator.getState());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>输出</p>
-<p><img src="https://i.loli.net/2020/04/04/otRQndqHTA9iU1K.png" alt="img"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/otRQndqHTA9iU1K.png" alt="img"></p>
 <p> Memento 记录 Originator 对象的状态， CareTaker 对象负责保存 Memento 对象记录。</p>
 <p>参考：<a href="https://www.runoob.com/design-pattern/memento-pattern.html" target="_blank" rel="noopener">https://www.runoob.com/design-pattern/memento-pattern.html</a></p>
 

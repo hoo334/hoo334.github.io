@@ -27,13 +27,13 @@
 <meta property="og:site_name" content="echo">
 <meta property="og:description" content="Java 设计模式">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.loli.net/2020/04/04/sAg4bQJ5LzBwMXi.png">
-<meta property="og:image" content="https://i.loli.net/2020/04/04/gk8WAMDECH7PczQ.png">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/sAg4bQJ5LzBwMXi.png">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/gk8WAMDECH7PczQ.png">
 <meta property="article:published_time" content="2020-04-04T06:39:13.000Z">
-<meta property="article:modified_time" content="2020-04-04T10:54:23.242Z">
+<meta property="article:modified_time" content="2020-07-17T10:19:47.099Z">
 <meta property="article:author" content="hoo334">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2020/04/04/sAg4bQJ5LzBwMXi.png">
+<meta name="twitter:image" content="https://gitee.com/hoo334/picgo/raw/master//img/sAg4bQJ5LzBwMXi.png">
 
 <link rel="canonical" href="https://hoo334.github.io/2020/04/04/%E7%A9%BA%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%BC%8F/">
 
@@ -215,10 +215,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-04-04 14:39:13 / Modified: 18:54:23" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
+              <time title="Created: 2020-04-04 14:39:13" itemprop="dateCreated datePublished" datetime="2020-04-04T14:39:13+08:00">2020-04-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-17 18:19:47" itemprop="dateModified" datetime="2020-07-17T18:19:47+08:00">2020-07-17</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -251,7 +257,7 @@
         <h1 id="空对象模式"><a href="#空对象模式" class="headerlink" title="空对象模式"></a>空对象模式</h1><p>在空对象模式（Null Object Pattern）中，一个空对象取代 NULL 对象实例的检查。Null 对象不是检查空值，而是反应一个不做任何动作的关系。这样的 Null 对象也可以在数据不可用的时候提供默认的行为。在空对象模式中，我们创建要给指定各种要执行的操作的抽象类和扩展该类的实体类，还创建一个未对该类做任何实现的空对象类，该空对象类将无缝地使用在需要检查空值的地方。</p>
 <h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>我们将创建一个定义操作（在这里，是客户的名称）的 <em>AbstractCustomer</em> 抽象类，和扩展了 <em>AbstractCustomer</em> 类的实体类。工厂类 <em>CustomerFactory</em> 基于客户传递的名字来返回 <em>RealCustomer</em> 或 <em>NullCustomer</em> 对象。</p>
 <p><em>NullPatternDemo*，我们的演示类使用 *CustomerFactory</em> 来演示空对象模式的用法。</p>
-<p><img src="https://i.loli.net/2020/04/04/sAg4bQJ5LzBwMXi.png" alt="img"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/sAg4bQJ5LzBwMXi.png" alt=""></p>
 <p> 1、创建一个抽象类</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractCustomer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> String name;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">boolean</span> <span class="title">isNil</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> String <span class="title">getName</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -265,7 +271,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NullObjectPatternDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        AbstractCustomer customer1 = CustomerFactory.getCustomer(<span class="string">"Rob"</span>);</span><br><span class="line">        AbstractCustomer customer2 = CustomerFactory.getCustomer(<span class="string">"Bob"</span>);</span><br><span class="line">        AbstractCustomer customer3 = CustomerFactory.getCustomer(<span class="string">"Julie"</span>);</span><br><span class="line">        AbstractCustomer customer4 = CustomerFactory.getCustomer(<span class="string">"Laura"</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"Customers"</span>);</span><br><span class="line">        System.out.println(customer1.getName());</span><br><span class="line">        System.out.println(customer2.getName());</span><br><span class="line">        System.out.println(customer3.getName());</span><br><span class="line">        System.out.println(customer4.getName());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>输出</p>
-<p><img src="https://i.loli.net/2020/04/04/gk8WAMDECH7PczQ.png" alt="img"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/gk8WAMDECH7PczQ.png" alt="img"></p>
 <p> 我们使用一个空对象代替了对象的判空处理。</p>
 <p>参考：<a href="https://www.runoob.com/design-pattern/null-object-pattern.html" target="_blank" rel="noopener">https://www.runoob.com/design-pattern/null-object-pattern.html</a></p>
 
