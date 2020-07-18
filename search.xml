@@ -7791,4 +7791,42 @@
         <tag>二分查找</tag>
       </tags>
   </entry>
+  <entry>
+    <title>交错字符串</title>
+    <url>/2020/07/18/%E4%BA%A4%E9%94%99%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
+    <content><![CDATA[<h4 id="97-交错字符串"><a href="#97-交错字符串" class="headerlink" title="97. 交错字符串"></a><a href="https://leetcode-cn.com/problems/interleaving-string/" target="_blank" rel="noopener">97. 交错字符串</a></h4><p>给定三个字符串 <em>s1</em>, <em>s2</em>, <em>s3</em>, 验证 <em>s3</em> 是否是由 <em>s1</em> 和 <em>s2</em> 交错组成的。</p>
+<a id="more"></a>
+
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: s1 &#x3D; &quot;aabcc&quot;, s2 &#x3D; &quot;dbbca&quot;, s3 &#x3D; &quot;aadbbcbcac&quot;</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: s1 &#x3D; &quot;aabcc&quot;, s2 &#x3D; &quot;dbbca&quot;, s3 &#x3D; &quot;aadbbbaccc&quot;</span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure>
+
+<p>首先我们需要理解「交错」这个概念，s3 由 s1 的部分字符 和 s2 的部分字符交错形成，以示例 1 为例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;aadbbcbcac&quot; &#x3D; &quot;aa&quot; + &quot;db&quot; + &quot;bc&quot; + &quot;bca&quot; + &quot;c&quot;</span><br><span class="line">				s1     s2     s1      s2     s1</span><br></pre></td></tr></table></figure>
+
+<p>示例2中，s3 中剩下 “accc” ，s1 剩下 “cc” ，s2 剩下”ca”，”cc” 和 “ca” 无法交错形成 “accc”。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;aadbbbaccc&quot; &#x3D; &quot;aa&quot; + &quot;dbb&quot; + &quot;b&quot; + ...</span><br><span class="line">				s1     s2     s1</span><br></pre></td></tr></table></figure>
+
+<p>可以将其当作不同路径来理解，下图来自<a href="https://leetcode-cn.com/problems/interleaving-string/solution/lei-si-lu-jing-wen-ti-zhao-zhun-zhuang-tai-fang-ch/" target="_blank" rel="noopener">gousiqi</a></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20200718114829025.png" alt="image-20200718114829025"></p>
+<p>首先，s1 和 s2 的长度之和不等于 s3 ，s3 必然不可能为 s1 和 s2 交错形成。我们定义 <code>f(i, j)</code>表示字符串 s1 的前 i 个字符能否与字符串 s2 的前 j 个字符形成字符串 s3 的前 i + j 个字符。如果 s1 的第 i 个字符与 s3 的第 i + j 个字符相等，那么 <code>f(i, j)</code>取决于 s1 的前 i - 1 个字符和 s2 的前 j 个字符能否交错构成 s3 的前 i + j - 1 个字符，表示为<code>f(i - 1, j)</code>。如果 s2 的第 j 个字符与 s3 的第 i + j 个字符相等，那么 <code>f(i, j)</code> 取决于 s1 的前 i 个字符和 s2 的前 j - 1 个字符能否交错构成 s3 的前 i + j - 1个字符，表示为<code>f(i, j - 1)</code>。我们可以得出动态规划方程：<br>$$<br>f(i,j)=[f(i - 1, j)\ and\ s_1[i]=s_3[i+j]]\ or\ [f(i, j - 1)\ and\ s_2[j] = s_3[i+j]]<br>$$<br>边界条件为 <code>f(0, 0) = true</code>。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isInterleave</span><span class="params">(String s1, String s2, String s3)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = s1.length(), n = s2.length(), t = s3.length();</span><br><span class="line">        <span class="keyword">if</span>(m + n != t)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">boolean</span>[][] dp = <span class="keyword">new</span> <span class="keyword">boolean</span>[m + <span class="number">1</span>][n + <span class="number">1</span>];</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= m; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= n; j++)&#123;</span><br><span class="line">                <span class="keyword">int</span> p = i + j - <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(i &gt; <span class="number">0</span>)&#123;<span class="comment">//注意字符串的下标与公式的区别</span></span><br><span class="line">                    dp[i][j] = dp[i - <span class="number">1</span>][j] &amp;&amp; s1.charAt(i - <span class="number">1</span>) == s3.charAt(p);</span><br><span class="line">                &#125;</span><br><span class="line">				<span class="comment">//两个条件之间是 “或” 的关系</span></span><br><span class="line">                <span class="keyword">if</span>(j &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                    dp[i][j] = dp[i][j] || dp[i][j - <span class="number">1</span>] &amp;&amp; s2.charAt(j - <span class="number">1</span>) == s3.charAt(p);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[m][n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(mn)，空间复杂度O(mn)。</p>
+<p>我们还可以使用滚动数组来优化空间复杂度。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isInterleave</span><span class="params">(String s1, String s2, String s3)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = s1.length(), n = s2.length(), t = s3.length();</span><br><span class="line">        <span class="keyword">if</span>(m + n != t)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">boolean</span>[] dp = <span class="keyword">new</span> <span class="keyword">boolean</span>[n + <span class="number">1</span>];</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= m; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= n; j++)&#123;</span><br><span class="line">                <span class="keyword">int</span> p = i + j - <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(i &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                    dp[j] = dp[j] &amp;&amp; s1.charAt(i - <span class="number">1</span>) == s3.charAt(p);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(j &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                    dp[j] = dp[j] || dp[j - <span class="number">1</span>] &amp;&amp; s2.charAt(j - <span class="number">1</span>) == s3.charAt(p);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(mn)，空间复杂度O(n)。</p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>动态规划</tag>
+        <tag>字符串</tag>
+        <tag>Leetcode Hard</tag>
+      </tags>
+  </entry>
 </search>

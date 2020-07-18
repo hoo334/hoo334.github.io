@@ -20,23 +20,24 @@
     var CONFIG = {"hostname":"hoo334.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="139. 单词拆分给定一个非空字符串 s 和一个包含非空单词列表的字典 wordDict*，判定 *s 是否可以被空格拆分为一个或多个在字典中出现的单词。">
+  <meta name="description" content="97. 交错字符串给定三个字符串 s1, s2, s3, 验证 s3 是否是由 s1 和 s2 交错组成的。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="单词拆分">
-<meta property="og:url" content="https://hoo334.github.io/2020/07/01/%E5%8D%95%E8%AF%8D%E6%8B%86%E5%88%86/index.html">
+<meta property="og:title" content="交错字符串">
+<meta property="og:url" content="https://hoo334.github.io/2020/07/18/%E4%BA%A4%E9%94%99%E5%AD%97%E7%AC%A6%E4%B8%B2/index.html">
 <meta property="og:site_name" content="echo">
-<meta property="og:description" content="139. 单词拆分给定一个非空字符串 s 和一个包含非空单词列表的字典 wordDict*，判定 *s 是否可以被空格拆分为一个或多个在字典中出现的单词。">
+<meta property="og:description" content="97. 交错字符串给定三个字符串 s1, s2, s3, 验证 s3 是否是由 s1 和 s2 交错组成的。">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-07-01T02:39:24.000Z">
-<meta property="article:modified_time" content="2020-07-15T02:07:20.937Z">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/image-20200718114829025.png">
+<meta property="article:published_time" content="2020-07-18T03:13:56.000Z">
+<meta property="article:modified_time" content="2020-07-18T03:51:53.671Z">
 <meta property="article:author" content="hoo334">
-<meta property="article:tag" content="数组">
 <meta property="article:tag" content="动态规划">
 <meta property="article:tag" content="字符串">
-<meta property="article:tag" content="Leetcode Medium">
+<meta property="article:tag" content="Leetcode Hard">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/hoo334/picgo/raw/master//img/image-20200718114829025.png">
 
-<link rel="canonical" href="https://hoo334.github.io/2020/07/01/%E5%8D%95%E8%AF%8D%E6%8B%86%E5%88%86/">
+<link rel="canonical" href="https://hoo334.github.io/2020/07/18/%E4%BA%A4%E9%94%99%E5%AD%97%E7%AC%A6%E4%B8%B2/">
 
 
 <script id="page-configurations">
@@ -49,7 +50,7 @@
   };
 </script>
 
-  <title>单词拆分 | echo</title>
+  <title>交错字符串 | echo</title>
   
 
 
@@ -194,7 +195,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://hoo334.github.io/2020/07/01/%E5%8D%95%E8%AF%8D%E6%8B%86%E5%88%86/">
+    <link itemprop="mainEntityOfPage" href="https://hoo334.github.io/2020/07/18/%E4%BA%A4%E9%94%99%E5%AD%97%E7%AC%A6%E4%B8%B2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar2.jpg">
@@ -207,7 +208,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          单词拆分
+          交错字符串
         </h1>
 
         <div class="post-meta">
@@ -216,16 +217,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2020-07-01 10:39:24" itemprop="dateCreated datePublished" datetime="2020-07-01T10:39:24+08:00">2020-07-01</time>
+              <time title="Created: 2020-07-18 11:13:56 / Modified: 11:51:53" itemprop="dateCreated datePublished" datetime="2020-07-18T11:13:56+08:00">2020-07-18</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-07-15 10:07:20" itemprop="dateModified" datetime="2020-07-15T10:07:20+08:00">2020-07-15</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -254,27 +249,31 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h4 id="139-单词拆分"><a href="#139-单词拆分" class="headerlink" title="139. 单词拆分"></a><a href="https://leetcode-cn.com/problems/word-break/" target="_blank" rel="noopener">139. 单词拆分</a></h4><p>给定一个<strong>非空</strong>字符串 <em>s</em> 和一个包含<strong>非空</strong>单词列表的字典 <em>wordDict*，判定 *s</em> 是否可以被空格拆分为一个或多个在字典中出现的单词。</p>
- <a id="more"></a>
+        <h4 id="97-交错字符串"><a href="#97-交错字符串" class="headerlink" title="97. 交错字符串"></a><a href="https://leetcode-cn.com/problems/interleaving-string/" target="_blank" rel="noopener">97. 交错字符串</a></h4><p>给定三个字符串 <em>s1</em>, <em>s2</em>, <em>s3</em>, 验证 <em>s3</em> 是否是由 <em>s1</em> 和 <em>s2</em> 交错组成的。</p>
+<a id="more"></a>
 
-<p><strong>说明：</strong></p>
-<ul>
-<li>拆分时可以重复使用字典中的单词。</li>
-<li>你可以假设字典中没有重复的单词。</li>
-</ul>
-<p><strong>示例 1：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: s &#x3D; &quot;leetcode&quot;, wordDict &#x3D; [&quot;leet&quot;, &quot;code&quot;]</span><br><span class="line">输出: true</span><br><span class="line">解释: 返回 true 因为 &quot;leetcode&quot; 可以被拆分成 &quot;leet code&quot;。</span><br></pre></td></tr></table></figure>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: s1 &#x3D; &quot;aabcc&quot;, s2 &#x3D; &quot;dbbca&quot;, s3 &#x3D; &quot;aadbbcbcac&quot;</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
 
-<p><strong>示例 2：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入: s &#x3D; &quot;applepenapple&quot;, wordDict &#x3D; [&quot;apple&quot;, &quot;pen&quot;]</span><br><span class="line">输出: true</span><br><span class="line">解释: 返回 true 因为 &quot;applepenapple&quot; 可以被拆分成 &quot;apple pen apple&quot;。</span><br><span class="line">     注意你可以重复使用字典中的单词。</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: s1 &#x3D; &quot;aabcc&quot;, s2 &#x3D; &quot;dbbca&quot;, s3 &#x3D; &quot;aadbbbaccc&quot;</span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure>
 
-<p><strong>示例 3：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: s &#x3D; &quot;catsandog&quot;, wordDict &#x3D; [&quot;cats&quot;, &quot;dog&quot;, &quot;sand&quot;, &quot;and&quot;, &quot;cat&quot;]</span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure>
+<p>首先我们需要理解「交错」这个概念，s3 由 s1 的部分字符 和 s2 的部分字符交错形成，以示例 1 为例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;aadbbcbcac&quot; &#x3D; &quot;aa&quot; + &quot;db&quot; + &quot;bc&quot; + &quot;bca&quot; + &quot;c&quot;</span><br><span class="line">				s1     s2     s1      s2     s1</span><br></pre></td></tr></table></figure>
 
-<p>我们定义 dp[i] 表示字符串 s 前 i 个字符组成s的字符串 s[0…i - 1] 是否能被空格拆分成若干个字典中出现的单词。对于字符串 s[0 … i - 1]，我们需要枚举每一个分割点，位置为 j ，将其分为两个字符串，得到 s[0 … j - 1]，s[j … i - 1]，如果两个字符串均合法，那么将其拼接起来的字符串同样合法。由于计算 dp[i] 时已经计算出了 dp[0 … i - 1] 的值，因此字符串 s[0 … j - 1] 是否合法由 dp[j] 可知，剩下的我们只用看 s[j … i - 1] 是否合法，因此得到如下转移方程：<br>$$<br>dp[i]=dp[j] &amp;&amp; checks(s[j…i-1])<br>$$<br>其中 checks(s[j…i-1]) 表示子串 s[j … i - 1] 是否出现在字典中。初始化dp[0] = true;</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">wordBreak</span><span class="params">(String s, List&lt;String&gt; wordDict)</span> </span>&#123;</span><br><span class="line">        Set&lt;String&gt; set = <span class="keyword">new</span> HashSet(wordDict);</span><br><span class="line">        <span class="keyword">int</span> n = s.length();</span><br><span class="line">        <span class="comment">//dp[i] 表示 s 中 以 下标 i-1 结尾的字符串可否被 wordDict 拆分</span></span><br><span class="line">        <span class="keyword">boolean</span>[] dp = <span class="keyword">new</span> <span class="keyword">boolean</span>[n+<span class="number">1</span>];</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; ++i)&#123;</span><br><span class="line">            <span class="comment">//利用下标 j 将 下标为 0 ~ i-1 的字符串分割成两个字符串,依次判断所有情况。</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;i; ++j)&#123;</span><br><span class="line">                <span class="keyword">if</span>(dp[j] &amp;&amp; set.contains(s.substring(j,i)) )&#123;</span><br><span class="line">                    dp[i] = <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>示例2中，s3 中剩下 “accc” ，s1 剩下 “cc” ，s2 剩下”ca”，”cc” 和 “ca” 无法交错形成 “accc”。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;aadbbbaccc&quot; &#x3D; &quot;aa&quot; + &quot;dbb&quot; + &quot;b&quot; + ...</span><br><span class="line">				s1     s2     s1</span><br></pre></td></tr></table></figure>
 
-<p>时间复杂度 O(n^2)，空间复杂度O(n)</p>
+<p>可以将其当作不同路径来理解，下图来自<a href="https://leetcode-cn.com/problems/interleaving-string/solution/lei-si-lu-jing-wen-ti-zhao-zhun-zhuang-tai-fang-ch/" target="_blank" rel="noopener">gousiqi</a></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20200718114829025.png" alt="image-20200718114829025"></p>
+<p>首先，s1 和 s2 的长度之和不等于 s3 ，s3 必然不可能为 s1 和 s2 交错形成。我们定义 <code>f(i, j)</code>表示字符串 s1 的前 i 个字符能否与字符串 s2 的前 j 个字符形成字符串 s3 的前 i + j 个字符。如果 s1 的第 i 个字符与 s3 的第 i + j 个字符相等，那么 <code>f(i, j)</code>取决于 s1 的前 i - 1 个字符和 s2 的前 j 个字符能否交错构成 s3 的前 i + j - 1 个字符，表示为<code>f(i - 1, j)</code>。如果 s2 的第 j 个字符与 s3 的第 i + j 个字符相等，那么 <code>f(i, j)</code> 取决于 s1 的前 i 个字符和 s2 的前 j - 1 个字符能否交错构成 s3 的前 i + j - 1个字符，表示为<code>f(i, j - 1)</code>。我们可以得出动态规划方程：<br>$$<br>f(i,j)=[f(i - 1, j)\ and\ s_1[i]=s_3[i+j]]\ or\ [f(i, j - 1)\ and\ s_2[j] = s_3[i+j]]<br>$$<br>边界条件为 <code>f(0, 0) = true</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isInterleave</span><span class="params">(String s1, String s2, String s3)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = s1.length(), n = s2.length(), t = s3.length();</span><br><span class="line">        <span class="keyword">if</span>(m + n != t)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">boolean</span>[][] dp = <span class="keyword">new</span> <span class="keyword">boolean</span>[m + <span class="number">1</span>][n + <span class="number">1</span>];</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= m; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= n; j++)&#123;</span><br><span class="line">                <span class="keyword">int</span> p = i + j - <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(i &gt; <span class="number">0</span>)&#123;<span class="comment">//注意字符串的下标与公式的区别</span></span><br><span class="line">                    dp[i][j] = dp[i - <span class="number">1</span>][j] &amp;&amp; s1.charAt(i - <span class="number">1</span>) == s3.charAt(p);</span><br><span class="line">                &#125;</span><br><span class="line">				<span class="comment">//两个条件之间是 “或” 的关系</span></span><br><span class="line">                <span class="keyword">if</span>(j &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                    dp[i][j] = dp[i][j] || dp[i][j - <span class="number">1</span>] &amp;&amp; s2.charAt(j - <span class="number">1</span>) == s3.charAt(p);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[m][n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(mn)，空间复杂度O(mn)。</p>
+<p>我们还可以使用滚动数组来优化空间复杂度。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isInterleave</span><span class="params">(String s1, String s2, String s3)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = s1.length(), n = s2.length(), t = s3.length();</span><br><span class="line">        <span class="keyword">if</span>(m + n != t)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">boolean</span>[] dp = <span class="keyword">new</span> <span class="keyword">boolean</span>[n + <span class="number">1</span>];</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= m; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= n; j++)&#123;</span><br><span class="line">                <span class="keyword">int</span> p = i + j - <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(i &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                    dp[j] = dp[j] &amp;&amp; s1.charAt(i - <span class="number">1</span>) == s3.charAt(p);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(j &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                    dp[j] = dp[j] || dp[j - <span class="number">1</span>] &amp;&amp; s2.charAt(j - <span class="number">1</span>) == s3.charAt(p);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(mn)，空间复杂度O(n)。</p>
 
     </div>
 
@@ -284,10 +283,9 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E6%95%B0%E7%BB%84/" rel="tag"># 数组</a>
               <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag"># 动态规划</a>
               <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag"># 字符串</a>
-              <a href="/tags/Leetcode-Medium/" rel="tag"># Leetcode Medium</a>
+              <a href="/tags/Leetcode-Hard/" rel="tag"># Leetcode Hard</a>
           </div>
 
         
@@ -296,13 +294,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/07/01/%E6%8A%8A%E6%95%B0%E5%AD%97%E7%BF%BB%E8%AF%91%E6%88%90%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="prev" title="把数字翻译成字符串">
-      <i class="fa fa-chevron-left"></i> 把数字翻译成字符串
+    <a href="/2020/07/17/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" rel="prev" title="二分查找">
+      <i class="fa fa-chevron-left"></i> 二分查找
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/07/01/%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/" rel="next" title="买卖股票的最佳时机">
-      买卖股票的最佳时机 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -361,7 +356,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#139-单词拆分"><span class="nav-number">1.</span> <span class="nav-text">139. 单词拆分</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#97-交错字符串"><span class="nav-number">1.</span> <span class="nav-text">97. 交错字符串</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
