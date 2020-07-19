@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hoo334.github.io/"/>
-  <updated>2020-07-19T03:55:20.468Z</updated>
+  <updated>2020-07-19T04:12:49.201Z</updated>
   <id>https://hoo334.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://hoo334.github.io/2020/07/19/%E6%88%B3%E6%B0%94%E7%90%83/"/>
     <id>https://hoo334.github.io/2020/07/19/%E6%88%B3%E6%B0%94%E7%90%83/</id>
     <published>2020-07-19T02:59:12.000Z</published>
-    <updated>2020-07-19T03:55:20.468Z</updated>
+    <updated>2020-07-19T04:12:49.201Z</updated>
     
-    <content type="html"><![CDATA[<h4 id="312-戳气球"><a href="#312-戳气球" class="headerlink" title="312. 戳气球"></a><a href="https://leetcode-cn.com/problems/burst-balloons/" target="_blank" rel="noopener">312. 戳气球</a></h4><p>有 <code>n</code> 个气球，编号为<code>0</code> 到 <code>n-1</code>，每个气球上都标有一个数字，这些数字存在数组 <code>nums</code> 中。</p><p>现在要求你戳破所有的气球。如果你戳破气球 <code>i</code> ，就可以获得 <code>nums[left] * nums[i] * nums[right]</code> 个硬币。 这里的 <code>left</code> 和 <code>right</code> 代表和 <code>i</code> 相邻的两个气球的序号。注意当你戳破了气球 <code>i</code> 后，气球 <code>left</code> 和气球 <code>right</code> 就变成了相邻的气球。</p><p>求所能获得硬币的最大数量。</p><a id="more"></a><p><strong>说明:</strong></p><ul><li>你可以假设 <code>nums[-1] = nums[n] = 1</code>，但注意它们不是真实存在的所以并不能被戳破。</li><li>0 ≤ <code>n</code> ≤ 500, 0 ≤ <code>nums[i]</code> ≤ 100</li></ul><p><strong>示例:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入: [3,1,5,8]</span><br><span class="line">输出: 167 </span><br><span class="line">解释: nums &#x3D; [3,1,5,8] --&gt; [3,5,8] --&gt;   [3,8]   --&gt;  [8]  --&gt; []</span><br><span class="line">     coins &#x3D;  3*1*5      +  3*5*8    +  1*3*8      + 1*8*1   &#x3D; 167</span><br></pre></td></tr></table></figure><p>为了避免讨论边界情况，我们将 nums 数组首尾各加上 一个 数字 1 ，将这个新数组叫做 val。</p><p><strong>方法一：记忆化搜索</strong></p><p>戳气球这个操作会使两个气球从不相邻变为相邻，使得后续操作难以进行，我们倒过来看这些操作，将全过程看作是每次添加一个气球。</p><p>定义方法 solve，令 <code>solve(i, j)</code>表示开区间<code>(i, j)</code>内位置全部填满能够得到的最多硬币数。由于是开区间，因此区间两端的气球编号就是 i 和 j，对应 val[i] 和 val[j]。</p><ul><li>当 <code>i &gt;= j - 1</code> 时，开区间中没有气球，<code>solve(i, j)</code>的值为 0 。</li><li>当<code>i &lt; j - 1</code> 时，我们枚举开区间<code>(i, j)</code>内的全部位置 mid，令 mid 为当前区间第一个添加的气球，此时，区间中只有 三个值 val[i]，val[mid]，val[j]，能得到的硬币数为这三个值的积。mid 将开区间<code>(i, j)</code>分为<code>(i, mid)</code>和<code>(mid, j)</code>两部分，我们递归地计算这两个部分对 <code>solve(i, j)</code>的贡献。</li></ul><p>$$<br>solve(i, j)=<br>\begin{cases}<br>\displaystyle \max^{j-1}_{mid=i+1}{val[i]\times val[mid]\times val[j] + solve(i,mid) + solve(mid,j) }&amp; {i &lt; j - 1}\<br>0&amp; {i \geq j - 1}<br>\end{cases}<br>$$</p><p>为了避免重复计算，我们储存 solve 的结果。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span>[][] rec;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span>[] val;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxCoins</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.length;</span><br><span class="line">        val = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">2</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">            val[i] = nums[i - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        val[<span class="number">0</span>] = val[n + <span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        rec = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">2</span>][n + <span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n + <span class="number">2</span>; i++)&#123;</span><br><span class="line">            Arrays.fill(rec[i], -<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> solve(<span class="number">0</span>, n + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(left &gt;= right - <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(rec[left][right] != -<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> rec[left][right];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = left + <span class="number">1</span>; i &lt; right; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> sum = val[left] * val[i] * val[right];</span><br><span class="line">            sum += solve(left, i) + solve(i, right);</span><br><span class="line">            rec[left][right] = Math.max(rec[left][right], sum);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> rec[left][right];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>时间复杂度O(n^3)，空间复杂度O(n^2)。</p><p><strong>方法二：动态规划</strong></p><p>我们可以将自顶向下的记忆化搜索变为自底向上的动态规划，令 <code>dp[i][j]</code>表示填满开区间<code>(i, j)</code>能得到的最多硬币数，边界条件为 i &gt;= j - 1，此时<code>dp[i][j] = 0</code>。<br>$$<br>dp[i][j]=<br>\begin{cases}<br>\displaystyle \max^{j-1}_{k=i+1}{val[i]\times val[k]\times val[j] + solve(i,k) + solve(k,j) }&amp; {i &lt; j - 1}\<br>0&amp; {i \geq j - 1}<br>\end{cases}<br>$$<br>最终答案为<code>dp[0][n + 1]</code>。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxCoins</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.length;</span><br><span class="line">        <span class="keyword">int</span>[][] rec = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">2</span>][n + <span class="number">2</span>];</span><br><span class="line">        <span class="keyword">int</span>[] val = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">2</span>];</span><br><span class="line">        val[<span class="number">0</span>] = val[n + <span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">            val[i] = nums[i - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//从数组尾部开始自底向上动态规划</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)&#123;<span class="comment">//枚举左边界</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i + <span class="number">2</span>; j &lt;= n + <span class="number">1</span>; j++)&#123;<span class="comment">//枚举右边界</span></span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> k = i + <span class="number">1</span>; k &lt; j; k++)&#123;<span class="comment">//枚举开区间(i, j)中的全部位置</span></span><br><span class="line">                    <span class="keyword">int</span> sum = val[i] * val[k] * val[j];</span><br><span class="line">                    sum += rec[i][k] + rec[k][j];</span><br><span class="line">                    rec[i][j] = Math.max(rec[i][j], sum);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> rec[<span class="number">0</span>][n + <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>时间复杂度O(n^3)，空间复杂度O(n^2)。</p>]]></content>
+    <content type="html"><![CDATA[<h4 id="312-戳气球"><a href="#312-戳气球" class="headerlink" title="312. 戳气球"></a><a href="https://leetcode-cn.com/problems/burst-balloons/" target="_blank" rel="noopener">312. 戳气球</a></h4><p>有 <code>n</code> 个气球，编号为<code>0</code> 到 <code>n-1</code>，每个气球上都标有一个数字，这些数字存在数组 <code>nums</code> 中。</p><p>现在要求你戳破所有的气球。如果你戳破气球 <code>i</code> ，就可以获得 <code>nums[left] * nums[i] * nums[right]</code> 个硬币。 这里的 <code>left</code> 和 <code>right</code> 代表和 <code>i</code> 相邻的两个气球的序号。注意当你戳破了气球 <code>i</code> 后，气球 <code>left</code> 和气球 <code>right</code> 就变成了相邻的气球。</p><p>求所能获得硬币的最大数量。</p><a id="more"></a><p><strong>说明:</strong></p><ul><li>你可以假设 <code>nums[-1] = nums[n] = 1</code>，但注意它们不是真实存在的所以并不能被戳破。</li><li>0 ≤ <code>n</code> ≤ 500, 0 ≤ <code>nums[i]</code> ≤ 100</li></ul><p><strong>示例:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入: [3,1,5,8]</span><br><span class="line">输出: 167 </span><br><span class="line">解释: nums &#x3D; [3,1,5,8] --&gt; [3,5,8] --&gt;   [3,8]   --&gt;  [8]  --&gt; []</span><br><span class="line">     coins &#x3D;  3*1*5      +  3*5*8    +  1*3*8      + 1*8*1   &#x3D; 167</span><br></pre></td></tr></table></figure><p>为了避免讨论边界情况，我们将 nums 数组首尾各加上 一个 数字 1 ，将这个新数组叫做 val。</p><p><strong>方法一：记忆化搜索</strong></p><p>戳气球这个操作会使两个气球从不相邻变为相邻，使得后续操作难以进行，我们倒过来看这些操作，将全过程看作是每次添加一个气球。</p><p>定义方法 solve，令 <code>solve(i, j)</code>表示开区间<code>(i, j)</code>内位置全部填满能够得到的最多硬币数。由于是开区间，因此区间两端的气球编号就是 i 和 j，对应 val[i] 和 val[j]。</p><ul><li>当 <code>i &gt;= j - 1</code> 时，开区间中没有气球，<code>solve(i, j)</code>的值为 0 。</li><li>当<code>i &lt; j - 1</code> 时，我们枚举开区间<code>(i, j)</code>内的全部位置 mid，令 mid 为当前区间第一个添加的气球，此时，区间中只有 三个值 val[i]，val[mid]，val[j]，能得到的硬币数为这三个值的积。mid 将开区间<code>(i, j)</code>分为<code>(i, mid)</code>和<code>(mid, j)</code>两部分，我们递归地计算这两个部分对 <code>solve(i, j)</code>的贡献。</li></ul><p>$$<br>solve(i, j) = \max^{j-1}_{mid=i+1}{val[i]\times val[mid]\times val[j] + solve(i,mid) + solve(mid,j) }\ \  {i &lt; j - 1}<br>$$</p><p>$$<br>solve(i, j)  = 0 \ \  {i \geq j - 1}<br>$$</p><p>为了避免重复计算，我们储存 solve 的结果。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span>[][] rec;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span>[] val;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxCoins</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.length;</span><br><span class="line">        val = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">2</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">            val[i] = nums[i - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        val[<span class="number">0</span>] = val[n + <span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        rec = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">2</span>][n + <span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n + <span class="number">2</span>; i++)&#123;</span><br><span class="line">            Arrays.fill(rec[i], -<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> solve(<span class="number">0</span>, n + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(left &gt;= right - <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(rec[left][right] != -<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> rec[left][right];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = left + <span class="number">1</span>; i &lt; right; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> sum = val[left] * val[i] * val[right];</span><br><span class="line">            sum += solve(left, i) + solve(i, right);</span><br><span class="line">            rec[left][right] = Math.max(rec[left][right], sum);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> rec[left][right];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>时间复杂度O(n^3)，空间复杂度O(n^2)。</p><p><strong>方法二：动态规划</strong></p><p>我们可以将自顶向下的记忆化搜索变为自底向上的动态规划，令 <code>dp[i][j]</code>表示填满开区间<code>(i, j)</code>能得到的最多硬币数，边界条件为 i &gt;= j - 1，此时<code>dp[i][j] = 0</code>。<br>$$<br>dp[i][j]=\max^{j-1}_{k=i+1}{val[i]\times val[k]\times val[j] + solve(i,k) + solve(k,j) }\ \   {i &lt; j - 1}<br>$$<br>$$<br>dp[i][j]  = 0 \ \  {i \geq j - 1}<br>$$</p><p>最终答案为<code>dp[0][n + 1]</code>。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxCoins</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.length;</span><br><span class="line">        <span class="keyword">int</span>[][] rec = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">2</span>][n + <span class="number">2</span>];</span><br><span class="line">        <span class="keyword">int</span>[] val = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">2</span>];</span><br><span class="line">        val[<span class="number">0</span>] = val[n + <span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">            val[i] = nums[i - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//从数组尾部开始自底向上动态规划</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)&#123;<span class="comment">//枚举左边界</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i + <span class="number">2</span>; j &lt;= n + <span class="number">1</span>; j++)&#123;<span class="comment">//枚举右边界</span></span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> k = i + <span class="number">1</span>; k &lt; j; k++)&#123;<span class="comment">//枚举开区间(i, j)中的全部位置</span></span><br><span class="line">                    <span class="keyword">int</span> sum = val[i] * val[k] * val[j];</span><br><span class="line">                    sum += rec[i][k] + rec[k][j];</span><br><span class="line">                    rec[i][j] = Math.max(rec[i][j], sum);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> rec[<span class="number">0</span>][n + <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>时间复杂度O(n^3)，空间复杂度O(n^2)。</p>]]></content>
     
     <summary type="html">
     
@@ -64,9 +64,9 @@
     
       <category term="动态规划" scheme="https://hoo334.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
-      <category term="字符串" scheme="https://hoo334.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-    
       <category term="Leetcode Hard" scheme="https://hoo334.github.io/tags/Leetcode-Hard/"/>
+    
+      <category term="字符串" scheme="https://hoo334.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
   </entry>
   
@@ -140,11 +140,11 @@
       <category term="Leetcode" scheme="https://hoo334.github.io/categories/Leetcode/"/>
     
     
+      <category term="Leetcode Medium" scheme="https://hoo334.github.io/tags/Leetcode-Medium/"/>
+    
       <category term="DFS" scheme="https://hoo334.github.io/tags/DFS/"/>
     
       <category term="BFS" scheme="https://hoo334.github.io/tags/BFS/"/>
-    
-      <category term="Leetcode Medium" scheme="https://hoo334.github.io/tags/Leetcode-Medium/"/>
     
   </entry>
   
@@ -167,9 +167,9 @@
       <category term="Leetcode" scheme="https://hoo334.github.io/categories/Leetcode/"/>
     
     
-      <category term="动态规划" scheme="https://hoo334.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
-    
       <category term="Leetcode Medium" scheme="https://hoo334.github.io/tags/Leetcode-Medium/"/>
+    
+      <category term="动态规划" scheme="https://hoo334.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
       <category term="二叉搜索树" scheme="https://hoo334.github.io/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/"/>
     
@@ -195,11 +195,11 @@
       <category term="Leetcode" scheme="https://hoo334.github.io/categories/Leetcode/"/>
     
     
+      <category term="Leetcode Medium" scheme="https://hoo334.github.io/tags/Leetcode-Medium/"/>
+    
       <category term="数组" scheme="https://hoo334.github.io/tags/%E6%95%B0%E7%BB%84/"/>
     
       <category term="动态规划" scheme="https://hoo334.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
-    
-      <category term="Leetcode Medium" scheme="https://hoo334.github.io/tags/Leetcode-Medium/"/>
     
   </entry>
   
@@ -224,9 +224,9 @@
     
       <category term="数组" scheme="https://hoo334.github.io/tags/%E6%95%B0%E7%BB%84/"/>
     
-      <category term="Leetcode Easy" scheme="https://hoo334.github.io/tags/Leetcode-Easy/"/>
-    
       <category term="哈希表" scheme="https://hoo334.github.io/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/"/>
+    
+      <category term="Leetcode Easy" scheme="https://hoo334.github.io/tags/Leetcode-Easy/"/>
     
   </entry>
   
@@ -277,9 +277,9 @@
       <category term="Leetcode" scheme="https://hoo334.github.io/categories/Leetcode/"/>
     
     
-      <category term="Leetcode Hard" scheme="https://hoo334.github.io/tags/Leetcode-Hard/"/>
-    
       <category term="二叉搜索树" scheme="https://hoo334.github.io/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/"/>
+    
+      <category term="Leetcode Hard" scheme="https://hoo334.github.io/tags/Leetcode-Hard/"/>
     
   </entry>
   
@@ -307,9 +307,9 @@
       <category term="Leetcode" scheme="https://hoo334.github.io/categories/Leetcode/"/>
     
     
-      <category term="动态规划" scheme="https://hoo334.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
-    
       <category term="Leetcode Medium" scheme="https://hoo334.github.io/tags/Leetcode-Medium/"/>
+    
+      <category term="动态规划" scheme="https://hoo334.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
   </entry>
   
@@ -409,9 +409,9 @@
       <category term="Leetcode" scheme="https://hoo334.github.io/categories/Leetcode/"/>
     
     
-      <category term="二叉树" scheme="https://hoo334.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
-    
       <category term="Leetcode Easy" scheme="https://hoo334.github.io/tags/Leetcode-Easy/"/>
+    
+      <category term="二叉树" scheme="https://hoo334.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
     
   </entry>
   
@@ -439,9 +439,9 @@
     
       <category term="动态规划" scheme="https://hoo334.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
-      <category term="字符串" scheme="https://hoo334.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-    
       <category term="Leetcode Hard" scheme="https://hoo334.github.io/tags/Leetcode-Hard/"/>
+    
+      <category term="字符串" scheme="https://hoo334.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
   </entry>
   
@@ -466,11 +466,11 @@
     
       <category term="动态规划" scheme="https://hoo334.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
+      <category term="Leetcode Hard" scheme="https://hoo334.github.io/tags/Leetcode-Hard/"/>
+    
       <category term="字符串" scheme="https://hoo334.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
       <category term="栈" scheme="https://hoo334.github.io/tags/%E6%A0%88/"/>
-    
-      <category term="Leetcode Hard" scheme="https://hoo334.github.io/tags/Leetcode-Hard/"/>
     
   </entry>
   
@@ -493,34 +493,9 @@
       <category term="Leetcode" scheme="https://hoo334.github.io/categories/Leetcode/"/>
     
     
-      <category term="二叉树" scheme="https://hoo334.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
-    
       <category term="Leetcode Medium" scheme="https://hoo334.github.io/tags/Leetcode-Medium/"/>
     
-  </entry>
-  
-  <entry>
-    <title>二叉树的前序遍历</title>
-    <link href="https://hoo334.github.io/2020/07/03/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/"/>
-    <id>https://hoo334.github.io/2020/07/03/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/</id>
-    <published>2020-07-03T02:20:16.000Z</published>
-    <updated>2020-07-03T02:40:14.160Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="144-二叉树的前序遍历"><a href="#144-二叉树的前序遍历" class="headerlink" title="144. 二叉树的前序遍历"></a><a href="https://leetcode-cn.com/problems/binary-tree-preorder-traversal/" target="_blank" rel="noopener">144. 二叉树的前序遍历</a></h4><p>给定一个二叉树，返回它的 <em>前序</em> 遍历。</p> <a id="more"></a><p> <strong>示例:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,null,2,3]  </span><br><span class="line">   1</span><br><span class="line">    \</span><br><span class="line">     2</span><br><span class="line">    &#x2F;</span><br><span class="line">   3 </span><br><span class="line"></span><br><span class="line">输出: [1,2,3]</span><br></pre></td></tr></table></figure><p><strong>进阶:</strong> 递归算法很简单，你可以通过迭代算法完成吗？</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    * 前序遍历 “根左右”。需要一个栈来保存已经访问过的根结点。</span></span><br><span class="line"><span class="comment">    * 当已经访问过树的最左叶子结点后，弹出根结点，继续访问根结点的右子结点。</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">preorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; ans = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        Stack&lt;TreeNode&gt; s = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line"><span class="comment">//循环条件：栈中元素不为空。树的根节点非空</span></span><br><span class="line">        <span class="keyword">while</span>(root != <span class="keyword">null</span> || ! s.isEmpty())&#123;</span><br><span class="line">            <span class="keyword">if</span>(root != <span class="keyword">null</span>)&#123;</span><br><span class="line">                <span class="comment">//访问根节点</span></span><br><span class="line">                ans.add(root.val);</span><br><span class="line">                <span class="comment">//保存根节点</span></span><br><span class="line">                s.push(root);</span><br><span class="line">                <span class="comment">//访问根结点的左子结点</span></span><br><span class="line">                root = root.left;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">//无左子结点，弹出根结点</span></span><br><span class="line">                root = s.pop();</span><br><span class="line">                <span class="comment">//继续访问右子结点</span></span><br><span class="line">                root = root.right;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;144-二叉树的前序遍历&quot;&gt;&lt;a href=&quot;#144-二叉树的前序遍历&quot; class=&quot;headerlink&quot; title=&quot;144. 二叉树的前序遍历&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/binary-tree-preorder-traversal/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;144. 二叉树的前序遍历&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;给定一个二叉树，返回它的 &lt;em&gt;前序&lt;/em&gt; 遍历。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Leetcode" scheme="https://hoo334.github.io/categories/Leetcode/"/>
-    
-    
       <category term="二叉树" scheme="https://hoo334.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
-    
-      <category term="Leetcode Medium" scheme="https://hoo334.github.io/tags/Leetcode-Medium/"/>
     
   </entry>
   
@@ -543,9 +518,34 @@
       <category term="Leetcode" scheme="https://hoo334.github.io/categories/Leetcode/"/>
     
     
+      <category term="Leetcode Medium" scheme="https://hoo334.github.io/tags/Leetcode-Medium/"/>
+    
       <category term="二叉树" scheme="https://hoo334.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
     
+  </entry>
+  
+  <entry>
+    <title>二叉树的前序遍历</title>
+    <link href="https://hoo334.github.io/2020/07/03/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/"/>
+    <id>https://hoo334.github.io/2020/07/03/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/</id>
+    <published>2020-07-03T02:20:16.000Z</published>
+    <updated>2020-07-03T02:40:14.160Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="144-二叉树的前序遍历"><a href="#144-二叉树的前序遍历" class="headerlink" title="144. 二叉树的前序遍历"></a><a href="https://leetcode-cn.com/problems/binary-tree-preorder-traversal/" target="_blank" rel="noopener">144. 二叉树的前序遍历</a></h4><p>给定一个二叉树，返回它的 <em>前序</em> 遍历。</p> <a id="more"></a><p> <strong>示例:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,null,2,3]  </span><br><span class="line">   1</span><br><span class="line">    \</span><br><span class="line">     2</span><br><span class="line">    &#x2F;</span><br><span class="line">   3 </span><br><span class="line"></span><br><span class="line">输出: [1,2,3]</span><br></pre></td></tr></table></figure><p><strong>进阶:</strong> 递归算法很简单，你可以通过迭代算法完成吗？</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    * 前序遍历 “根左右”。需要一个栈来保存已经访问过的根结点。</span></span><br><span class="line"><span class="comment">    * 当已经访问过树的最左叶子结点后，弹出根结点，继续访问根结点的右子结点。</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">preorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; ans = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        Stack&lt;TreeNode&gt; s = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line"><span class="comment">//循环条件：栈中元素不为空。树的根节点非空</span></span><br><span class="line">        <span class="keyword">while</span>(root != <span class="keyword">null</span> || ! s.isEmpty())&#123;</span><br><span class="line">            <span class="keyword">if</span>(root != <span class="keyword">null</span>)&#123;</span><br><span class="line">                <span class="comment">//访问根节点</span></span><br><span class="line">                ans.add(root.val);</span><br><span class="line">                <span class="comment">//保存根节点</span></span><br><span class="line">                s.push(root);</span><br><span class="line">                <span class="comment">//访问根结点的左子结点</span></span><br><span class="line">                root = root.left;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">//无左子结点，弹出根结点</span></span><br><span class="line">                root = s.pop();</span><br><span class="line">                <span class="comment">//继续访问右子结点</span></span><br><span class="line">                root = root.right;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;144-二叉树的前序遍历&quot;&gt;&lt;a href=&quot;#144-二叉树的前序遍历&quot; class=&quot;headerlink&quot; title=&quot;144. 二叉树的前序遍历&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/binary-tree-preorder-traversal/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;144. 二叉树的前序遍历&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;给定一个二叉树，返回它的 &lt;em&gt;前序&lt;/em&gt; 遍历。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Leetcode" scheme="https://hoo334.github.io/categories/Leetcode/"/>
+    
+    
       <category term="Leetcode Medium" scheme="https://hoo334.github.io/tags/Leetcode-Medium/"/>
+    
+      <category term="二叉树" scheme="https://hoo334.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
     
   </entry>
   
