@@ -27,12 +27,14 @@
 <meta property="og:site_name" content="echo">
 <meta property="og:description" content="154. 寻找旋转排序数组中的最小值 II假设按照升序排序的数组在预先未知的某个点上进行了旋转。 ( 例如，数组 [0,1,2,4,5,6,7] 可能变为 [4,5,6,7,0,1,2] )。 请找出其中最小的元素。 注意数组中可能存在重复的元素。">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/image-20200722142620638.png">
 <meta property="article:published_time" content="2020-07-22T03:06:19.000Z">
-<meta property="article:modified_time" content="2020-07-22T03:51:15.907Z">
+<meta property="article:modified_time" content="2020-07-22T06:28:16.842Z">
 <meta property="article:author" content="hoo334">
 <meta property="article:tag" content="二分查找">
 <meta property="article:tag" content="Leetcode Hard">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/hoo334/picgo/raw/master//img/image-20200722142620638.png">
 
 <link rel="canonical" href="https://hoo334.github.io/2020/07/22/%E5%AF%BB%E6%89%BE%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BCII/">
 
@@ -216,7 +218,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-07-22 11:06:19 / Modified: 11:51:15" itemprop="dateCreated datePublished" datetime="2020-07-22T11:06:19+08:00">2020-07-22</time>
+              <time title="Created: 2020-07-22 11:06:19 / Modified: 14:28:16" itemprop="dateCreated datePublished" datetime="2020-07-22T11:06:19+08:00">2020-07-22</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -263,9 +265,8 @@
 <li>这道题是 <a href="https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/description/" target="_blank" rel="noopener">寻找旋转排序数组中的最小值</a> 的延伸题目。</li>
 <li>允许重复会影响算法的时间复杂度吗？会如何影响，为什么？</li>
 </ul>
-<p>我们得到的旋转数组类似于：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> 		* * * *</span><br><span class="line">	  *</span><br><span class="line">* * *				  *</span><br><span class="line">					*</span><br><span class="line">				* *</span><br></pre></td></tr></table></figure>
-
+<p>我们得到的旋转数组类似于下图，由两段单调递增的序列构成，右边序列的最大值小于等于左边序列的最小值。</p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20200722142620638.png" alt="image-20200722142620638"></p>
 <p>在二分查找过程中，我们有以下几种情况：</p>
 <ol>
 <li><p>左值 &lt; 中值，中值 &lt; 右值，最小值在左边，[中，右]范围内的值不可能为最小值，可以收缩右边界。</p>
