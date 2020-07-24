@@ -8111,4 +8111,67 @@
         <tag>动态规划</tag>
       </tags>
   </entry>
+  <entry>
+    <title>除数博弈</title>
+    <url>/2020/07/24/%E9%99%A4%E6%95%B0%E5%8D%9A%E5%BC%88/</url>
+    <content><![CDATA[<h4 id="1025-除数博弈"><a href="#1025-除数博弈" class="headerlink" title="1025. 除数博弈"></a><a href="https://leetcode-cn.com/problems/divisor-game/" target="_blank" rel="noopener">1025. 除数博弈</a></h4><p>爱丽丝和鲍勃一起玩游戏，他们轮流行动。爱丽丝先手开局。</p>
+<p>最初，黑板上有一个数字 <code>N</code> 。在每个玩家的回合，玩家需要执行以下操作：</p>
+<ul>
+<li>选出任一 <code>x</code>，满足 <code>0 &lt; x &lt; N</code> 且 <code>N % x == 0</code> 。</li>
+<li>用 <code>N - x</code> 替换黑板上的数字 <code>N</code> 。</li>
+</ul>
+<p>如果玩家无法执行这些操作，就会输掉游戏。</p>
+<p>只有在爱丽丝在游戏中取得胜利时才返回 <code>True</code>，否则返回 <code>false</code>。假设两个玩家都以最佳状态参与游戏。</p>
+<a id="more"></a>
+
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：2</span><br><span class="line">输出：true</span><br><span class="line">解释：爱丽丝选择 1，鲍勃无法进行操作。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：3</span><br><span class="line">输出：false</span><br><span class="line">解释：爱丽丝选择 1，鲍勃也选择 1，然后爱丽丝无法进行操作。</span><br></pre></td></tr></table></figure>
+
+<p> <strong>提示：</strong></p>
+<ol>
+<li><code>1 &lt;= N &lt;= 1000</code></li>
+</ol>
+<p>我们尝试写几项：</p>
+<ul>
+<li><p>N = 1，区间(0, 1)中没有整数是 n 的因数，所以 Alice 败。</p>
+</li>
+<li><p>N = 2，Alice 选择 1，N 变为 1，Bob 不能继续操作，Alice 胜。</p>
+</li>
+<li><p>N = 3，Alice 选择 1，N 变为 2，根据 N = 2的结论，Bob 胜，Alice 败。</p>
+</li>
+<li><p>N = 4，Alice 可选择 1 或 2，当 Alice 选择 2 时 根据 N = 2的结论 ，Alice 败，Alice 选择 1 时，根据 N = 3 的结论，Alice 胜。</p>
+</li>
+<li><p>N = 5 ，Alice 选择 1 ，根据 N = 4 的结论，Alice 败。 </p>
+</li>
+</ul>
+<p>我们定义 <code>f[i]</code> 表示当数字为 i 时，先手处于必胜态还是必败态，true 代表先手胜，false 代表先手败。当 N = i 时，Alice 在 <code>(0, i)</code>中选择一个因数 j ，使得<code>i % j == 0</code>，且 <code>f[i - j] = false</code>（Bob先手必败），那么 Alice 就可获胜。否则 Alice 败。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">divisorGame</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">boolean</span>[] f = <span class="keyword">new</span> <span class="keyword">boolean</span>[N + <span class="number">2</span>];</span><br><span class="line">        f[<span class="number">1</span>] = <span class="keyword">false</span>;</span><br><span class="line">        f[<span class="number">2</span>] = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">3</span>; i &lt;= N; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; i; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>((i % j == <span class="number">0</span>) &amp;&amp; !f[i - j])&#123;</span><br><span class="line">                    f[i] = <span class="keyword">true</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> f[N];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(n^2)，空间复杂度O(n)。</p>
+<p>看到前面几项的规律，我们猜测 N 为 奇数时 Alice（先手）必败，N 为偶数时，Alice 必胜。</p>
+<p>证明：</p>
+<ol>
+<li>N = 1 和 N = 2 时结论成立。</li>
+<li>N &gt; 2 时，假设 N &lt;= k 时该结论成立，则 N = k + 1 时：<ul>
+<li>如果 k 为偶数，则 k + 1 为奇数，x 是 k + 1 的因数，只能为奇数，奇数减去奇数得到偶数，且 k + 1 - x &lt;= k，轮到 Bob 时都是偶数，根据假设，N &lt;= k时，偶数先手必胜，则 Bob 必胜，Alice 必败。</li>
+<li>如果 k 为奇数，则 k + 1 为偶数，x 是 k + 1的因数，x 可为奇数和偶数，若 Alice 减去一个奇数，k + 1 - x 一定是个奇数，根据假设 Bob 必败，Alice 必胜。当 x 为偶数时，Alice 必败。故 Alice 选择 x 为奇数。</li>
+</ul>
+</li>
+</ol>
+<p>综上，猜想正确。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">divisorGame</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (N &amp; <span class="number">1</span>) == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(1)，空间复杂度O(1)。</p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode Easy</tag>
+        <tag>数学</tag>
+      </tags>
+  </entry>
 </search>
