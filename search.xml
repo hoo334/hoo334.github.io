@@ -8262,4 +8262,72 @@
         <tag>DFS</tag>
       </tags>
   </entry>
+  <entry>
+    <title>在圆内随机生成点</title>
+    <url>/2020/07/28/%E5%9C%A8%E5%9C%86%E5%86%85%E9%9A%8F%E6%9C%BA%E7%94%9F%E6%88%90%E7%82%B9/</url>
+    <content><![CDATA[<h4 id="478-在圆内随机生成点"><a href="#478-在圆内随机生成点" class="headerlink" title="478. 在圆内随机生成点"></a><a href="https://leetcode-cn.com/problems/generate-random-point-in-a-circle/" target="_blank" rel="noopener">478. 在圆内随机生成点</a></h4><p>给定圆的半径和圆心的 x、y 坐标，写一个在圆中产生均匀随机点的函数 <code>randPoint</code> 。</p>
+<p>说明:</p>
+<ol>
+<li>输入值和输出值都将是<a href="https://baike.baidu.com/item/浮点数/6162520" target="_blank" rel="noopener">浮点数</a>。</li>
+<li>圆的半径和圆心的 x、y 坐标将作为参数传递给类的构造函数。</li>
+<li>圆周上的点也认为是在圆中。</li>
+<li><code>randPoint</code> 返回一个包含随机点的x坐标和y坐标的大小为2的数组。</li>
+</ol>
+<a id="more"></a>
+
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: </span><br><span class="line">[&quot;Solution&quot;,&quot;randPoint&quot;,&quot;randPoint&quot;,&quot;randPoint&quot;]</span><br><span class="line">[[1,0,0],[],[],[]]</span><br><span class="line">输出: [null,[-0.72939,-0.65505],[-0.78502,-0.28626],[-0.83119,-0.19803]]</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: </span><br><span class="line">[&quot;Solution&quot;,&quot;randPoint&quot;,&quot;randPoint&quot;,&quot;randPoint&quot;]</span><br><span class="line">[[10,5,-7.5],[],[],[]]</span><br><span class="line">输出: [null,[11.52438,-8.33273],[2.46992,-16.21705],[11.13430,-12.42337]]</span><br></pre></td></tr></table></figure>
+
+<p><strong>输入语法说明：</strong></p>
+<p>输入是两个列表：调用成员函数名和调用的参数。<code>Solution</code> 的构造函数有三个参数，圆的半径、圆心的 x 坐标、圆心的 y 坐标。<code>randPoint</code> 没有参数。输入参数是一个列表，即使参数为空，也会输入一个 [] 空列表。</p>
+<p><strong>方法一：拒绝采样</strong></p>
+<p>在矩形中随机生成一个点的方法：随机选取一个 0 ~ 1的浮点数，乘以矩形的边长。使用该方法生成随机点的横纵坐标。我们可以得到第一种在圆内生成随机点的方法，即在这个圆外画一个外接矩形，在矩形内生成随机点，拒绝掉那些落在圆外的点，得到结果。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">double</span> xc, yc, rad;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Solution</span><span class="params">(<span class="keyword">double</span> radius, <span class="keyword">double</span> x_center, <span class="keyword">double</span> y_center)</span> </span>&#123;</span><br><span class="line">        xc = x_center;</span><br><span class="line">        yc = y_center;</span><br><span class="line">        rad = radius;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">double</span>[] randPoint() &#123;</span><br><span class="line">        <span class="comment">//获得坐标原点的坐标(矩形的一个角的坐标)</span></span><br><span class="line">        <span class="keyword">double</span> x0 = xc - rad;</span><br><span class="line">        <span class="keyword">double</span> y0 = yc - rad;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">            <span class="comment">//在矩形中生成随机点(xr, yr)</span></span><br><span class="line">            <span class="keyword">double</span> xr = x0 + Math.random() * rad * <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">double</span> yr = y0 + Math.random() * rad * <span class="number">2</span>;</span><br><span class="line">            <span class="comment">//拒绝掉不在圆内的随机点</span></span><br><span class="line">            <span class="keyword">if</span>(Math.sqrt(Math.pow(xr - xc, <span class="number">2</span>) + Math.pow(yr - yc, <span class="number">2</span>)) &lt; rad)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">double</span>[]&#123;xr, yr&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your Solution object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * Solution obj = new Solution(radius, x_center, y_center);</span></span><br><span class="line"><span class="comment"> * double[] param_1 = obj.randPoint();</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<p>期望时间复杂度O(1)，最坏的情况是一直被拒绝，时间复杂度为O(n)。</p>
+<p>空间复杂度为O(1)。</p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode Medium</tag>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>二叉树的最大深度</title>
+    <url>/2020/07/28/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/</url>
+    <content><![CDATA[<h4 id="104-二叉树的最大深度"><a href="#104-二叉树的最大深度" class="headerlink" title="104. 二叉树的最大深度"></a><a href="https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/" target="_blank" rel="noopener">104. 二叉树的最大深度</a></h4><p>给定一个二叉树，找出其最大深度。</p>
+<p>二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。</p>
+<p><strong>说明:</strong> 叶子节点是指没有子节点的节点。</p>
+<a id="more"></a>
+
+<p><strong>示例：</strong><br>给定二叉树 <code>[3,9,20,null,null,15,7]</code>，</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  3</span><br><span class="line"> &#x2F; \</span><br><span class="line">9  20</span><br><span class="line">  &#x2F;  \</span><br><span class="line"> 15   7</span><br></pre></td></tr></table></figure>
+
+<p>返回它的最大深度 3 。</p>
+<p><strong>方法一：递归</strong></p>
+<p>当前树的最大深度为左右子树的最大深度加一，左右子树又以同样的方式进行计算。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//根节点为空，返回 0</span></span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="comment">//只有根节点，返回 1</span></span><br><span class="line">        <span class="keyword">if</span>(root.left == <span class="keyword">null</span> &amp;&amp; root.right == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="comment">//返回左右子树最大深度加一</span></span><br><span class="line">        <span class="keyword">return</span> Math.max(maxDepth(root.left), maxDepth(root.right)) + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(n)，树中的每个结点被访问一次。</p>
+<p>空间复杂度O(h)，h 为树的高度。</p>
+<p><strong>方法二：层次遍历</strong></p>
+<p>我们可以使用层次遍历来计算二叉树的深度。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="comment">//队列中保存下一层的结点</span></span><br><span class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        queue.offer(root);</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(!queue.isEmpty())&#123;</span><br><span class="line">            <span class="comment">//获得当前层数结点的个数</span></span><br><span class="line">            <span class="keyword">int</span> size = queue.size();</span><br><span class="line">            <span class="comment">//将当前层每一个结点的子节点入队</span></span><br><span class="line">            <span class="keyword">while</span>(size &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                TreeNode t = queue.poll();</span><br><span class="line">                <span class="keyword">if</span>(t.left != <span class="keyword">null</span>)&#123;</span><br><span class="line">                    queue.offer(t.left);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(t.right != <span class="keyword">null</span>)&#123;</span><br><span class="line">                    queue.offer(t.right);</span><br><span class="line">                &#125;</span><br><span class="line">			<span class="comment">//当前层结点数减一</span></span><br><span class="line">                --size;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//二叉树层数加一</span></span><br><span class="line">            ++ans;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(n)，空间复杂度最坏O(n)。</p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode Easy</tag>
+        <tag>二叉树</tag>
+      </tags>
+  </entry>
 </search>
