@@ -8330,4 +8330,27 @@
         <tag>二叉树</tag>
       </tags>
   </entry>
+  <entry>
+    <title>平方数之和</title>
+    <url>/2020/07/29/%E5%B9%B3%E6%96%B9%E6%95%B0%E4%B9%8B%E5%92%8C/</url>
+    <content><![CDATA[<h4 id="633-平方数之和"><a href="#633-平方数之和" class="headerlink" title="633. 平方数之和"></a><a href="https://leetcode-cn.com/problems/sum-of-square-numbers/" target="_blank" rel="noopener">633. 平方数之和</a></h4><p>给定一个非负整数 <code>c</code> ，你要判断是否存在两个整数 <code>a</code> 和 <code>b</code>，使得 a^2 + b^2 = c。</p>
+<a id="more"></a>
+
+<p><strong>示例1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: 5</span><br><span class="line">输出: True</span><br><span class="line">解释: 1 * 1 + 2 * 2 &#x3D; 5</span><br></pre></td></tr></table></figure>
+
+<p> <strong>示例2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: 3</span><br><span class="line">输出: False</span><br></pre></td></tr></table></figure>
+
+<p>我们直接使用暴力法，这里使用了一点技巧。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">judgeSquareSum</span><span class="params">(<span class="keyword">int</span> c)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">long</span> i = <span class="number">0</span>; i * i &lt;= c; i++)&#123;</span><br><span class="line">            <span class="keyword">double</span> b = Math.sqrt(c - i * i);</span><br><span class="line">            <span class="comment">//如果 b 为一个数的平方，代表找到</span></span><br><span class="line">            <span class="keyword">if</span>(b == (<span class="keyword">int</span>)b)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(√c)，空间复杂度O(1)。</p>
+<p>最近做 DP 都快 PTSD 了，看到这题居然第一时间想到 DP，人傻了！！</p>
+]]></content>
+      <tags>
+        <tag>Leetcode Easy</tag>
+        <tag>数学</tag>
+      </tags>
+  </entry>
 </search>
