@@ -20,22 +20,22 @@
     var CONFIG = {"hostname":"hoo334.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="4. 寻找两个正序数组的中位数给定两个大小为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。 请你找出这两个正序数组的中位数，并且要求算法的时间复杂度为 O(log(m + n))。 你可以假设 nums1 和 nums2 不会同时为空。">
+  <meta name="description" content="343. 整数拆分给定一个正整数 n，将其拆分为至少两个正整数的和，并使这些整数的乘积最大化。 返回你可以获得的最大乘积。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="寻找两个正序数组的中位数">
-<meta property="og:url" content="https://hoo334.github.io/2020/04/27/%E5%AF%BB%E6%89%BE%E4%B8%A4%E4%B8%AA%E6%AD%A3%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0/index.html">
+<meta property="og:title" content="整数拆分">
+<meta property="og:url" content="https://hoo334.github.io/2020/07/30/%E6%95%B4%E6%95%B0%E6%8B%86%E5%88%86/index.html">
 <meta property="og:site_name" content="echo">
-<meta property="og:description" content="4. 寻找两个正序数组的中位数给定两个大小为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。 请你找出这两个正序数组的中位数，并且要求算法的时间复杂度为 O(log(m + n))。 你可以假设 nums1 和 nums2 不会同时为空。">
+<meta property="og:description" content="343. 整数拆分给定一个正整数 n，将其拆分为至少两个正整数的和，并使这些整数的乘积最大化。 返回你可以获得的最大乘积。">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-04-27T01:21:09.000Z">
-<meta property="article:modified_time" content="2020-07-03T02:35:55.919Z">
+<meta property="article:published_time" content="2020-07-30T07:32:56.000Z">
+<meta property="article:modified_time" content="2020-07-30T07:53:41.198Z">
 <meta property="article:author" content="hoo334">
-<meta property="article:tag" content="二分查找">
-<meta property="article:tag" content="数组">
-<meta property="article:tag" content="Leetcode Hard">
+<meta property="article:tag" content="Leetcode Medium">
+<meta property="article:tag" content="动态规划">
+<meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://hoo334.github.io/2020/04/27/%E5%AF%BB%E6%89%BE%E4%B8%A4%E4%B8%AA%E6%AD%A3%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0/">
+<link rel="canonical" href="https://hoo334.github.io/2020/07/30/%E6%95%B4%E6%95%B0%E6%8B%86%E5%88%86/">
 
 
 <script id="page-configurations">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>寻找两个正序数组的中位数 | echo</title>
+  <title>整数拆分 | echo</title>
   
 
 
@@ -193,7 +193,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://hoo334.github.io/2020/04/27/%E5%AF%BB%E6%89%BE%E4%B8%A4%E4%B8%AA%E6%AD%A3%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0/">
+    <link itemprop="mainEntityOfPage" href="https://hoo334.github.io/2020/07/30/%E6%95%B4%E6%95%B0%E6%8B%86%E5%88%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar2.jpg">
@@ -206,7 +206,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          寻找两个正序数组的中位数
+          整数拆分
         </h1>
 
         <div class="post-meta">
@@ -215,16 +215,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2020-04-27 09:21:09" itemprop="dateCreated datePublished" datetime="2020-04-27T09:21:09+08:00">2020-04-27</time>
+              <time title="Created: 2020-07-30 15:32:56 / Modified: 15:53:41" itemprop="dateCreated datePublished" datetime="2020-07-30T15:32:56+08:00">2020-07-30</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-07-03 10:35:55" itemprop="dateModified" datetime="2020-07-03T10:35:55+08:00">2020-07-03</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -251,8 +245,8 @@
       </span>
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2020/04/27/%E5%AF%BB%E6%89%BE%E4%B8%A4%E4%B8%AA%E6%AD%A3%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/27/%E5%AF%BB%E6%89%BE%E4%B8%A4%E4%B8%AA%E6%AD%A3%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0/" itemprop="commentCount"></span>
+    <a title="valine" href="/2020/07/30/%E6%95%B4%E6%95%B0%E6%8B%86%E5%88%86/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/07/30/%E6%95%B4%E6%95%B0%E6%8B%86%E5%88%86/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -267,22 +261,34 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h4 id="4-寻找两个正序数组的中位数"><a href="#4-寻找两个正序数组的中位数" class="headerlink" title="4. 寻找两个正序数组的中位数"></a><a href="https://leetcode-cn.com/problems/median-of-two-sorted-arrays/" target="_blank" rel="noopener">4. 寻找两个正序数组的中位数</a></h4><p>给定两个大小为 m 和 n 的正序（从小到大）数组 <code>nums1</code> 和 <code>nums2</code>。</p>
-<p>请你找出这两个正序数组的中位数，并且要求算法的时间复杂度为 O(log(m + n))。</p>
-<p>你可以假设 <code>nums1</code> 和 <code>nums2</code> 不会同时为空。</p>
-  <a id="more"></a>
+        <h4 id="343-整数拆分"><a href="#343-整数拆分" class="headerlink" title="343. 整数拆分"></a><a href="https://leetcode-cn.com/problems/integer-break/" target="_blank" rel="noopener">343. 整数拆分</a></h4><p>给定一个正整数 <em>n</em>，将其拆分为<strong>至少</strong>两个正整数的和，并使这些整数的乘积最大化。 返回你可以获得的最大乘积。</p>
+<a id="more"></a>
 
 <p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nums1 &#x3D; [1, 3]</span><br><span class="line">nums2 &#x3D; [2]</span><br><span class="line"></span><br><span class="line">则中位数是 2.0</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: 2</span><br><span class="line">输出: 1</span><br><span class="line">解释: 2 &#x3D; 1 + 1, 1 × 1 &#x3D; 1。</span><br></pre></td></tr></table></figure>
 
 <p><strong>示例 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nums1 &#x3D; [1, 2]</span><br><span class="line">nums2 &#x3D; [3, 4]</span><br><span class="line"></span><br><span class="line">则中位数是 (2 + 3)&#x2F;2 &#x3D; 2.5</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: 10</span><br><span class="line">输出: 36</span><br><span class="line">解释: 10 &#x3D; 3 + 3 + 4, 3 × 3 × 4 &#x3D; 36。</span><br></pre></td></tr></table></figure>
 
-<p>先考虑一个有序数组中查找中位数的情况：当数组元素为奇数时，取最中间的一个元素；当数组元素为偶数时，取最中间的两个元素的平均值。</p>
-<p>有两个有序数组时我们先计算出总数组的长度，在两个数组中间画一条分割线，当两条分割线左侧的元素个数为总数组长度的一半时，在分割线左右的四个元素则是构成中位数的元素。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">findMedianSortedArrays</span><span class="params">(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span>[] nums2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums1.length &gt; nums2.length)&#123;</span><br><span class="line">            <span class="keyword">return</span> findMedianSortedArrays(nums2, nums1);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> m = nums1.length;</span><br><span class="line">        <span class="keyword">int</span> n = nums2.length;</span><br><span class="line">        <span class="comment">//分割线左边的所有元素需要满足的个数(m + n + 1) / 2</span></span><br><span class="line">        <span class="keyword">int</span> totalLeft = (m + n + <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">        <span class="comment">//在 nums1 的区间 [0, m]里查找恰当的分割线</span></span><br><span class="line">        <span class="comment">//使得 nums1[i - 1] &lt;= nums2[j] &amp;&amp; nums2[j - 1] &lt;= nums1[i]</span></span><br><span class="line">        <span class="comment">//在较小长度的数组使用二分查找</span></span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = m;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">            <span class="comment">//向上取整</span></span><br><span class="line">            <span class="keyword">int</span> i = left + (right - left + <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">int</span> j = totalLeft - i;</span><br><span class="line">            <span class="comment">//搜索分割线位置</span></span><br><span class="line">            <span class="keyword">if</span>(nums1[i - <span class="number">1</span>] &gt; nums2[j])&#123;<span class="comment">//不满足交叉小于的情况</span></span><br><span class="line">                <span class="comment">//下一轮搜索区间 [left, i - 1]</span></span><br><span class="line">                right = i - <span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">//下一轮搜索区间 [i, right]</span></span><br><span class="line">                left = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> i = left;</span><br><span class="line">        <span class="keyword">int</span> j = totalLeft - i;</span><br><span class="line">        <span class="keyword">int</span> nums1LeftMax = i == <span class="number">0</span> ? Integer.MIN_VALUE : nums1[i - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">int</span> nums1RightMin = i == m ? Integer.MAX_VALUE : nums1[i];</span><br><span class="line">        <span class="keyword">int</span> nums2LeftMax = j == <span class="number">0</span> ? Integer.MIN_VALUE : nums2[j - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">int</span> nums2RightMIn = j == n ? Integer.MAX_VALUE : nums2[j];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>((m + n) % <span class="number">2</span> == <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> Math.max(nums1LeftMax, nums2LeftMax);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> (<span class="keyword">double</span>)((Math.max(nums1LeftMax,nums2LeftMax) + Math.min(nums1RightMin, nums2RightMIn))) / <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>说明:</strong> 你可以假设 <em>n</em> 不小于 2 且不大于 58。</p>
+<p><strong>方法一：动态规划</strong></p>
+<p>对于任意正整数 n，我们至少可以将其拆分为两个正整数的和。令 k 是拆分出来的第一个正整数，剩下的部分是 n - k，n - k 可以选择「不拆分」和「继续拆分」，是否拆分取决于这两个选择哪一个的最大乘积最大。</p>
+<p>创建 dp 数组，<code>dp[i]</code> 表示将正整数 i 拆分为至少两个正整数的和之后，这些正整数的最大乘积。0 和 1 都不能进行拆分 所以 <code>dp[0] = dp[1] = 0</code>。</p>
+<p>当 <code>i &gt;= 2</code> 时，假设对正整数 i 拆分出的第一个正整数是 j (1 &lt;= j &lt; i)，有以下两种选择：</p>
+<ul>
+<li>i - j 不继续拆分，此时的乘积是 j * (i - j)</li>
+<li>i - j 继续拆分，此时的乘积是 j * dp[i - j]</li>
+</ul>
+<p>我们取这两者的最大值，得到状态转移方程：<br>$$<br>dp[i] = \max_{1\leq j &lt;i}{j \times max((i - j), dp[i - j])}<br>$$<br>最终结果为 <code>dp[n]</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">integerBreak</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">1</span>];</span><br><span class="line">        dp[<span class="number">1</span>] = dp[<span class="number">2</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">3</span>; i &lt;= n; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> x = Integer.MIN_VALUE;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; i; j++)&#123;</span><br><span class="line">                x = Math.max(x, j * Math.max(dp[i - j], i - j));</span><br><span class="line">            &#125;</span><br><span class="line">            dp[i] = x;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>时间复杂度是 O( log( min(<em>m</em>,n) ) )，空间复杂度：O(1)。</p>
+<p>时间复杂度O(n^2)，空间复杂度O(n)。</p>
+<p><strong>方法二：数学</strong></p>
+<p>将 n 拆分成最多的 3 和 2，但是不能出现 1。</p>
+<p>例如当 n = 10 时，最多的 3 的拆分方法为 3331，但是由于 1 对结果没有贡献，将最后的 31 改成 2*2。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">integerBreak</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(n &lt;=<span class="number">3</span> )<span class="keyword">return</span> n-<span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> x = n / <span class="number">3</span>, b = n % <span class="number">3</span>;</span><br><span class="line">        <span class="keyword">if</span>(b == <span class="number">0</span>) <span class="keyword">return</span> (<span class="keyword">int</span>)Math.pow(<span class="number">3</span>, x);</span><br><span class="line">        <span class="comment">//如果最后的余数为 1 ，代表存在 3*1这种情况，要改为 2*2</span></span><br><span class="line">        <span class="keyword">if</span>(b == <span class="number">1</span>) <span class="keyword">return</span> (<span class="keyword">int</span>)Math.pow(<span class="number">3</span>, x-<span class="number">1</span>)*<span class="number">4</span>;</span><br><span class="line">		<span class="comment">//余数为 2 </span></span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">int</span>)Math.pow(<span class="number">3</span>,x)*<span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(1)，空间复杂度O(1)。</p>
 
     </div>
 
@@ -292,9 +298,9 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" rel="tag"># 二分查找</a>
-              <a href="/tags/%E6%95%B0%E7%BB%84/" rel="tag"># 数组</a>
-              <a href="/tags/Leetcode-Hard/" rel="tag"># Leetcode Hard</a>
+              <a href="/tags/Leetcode-Medium/" rel="tag"># Leetcode Medium</a>
+              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag"># 动态规划</a>
+              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
           </div>
 
         
@@ -303,13 +309,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/04/27/%E5%B1%B1%E8%84%89%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E7%9B%AE%E6%A0%87%E5%80%BC/" rel="prev" title="山脉数组中查找目标值">
-      <i class="fa fa-chevron-left"></i> 山脉数组中查找目标值
+    <a href="/2020/07/29/%E5%B9%B3%E6%96%B9%E6%95%B0%E4%B9%8B%E5%92%8C/" rel="prev" title="平方数之和">
+      <i class="fa fa-chevron-left"></i> 平方数之和
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/04/27/Pow(x,n)/" rel="next" title="Pow(x, n)">
-      Pow(x, n) <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -369,7 +372,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-寻找两个正序数组的中位数"><span class="nav-number">1.</span> <span class="nav-text">4. 寻找两个正序数组的中位数</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#343-整数拆分"><span class="nav-number">1.</span> <span class="nav-text">343. 整数拆分</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -516,6 +519,59 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
