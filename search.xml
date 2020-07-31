@@ -8394,4 +8394,41 @@
         <tag>数学</tag>
       </tags>
   </entry>
+  <entry>
+    <title>魔术索引</title>
+    <url>/2020/07/31/%E9%AD%94%E6%9C%AF%E7%B4%A2%E5%BC%95/</url>
+    <content><![CDATA[<h4 id="面试题-08-03-魔术索引"><a href="#面试题-08-03-魔术索引" class="headerlink" title="面试题 08.03. 魔术索引"></a><a href="https://leetcode-cn.com/problems/magic-index-lcci/" target="_blank" rel="noopener">面试题 08.03. 魔术索引</a></h4><p>魔术索引。 在数组<code>A[0...n-1]</code>中，有所谓的魔术索引，满足条件<code>A[i] = i</code>。给定一个有序整数数组，编写一种方法找出魔术索引，若有的话，在数组A中找出一个魔术索引，如果没有，则返回-1。若有多个魔术索引，返回索引值最小的一个。</p>
+<a id="more"></a>
+
+<p><strong>示例1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：nums &#x3D; [0, 2, 3, 4, 5]</span><br><span class="line">输出：0</span><br><span class="line">说明: 0下标的元素为0</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：nums &#x3D; [1, 1, 1]</span><br><span class="line">输出：1</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示:</strong></p>
+<ol>
+<li>nums长度在[1, 1000000]之间</li>
+</ol>
+<p>我们直接遍历一次数组即可求出最小的索引。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findMagicIndex</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] == i)&#123;</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(n)，空间复杂度O(1)。</p>
+<p>但给的是有序数组，我们可以进行一点优化。</p>
+<p>以示例二为例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">元素：1  1  1</span><br><span class="line">下标：0  1  2</span><br><span class="line">     ^</span><br></pre></td></tr></table></figure>
+
+<p>当我们遍历到第 i 个元素时，如果<code>nums[i] &gt; i</code>，由于数组的递增关系，<code>[0, i)</code>范围内的元素不可能为最小索引，直接令<code>i = nums[i]</code>。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findMagicIndex</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(flag &lt; nums.length)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[flag] == flag)&#123;</span><br><span class="line">                <span class="keyword">return</span> flag;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(nums[flag] &gt; flag)&#123;</span><br><span class="line">                flag = nums[flag]; <span class="comment">//去掉不需要比较的元素</span></span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                flag++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度最坏O(n)，空间复杂度O(1)。</p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
+        <tag>Leetcode Easy</tag>
+      </tags>
+  </entry>
 </search>
