@@ -28,7 +28,7 @@
 <meta property="og:description" content="面试题 08.03. 魔术索引魔术索引。 在数组A[0...n-1]中，有所谓的魔术索引，满足条件A[i] &#x3D; i。给定一个有序整数数组，编写一种方法找出魔术索引，若有的话，在数组A中找出一个魔术索引，如果没有，则返回-1。若有多个魔术索引，返回索引值最小的一个。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-31T01:33:39.000Z">
-<meta property="article:modified_time" content="2020-07-31T01:42:20.076Z">
+<meta property="article:modified_time" content="2020-07-31T01:49:31.684Z">
 <meta property="article:author" content="hoo334">
 <meta property="article:tag" content="数组">
 <meta property="article:tag" content="Leetcode Easy">
@@ -216,7 +216,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-07-31 09:33:39 / Modified: 09:42:20" itemprop="dateCreated datePublished" datetime="2020-07-31T09:33:39+08:00">2020-07-31</time>
+              <time title="Created: 2020-07-31 09:33:39 / Modified: 09:49:31" itemprop="dateCreated datePublished" datetime="2020-07-31T09:33:39+08:00">2020-07-31</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -279,9 +279,10 @@
 <p>时间复杂度O(n)，空间复杂度O(1)。</p>
 <p>但给的是有序数组，我们可以进行一点优化。</p>
 <p>以示例二为例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">元素：1  1  1</span><br><span class="line">下标：0  1  2</span><br><span class="line">     ^</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">元素：1  1  1</span><br><span class="line">下标：0  1  2</span><br><span class="line">     ^</span><br><span class="line">     i</span><br></pre></td></tr></table></figure>
 
-<p>当我们遍历到第 i 个元素时，如果<code>nums[i] &gt; i</code>，由于数组的递增关系，<code>[0, i)</code>范围内的元素不可能为最小索引，直接令<code>i = nums[i]</code>。</p>
+<p>当 i = 0 时，我们有 nums[0] &gt; 0，i 不是最小索引。由于数组递增，nums[0] 之后的元素都大于等于 nums[0]，下标小于 nums[0] 的元素中不存在最小索引，否则数组就不满足递增关系。</p>
+<p>当我们遍历到第 i 个元素时，如果<code>nums[i] &gt; i</code>，由于数组的递增关系，<code>[0, nums[i])</code>范围内的元素不可能为最小索引，直接令<code>i = nums[i]</code>。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findMagicIndex</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(flag &lt; nums.length)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[flag] == flag)&#123;</span><br><span class="line">                <span class="keyword">return</span> flag;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(nums[flag] &gt; flag)&#123;</span><br><span class="line">                flag = nums[flag]; <span class="comment">//去掉不需要比较的元素</span></span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                flag++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>时间复杂度最坏O(n)，空间复杂度O(1)。</p>
