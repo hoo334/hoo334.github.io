@@ -8437,6 +8437,8 @@
     <url>/2020/08/01/%E6%9C%80%E5%B0%8F%E5%8C%BA%E9%97%B4/</url>
     <content><![CDATA[<h4 id="632-最小区间"><a href="#632-最小区间" class="headerlink" title="632. 最小区间"></a><a href="https://leetcode-cn.com/problems/smallest-range-covering-elements-from-k-lists/" target="_blank" rel="noopener">632. 最小区间</a></h4><p>你有 <code>k</code> 个升序排列的整数数组。找到一个<strong>最小</strong>区间，使得 <code>k</code> 个列表中的每个列表至少有一个数包含在其中。</p>
 <p>我们定义如果 <code>b-a &lt; d-c</code> 或者在 <code>b-a == d-c</code> 时 <code>a &lt; c</code>，则区间 [a,b] 比 [c,d] 小。</p>
+<a id="more"></a>
+
 <p><strong>示例 1:</strong></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入:[[4,10,15,24,26], [0,9,12,20], [5,18,22,30]]</span><br><span class="line">输出: [20,24]</span><br><span class="line">解释: </span><br><span class="line">列表 1：[4, 10, 15, 24, 26]，24 在区间 [20,24] 中。</span><br><span class="line">列表 2：[0, 9, 12, 20]，20 在区间 [20,24] 中。</span><br><span class="line">列表 3：[5, 18, 22, 30]，22 在区间 [20,24] 中。</span><br></pre></td></tr></table></figure>
 
