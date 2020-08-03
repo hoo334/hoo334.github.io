@@ -8657,4 +8657,31 @@
         <tag>贪心</tag>
       </tags>
   </entry>
+  <entry>
+    <title>字符串相加</title>
+    <url>/2020/08/03/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%8A%A0/</url>
+    <content><![CDATA[<h4 id="415-字符串相加"><a href="#415-字符串相加" class="headerlink" title="415. 字符串相加"></a><a href="https://leetcode-cn.com/problems/add-strings/" target="_blank" rel="noopener">415. 字符串相加</a></h4><p>给定两个字符串形式的非负整数 <code>num1</code> 和<code>num2</code> ，计算它们的和。</p>
+<a id="more"></a>
+
+<p><strong>注意：</strong></p>
+<ol>
+<li><code>num1</code> 和<code>num2</code> 的长度都小于 5100.</li>
+<li><code>num1</code> 和<code>num2</code> 都只包含数字 <code>0-9</code>.</li>
+<li><code>num1</code> 和<code>num2</code> 都不包含任何前导零。</li>
+<li><strong>你不能使用任何內建 BigInteger 库， 也不能直接将输入的字符串转换为整数形式。</strong></li>
+</ol>
+<p>使用两个指针从字符串尾部开始依次相加，同时维护进位位。使用 StringBuffer 存储，最后再将结果翻转。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">addStrings</span><span class="params">(String num1, String num2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = num1.length() - <span class="number">1</span>, j = num2.length() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> carry = <span class="number">0</span>;</span><br><span class="line">        StringBuffer sb = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">        <span class="keyword">while</span>(i &gt;= <span class="number">0</span> || j &gt;= <span class="number">0</span> || carry == <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> x = i &gt;= <span class="number">0</span> ? num1.charAt(i--) - <span class="string">'0'</span> : <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> y = j &gt;= <span class="number">0</span> ? num2.charAt(j--) - <span class="string">'0'</span> : <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> num = x + y + carry;</span><br><span class="line">            carry = num / <span class="number">10</span>;</span><br><span class="line">            sb.append(num % <span class="number">10</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sb.reverse().toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(max(len1, len2))，len1 和 len2 为两个字符串的长度。</p>
+<p>空间复杂度O(1)，除了存储答案的空间，只使用了O(1)的空间。</p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode Easy</tag>
+        <tag>字符串</tag>
+      </tags>
+  </entry>
 </search>
