@@ -96,7 +96,7 @@
 <p><img src="https://gitee.com/hoo334/picgo/raw/master//img/jJVGegbAKdwCi1S.png" alt="image-20200414101457645"></p>
 ]]></content>
       <categories>
-        <category>数据库</category>
+        <category>读书笔记</category>
       </categories>
   </entry>
   <entry>
@@ -496,7 +496,7 @@
 <p>　　where r2.readerNo=b2.readerNo and b1.bookNo=b2.bookNo and b2.returnDate is null)));</p>
 ]]></content>
       <categories>
-        <category>数据库</category>
+        <category>读书笔记</category>
       </categories>
   </entry>
   <entry>
@@ -559,7 +559,7 @@
 <p>这里需要注意的是@Transactional注解当它置于方法前时表示该方法使用事务处理，当它置于类前时表示该类的所有方法都使用事务处理。</p>
 ]]></content>
       <categories>
-        <category>Spring</category>
+        <category>读书笔记</category>
       </categories>
       <tags>
         <tag>Spring</tag>
@@ -684,7 +684,7 @@
 <p>这个例子 初步展示了DI、AOP的思想。</p>
 ]]></content>
       <categories>
-        <category>Spring</category>
+        <category>读书笔记</category>
       </categories>
       <tags>
         <tag>Spring</tag>
@@ -1217,7 +1217,7 @@
 <p>​    全备份是指每次备份全部数据库，而增量备份只备份上次备份后更新过的数据。</p>
 ]]></content>
       <categories>
-        <category>数据库</category>
+        <category>读书笔记</category>
       </categories>
   </entry>
   <entry>
@@ -1247,7 +1247,7 @@
 <p>　　</p>
 ]]></content>
       <categories>
-        <category>数据库</category>
+        <category>读书笔记</category>
       </categories>
   </entry>
   <entry>
@@ -1553,7 +1553,7 @@
 
 ]]></content>
       <categories>
-        <category>Spring</category>
+        <category>读书笔记</category>
       </categories>
       <tags>
         <tag>Spring</tag>
@@ -1688,7 +1688,7 @@
 <h3 id="知识结构图"><a href="#知识结构图" class="headerlink" title="知识结构图"></a>知识结构图</h3><p><img src="https://gitee.com/hoo334/picgo/raw/master//img/p1mQsEuLAqKbizO.png" alt="image-20200411154708823"></p>
 ]]></content>
       <categories>
-        <category>计算机网络</category>
+        <category>读书笔记</category>
       </categories>
   </entry>
   <entry>
@@ -1783,7 +1783,7 @@
 <p>@EnableJpaRepositories(“spitter.db”)会扫描spittr.db包查找扩展自Spring Data JPA Repository接口的所有接口，如果发现了扩展自Repository的接口，他会自动（在应用启动的时候）生成这个接口的实现。</p>
 ]]></content>
       <categories>
-        <category>Spring</category>
+        <category>读书笔记</category>
       </categories>
       <tags>
         <tag>Spring</tag>
@@ -1864,7 +1864,7 @@
 <p><img src="https://gitee.com/hoo334/picgo/raw/master//img/mOjbEfyIU97XVFH.png" alt="img"></p>
 ]]></content>
       <categories>
-        <category>数据库</category>
+        <category>读书笔记</category>
       </categories>
   </entry>
   <entry>
@@ -1927,7 +1927,7 @@
 <p> <img src="https://gitee.com/hoo334/picgo/raw/master//img/jOsdNFPVnmoxHiL.png" alt=""></p>
 ]]></content>
       <categories>
-        <category>Spring</category>
+        <category>读书笔记</category>
       </categories>
       <tags>
         <tag>SpringBoot</tag>
@@ -2087,7 +2087,7 @@
 <p>　　<a href="https://www.bilibili.com/video/BV1eE411a79r/" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1eE411a79r/</a></p>
 ]]></content>
       <categories>
-        <category>数据库</category>
+        <category>读书笔记</category>
       </categories>
   </entry>
   <entry>
@@ -3898,7 +3898,7 @@
 <h3 id="知识结构图"><a href="#知识结构图" class="headerlink" title="知识结构图"></a>知识结构图</h3><p><img src="https://gitee.com/hoo334/picgo/raw/master//img/mN2ThOy3YQ47BdH.png" alt="image-20200507171655791"></p>
 ]]></content>
       <categories>
-        <category>计算机网络</category>
+        <category>读书笔记</category>
       </categories>
   </entry>
   <entry>
@@ -4106,7 +4106,7 @@
 <p>返回 RET，一般位于子程序的最后</p>
 ]]></content>
       <categories>
-        <category>复试</category>
+        <category>读书笔记</category>
       </categories>
       <tags>
         <tag>计算机组成原理</tag>
@@ -4442,7 +4442,7 @@
 <h4 id="触发器的作用"><a href="#触发器的作用" class="headerlink" title="触发器的作用"></a>触发器的作用</h4><p>​    触发器常用于保证完整性，并在一定程度上实现安全性，如用触发器来进行审计。</p>
 ]]></content>
       <categories>
-        <category>数据库</category>
+        <category>读书笔记</category>
       </categories>
   </entry>
   <entry>
@@ -4676,7 +4676,7 @@
 </ul>
 ]]></content>
       <categories>
-        <category>复试</category>
+        <category>读书笔记</category>
       </categories>
       <tags>
         <tag>OS</tag>
@@ -4888,7 +4888,7 @@
 <p><img src="https://gitee.com/hoo334/picgo/raw/master//img/LtEuor7PDM3xKzb.png" alt="image-20200410134049382"></p>
 ]]></content>
       <categories>
-        <category>计算机网络</category>
+        <category>读书笔记</category>
       </categories>
   </entry>
   <entry>
@@ -4942,7 +4942,7 @@
 <p>　　6）事务管理器。负责保证系统的完整性，保证多个同时运行的事务不发生冲突。</p>
 ]]></content>
       <categories>
-        <category>数据库</category>
+        <category>读书笔记</category>
       </categories>
   </entry>
   <entry>
@@ -5781,7 +5781,7 @@
 <p><img src="https://gitee.com/hoo334/picgo/raw/master//img/CD5szARNdXO238P.png" alt="image-20200410102252708"></p>
 ]]></content>
       <categories>
-        <category>计算机网络</category>
+        <category>读书笔记</category>
       </categories>
   </entry>
   <entry>
@@ -6411,7 +6411,7 @@
 <p>Spring提供了四个注解来声明缓存规则<br>@Cacheable 表明Spring在调用方法之前，首先应该在缓存中查找方法的返回值，如果这个值找到，就会返回缓存的值，否则的话，这个方法就会被调用，返回值会房贷缓存之中。<br>@CachePut 表明Spring应该将方法的返回值放入缓存之中，在方法的调用前并不会检查缓存，方法始终都会被调用。<br>@CacheEvict 表明Spring应该在缓存中清除一个或多个条目。<br>@Caching 这是一个分组的注解，能够同时应用多个其他的缓存注解。<br>将注解放在方法前即可启用缓存。</p>
 ]]></content>
       <categories>
-        <category>Spring</category>
+        <category>读书笔记</category>
       </categories>
       <tags>
         <tag>Spring</tag>
@@ -6738,7 +6738,7 @@
 <p><img src="https://gitee.com/hoo334/picgo/raw/master//img/rPoZzSghkIDjyR6.png" alt="image-20200411110119434"></p>
 ]]></content>
       <categories>
-        <category>计算机网络</category>
+        <category>读书笔记</category>
       </categories>
   </entry>
   <entry>
@@ -7065,7 +7065,7 @@
 <p>加粗的两个注解从一个Java配置类和一个XML文档加载应用上下文。</p>
 ]]></content>
       <categories>
-        <category>Spring</category>
+        <category>读书笔记</category>
       </categories>
       <tags>
         <tag>Spring</tag>
@@ -7361,7 +7361,7 @@
 <h4 id="试述具有五层协议的网络体系结构的要点，包括各层的主要功能。"><a href="#试述具有五层协议的网络体系结构的要点，包括各层的主要功能。" class="headerlink" title="试述具有五层协议的网络体系结构的要点，包括各层的主要功能。"></a>试述具有五层协议的网络体系结构的要点，包括各层的主要功能。</h4><p>1）物理层。在物理层上传送数据的单位是比特。物理层的任务就是透明地传送比特流。<br>2）数据链路层。将网络层交下来地 IP 数据报组装成帧，在两个相邻结点间地链路上“透明”地传送帧中的数据。<br>3）网络层。负责为分组交换网上的不同主机提供通信服务。在发送数据时，网络层把传输层产生的报文段或用户数据报封装成分组或包进行传送。<br>4）传输层。传输层的任务就是负责向两个主机中进程之间的通信提供服务。<br>5）应用层。直接为用户的应用进程提供服务。</p>
 ]]></content>
       <categories>
-        <category>计算机网络</category>
+        <category>读书笔记</category>
       </categories>
   </entry>
   <entry>
@@ -7393,7 +7393,7 @@
       </tags>
   </entry>
   <entry>
-    <title>协议</title>
+    <title>计算机网络协议</title>
     <url>/2020/04/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/</url>
     <content><![CDATA[<h3 id="应用层协议：（应用程序）"><a href="#应用层协议：（应用程序）" class="headerlink" title="应用层协议：（应用程序）"></a><strong>应用层协议：（应用程序）</strong></h3><h4 id="使用TCP"><a href="#使用TCP" class="headerlink" title="使用TCP"></a>使用TCP</h4><p>　　HTTP（Hypertext Transfer Protocol ）超文本传输协议 &lt;端口号 80&gt;， 面向事务的应用层协议。</p>
 <p>　　FTP（File Transfer Protocol ）文件传输协议&lt;端口号21&gt;减少或消除不同操作系统下处理文件的不兼容性。 </p>
@@ -7427,7 +7427,7 @@
 <p>　　</p>
 ]]></content>
       <categories>
-        <category>计算机网络</category>
+        <category>读书笔记</category>
       </categories>
   </entry>
   <entry>
@@ -7715,7 +7715,7 @@
 <p>implementation’junit:junit:4.12’</p>
 ]]></content>
       <categories>
-        <category>Spring</category>
+        <category>读书笔记</category>
       </categories>
       <tags>
         <tag>Spring</tag>
@@ -7878,7 +7878,7 @@
 <p>这里只介绍了SpEL的部分知识，具体的看手册。</p>
 ]]></content>
       <categories>
-        <category>Spring</category>
+        <category>读书笔记</category>
       </categories>
       <tags>
         <tag>Spring</tag>
