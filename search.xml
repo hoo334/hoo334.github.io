@@ -8791,4 +8791,39 @@
         <tag>二叉树</tag>
       </tags>
   </entry>
+  <entry>
+    <title>相同的树</title>
+    <url>/2020/08/07/%E7%9B%B8%E5%90%8C%E7%9A%84%E6%A0%91/</url>
+    <content><![CDATA[<h4 id="100-相同的树"><a href="#100-相同的树" class="headerlink" title="100. 相同的树"></a><a href="https://leetcode-cn.com/problems/same-tree/" target="_blank" rel="noopener">100. 相同的树</a></h4><p>给定两个二叉树，编写一个函数来检验它们是否相同。</p>
+<p>如果两个树在结构上相同，并且节点具有相同的值，则认为它们是相同的。</p>
+<a id="more"></a>
+
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入:       1         1</span><br><span class="line">          &#x2F; \       &#x2F; \</span><br><span class="line">         2   3     2   3</span><br><span class="line"></span><br><span class="line">        [1,2,3],   [1,2,3]</span><br><span class="line"></span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入:      1          1</span><br><span class="line">          &#x2F;           \</span><br><span class="line">         2             2</span><br><span class="line"></span><br><span class="line">        [1,2],     [1,null,2]</span><br><span class="line"></span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入:       1         1</span><br><span class="line">          &#x2F; \       &#x2F; \</span><br><span class="line">         2   1     1   2</span><br><span class="line"></span><br><span class="line">        [1,2,1],   [1,1,2]</span><br><span class="line"></span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure>
+
+<p><strong>方法一：DFS</strong></p>
+<p>对于两棵树 root1，root2，如果 root1 和 root2 都为空，则返回 true；如果 root1 和 root2 中有一个为空，另一个不为空，则返回false。如果都不为空且它们的值相等，则递归判断左右子树。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isSameTree</span><span class="params">(TreeNode p, TreeNode q)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(p == <span class="keyword">null</span> &amp;&amp; q == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(p == <span class="keyword">null</span> || q == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> p.val == q.val &amp;&amp; isSameTree(p.left, q.left) &amp;&amp; isSameTree(p.right, q.right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(min(m, n))，m，n为两棵树的节点数。空间复杂度O(min(m, n))。</p>
+<p><strong>方法二：BFS</strong></p>
+<p>我们使用两个队列来存储二叉树的层次遍历。判断这个队列中的结点值是否相同即可。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isSameTree</span><span class="params">(TreeNode p, TreeNode q)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(p == <span class="keyword">null</span> &amp;&amp; q == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(p == <span class="keyword">null</span> || q == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Queue&lt;TreeNode&gt; q1 = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        Queue&lt;TreeNode&gt; q2 = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        q1.offer(p);</span><br><span class="line">        q2.offer(q);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(!q1.isEmpty() &amp;&amp; !q2.isEmpty())&#123;</span><br><span class="line">            TreeNode n1 = q1.poll(), n2 = q2.poll();</span><br><span class="line">            <span class="keyword">if</span>(n1.val != n2.val)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>( (n1.left == <span class="keyword">null</span> ^ n2.left == <span class="keyword">null</span>) || (n1.right == <span class="keyword">null</span> ^ n2.right == <span class="keyword">null</span>) )&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(n1.left != <span class="keyword">null</span>) q1.offer(n1.left);</span><br><span class="line">            <span class="keyword">if</span>(n1.right != <span class="keyword">null</span>) q1.offer(n1.right);</span><br><span class="line">            <span class="keyword">if</span>(n2.left != <span class="keyword">null</span>) q2.offer(n2.left);</span><br><span class="line">            <span class="keyword">if</span>(n2.right != <span class="keyword">null</span>) q2.offer(n2.right);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(min(m, n))，m，n为两棵树的节点数。空间复杂度O(min(m, n))。</p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode Easy</tag>
+        <tag>二叉树</tag>
+      </tags>
+  </entry>
 </search>
