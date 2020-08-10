@@ -8883,4 +8883,262 @@
         <tag>Leetcode Hard</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Leetcode第201场周赛</title>
+    <url>/2020/08/10/Leetcode%E7%AC%AC201%E5%9C%BA%E5%91%A8%E8%B5%9B/</url>
+    <content><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>第二次参加周赛，又是AC两道暴力题，菜鸡只会暴力/(ㄒoㄒ)/~~。</p>
+<a id="more"></a>
+
+<h4 id="5483-整理字符串-Easy"><a href="#5483-整理字符串-Easy" class="headerlink" title="5483. 整理字符串(Easy)"></a><a href="https://leetcode-cn.com/problems/make-the-string-great/" target="_blank" rel="noopener">5483. 整理字符串(Easy)</a></h4><p>给你一个由大小写英文字母组成的字符串 <code>s</code> 。</p>
+<p>一个整理好的字符串中，<strong>两个相邻字符</strong> <code>s[i]</code> 和 <code>s[i + 1]</code> 不会同时满足下述条件：</p>
+<ul>
+<li><code>0 &lt;= i &lt;= s.length - 2</code></li>
+<li><code>s[i]</code> 是小写字符，但 <code>s[i + 1]</code> 是相同的大写字符；<strong>反之亦然</strong> 。</li>
+</ul>
+<p>请你将字符串整理好，每次你都可以从字符串中选出满足上述条件的 <strong>两个相邻</strong> 字符并删除，直到字符串整理好为止。</p>
+<p>请返回整理好的 <strong>字符串</strong> 。题目保证在给出的约束条件下，测试样例对应的答案是唯一的。</p>
+<p><strong>注意：</strong>空字符串也属于整理好的字符串，尽管其中没有任何字符。</p>
+<p> <strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：s &#x3D; &quot;leEeetcode&quot;</span><br><span class="line">输出：&quot;leetcode&quot;</span><br><span class="line">解释：无论你第一次选的是 i &#x3D; 1 还是 i &#x3D; 2，都会使 &quot;leEeetcode&quot; 缩减为 &quot;leetcode&quot; 。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：s &#x3D; &quot;abBAcC&quot;</span><br><span class="line">输出：&quot;&quot;</span><br><span class="line">解释：存在多种不同情况，但所有的情况都会导致相同的结果。例如：</span><br><span class="line">&quot;abBAcC&quot; --&gt; &quot;aAcC&quot; --&gt; &quot;cC&quot; --&gt; &quot;&quot;</span><br><span class="line">&quot;abBAcC&quot; --&gt; &quot;abBA&quot; --&gt; &quot;aA&quot; --&gt; &quot;&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：s &#x3D; &quot;s&quot;</span><br><span class="line">输出：&quot;s&quot;</span><br></pre></td></tr></table></figure>
+
+<p> <strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= s.length &lt;= 100</code></li>
+<li><code>s</code> 只包含小写和大写英文字母</li>
+</ul>
+<p>这题目描述简直离谱，一句话来说就是：不断删除字符串中的 “xX” 或 “Xx”两个字符，x 为某个字母小写，X 为小写字母 x 对应的大写字母。</p>
+<p>我们直接使用 StringBuffer 来进行字符的删除。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">makeGood</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        StringBuffer sb = <span class="keyword">new</span> StringBuffer(s);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= sb.length() - <span class="number">2</span>;)&#123;</span><br><span class="line">            <span class="keyword">if</span>( Math.abs(sb.charAt(i) - sb.charAt(i + <span class="number">1</span>)) == <span class="number">32</span> )&#123;</span><br><span class="line">                sb.delete(i, i + <span class="number">2</span>);</span><br><span class="line">                i = <span class="number">0</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="1545-找出第-N-个二进制字符串中的第-K-位-Medium"><a href="#1545-找出第-N-个二进制字符串中的第-K-位-Medium" class="headerlink" title="1545. 找出第 N 个二进制字符串中的第 K 位(Medium)"></a><a href="https://leetcode-cn.com/problems/find-kth-bit-in-nth-binary-string/" target="_blank" rel="noopener">1545. 找出第 N 个二进制字符串中的第 K 位(Medium)</a></h4><p>给你两个正整数 <code>n</code> 和 <code>k</code>，二进制字符串 <code>Sn</code> 的形成规则如下：</p>
+<ul>
+<li><code>S1 = &quot;0&quot;</code></li>
+<li>当 <code>i &gt; 1</code> 时，<code>Si = Si-1 + &quot;1&quot; + reverse(invert(Si-1))</code></li>
+</ul>
+<p>其中 <code>+</code> 表示串联操作，<code>reverse(x)</code> 返回反转 <code>x</code> 后得到的字符串，而 <code>invert(x)</code> 则会翻转 x 中的每一位（0 变为 1，而 1 变为 0）</p>
+<p>例如，符合上述描述的序列的前 4 个字符串依次是：</p>
+<ul>
+<li><code>S1 = &quot;0&quot;</code></li>
+<li><code>S2 = &quot;011&quot;</code></li>
+<li><code>S3 = &quot;0111001&quot;</code></li>
+<li><code>S4 = &quot;011100110110001&quot;</code></li>
+</ul>
+<p>请你返回 <code>Sn</code> 的 <strong>第 <code>k</code> 位字符</strong> ，题目数据保证 <code>k</code> 一定在 <code>Sn</code> 长度范围以内。</p>
+<p> <strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：n &#x3D; 3, k &#x3D; 1</span><br><span class="line">输出：&quot;0&quot;</span><br><span class="line">解释：S3 为 &quot;0111001&quot;，其第 1 位为 &quot;0&quot; 。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：n &#x3D; 4, k &#x3D; 11</span><br><span class="line">输出：&quot;1&quot;</span><br><span class="line">解释：S4 为 &quot;011100110110001&quot;，其第 11 位为 &quot;1&quot; 。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：n &#x3D; 1, k &#x3D; 1</span><br><span class="line">输出：&quot;0&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 4：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：n &#x3D; 2, k &#x3D; 3</span><br><span class="line">输出：&quot;1&quot;</span><br></pre></td></tr></table></figure>
+
+<p> <strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= n &lt;= 20</code></li>
+<li><code>1 &lt;= k &lt;= 2n - 1</code></li>
+</ul>
+<p><strong>方法一：暴力</strong></p>
+<p>菜鸡只会暴力。/(ㄒoㄒ)/~~</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">char</span> <span class="title">findKthBit</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        StringBuffer sb = <span class="keyword">new</span> StringBuffer(<span class="string">"0"</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++)&#123;</span><br><span class="line">            StringBuffer temp = invertAndReverse(sb);</span><br><span class="line">            sb.append(<span class="number">1</span>).append(temp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sb.charAt(k - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> StringBuffer <span class="title">invertAndReverse</span><span class="params">(StringBuffer s)</span></span>&#123;</span><br><span class="line">        StringBuffer sb = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s.charAt(i) == <span class="string">'0'</span>)&#123;</span><br><span class="line">                sb.append(<span class="number">1</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                sb.append(<span class="number">0</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sb.reverse();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>方法二：数学</strong></p>
+<p>将 n 个字符串从大到小遍历 n - 1 次，计算第 n 个字符串中间位置 midPos，并判断 k 与 midPos 的位置关系：</p>
+<ol>
+<li><p>如果 k &gt; midPos，第 n 个字符串第 k 个数字等于 第 n - 1 个字符串的第 midPos * 2 - k 个数字，并累加当前取反次数。</p>
+</li>
+<li><p>如果 k &lt; midPos，无需处理，直接遍历第 n - 1 个字符串。</p>
+</li>
+<li><p>k == midPos，当前位置为 1，根据取反次数计算返回即可。 </p>
+</li>
+</ol>
+<p>思路来自<a href="https://leetcode-cn.com/problems/find-kth-bit-in-nth-binary-string/solution/zhi-she-ji-jian-dan-de-shu-xue-ji-suan-by-lirunjun/" target="_blank" rel="noopener">___rj</a>。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">以 n &#x3D; 3， k &#x3D; 5 来解释第 3 条规则：</span><br><span class="line">s1 &#x3D; 0</span><br><span class="line">s2 &#x3D; 011</span><br><span class="line">s3 &#x3D; 0111001</span><br><span class="line"></span><br><span class="line">所有的下标都是从 1 开始，n &#x3D; 3 时，midPos &#x3D; 2 ^ 2 &#x3D; 4，而 k &#x3D; 5，S3[5] 为 reverse(invert(S2))[5 - 4],为invert(s2)[4 - (5 - 4)],即 invert(s2)[3]。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">char</span> <span class="title">findKthBit</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> invertNum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(n &gt; <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="comment">//计算第 n 个字符串的中间位置</span></span><br><span class="line">            <span class="keyword">int</span> midPos = (<span class="keyword">int</span>)Math.pow(<span class="number">2</span>, n - <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span>(k == midPos)&#123;<span class="comment">//等于中间位置，中间位置为 1 变换 invertNum 次得到的数</span></span><br><span class="line">                <span class="keyword">return</span> invertNum % <span class="number">2</span> == <span class="number">0</span> ? <span class="string">'1'</span> : <span class="string">'0'</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(k &gt; midPos)&#123;<span class="comment">//在第 n - 1个字符串中查找</span></span><br><span class="line">                k = <span class="number">2</span> * midPos - k;</span><br><span class="line">                ++invertNum;</span><br><span class="line">            &#125;</span><br><span class="line">            --n;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//结果为 初始值 0 变换 invertNum 次得到</span></span><br><span class="line">        <span class="keyword">return</span> invertNum % <span class="number">2</span> == <span class="number">0</span> ? <span class="string">'0'</span> : <span class="string">'1'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>方法三：递归</strong></p>
+<p>和方法二类似，这里用递归实现。</p>
+<p>思路来自<a href="https://leetcode-cn.com/problems/find-kth-bit-in-nth-binary-string/solution/di-gui-shuang-bai-logn-by-233999/" target="_blank" rel="noopener">小名的魔法少爷</a>。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">char</span> <span class="title">findKthBit</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">'0'</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> mid = (<span class="keyword">int</span>)Math.pow(<span class="number">2</span>, n - <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span>(k == mid)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">'1'</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(k &lt; mid)&#123;</span><br><span class="line">            <span class="keyword">return</span> findKthBit(n - <span class="number">1</span>, k);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> findKthBit(n - <span class="number">1</span>, <span class="number">2</span> * mid - k) == <span class="string">'0'</span> ? <span class="string">'1'</span> : <span class="string">'0'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="1546-和为目标值的最大数目不重叠非空子数组数目-Medium"><a href="#1546-和为目标值的最大数目不重叠非空子数组数目-Medium" class="headerlink" title="1546. 和为目标值的最大数目不重叠非空子数组数目(Medium)"></a><a href="https://leetcode-cn.com/problems/maximum-number-of-non-overlapping-subarrays-with-sum-equals-target/" target="_blank" rel="noopener">1546. 和为目标值的最大数目不重叠非空子数组数目(Medium)</a></h4><p>给你一个数组 <code>nums</code> 和一个整数 <code>target</code> 。</p>
+<p>请你返回 <strong>非空不重叠</strong> 子数组的最大数目，且每个子数组中数字和都为 <code>target</code> 。</p>
+<p> <strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：nums &#x3D; [1,1,1,1,1], target &#x3D; 2</span><br><span class="line">输出：2</span><br><span class="line">解释：总共有 2 个不重叠子数组 [(1,1),1,(1,1)] ，它们的和为目标值 2 。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：nums &#x3D; [-1,3,5,1,4,2,-9], target &#x3D; 6</span><br><span class="line">输出：2</span><br><span class="line">解释：总共有 3 个子数组和为 6 。</span><br><span class="line">([5,1], [4,2], [3,5,1,4,2,-9]) 但只有前 2 个是不重叠的。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：nums &#x3D; [-2,6,6,3,5,4,1,2,8], target &#x3D; 10</span><br><span class="line">输出：3</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 4：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：nums &#x3D; [0,0,0], target &#x3D; 0</span><br><span class="line">输出：3</span><br></pre></td></tr></table></figure>
+
+<p> <strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= nums.length &lt;= 10^5</code></li>
+<li><code>-10^4 &lt;= nums[i] &lt;= 10^4</code></li>
+<li><code>0 &lt;= target &lt;= 10^6</code></li>
+</ul>
+<p>我们使用前缀和 + 哈希表来实现，此题与<a href="https://leetcode-cn.com/problems/subarray-sum-equals-k/" target="_blank" rel="noopener">560. 和为K的子数组</a>类似，使用 pre[i] 来表示[0 … i] 的子数组的和。使用一个 HashSet 存储已经出现过的连续子数组和 pre[i] ，在遍历的过程中判断是否存在和为 sum - target 的值（连续子数组 pre[j - 1]）：</p>
+<ul>
+<li>存在，证明 [j … i]是一个满足条件的结果。此时，需要将 HashSet 和 sum 清空，保证不会用到 [j … i] 的元素 ，同时将 sum 加入 HashSet。</li>
+<li>不存在，继续将 pre[i] 加入 HashSet。</li>
+</ul>
+<p>思路来自<a href="https://leetcode-cn.com/problems/maximum-number-of-non-overlapping-subarrays-with-sum-equals-target/solution/c-qian-zhui-he-tan-xin-shuang-bai-by-scyq/" target="_blank" rel="noopener">scyq</a>。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxNonOverlapping</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        Set&lt;Integer&gt; set = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        set.add(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>, ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> x : nums)&#123;</span><br><span class="line">            sum += x;</span><br><span class="line">            <span class="keyword">if</span>(set.contains(sum - target))&#123;</span><br><span class="line">                set.clear();</span><br><span class="line">                sum = <span class="number">0</span>;</span><br><span class="line">                ++ans;</span><br><span class="line">            &#125;</span><br><span class="line">            set.add(sum);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="1547-切棍子的最小成本-Hard"><a href="#1547-切棍子的最小成本-Hard" class="headerlink" title="1547. 切棍子的最小成本(Hard)"></a><a href="https://leetcode-cn.com/problems/minimum-cost-to-cut-a-stick/" target="_blank" rel="noopener">1547. 切棍子的最小成本(Hard)</a></h4><p>有一根长度为 <code>n</code> 个单位的木棍，棍上从 <code>0</code> 到 <code>n</code> 标记了若干位置。例如，长度为 <strong>6</strong> 的棍子可以标记如下：</p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20200810164134879.png" alt="image-20200810164134879"></p>
+<p>给你一个整数数组 <code>cuts</code> ，其中 <code>cuts[i]</code> 表示你需要将棍子切开的位置。</p>
+<p>你可以按顺序完成切割，也可以根据需要更改切割的顺序。</p>
+<p>每次切割的成本都是当前要切割的棍子的长度，切棍子的总成本是历次切割成本的总和。对棍子进行切割将会把一根木棍分成两根较小的木棍（这两根木棍的长度和就是切割前木棍的长度）。请参阅第一个示例以获得更直观的解释。</p>
+<p>返回切棍子的 <strong>最小总成本</strong> 。</p>
+<p> <strong>示例 1：</strong></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20200810170104715.png" alt="image-20200810170104715"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20200810164337518.png" alt="image-20200810164337518"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：n &#x3D; 7, cuts &#x3D; [1,3,4,5]</span><br><span class="line">输出：16</span><br><span class="line">解释：按 [1, 3, 4, 5] 的顺序切割的情况如上所示。</span><br><span class="line"></span><br><span class="line">第一次切割长度为 7 的棍子，成本为 7 。第二次切割长度为 6 的棍子（即第一次切割得到的第二根棍子），第三次切割为长度 4 的棍子，最后切割长度为 3 的棍子。总成本为 7 + 6 + 4 + 3 &#x3D; 20 。</span><br><span class="line">而将切割顺序重新排列为 [3, 5, 1, 4] 后，总成本 &#x3D; 16（如示例图中 7 + 4 + 3 + 2 &#x3D; 16）。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：n &#x3D; 9, cuts &#x3D; [5,6,1,4,2]</span><br><span class="line">输出：22</span><br><span class="line">解释：如果按给定的顺序切割，则总成本为 25 。总成本 &lt;&#x3D; 25 的切割顺序很多，例如，[4，6，5，2，1] 的总成本 &#x3D; 22，是所有可能方案中成本最小的。</span><br></pre></td></tr></table></figure>
+
+<p> <strong>提示：</strong></p>
+<ul>
+<li><code>2 &lt;= n &lt;= 10^6</code></li>
+<li><code>1 &lt;= cuts.length &lt;= min(n - 1, 100)</code></li>
+<li><code>1 &lt;= cuts[i] &lt;= n - 1</code></li>
+<li><code>cuts</code> 数组中的所有整数都 <strong>互不相同</strong></li>
+</ul>
+<p>我们使用动态规划：<code>dp[i][j]</code> 表示切割<code>[i, j]</code>这段木棍所需要的最小成本，那么就在<code>[i, j]</code>之间找一个切割点，使切割成本最小。</p>
+<p>状态转移方程为：<br>$$<br>dp[i][j] = min(dp[i][j], dp[i][k] + dp[k][j] + cus[j] - cuts[i])<br>$$<br><code>dp[0][n]</code>为最后结果。我们从较小的木棍长度开始 dp，[i, j] 长度最短为 2 ，否则就没有切割点。</p>
+<p>思路来自<a href="https://leetcode-cn.com/problems/minimum-cost-to-cut-a-stick/solution/java-qu-jian-dp-by-deena/" target="_blank" rel="noopener">Evelyn</a> 。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minCost</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span>[] cuts)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="comment">//添加头尾</span></span><br><span class="line">        list.add(<span class="number">0</span>);</span><br><span class="line">        list.add(n);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> x : cuts)&#123;</span><br><span class="line">            list.add(x);</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="comment">//排序</span></span><br><span class="line">        Collections.sort(list);</span><br><span class="line">        <span class="keyword">int</span> m = list.size();</span><br><span class="line">        <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[m][m];</span><br><span class="line">        <span class="comment">//[i, j]从最短长度 2 开始 dp</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> len = <span class="number">2</span>; len &lt; m; len++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i + len &lt; m; i++)&#123;</span><br><span class="line">                <span class="keyword">int</span> j = i + len;</span><br><span class="line">                dp[i][j] = Integer.MAX_VALUE;</span><br><span class="line">                <span class="comment">//list.get(j) - list.get(i)为切割[i, j]的成本</span></span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> k = i + <span class="number">1</span>; k &lt; j; k++)&#123;</span><br><span class="line">                    dp[i][j] = Math.min(dp[i][j], dp[i][k] + dp[k][j] + list.get(j) - list.get(i));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">0</span>][m - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>动态规划</tag>
+        <tag>哈希表</tag>
+        <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>和为K的子数组</title>
+    <url>/2020/08/10/%E5%92%8C%E4%B8%BAK%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/</url>
+    <content><![CDATA[<h4 id="560-和为K的子数组"><a href="#560-和为K的子数组" class="headerlink" title="560. 和为K的子数组"></a><a href="https://leetcode-cn.com/problems/subarray-sum-equals-k/" target="_blank" rel="noopener">560. 和为K的子数组</a></h4><p>给定一个整数数组和一个整数 <strong>k，</strong>你需要找到该数组中和为 <strong>k</strong> 的连续的子数组的个数。</p>
+<a id="more"></a>
+
+<p><strong>示例 1 :</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入:nums &#x3D; [1,1,1], k &#x3D; 2</span><br><span class="line">输出: 2 , [1,1] 与 [1,1] 为两种不同的情况。</span><br></pre></td></tr></table></figure>
+
+<p><strong>说明 :</strong></p>
+<ol>
+<li>数组的长度为 [1, 20,000]。</li>
+<li>数组中元素的范围是 [-1000, 1000] ，且整数 <strong>k</strong> 的范围是 [-1e7, 1e7]。</li>
+</ol>
+<p><strong>方法一：暴力</strong></p>
+<p>考虑以 i 结尾和为 k 的连续子数组个数，我们需要统计符合条件的下标 j 的个数，其中 <code>0 &lt;= j &lt;= i</code>，且<code>[j...i]</code>这个子数组的和恰好为 k。我们可以枚举 j 的值，然后再使用 O(n)的时间复杂度来求和，那样就达到O(n^3) 时间复杂度。如果我们知道<code>[j, i]</code>子数组的和，就能在O(1)时间求出<code>[j - 1, i]</code>子数组的和，因此我们初始时令 j = i，在循环中使 j 变小，同时维护一个数组和 sum。我们就能在O(1)时间内得到子数组<code>[j...i]</code>的和。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">subarraySum</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; ++i)&#123;</span><br><span class="line">            <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i; j &gt;= <span class="number">0</span>; --j)&#123;</span><br><span class="line">                sum += nums[j];</span><br><span class="line">                <span class="keyword">if</span>(sum == k)&#123;</span><br><span class="line">                    ++count;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(n^2)，空间复杂度O(1)。</p>
+<p><strong>方法二：前缀和+哈希表优化</strong></p>
+<p>我们定义 pre[i] 为 [0 … i] 内所有数的和，则有：<br>$$<br>pre[i] = pre[i - 1] + nums[i]<br>$$<br>那么 [j … i]子数组为 k ，这个条件可以转化为：<br>$$<br>pre[i] - pre[j - 1] == k<br>$$<br>简单移项得到：<br>$$<br>pre[j - 1] == pre[i] - k<br>$$<br>我们考虑 以 i 结尾的和为 k 的连续子数组时，只要统计有多少个前缀和为 pre[i] - k 的 pre[j] 即可。我们建立哈希表 map，使用和为键，出现的次数为相应的值，记录pre[i] 出现的次数，从左至右边更新 map，同时维护一个前缀和变量 pre，这样在计算 pre[i]时直接使用。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">subarraySum</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>, pre = <span class="number">0</span>;</span><br><span class="line">        HashMap&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="comment">//初始值，和为 0 的子数组个数为 1</span></span><br><span class="line">        map.put(<span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; ++i)&#123;</span><br><span class="line">            <span class="comment">//计算 pre[i]</span></span><br><span class="line">            pre += nums[i];</span><br><span class="line">            <span class="comment">//找到和为 pre[i] - k 子数组个数 </span></span><br><span class="line">            <span class="keyword">if</span>(map.containsKey(pre - k))&#123;</span><br><span class="line">                count += map.get(pre - k);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//更新 pre[i] 和的个数</span></span><br><span class="line">            map.put(pre, map.getOrDefault(pre, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(n)，空间复杂度O(n)。</p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode Medium</tag>
+        <tag>哈希表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>复原IP地址</title>
+    <url>/2020/08/09/%E5%A4%8D%E5%8E%9FIP%E5%9C%B0%E5%9D%80/</url>
+    <content><![CDATA[<h4 id="93-复原IP地址"><a href="#93-复原IP地址" class="headerlink" title="93. 复原IP地址"></a><a href="https://leetcode-cn.com/problems/restore-ip-addresses/" target="_blank" rel="noopener">93. 复原IP地址</a></h4><p>给定一个只包含数字的字符串，复原它并返回所有可能的 IP 地址格式。</p>
+<p>有效的 IP 地址正好由四个整数（每个整数位于 0 到 255 之间组成），整数之间用 <code>&#39;.&#39;</code>分隔。</p>
+ <a id="more"></a>
+
+<p><strong>示例:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: &quot;25525511135&quot;</span><br><span class="line">输出: [&quot;255.255.11.135&quot;, &quot;255.255.111.35&quot;]</span><br></pre></td></tr></table></figure>
+
+<p><strong>方法一：暴力</strong></p>
+<p>我们枚举三个切割点，将每一段转换为数字，如果都满足 0 ~ 255 则保存最后结果。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">restoreIpAddresses</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        List&lt;String&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        StringBuffer ip = <span class="keyword">new</span> StringBuffer();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> a = <span class="number">1</span>; a &lt; <span class="number">4</span>; a++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> b = <span class="number">1</span>; b &lt; <span class="number">4</span>; b++)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> c = <span class="number">1</span>; c &lt; <span class="number">4</span>; c++)&#123;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> d = <span class="number">1</span>; d &lt; <span class="number">4</span>; d++)&#123;</span><br><span class="line">                        <span class="keyword">if</span>(a + b + c + d == s.length())&#123;</span><br><span class="line"></span><br><span class="line">                        <span class="keyword">int</span> n1 = Integer.parseInt(s.substring(<span class="number">0</span>, a));</span><br><span class="line">                        <span class="keyword">int</span> n2 = Integer.parseInt(s.substring(a, a + b));</span><br><span class="line">                        <span class="keyword">int</span> n3 = Integer.parseInt(s.substring(a + b, a + b + c));</span><br><span class="line">                        <span class="keyword">int</span> n4 = Integer.parseInt(s.substring(a + b + c));</span><br><span class="line"></span><br><span class="line">                        <span class="keyword">if</span>(n1 &lt;= <span class="number">255</span> &amp;&amp; n2 &lt;= <span class="number">255</span> &amp;&amp; n3 &lt;= <span class="number">255</span> &amp;&amp; n4 &lt;= <span class="number">255</span>)&#123;</span><br><span class="line">                            ip.append(n1).append(<span class="string">'.'</span>).append(n2).append(<span class="string">'.'</span>).append(n3).append(<span class="string">'.'</span>).append(n4);</span><br><span class="line">                            <span class="keyword">if</span>(ip.length() == s.length() + <span class="number">3</span>) res.add(ip.toString());</span><br><span class="line">                            ip.delete(<span class="number">0</span>, ip.length());</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                         </span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>方法二：回溯</strong></p>
+<p>我们使用递归函数 <code>dfs(segId, segStart)</code>表示我们正在从 <code>s[segStart]</code>的位置开始，搜索地址中的 segId 段，其中 segId 取值为 {0, 1, 2, 3}。由于 IP 地址每一段范围为 0 ~ 255 ，我们从 s[segStart] 开始，从小到大枚举这一段 IP 地址的结束位置 segEnd。如果满足要求则进行下一段搜索，递归调用 dfs(segId + 1, segEnd + 1)。</p>
+<p>如果某一段中 s[segStart] = ‘0’ ，那么这一段只能为 0。</p>
+<p>在递归搜索中，如果四段 IP 地址已经全部得到且遍历完了整个字符串，那么保存结果；如果还没有找到四段 IP 地址但已经遍历完了整个字符串，结束搜索，提前回溯。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> SEG_COUNT = <span class="number">4</span>;</span><br><span class="line">    List&lt;String&gt; ans = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">    <span class="keyword">int</span>[] segments = <span class="keyword">new</span> <span class="keyword">int</span>[SEG_COUNT];</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">restoreIpAddresses</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        dfs(s, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(String s, <span class="keyword">int</span> segId, <span class="keyword">int</span> segStart)</span></span>&#123;</span><br><span class="line">        <span class="comment">//找到 4 段 ip 地址，并且遍历完了字符串，这就是一种答案</span></span><br><span class="line">        <span class="keyword">if</span>(segId == SEG_COUNT)&#123;</span><br><span class="line">            <span class="keyword">if</span>(segStart == s.length())&#123;</span><br><span class="line">                StringBuffer ip = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; SEG_COUNT; i++)&#123;</span><br><span class="line">                    ip.append(segments[i]);</span><br><span class="line">                    <span class="keyword">if</span>(i != SEG_COUNT - <span class="number">1</span>)&#123;</span><br><span class="line">                        ip.append(<span class="string">'.'</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                ans.add(ip.toString());</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//如果还没找到四段 ip 地址就已经遍历完了字符串，那么提前 回溯</span></span><br><span class="line">        <span class="keyword">if</span>(segStart == s.length())&#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//如果当前数字为 0 ，那么这段 IP 只能为 0</span></span><br><span class="line">        <span class="keyword">if</span>(s.charAt(segStart) == <span class="string">'0'</span>)&#123;</span><br><span class="line">            segments[segId] = <span class="number">0</span>;</span><br><span class="line">            dfs(s, segId + <span class="number">1</span>, segStart + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//一般情况</span></span><br><span class="line">        <span class="keyword">int</span> addr = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> segEnd = segStart; segEnd &lt; s.length(); ++segEnd)&#123;</span><br><span class="line">            addr = addr * <span class="number">10</span> + (s.charAt(segEnd) - <span class="string">'0'</span>);</span><br><span class="line">            <span class="keyword">if</span>(addr &gt; <span class="number">0</span> &amp;&amp; addr &lt;= <span class="number">0xFF</span>)&#123;</span><br><span class="line">                segments[segId] = addr;</span><br><span class="line">                dfs(s, segId + <span class="number">1</span>, segEnd + <span class="number">1</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode Medium</tag>
+        <tag>DFS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计算二进制子串</title>
+    <url>/2020/08/10/%E8%AE%A1%E7%AE%97%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AD%90%E4%B8%B2/</url>
+    <content><![CDATA[<h4 id="696-计数二进制子串"><a href="#696-计数二进制子串" class="headerlink" title="696. 计数二进制子串"></a><a href="https://leetcode-cn.com/problems/count-binary-substrings/" target="_blank" rel="noopener">696. 计数二进制子串</a></h4><p>给定一个字符串 <code>s</code>，计算具有相同数量0和1的非空(连续)子字符串的数量，并且这些子字符串中的所有0和所有1都是组合在一起的。</p>
+<p>重复出现的子串要计算它们出现的次数。</p>
+<a id="more"></a>
+
+<p><strong>示例 1 :</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: &quot;00110011&quot;</span><br><span class="line">输出: 6</span><br><span class="line">解释: 有6个子串具有相同数量的连续1和0：“0011”，“01”，“1100”，“10”，“0011” 和 “01”。</span><br><span class="line"></span><br><span class="line">请注意，一些重复出现的子串要计算它们出现的次数。</span><br><span class="line"></span><br><span class="line">另外，“00110011”不是有效的子串，因为所有的0（和1）没有组合在一起。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2 :</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: &quot;10101&quot;</span><br><span class="line">输出: 4</span><br><span class="line">解释: 有4个子串：“10”，“01”，“10”，“01”，它们具有相同数量的连续1和0。</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong></p>
+<ul>
+<li><code>s.length</code> 在1到50,000之间。</li>
+<li><code>s</code> 只包含“0”或“1”字符。</li>
+</ul>
+<p>我们可以将字符串 s 按照 0 和 1 的连续段分组，存在 counts 数组中，例如 s = 00111011，可以得到 counts = {2, 3, 1, 2}。</p>
+<p>counts 数组中两个相邻的数一定为两种不同的字符。假设 counts 数组中相邻的两个数字为 u 和 v，那么可能为 u 个 0 ，v  个 1 或 u 个 1 ，v 个 0，这一对数字对答案的贡献为 min{u, v}。我们遍历所有相邻的数对，计算它们的贡献和。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">countBinarySubstrings</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; counts = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">		<span class="comment">//生成 counts 数组</span></span><br><span class="line">        <span class="keyword">char</span> cur = s.charAt(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">int</span> c = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s.charAt(i) == cur)&#123;</span><br><span class="line">                ++c;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                counts.add(c);</span><br><span class="line">                cur = s.charAt(i);</span><br><span class="line">                c =  <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        counts.add(c);</span><br><span class="line">        <span class="comment">//计算贡献和</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; counts.size(); i++)&#123;</span><br><span class="line">            ans += Math.min(counts.get(i), counts.get(i - <span class="number">1</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度和空间复杂度都为 O(n)。</p>
+<p>我们可以发现，在对每一个数计算贡献时，我们只用到了前一个值，我们使用 last 来保存。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">countBinarySubstrings</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ptr = <span class="number">0</span>, n = s.length(), last = <span class="number">0</span>, ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(ptr &lt; n)&#123;</span><br><span class="line">            <span class="keyword">char</span> c = s.charAt(ptr);</span><br><span class="line">            <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span>(ptr &lt; n &amp;&amp; s.charAt(ptr) == c)&#123;</span><br><span class="line">                ++ptr;</span><br><span class="line">                ++count;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            ans += Math.min(count, last);</span><br><span class="line">            last = count;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(n)，空间复杂度O(1)。</p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode Easy</tag>
+        <tag>字符串</tag>
+      </tags>
+  </entry>
 </search>
