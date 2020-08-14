@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hoo334.github.io/"/>
-  <updated>2020-08-13T02:25:13.823Z</updated>
+  <updated>2020-08-14T01:36:43.005Z</updated>
   <id>https://hoo334.github.io/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>有效的括号</title>
+    <link href="https://hoo334.github.io/2020/08/14/%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/"/>
+    <id>https://hoo334.github.io/2020/08/14/%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/</id>
+    <published>2020-08-14T01:33:14.000Z</published>
+    <updated>2020-08-14T01:36:43.005Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="20-有效的括号"><a href="#20-有效的括号" class="headerlink" title="20. 有效的括号"></a><a href="https://leetcode-cn.com/problems/valid-parentheses/" target="_blank" rel="noopener">20. 有效的括号</a></h4><p>给定一个只包括 <code>&#39;(&#39;</code>，<code>&#39;)&#39;</code>，<code>&#39;{&#39;</code>，<code>&#39;}&#39;</code>，<code>&#39;[&#39;</code>，<code>&#39;]&#39;</code> 的字符串，判断字符串是否有效。</p><p>有效字符串需满足：</p><ol><li>左括号必须用相同类型的右括号闭合。</li><li>左括号必须以正确的顺序闭合。</li></ol><p>注意空字符串可被认为是有效字符串。</p><a id="more"></a><p>使用栈的经典题目，我们将所有的左括号入栈，当遇到右括号时，如果栈为空或者栈顶元素不能与当前括号匹配，返回false。遍历到最后，如果栈为空则 返回 true。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        Deque&lt;Character&gt; stack = <span class="keyword">new</span> ArrayDeque&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++)&#123;</span><br><span class="line">            <span class="keyword">char</span> c = s.charAt(i);</span><br><span class="line">            <span class="keyword">if</span>(c == <span class="string">'('</span> || c == <span class="string">'['</span> || c == <span class="string">'&#123;'</span>)&#123;</span><br><span class="line">                stack.push(c);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(c == <span class="string">')'</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(stack.size() == <span class="number">0</span> || stack.pop() != <span class="string">'('</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(c == <span class="string">']'</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(stack.size() == <span class="number">0</span> || stack.pop() != <span class="string">'['</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(stack.size() == <span class="number">0</span> || stack.pop() != <span class="string">'&#123;'</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> stack.isEmpty();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>时间复杂度O(n)，空间复杂度O(n)。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;20-有效的括号&quot;&gt;&lt;a href=&quot;#20-有效的括号&quot; class=&quot;headerlink&quot; title=&quot;20. 有效的括号&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/valid-parentheses/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;20. 有效的括号&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;给定一个只包括 &lt;code&gt;&amp;#39;(&amp;#39;&lt;/code&gt;，&lt;code&gt;&amp;#39;)&amp;#39;&lt;/code&gt;，&lt;code&gt;&amp;#39;{&amp;#39;&lt;/code&gt;，&lt;code&gt;&amp;#39;}&amp;#39;&lt;/code&gt;，&lt;code&gt;&amp;#39;[&amp;#39;&lt;/code&gt;，&lt;code&gt;&amp;#39;]&amp;#39;&lt;/code&gt; 的字符串，判断字符串是否有效。&lt;/p&gt;
+&lt;p&gt;有效字符串需满足：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;左括号必须用相同类型的右括号闭合。&lt;/li&gt;
+&lt;li&gt;左括号必须以正确的顺序闭合。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;注意空字符串可被认为是有效字符串。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Leetcode" scheme="https://hoo334.github.io/categories/Leetcode/"/>
+    
+    
+      <category term="Leetcode Easy" scheme="https://hoo334.github.io/tags/Leetcode-Easy/"/>
+    
+      <category term="栈" scheme="https://hoo334.github.io/tags/%E6%A0%88/"/>
+    
+  </entry>
   
   <entry>
     <title>字符串相乘</title>
@@ -518,33 +549,6 @@
       <category term="Leetcode Medium" scheme="https://hoo334.github.io/tags/Leetcode-Medium/"/>
     
       <category term="数学" scheme="https://hoo334.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>二叉树的最大深度</title>
-    <link href="https://hoo334.github.io/2020/07/28/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/"/>
-    <id>https://hoo334.github.io/2020/07/28/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/</id>
-    <published>2020-07-28T01:22:07.000Z</published>
-    <updated>2020-07-28T01:30:44.066Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="104-二叉树的最大深度"><a href="#104-二叉树的最大深度" class="headerlink" title="104. 二叉树的最大深度"></a><a href="https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/" target="_blank" rel="noopener">104. 二叉树的最大深度</a></h4><p>给定一个二叉树，找出其最大深度。</p><p>二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。</p><p><strong>说明:</strong> 叶子节点是指没有子节点的节点。</p><a id="more"></a><p><strong>示例：</strong><br>给定二叉树 <code>[3,9,20,null,null,15,7]</code>，</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  3</span><br><span class="line"> &#x2F; \</span><br><span class="line">9  20</span><br><span class="line">  &#x2F;  \</span><br><span class="line"> 15   7</span><br></pre></td></tr></table></figure><p>返回它的最大深度 3 。</p><p><strong>方法一：递归</strong></p><p>当前树的最大深度为左右子树的最大深度加一，左右子树又以同样的方式进行计算。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//根节点为空，返回 0</span></span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//只有根节点，返回 1</span></span><br><span class="line">        <span class="keyword">if</span>(root.left == <span class="keyword">null</span> &amp;&amp; root.right == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//返回左右子树最大深度加一</span></span><br><span class="line">        <span class="keyword">return</span> Math.max(maxDepth(root.left), maxDepth(root.right)) + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>时间复杂度O(n)，树中的每个结点被访问一次。</p><p>空间复杂度O(h)，h 为树的高度。</p><p><strong>方法二：层次遍历</strong></p><p>我们可以使用层次遍历来计算二叉树的深度。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//队列中保存下一层的结点</span></span><br><span class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        queue.offer(root);</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(!queue.isEmpty())&#123;</span><br><span class="line">            <span class="comment">//获得当前层数结点的个数</span></span><br><span class="line">            <span class="keyword">int</span> size = queue.size();</span><br><span class="line">            <span class="comment">//将当前层每一个结点的子节点入队</span></span><br><span class="line">            <span class="keyword">while</span>(size &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                TreeNode t = queue.poll();</span><br><span class="line">                <span class="keyword">if</span>(t.left != <span class="keyword">null</span>)&#123;</span><br><span class="line">                    queue.offer(t.left);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(t.right != <span class="keyword">null</span>)&#123;</span><br><span class="line">                    queue.offer(t.right);</span><br><span class="line">                &#125;</span><br><span class="line"><span class="comment">//当前层结点数减一</span></span><br><span class="line">                --size;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//二叉树层数加一</span></span><br><span class="line">            ++ans;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>时间复杂度O(n)，空间复杂度最坏O(n)。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;104-二叉树的最大深度&quot;&gt;&lt;a href=&quot;#104-二叉树的最大深度&quot; class=&quot;headerlink&quot; title=&quot;104. 二叉树的最大深度&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;104. 二叉树的最大深度&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;给定一个二叉树，找出其最大深度。&lt;/p&gt;
-&lt;p&gt;二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;说明:&lt;/strong&gt; 叶子节点是指没有子节点的节点。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Leetcode" scheme="https://hoo334.github.io/categories/Leetcode/"/>
-    
-    
-      <category term="Leetcode Easy" scheme="https://hoo334.github.io/tags/Leetcode-Easy/"/>
-    
-      <category term="二叉树" scheme="https://hoo334.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
     
   </entry>
   
