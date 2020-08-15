@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hoo334.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="微机原理复习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微机原理">
+<meta property="og:url" content="https://hoo334.github.io/2020/05/09/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86/index.html">
+<meta property="og:site_name" content="echo">
+<meta property="og:description" content="微机原理复习">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/SEzlOaAqhcmHfRM.png">
+<meta property="article:published_time" content="2020-05-09T06:02:10.000Z">
+<meta property="article:modified_time" content="2020-08-15T09:08:21.357Z">
+<meta property="article:author" content="hoo334">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/hoo334/picgo/raw/master//img/SEzlOaAqhcmHfRM.png">
+
+<link rel="canonical" href="https://hoo334.github.io/2020/05/09/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>微机原理 | echo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="echo" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">echo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">任生命穿梭 时间的角落 </p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoo334.github.io/2020/05/09/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar2.jpg">
+      <meta itemprop="name" content="hoo334">
+      <meta itemprop="description" content="弃坑C++，转Java！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="echo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          微机原理
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-05-09 14:02:10" itemprop="dateCreated datePublished" datetime="2020-05-09T14:02:10+08:00">2020-05-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-08-15 17:08:21" itemprop="dateModified" datetime="2020-08-15T17:08:21+08:00">2020-08-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2020/05/09/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/05/09/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <div class="post-description">微机原理复习</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="计算机工作原理"><a href="#计算机工作原理" class="headerlink" title="计算机工作原理"></a>计算机工作原理</h3><p>冯诺依曼计算机体系结构：输入设备、输出设备、存储器、运算器和控制器。</p>
+<h3 id="8086"><a href="#8086" class="headerlink" title="8086"></a>8086</h3><p>共 20 根地址线，16根数据线。地址线 20 根代表可寻址的空间为 1MB，数据线为 16 根代表处理器字长为 16位。</p>
+<h4 id="地址线和数据线"><a href="#地址线和数据线" class="headerlink" title="地址线和数据线"></a>地址线和数据线</h4><ul>
+<li>AD0 — AD7 低 8 位地址和低 8 位数据信号分时复用，传递地址信号位单向，传送数据信号时为双向。</li>
+<li>A16 — A19 高 4 位地址信号，与状态信号分时复用。</li>
+<li>A8 — A15  8 位地址信号。</li>
+</ul>
+<h4 id="控制信号和状态信号"><a href="#控制信号和状态信号" class="headerlink" title="控制信号和状态信号"></a>控制信号和状态信号</h4><p><img src="https://gitee.com/hoo334/picgo/raw/master//img/SEzlOaAqhcmHfRM.png" alt="image-20200509141827458"></p>
+<h4 id="内部寄存器"><a href="#内部寄存器" class="headerlink" title="内部寄存器"></a>内部寄存器</h4><p>含 14 个 16 位寄存器，按功能可分为三类：8 个通用寄存器、4 个段寄存器和 2 个控制寄存器。</p>
+<h5 id="通用寄存器"><a href="#通用寄存器" class="headerlink" title="通用寄存器"></a>通用寄存器</h5><ul>
+<li><p>数据寄存器：AX、BX、CX、DX。</p>
+</li>
+<li><p>地址指针寄存器：SP、BP。</p>
+</li>
+<li><p>变址寄存器：SI、DI。</p>
+</li>
+</ul>
+<p>AX：累加器。所有 I/O 指令都通过 AX 与接口传送信息，中间运算结果也多放于 AX 中。</p>
+<p>BX：基址寄存器。在间接寻址中用于存放基地址。</p>
+<p>CX：计数寄存器。用于在循环或串操作指令中存放计数值。</p>
+<p>DX：数据寄存器。在间接寻址的 I/O 指令中存放 I/O 端口地址，在 32 位乘除法运算时，存放高 16 位数。</p>
+<p>SP：堆栈指针寄存器，其内容为栈顶的偏移地址。</p>
+<p>BP：基址指针寄存器，常用于在访问内存时存放内存单元的偏移地址。</p>
+<p>BX 用于数据段，BP 用于堆栈段。</p>
+<p>SI：源变址寄存器</p>
+<p>DI：目标变址寄存器</p>
+<h5 id="控制寄存器"><a href="#控制寄存器" class="headerlink" title="控制寄存器"></a>控制寄存器</h5><ul>
+<li>CF 进位标志位；</li>
+<li>PF 奇偶标志位；</li>
+<li>AF 辅助进位位；</li>
+<li>ZF 零标志位，当运算结果为零时置 1 ；</li>
+<li>SF 符号标志位，运算结果最高位为 1 时，SF = 1；</li>
+<li>OF 溢出标志位。</li>
+<li></li>
+</ul>
+<h5 id="段寄存器"><a href="#段寄存器" class="headerlink" title="段寄存器"></a>段寄存器</h5><ul>
+<li>CS 代码段寄存器，存放代码段的段基地址。</li>
+<li>DS 数据段寄存器，存放数据段的段基地址。</li>
+<li>ES 附加段寄存器，存放数据段的段基地址。</li>
+<li>SS 堆栈段寄存器，存放堆栈段的段基地址。</li>
+</ul>
+<h3 id="寻址方式"><a href="#寻址方式" class="headerlink" title="寻址方式"></a>寻址方式</h3><h4 id="立即寻址"><a href="#立即寻址" class="headerlink" title="立即寻址"></a>立即寻址</h4><p>例如 MOV AX，1200H。仅适合于源操作数。</p>
+<h4 id="寄存器寻址"><a href="#寄存器寻址" class="headerlink" title="寄存器寻址"></a>寄存器寻址</h4><p>例如 MOV AX，BX。参加操作的操作数在 CPU 的通用寄存器中。</p>
+<h4 id="直接寻址"><a href="#直接寻址" class="headerlink" title="直接寻址"></a>直接寻址</h4><p>例如 MOV AX，[1200H]。指令中直接给出操作数的偏移地址。</p>
+<h4 id="寄存器间接寻址"><a href="#寄存器间接寻址" class="headerlink" title="寄存器间接寻址"></a>寄存器间接寻址</h4><p>例如 MOV AX，[BX]。参加操作的操作数放在内存中，其偏移地址为指令中寄存器的内容。</p>
+<p>存放偏移地址的寄存器称为间址寄存器，它们分别是 BX，BP，SI，DI。</p>
+<p>操作数的段地址取决于选择哪一个间址寄存器。当选择 BX，SI，DI 时默认在数据段。当选择 BP 时默认在堆栈段。</p>
+<h4 id="寄存器相对寻址"><a href="#寄存器相对寻址" class="headerlink" title="寄存器相对寻址"></a>寄存器相对寻址</h4><p>例如 MOV AX，[BX+DATA]。操作数的偏移地址为寄存器的内容加上一个位移量。</p>
+<p>基址寄存器为 BX 时默认在数据段；基址寄存器为 BP 时，默认在堆栈段。</p>
+<h4 id="基址变址寻址"><a href="#基址变址寻址" class="headerlink" title="基址变址寻址"></a>基址变址寻址</h4><p>例如 MOV AX，[BP+DI+DATA]。操作数的偏移地址为基址寄存器内容+变址寄存器内容+位移量。操作数的段地址由选择的基址寄存器决定。</p>
+<h3 id="8086-指令系统"><a href="#8086-指令系统" class="headerlink" title="8086 指令系统"></a>8086 指令系统</h3><p>从功能上包括六大类：</p>
+<p>数据传送、算术运算、逻辑运算和移位、串操作、程序控制和处理器控制。</p>
+<h4 id="数据传送指令"><a href="#数据传送指令" class="headerlink" title="数据传送指令"></a>数据传送指令</h4><p>包括通用数据传送、输入输出、地址传送和标志位操作。</p>
+<h5 id="通用数据传送"><a href="#通用数据传送" class="headerlink" title="通用数据传送"></a>通用数据传送</h5><p><strong>该类指令的执行对标志位不产生影响。</strong></p>
+<p>mov 指令</p>
+<p>MOV dest,   src</p>
+<p>两操作数 字长必须相同，两操作数<strong>不允许同时为存储器操作数</strong>、不允许同时为段寄存器，在源操作数是立即数时，目标操作数不能是段寄存器。</p>
+<p>入栈/出栈指令</p>
+<p>PUSH oprd </p>
+<p>POP oprd</p>
+<p>oprd 为 16 位寄存器或存储器两单元，不能为立即数。</p>
+<p>交换指令</p>
+<p>XCHG REG, MEM/REG</p>
+<p>两个操作数必须有一个是寄存器操作数，不允许使用段寄存器。</p>
+<p>查表指令</p>
+<p>XLAT</p>
+<p>用 BX 的内容代表表格首地址，AL 内容为表内位移量，BX+AL得到要查找元素的偏移地址。将 BX+AL 所指单元的内容送 AL。</p>
+<h5 id="输入输出指令"><a href="#输入输出指令" class="headerlink" title="输入输出指令"></a>输入输出指令</h5><p>输入指令：IN acc，PORT</p>
+<p>输出指令：OUT PORT，acc</p>
+<p>根据端口地址码的长度，指令有两种不同的端口地址表现形式。</p>
+<ul>
+<li>直接寻址。端口地址为 8 位时，指令中直接给出 8 位端口地址，寻址 256 个端口。</li>
+<li>间接寻址。端口地址为 16 位时，指令中的端口地址必须由 DX 指定；可寻址 64K 个端口。</li>
+</ul>
+<h5 id="地址传送指令"><a href="#地址传送指令" class="headerlink" title="地址传送指令"></a>地址传送指令</h5><p>取偏移地址指令 LEA。计算 MEM 相对于 REG 的偏移地址。</p>
+<p>LEA REG,   MEM</p>
+<p>将变量的 16 位偏移地址取出送目标寄存器。源操作数必须是一个存储器操作数，目标操作数通常是间址寄存器。</p>
+<h4 id="算术运算指令"><a href="#算术运算指令" class="headerlink" title="算术运算指令"></a>算术运算指令</h4><p>算术运算指令的执行大多对状态标志位会产生影响。</p>
+<h5 id="加法指令"><a href="#加法指令" class="headerlink" title="加法指令"></a>加法指令</h5><p>普通加法指令 </p>
+<p>ADD oprd1,oprd2 </p>
+<p>oprd1 = oprd1 + oprd2</p>
+<p>带进位的加法指令 </p>
+<p>ADC oprd1,oprd2 </p>
+<p>oprd1 = oprd1+oprd2+CF</p>
+<p>自增指令</p>
+<p>INC oprd</p>
+<p>oprd += 1</p>
+<h5 id="减法指令"><a href="#减法指令" class="headerlink" title="减法指令"></a>减法指令</h5><p>普通减法指令</p>
+<p>SUB oprd1, oprd2</p>
+<p>oprd1 = oprd1 - oprd2</p>
+<p>考虑借位的减法指令</p>
+<p>SBB oprd1, oprd2</p>
+<p>oprd1 = oprd1 - oprd2 - CF</p>
+<p>自减指令</p>
+<p>DEC oprd</p>
+<p>oprd -= 1</p>
+<p>取反指令</p>
+<p>NEG oprd</p>
+<p>oprd = 0-oprd</p>
+<p>比较指令</p>
+<p>CMP oprd1, oprd2</p>
+<p>oprd1 - oprd2</p>
+<p><strong>影响标志位</strong> 如果 oprd1 &gt; oprd2 则 CF = 0 </p>
+<h5 id="乘法指令"><a href="#乘法指令" class="headerlink" title="乘法指令"></a>乘法指令</h5><p>无符号乘法指令 MUL</p>
+<p>MUL oprd</p>
+<p>oprd 为字节数   AX = AL * oprd</p>
+<p>oprd 为 16 位数 DX AX = AX * oprd</p>
+<h5 id="除法指令"><a href="#除法指令" class="headerlink" title="除法指令"></a>除法指令</h5><p>DIV oprd</p>
+<p>若 oprd 是字节数 执行 AL / oprd。结果 AL 为商， AH 为余数</p>
+<p>若 oprd 是双字节数执行 DX AX / oprd。结果 AX 为商，DX 为余数。</p>
+<h4 id="逻辑运算和移位指令"><a href="#逻辑运算和移位指令" class="headerlink" title="逻辑运算和移位指令"></a>逻辑运算和移位指令</h4><h5 id="逻辑运算"><a href="#逻辑运算" class="headerlink" title="逻辑运算"></a>逻辑运算</h5><p>AND oprd1, oprd2</p>
+<p>OR oprd1, oprd2</p>
+<p>NOT oprd 操作数按位取反再送回原地址，操作数不能为立即数，指令的执行对标志位无影响。</p>
+<p>XOR oprd1, oprd2 两操作数异或，结果送目标地址</p>
+<p>TEST oprd1, oprd2 将执行 “与” 操作，但运算的结果不送回目标地址。</p>
+<h5 id="移位指令"><a href="#移位指令" class="headerlink" title="移位指令"></a>移位指令</h5><p>逻辑左移 SHL 、逻辑右移 SHR：将移动的位补 0 ，移除的位到 CF。</p>
+<p>算术左移SAL、算术右移SAR：符号位不动，移动的位补 0 ，移除的位到 CF 。</p>
+<p>不带进位循环左移ROL、不带进位循环右移ROR：将移除的位同时加到 CF 和被移动的位。</p>
+<p>带进位循环左移 RCL、带进位循环右移 RCR：CF 参与循环移位，向左循环移位则 CF 在最左边（向右循环则 CF 在最右边）。</p>
+<h4 id="程序控制指令"><a href="#程序控制指令" class="headerlink" title="程序控制指令"></a>程序控制指令</h4><h5 id="转移指令"><a href="#转移指令" class="headerlink" title="转移指令"></a>转移指令</h5><p>无条件转移指令 JMP oprd 。oprd 是 16 位偏移地址。</p>
+<p>条件转移指令</p>
+<p>JC/JNC、JZ/JNZ、JO/JNO、JP/JPE分别判断 CF、ZF、OF、PF 是否为 1 /为 0 。</p>
+<h5 id="循环控制指令"><a href="#循环控制指令" class="headerlink" title="循环控制指令"></a>循环控制指令</h5><p>LOOP 循环次数由 CX 决定。用法 LOOP Label</p>
+<h5 id="过程调用和返回"><a href="#过程调用和返回" class="headerlink" title="过程调用和返回"></a>过程调用和返回</h5><p>调用 CALL PROC</p>
+<p>返回 RET，一般位于子程序的最后</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/04/27/Pow(x,n)/" rel="prev" title="Pow(x, n)">
+      <i class="fa fa-chevron-left"></i> Pow(x, n)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/05/10/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="next" title="操作系统">
+      操作系统 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机工作原理"><span class="nav-number">1.</span> <span class="nav-text">计算机工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8086"><span class="nav-number">2.</span> <span class="nav-text">8086</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#地址线和数据线"><span class="nav-number">2.1.</span> <span class="nav-text">地址线和数据线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#控制信号和状态信号"><span class="nav-number">2.2.</span> <span class="nav-text">控制信号和状态信号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内部寄存器"><span class="nav-number">2.3.</span> <span class="nav-text">内部寄存器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#通用寄存器"><span class="nav-number">2.3.1.</span> <span class="nav-text">通用寄存器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#控制寄存器"><span class="nav-number">2.3.2.</span> <span class="nav-text">控制寄存器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#段寄存器"><span class="nav-number">2.3.3.</span> <span class="nav-text">段寄存器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#寻址方式"><span class="nav-number">3.</span> <span class="nav-text">寻址方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#立即寻址"><span class="nav-number">3.1.</span> <span class="nav-text">立即寻址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#寄存器寻址"><span class="nav-number">3.2.</span> <span class="nav-text">寄存器寻址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#直接寻址"><span class="nav-number">3.3.</span> <span class="nav-text">直接寻址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#寄存器间接寻址"><span class="nav-number">3.4.</span> <span class="nav-text">寄存器间接寻址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#寄存器相对寻址"><span class="nav-number">3.5.</span> <span class="nav-text">寄存器相对寻址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基址变址寻址"><span class="nav-number">3.6.</span> <span class="nav-text">基址变址寻址</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8086-指令系统"><span class="nav-number">4.</span> <span class="nav-text">8086 指令系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据传送指令"><span class="nav-number">4.1.</span> <span class="nav-text">数据传送指令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#通用数据传送"><span class="nav-number">4.1.1.</span> <span class="nav-text">通用数据传送</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#输入输出指令"><span class="nav-number">4.1.2.</span> <span class="nav-text">输入输出指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#地址传送指令"><span class="nav-number">4.1.3.</span> <span class="nav-text">地址传送指令</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算术运算指令"><span class="nav-number">4.2.</span> <span class="nav-text">算术运算指令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#加法指令"><span class="nav-number">4.2.1.</span> <span class="nav-text">加法指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#减法指令"><span class="nav-number">4.2.2.</span> <span class="nav-text">减法指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#乘法指令"><span class="nav-number">4.2.3.</span> <span class="nav-text">乘法指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#除法指令"><span class="nav-number">4.2.4.</span> <span class="nav-text">除法指令</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑运算和移位指令"><span class="nav-number">4.3.</span> <span class="nav-text">逻辑运算和移位指令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#逻辑运算"><span class="nav-number">4.3.1.</span> <span class="nav-text">逻辑运算</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#移位指令"><span class="nav-number">4.3.2.</span> <span class="nav-text">移位指令</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#程序控制指令"><span class="nav-number">4.4.</span> <span class="nav-text">程序控制指令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#转移指令"><span class="nav-number">4.4.1.</span> <span class="nav-text">转移指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#循环控制指令"><span class="nav-number">4.4.2.</span> <span class="nav-text">循环控制指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#过程调用和返回"><span class="nav-number">4.4.3.</span> <span class="nav-text">过程调用和返回</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="hoo334"
+      src="/images/avatar2.jpg">
+  <p class="site-author-name" itemprop="name">hoo334</p>
+  <div class="site-description" itemprop="description">弃坑C++，转Java！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">133</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hoo334" title="Github → https:&#x2F;&#x2F;github.com&#x2F;hoo334" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>Github</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:liminghu98@foxmail.com" title="E-Mail → mailto:liminghu98@foxmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hoo334</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'EiY3VXyWjvwDilIGKwC1eVm8-gzGzoHsz',
+      appKey     : 'rkL4uHX26hqdosKCRFk0Qf7u',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
