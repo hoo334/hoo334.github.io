@@ -8971,4 +8971,42 @@
         <category>笔记</category>
       </categories>
   </entry>
+  <entry>
+    <title>图像渲染</title>
+    <url>/2020/08/16/%E5%9B%BE%E5%83%8F%E6%B8%B2%E6%9F%93/</url>
+    <content><![CDATA[<h4 id="733-图像渲染"><a href="#733-图像渲染" class="headerlink" title="733. 图像渲染"></a><a href="https://leetcode-cn.com/problems/flood-fill/" target="_blank" rel="noopener">733. 图像渲染</a></h4><p>有一幅以二维整数数组表示的图画，每一个整数表示该图画的像素值大小，数值在 0 到 65535 之间。</p>
+<p>给你一个坐标 <code>(sr, sc)</code> 表示图像渲染开始的像素值（行 ，列）和一个新的颜色值 <code>newColor</code>，让你重新上色这幅图像。</p>
+<p>为了完成上色工作，从初始坐标开始，记录初始坐标的上下左右四个方向上像素值与初始坐标相同的相连像素点，接着再记录这四个方向上符合条件的像素点与他们对应四个方向上像素值与初始坐标相同的相连像素点，……，重复该过程。将所有有记录的像素点的颜色值改为新的颜色值。</p>
+<p>最后返回经过上色渲染后的图像。</p>
+<a id="more"></a>
+
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: </span><br><span class="line">image &#x3D; [[1,1,1],[1,1,0],[1,0,1]]</span><br><span class="line">sr &#x3D; 1, sc &#x3D; 1, newColor &#x3D; 2</span><br><span class="line">输出: [[2,2,2],[2,2,0],[2,0,1]]</span><br><span class="line">解析: </span><br><span class="line">在图像的正中间，(坐标(sr,sc)&#x3D;(1,1)),</span><br><span class="line">在路径上所有符合条件的像素点的颜色都被更改成2。</span><br><span class="line">注意，右下角的像素没有更改为2，</span><br><span class="line">因为它不是在上下左右四个方向上与初始点相连的像素点。</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意:</strong></p>
+<ul>
+<li><code>image</code> 和 <code>image[0]</code> 的长度在范围 <code>[1, 50]</code> 内。</li>
+<li>给出的初始点将满足 <code>0 &lt;= sr &lt; image.length</code> 和 <code>0 &lt;= sc &lt; image[0].length</code>。</li>
+<li><code>image[i][j]</code> 和 <code>newColor</code> 表示的颜色值在范围 <code>[0, 65535]</code>内。</li>
+</ul>
+<p><strong>方法一：DFS</strong></p>
+<p>我们从起点开始进行深度优先搜索，每搜索到一个方格时，如果它的颜色与初始位置的方格颜色相同，我们就将其颜色改为新的颜色，并继续搜索。</p>
+<p><strong>注意</strong>：在初始颜色和新颜色相同的情况下会造成死循环，仔细思考，这种情况不需要任何改变，直接返回。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m, n;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[][] floodFill(<span class="keyword">int</span>[][] image, <span class="keyword">int</span> sr, <span class="keyword">int</span> sc, <span class="keyword">int</span> newColor) &#123;</span><br><span class="line">        m = image.length;</span><br><span class="line">        n = image[<span class="number">0</span>].length;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(image[sr][sc] != newColor)&#123;</span><br><span class="line">            fill(image, image[sr][sc], newColor, sr, sc);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> image;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fill</span><span class="params">(<span class="keyword">int</span>[][] image, <span class="keyword">int</span> originColor, <span class="keyword">int</span> newColor, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(x &lt; <span class="number">0</span> || x &gt;= m || y &lt; <span class="number">0</span> || y &gt;= n || image[x][y] != originColor)&#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        image[x][y] = newColor;</span><br><span class="line">        fill(image, originColor, newColor, x + <span class="number">1</span>, y);</span><br><span class="line">        fill(image, originColor, newColor, x - <span class="number">1</span>, y);</span><br><span class="line">        fill(image, originColor, newColor, x, y + <span class="number">1</span>);</span><br><span class="line">        fill(image, originColor, newColor, x, y - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(mn)，空间复杂度O(mn)。m 和 n 为图像的长宽。</p>
+<p><strong>方法二：BFS</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] dx = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>, -<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span>[] dy = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, -<span class="number">1</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[][] floodFill(<span class="keyword">int</span>[][] image, <span class="keyword">int</span> sr, <span class="keyword">int</span> sc, <span class="keyword">int</span> newColor) &#123;</span><br><span class="line">        <span class="keyword">int</span> originColor = image[sr][sc];</span><br><span class="line">        <span class="keyword">if</span>(originColor == newColor)&#123;</span><br><span class="line">            <span class="keyword">return</span> image;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> m = image.length, n = image[<span class="number">0</span>].length;</span><br><span class="line">        Queue&lt;<span class="keyword">int</span>[]&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        queue.offer(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;sr, sc&#125;);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(!queue.isEmpty())&#123;</span><br><span class="line">            <span class="keyword">int</span>[] point = queue.poll();</span><br><span class="line">            image[point[<span class="number">0</span>]][point[<span class="number">1</span>]] = newColor;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)&#123;</span><br><span class="line">                <span class="keyword">int</span> mx = point[<span class="number">0</span>] + dx[i];</span><br><span class="line">                <span class="keyword">int</span> my = point[<span class="number">1</span>] + dy[i];</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(mx &gt;= <span class="number">0</span> &amp;&amp; mx &lt; m &amp;&amp; my &gt;= <span class="number">0</span> &amp;&amp; my &lt; n &amp;&amp; image[mx][my] == originColor)&#123;</span><br><span class="line">                    queue.offer(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;mx, my&#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> image;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(mn)，空间复杂度O(mn)。m 和 n 为图像的长宽。</p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode Easy</tag>
+        <tag>DFS</tag>
+        <tag>BFS</tag>
+      </tags>
+  </entry>
 </search>
