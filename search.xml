@@ -9009,4 +9009,183 @@
         <tag>BFS</tag>
       </tags>
   </entry>
+  <entry>
+    <title>二叉树的最小深度</title>
+    <url>/2020/08/21/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%B0%8F%E6%B7%B1%E5%BA%A6/</url>
+    <content><![CDATA[<h4 id="111-二叉树的最小深度"><a href="#111-二叉树的最小深度" class="headerlink" title="111. 二叉树的最小深度"></a><a href="https://leetcode-cn.com/problems/minimum-depth-of-binary-tree/" target="_blank" rel="noopener">111. 二叉树的最小深度</a></h4><p>给定一个二叉树，找出其最小深度。</p>
+<p>最小深度是从根节点到最近叶子节点的最短路径上的节点数量。</p>
+<a id="more"></a>
+
+<p><strong>说明:</strong> 叶子节点是指没有子节点的节点。</p>
+<p><strong>示例:</strong></p>
+<p>给定二叉树 <code>[3,9,20,null,null,15,7]</code>,</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  3</span><br><span class="line"> &#x2F; \</span><br><span class="line">9  20</span><br><span class="line">  &#x2F;  \</span><br><span class="line"> 15   7</span><br></pre></td></tr></table></figure>
+
+<p>返回它的最小深度  2.</p>
+<p>看到这么简单的题，一顿操作，立马就写出了如下代码：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Math.min(minDepth(root.left), minDepth(root.right)) + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调试发现 [2,9]这个用例不对，我们得到的结果为 1，实际结果为 2。原因在于我们统计了空结点到根节点的深度。</p>
+<p>对于每个结点，当只有一个子树时，直接返回子树的最小深度加一；当有两颗子树时，返回左右子树之中的最小深度加一。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(root.left == <span class="keyword">null</span> &amp;&amp; root.right != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> minDepth(root.right) + <span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(root.right == <span class="keyword">null</span> &amp;&amp; root.left != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> minDepth(root.left) + <span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> Math.min(minDepth(root.left), minDepth(root.right)) + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(n)，空间复杂度O(h)，h 为树的高度，当二叉树退化为链表时，空间复杂度O(n)。</p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode Easy</tag>
+        <tag>二叉树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>回文子串</title>
+    <url>/2020/08/19/%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/</url>
+    <content><![CDATA[<h4 id="647-回文子串"><a href="#647-回文子串" class="headerlink" title="647. 回文子串"></a><a href="https://leetcode-cn.com/problems/palindromic-substrings/" target="_blank" rel="noopener">647. 回文子串</a></h4><p>给定一个字符串，你的任务是计算这个字符串中有多少个回文子串。</p>
+<p>具有不同开始位置或结束位置的子串，即使是由相同的字符组成，也会被视作不同的子串。</p>
+ <a id="more"></a>
+
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：&quot;abc&quot;</span><br><span class="line">输出：3</span><br><span class="line">解释：三个回文子串: &quot;a&quot;, &quot;b&quot;, &quot;c&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：&quot;aaa&quot;</span><br><span class="line">输出：6</span><br><span class="line">解释：6个回文子串: &quot;a&quot;, &quot;a&quot;, &quot;a&quot;, &quot;aa&quot;, &quot;aa&quot;, &quot;aaa&quot;</span><br></pre></td></tr></table></figure>
+
+<p> <strong>提示：</strong></p>
+<ul>
+<li>输入的字符串长度不会超过 1000 。</li>
+</ul>
+<p>我们枚举每一个可能的回文中心，然后用两个指针分别向左右两边拓展，当两个指针指向的元素相同时就拓展，否则就停止拓展。</p>
+<p>当回文长度为奇数时，回文中心就是一个字符；当回文长度为偶数时，回文中心为两个字符。一个长度为 n 的字符串，可能的回文中心有 2n - 1 个。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">countSubstrings</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>, n = s.length();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> index = <span class="number">0</span>; index &lt; n; index++)&#123;</span><br><span class="line">            <span class="comment">//回文长度为奇数</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = index, k = index; j &gt;= <span class="number">0</span> &amp;&amp; k &lt; n; j--, k++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(s.charAt(j) == s.charAt(k))&#123;</span><br><span class="line">                    ++count;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">			<span class="comment">//回文长度为偶数</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = index, k = index + <span class="number">1</span>; j &gt;= <span class="number">0</span> &amp;&amp; k &lt; n; j--, k++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(s.charAt(j) == s.charAt(k))&#123;</span><br><span class="line">                    ++count;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们可以将回文长度为奇数和偶数的两种情况合在一起，我们令 <code>0 &lt;= index &lt; 2n - 1</code>，回文中心<code>(j, k)</code>，其中<code>j = index / 2, k = j + (index mod 2)</code>。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">countSubstrings</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>, n = s.length();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> index = <span class="number">0</span>; index &lt; <span class="number">2</span> * n - <span class="number">1</span>; index++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = index / <span class="number">2</span>, k = index / <span class="number">2</span> + index % <span class="number">2</span>; j &gt;= <span class="number">0</span> &amp;&amp; k &lt; n; j--, k++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(s.charAt(j) == s.charAt(k))&#123;</span><br><span class="line">                    ++count;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(n^2)，空间复杂度O(1)。</p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode Medium</tag>
+        <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>平衡二叉树</title>
+    <url>/2020/08/17/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/</url>
+    <content><![CDATA[<h4 id="110-平衡二叉树"><a href="#110-平衡二叉树" class="headerlink" title="110. 平衡二叉树"></a><a href="https://leetcode-cn.com/problems/balanced-binary-tree/" target="_blank" rel="noopener">110. 平衡二叉树</a></h4><p>给定一个二叉树，判断它是否是高度平衡的二叉树。</p>
+<p>本题中，一棵高度平衡二叉树定义为：</p>
+<blockquote>
+<p>一个二叉树<em>每个节点</em> 的左右两个子树的高度差的绝对值不超过1。</p>
+</blockquote>
+<a id="more"></a>
+
+<p><strong>示例 1:</strong></p>
+<p>给定二叉树 <code>[3,9,20,null,null,15,7]</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  3</span><br><span class="line"> &#x2F; \</span><br><span class="line">9  20</span><br><span class="line">  &#x2F;  \</span><br><span class="line"> 15   7</span><br></pre></td></tr></table></figure>
+
+<p>返回 <code>true</code> 。</p>
+<p><strong>示例 2:</strong></p>
+<p>给定二叉树 <code>[1,2,2,3,3,null,null,4,4]</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">      1</span><br><span class="line">     &#x2F; \</span><br><span class="line">    2   2</span><br><span class="line">   &#x2F; \</span><br><span class="line">  3   3</span><br><span class="line"> &#x2F; \</span><br><span class="line">4   4</span><br></pre></td></tr></table></figure>
+
+<p>返回 <code>false</code> 。</p>
+<p>一颗树是平衡二叉树，当且仅当所有子树都是二叉平衡树，我们可以使用递归的方式来判断二叉树是否为平衡二叉树。</p>
+<p>我们使用 height 函数来求树的最大高度，如果左右子树的高度不超过 1 ，再分别递归地遍历左右子节点，并判断左右子树是否为平衡二叉树。这是一个自顶向下的过程。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isBalanced</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> Math.abs(length(root.left) - length(root.right)) &lt;= <span class="number">1</span> &amp;&amp; isBalanced(root.left) &amp;&amp; isBalanced(root.right);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">length</span><span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> Math.max(length(root.left), length(root.right)) + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(n^2)，最坏情况下，二叉树为链表，遍历所有结点时间复杂度O(n)，计算高度时间复杂度为O(n)。</p>
+<p>空间复杂度O(n)。</p>
+<p>我们可以递归地判断当前结点的左右子树是否平衡，再判断以当前结点为根的树是否平衡，如果平衡，返回其高度（不小于 0 ），否则返回 - 1，代表不是平衡二叉树。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isBalanced</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> length(root) &gt;= <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">length</span><span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> leftLength = length(root.left);</span><br><span class="line">        <span class="keyword">int</span> rightLength = length(root.right);</span><br><span class="line">        <span class="keyword">if</span>(leftLength == -<span class="number">1</span> || rightLength == -<span class="number">1</span> || Math.abs(leftLength - rightLength) &gt; <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> Math.max(leftLength, rightLength) + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(n)，空间复杂度O(n)。</p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode Easy</tag>
+        <tag>二叉树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>扫雷游戏</title>
+    <url>/2020/08/20/%E6%89%AB%E9%9B%B7%E6%B8%B8%E6%88%8F/</url>
+    <content><![CDATA[<h4 id="529-扫雷游戏"><a href="#529-扫雷游戏" class="headerlink" title="529. 扫雷游戏"></a><a href="https://leetcode-cn.com/problems/minesweeper/" target="_blank" rel="noopener">529. 扫雷游戏</a></h4><p>让我们一起来玩扫雷游戏！</p>
+<p>给定一个代表游戏板的二维字符矩阵。 <strong>‘M’</strong> 代表一个<strong>未挖出的</strong>地雷，<strong>‘E’</strong> 代表一个<strong>未挖出的</strong>空方块，<strong>‘B’</strong> 代表没有相邻（上，下，左，右，和所有4个对角线）地雷的<strong>已挖出的</strong>空白方块，<strong>数字</strong>（’1’ 到 ‘8’）表示有多少地雷与这块<strong>已挖出的</strong>方块相邻，<strong>‘X’</strong> 则表示一个<strong>已挖出的</strong>地雷。</p>
+<p>现在给出在所有<strong>未挖出的</strong>方块中（’M’或者’E’）的下一个点击位置（行和列索引），根据以下规则，返回相应位置被点击后对应的面板：</p>
+<ol>
+<li><p>如果一个地雷（’M’）被挖出，游戏就结束了- 把它改为 <strong>‘X’</strong>。</p>
+</li>
+<li><p>如果一个<strong>没有相邻地雷</strong>的空方块（’E’）被挖出，修改它为（’B’），并且所有和其相邻的<strong>未挖出</strong>方块都应该被递归地揭露。</p>
+</li>
+<li><p>如果一个<strong>至少与一个地雷相邻</strong>的空方块（’E’）被挖出，修改它为数字（’1’到’8’），表示相邻地雷的数量。</p>
+</li>
+<li><p>如果在此次点击中，若无更多方块可被揭露，则返回面板。</p>
+<a id="more"></a>
+
+</li>
+</ol>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: </span><br><span class="line"></span><br><span class="line">[[&#39;E&#39;, &#39;E&#39;, &#39;E&#39;, &#39;E&#39;, &#39;E&#39;],</span><br><span class="line"> [&#39;E&#39;, &#39;E&#39;, &#39;M&#39;, &#39;E&#39;, &#39;E&#39;],</span><br><span class="line"> [&#39;E&#39;, &#39;E&#39;, &#39;E&#39;, &#39;E&#39;, &#39;E&#39;],</span><br><span class="line"> [&#39;E&#39;, &#39;E&#39;, &#39;E&#39;, &#39;E&#39;, &#39;E&#39;]]</span><br><span class="line"></span><br><span class="line">Click : [3,0]</span><br><span class="line"></span><br><span class="line">输出: </span><br><span class="line"></span><br><span class="line">[[&#39;B&#39;, &#39;1&#39;, &#39;E&#39;, &#39;1&#39;, &#39;B&#39;],</span><br><span class="line"> [&#39;B&#39;, &#39;1&#39;, &#39;M&#39;, &#39;1&#39;, &#39;B&#39;],</span><br><span class="line"> [&#39;B&#39;, &#39;1&#39;, &#39;1&#39;, &#39;1&#39;, &#39;B&#39;],</span><br><span class="line"> [&#39;B&#39;, &#39;B&#39;, &#39;B&#39;, &#39;B&#39;, &#39;B&#39;]]</span><br><span class="line"></span><br><span class="line">解释:</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: </span><br><span class="line"></span><br><span class="line">[[&#39;B&#39;, &#39;1&#39;, &#39;E&#39;, &#39;1&#39;, &#39;B&#39;],</span><br><span class="line"> [&#39;B&#39;, &#39;1&#39;, &#39;M&#39;, &#39;1&#39;, &#39;B&#39;],</span><br><span class="line"> [&#39;B&#39;, &#39;1&#39;, &#39;1&#39;, &#39;1&#39;, &#39;B&#39;],</span><br><span class="line"> [&#39;B&#39;, &#39;B&#39;, &#39;B&#39;, &#39;B&#39;, &#39;B&#39;]]</span><br><span class="line"></span><br><span class="line">Click : [1,2]</span><br><span class="line"></span><br><span class="line">输出: </span><br><span class="line"></span><br><span class="line">[[&#39;B&#39;, &#39;1&#39;, &#39;E&#39;, &#39;1&#39;, &#39;B&#39;],</span><br><span class="line"> [&#39;B&#39;, &#39;1&#39;, &#39;X&#39;, &#39;1&#39;, &#39;B&#39;],</span><br><span class="line"> [&#39;B&#39;, &#39;1&#39;, &#39;1&#39;, &#39;1&#39;, &#39;B&#39;],</span><br><span class="line"> [&#39;B&#39;, &#39;B&#39;, &#39;B&#39;, &#39;B&#39;, &#39;B&#39;]]</span><br><span class="line"></span><br><span class="line">解释:</span><br></pre></td></tr></table></figure>
+
+<p> <strong>注意：</strong></p>
+<ol>
+<li>输入矩阵的宽和高的范围为 [1,50]。</li>
+<li>点击的位置只能是未被挖出的方块 (‘M’ 或者 ‘E’)，这也意味着面板至少包含一个可点击的方块。</li>
+<li>输入面板不会是游戏结束的状态（即有地雷已被挖出）。</li>
+<li>简单起见，未提及的规则在这个问题中可被忽略。例如，当游戏结束时你不需要挖出所有地雷，考虑所有你可能赢得游戏或标记方块的情况。</li>
+</ol>
+<p>对于我们点击的每一个方块，有两种情况：</p>
+<ul>
+<li>当前点击的方块是未挖出的地雷，将其值改为 X；</li>
+<li>当前点击的是为未挖出的空方块，我们需要统计它周围相邻的方块里地雷的数量cnt（即M 的数量）。如果 cnt 为 0 ，则将其改为 B，且递归地处理周围<strong>八个</strong>未挖出地方块，如果 cnt 不为 0 ，将其改为数字即可。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] dx = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span>[] dy = &#123;<span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">char</span>[][] updateBoard(<span class="keyword">char</span>[][] board, <span class="keyword">int</span>[] click) &#123;</span><br><span class="line">        <span class="keyword">int</span> x = click[<span class="number">0</span>], y = click[<span class="number">1</span>];</span><br><span class="line">        <span class="comment">//判断当前方块是否为地雷</span></span><br><span class="line">        <span class="keyword">if</span>(board[x][y] == <span class="string">'M'</span>)&#123;</span><br><span class="line">            board[x][y] = <span class="string">'X'</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            dfs(board, x, y);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> board;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">char</span>[][] board, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//统计当前空方块周围地雷数</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> tx = x + dx[i];</span><br><span class="line">            <span class="keyword">int</span> ty = y + dy[i];</span><br><span class="line">            <span class="keyword">if</span>(tx &lt; <span class="number">0</span> || tx &gt;= board.length || ty &lt; <span class="number">0</span> || ty &gt;= board[<span class="number">0</span>].length)&#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(board[tx][ty] == <span class="string">'M'</span>)&#123;</span><br><span class="line">                ++cnt;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="comment">//地雷数大于零，直接修改当前方块为地雷数</span></span><br><span class="line">        <span class="keyword">if</span>(cnt &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            board[x][y] = (<span class="keyword">char</span>) (cnt + <span class="string">'0'</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;<span class="comment">//周围没有地雷，递归地对周围八个方块进行搜索</span></span><br><span class="line">            board[x][y] = <span class="string">'B'</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>; ++i)&#123;</span><br><span class="line">                <span class="keyword">int</span> tx = x + dx[i];</span><br><span class="line">                <span class="keyword">int</span> ty = y + dy[i];</span><br><span class="line">                <span class="comment">//碰到边界或者不是未挖出的方块时返回</span></span><br><span class="line">                <span class="keyword">if</span>(tx &lt; <span class="number">0</span> || tx &gt;= board.length || ty &lt; <span class="number">0</span> || ty &gt;= board[<span class="number">0</span>].length || board[tx][ty] != <span class="string">'E'</span>)&#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                dfs(board, tx, ty);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(mn)，空间复杂度O(mn)，m 和 n 为面板的长宽。</p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode Medium</tag>
+        <tag>DFS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>有序列表转换二叉搜索树</title>
+    <url>/2020/08/18/%E6%9C%89%E5%BA%8F%E5%88%97%E8%A1%A8%E8%BD%AC%E6%8D%A2%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</url>
+    <content><![CDATA[<h4 id="109-有序链表转换二叉搜索树"><a href="#109-有序链表转换二叉搜索树" class="headerlink" title="109. 有序链表转换二叉搜索树"></a><a href="https://leetcode-cn.com/problems/convert-sorted-list-to-binary-search-tree/" target="_blank" rel="noopener">109. 有序链表转换二叉搜索树</a></h4><p>给定一个单链表，其中的元素按升序排序，将其转换为高度平衡的二叉搜索树。</p>
+<p>本题中，一个高度平衡二叉树是指一个二叉树<em>每个节点</em> 的左右两个子树的高度差的绝对值不超过 1。</p>
+<p><strong>示例:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">给定的有序链表： [-10, -3, 0, 5, 9],</span><br><span class="line"></span><br><span class="line">一个可能的答案是：[0, -3, 9, -10, null, 5], 它可以表示下面这个高度平衡二叉搜索树：</span><br><span class="line"></span><br><span class="line">      0</span><br><span class="line">     &#x2F; \</span><br><span class="line">   -3   9</span><br><span class="line">   &#x2F;   &#x2F;</span><br><span class="line"> -10  5</span><br></pre></td></tr></table></figure>
+
+<p>我们需要构造出平衡的二叉树，每次让左右子树的结点个数接近，我们可以找出链表元素的中位数作为根节点的值。链表中小于根节点的元素个数与大于根节点的元素个数要么相等，要么相差 1。我们递归地对左右子树进行构造。</p>
+<p>设当前链表左端点为 left， 右端点为 right，具体范围为<code>[left, right)</code>，左闭右开区间。定义左闭右开区间的好处是，可以方便表示初始列表<code>[head, null)</code>，如果使用左闭右闭区间，则第一次需要遍历到链表末尾来获取 right 的值。在找出链表中位数结点 mid后，我们可以使用<code>[left, mid)</code>和<code>[mid.next, right)</code>来分别表示左右子树对应的列表。</p>
+<p>使用快慢指针法来得到链表的中位数结点，fast 指针每次移动两次，slow 指针每次移动一次，当 fast 到达边界（fast == right 或 fast.next == right，right 的前驱结点为链表的最后一个结点）时停止，此时 slow 指向的元素就是链表的中位数。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">sortedListToBST</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//左闭右开区间 [left, right)</span></span><br><span class="line">        <span class="keyword">return</span> buildTree(head, <span class="keyword">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">buildTree</span><span class="params">(ListNode left, ListNode right)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(left == right)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="comment">//得到中间结点</span></span><br><span class="line">        ListNode mid = getMid(left, right);</span><br><span class="line">        TreeNode root = <span class="keyword">new</span> TreeNode(mid.val);</span><br><span class="line">        <span class="comment">//递归构造左右子树</span></span><br><span class="line">        root.left = buildTree(left, mid);</span><br><span class="line">        root.right =  buildTree(mid.next, right);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//快慢指针法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">getMid</span><span class="params">(ListNode left, ListNode right)</span></span>&#123;</span><br><span class="line">        ListNode slow = left;</span><br><span class="line">        ListNode fast = left;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(fast != right &amp;&amp; fast.next != right)&#123;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            fast = fast.next;</span><br><span class="line">            fast = fast.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> slow;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(n logn)，空间复杂度O(log n)。 n 是链表的长度。</p>
+<p>寻找链表的中位数是一个比较耗时的操作，在二叉搜索树的构建过程是一个中序遍历，遍历结果就是链表，我们可以使用一个指针 ptr 来指向下一个需要建立的链表结点，在构建二叉搜索树的同时不断将 ptr 向后移动。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    ListNode ptr;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">sortedListToBST</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        ptr = head;</span><br><span class="line">        <span class="keyword">int</span> length = getLength(head);</span><br><span class="line">		<span class="comment">//左闭右闭区间 [left, right]</span></span><br><span class="line">        <span class="keyword">return</span> buildTree(<span class="number">0</span>, length - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//得到链表的长度</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getLength</span><span class="params">(ListNode head)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(head != <span class="keyword">null</span>)&#123;</span><br><span class="line">            head = head.next;</span><br><span class="line">            ++ret;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">buildTree</span><span class="params">(<span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(left &gt; right)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="comment">//计算 mid 位置</span></span><br><span class="line">        <span class="keyword">int</span> mid = (left + right) / <span class="number">2</span>;</span><br><span class="line">        TreeNode root = <span class="keyword">new</span> TreeNode();</span><br><span class="line">        <span class="comment">//先构建左子树</span></span><br><span class="line">        root.left = buildTree(left, mid - <span class="number">1</span>);</span><br><span class="line">        <span class="comment">//左子树构建完时，ptr 指向根节点</span></span><br><span class="line">        root.val = ptr.val;</span><br><span class="line">        ptr = ptr.next;</span><br><span class="line">        <span class="comment">//构建右子树</span></span><br><span class="line">        root.right = buildTree(mid + <span class="number">1</span>, right);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(n)，空间复杂度O(log n)。n 为链表的长度。</p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>链表</tag>
+        <tag>Leetcode Medium</tag>
+        <tag>二叉搜索树</tag>
+      </tags>
+  </entry>
 </search>
