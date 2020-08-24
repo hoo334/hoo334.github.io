@@ -9190,4 +9190,151 @@
         <tag>二叉搜索树</tag>
       </tags>
   </entry>
+  <entry>
+    <title>24点游戏</title>
+    <url>/2020/08/22/24%E7%82%B9%E6%B8%B8%E6%88%8F/</url>
+    <content><![CDATA[<h4 id="679-24-点游戏"><a href="#679-24-点游戏" class="headerlink" title="679. 24 点游戏"></a><a href="https://leetcode-cn.com/problems/24-game/" target="_blank" rel="noopener">679. 24 点游戏</a></h4><p>你有 4 张写有 1 到 9 数字的牌。你需要判断是否能通过 <code>*</code>，<code>/</code>，<code>+</code>，<code>-</code>，<code>(</code>，<code>)</code> 的运算得到 24。</p>
+<a id="more"></a>
+
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: [4, 1, 8, 7]</span><br><span class="line">输出: True</span><br><span class="line">解释: (8-4) * (7-1) &#x3D; 24</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: [1, 2, 1, 2]</span><br><span class="line">输出: False</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意:</strong></p>
+<ol>
+<li>除法运算符 <code>/</code> 表示实数除法，而不是整数除法。例如 4 / (1 - 2/3) = 12 。</li>
+<li>每个运算符对两个数进行运算。特别是我们不能用 <code>-</code> 作为一元运算符。例如，<code>[1, 1, 1, 1]</code> 作为输入时，表达式 <code>-1 - 1 - 1 - 1</code> 是不允许的。</li>
+<li>你不能将数字连接在一起。例如，输入为 <code>[1, 2, 1, 2]</code> 时，不能写成 12 + 12 。</li>
+</ol>
+<p>一共有 4 个数和 3 个运算操作，因此可能性并不多。</p>
+<p>首先从 4 个数字中有序取出两个数字共 4 * 3 = 12 种选法，再选择 4 种运算中的一种，将运算的结果取代选出的两个数字。</p>
+<p>在剩下的 3 个数字中有序取出两个数字共 3 * 2 = 6 种选法，再选择 4 种运算中的一种，将运算的结果取代选出的两个数字。</p>
+<p>最后剩下两个数字，有两种不同的顺序，并选择 4 种运算之一。</p>
+<p>总共有 12 * 4 * 6 * 4 * 2 * 4 = 9216 种可能。</p>
+<p>我们直接使用暴力方法来求解，用一个列表存储全部数字，每次从列表中选出 2 个数字，再选择 1 种运算操作，用计算的结果取代选出的 2 个数字。重复以上步骤，直到最后剩下一个数字，判断它是否等于 24 即可。</p>
+<p>注意到除法运算为实数除法，结果为浮点数，因此在列表中应该全部存储浮点数。两个浮点数差值小于 1e-6 时可认为它们相等。同时，在进行除法运算时，除数不能为 0 ，遇到这种情况我们可以直接排除。</p>
+<p>加法和乘法都满足交换律，对于选出的 2 个数字不需要考虑不同的顺序，在第二次运算时直接跳过。</p>
+ <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> TARGET = <span class="number">24</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">double</span> EPSILON = <span class="number">1e-6</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> ADD = <span class="number">0</span>, MULTIPLY = <span class="number">1</span>, SUBTRACT = <span class="number">2</span>, DIVIDE = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">judgePoint24</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        List&lt;Double&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="comment">//将所有数字转为 double 并存进list</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num : nums)&#123;</span><br><span class="line">            list.add((<span class="keyword">double</span>) num);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> solve(list);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">solve</span><span class="params">(List&lt;Double&gt; list)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(list.size() == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//列表中只剩一个数字，判断它是否等于 24</span></span><br><span class="line">        <span class="keyword">if</span>(list.size() == <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> Math.abs(list.get(<span class="number">0</span>) - TARGET) &lt; EPSILON;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> size = list.size();</span><br><span class="line">		<span class="comment">// 有序选出 i，j 位置的两个数</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; size; j++)&#123;</span><br><span class="line">                <span class="comment">//选出同一个数</span></span><br><span class="line">                <span class="keyword">if</span>(i == j)&#123;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                List&lt;Double&gt; list2 = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">                <span class="comment">//保存除 i，j 位置的元素</span></span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; size; k++)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(k != i &amp;&amp; k != j)&#123;</span><br><span class="line">                        list2.add(list.get(k));</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">				<span class="comment">//选出一种运算</span></span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; <span class="number">4</span>; k++)&#123;</span><br><span class="line">                    <span class="comment">//如果是加或乘运算，且这是第二次选中 i 和 j</span></span><br><span class="line">                    <span class="keyword">if</span>(k &lt; <span class="number">2</span> &amp;&amp; i &gt; j)&#123;</span><br><span class="line">                        <span class="keyword">continue</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">					<span class="comment">//计算结果</span></span><br><span class="line">                    <span class="keyword">if</span>(k == ADD)&#123;</span><br><span class="line">                        list2.add(list.get(i) + list.get(j));</span><br><span class="line">                    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(k == MULTIPLY)&#123;</span><br><span class="line">                        list2.add(list.get(i) * list.get(j));</span><br><span class="line">                    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(k == SUBTRACT)&#123;</span><br><span class="line">                        list2.add(list.get(i) - list.get(j));</span><br><span class="line">                    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(k == DIVIDE)&#123;</span><br><span class="line">                        <span class="comment">//跳过除数为 0 的情况</span></span><br><span class="line">                        <span class="keyword">if</span>(Math.abs(list.get(j)) &lt; EPSILON)&#123;</span><br><span class="line">                            <span class="keyword">continue</span>;</span><br><span class="line">                        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                            list2.add(list.get(i) / list.get(j));</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">					<span class="comment">//继续选出两个数字并计算，如果得到结果，返回 true</span></span><br><span class="line">                    <span class="keyword">if</span>(solve(list2))&#123;</span><br><span class="line">                        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">					<span class="comment">// list 不能得到 24点，删除加入的元素，并尝试下一种运算</span></span><br><span class="line">                    list2.remove(list2.size() - <span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(1)，空间复杂度O(1)。</p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode Hard</tag>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>汉明距离</title>
+    <url>/2020/08/23/%E6%B1%89%E6%98%8E%E8%B7%9D%E7%A6%BB/</url>
+    <content><![CDATA[<h4 id="461-汉明距离"><a href="#461-汉明距离" class="headerlink" title="461. 汉明距离"></a><a href="https://leetcode-cn.com/problems/hamming-distance/" target="_blank" rel="noopener">461. 汉明距离</a></h4><p>两个整数之间的<a href="https://baike.baidu.com/item/汉明距离" target="_blank" rel="noopener">汉明距离</a>指的是这两个数字对应二进制位不同的位置的数目。</p>
+<p>给出两个整数 <code>x</code> 和 <code>y</code>，计算它们之间的汉明距离。</p>
+<a id="more"></a>
+
+<p><strong>注意：</strong><br>0 ≤ <code>x</code>, <code>y</code> &lt; 231.</p>
+<p><strong>示例:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: x &#x3D; 1, y &#x3D; 4</span><br><span class="line"></span><br><span class="line">输出: 2</span><br><span class="line"></span><br><span class="line">解释:</span><br><span class="line">1   (0 0 0 1)</span><br><span class="line">4   (0 1 0 0)</span><br><span class="line">       ↑   ↑</span><br><span class="line"></span><br><span class="line">上面的箭头指出了对应二进制位不同的位置。</span><br></pre></td></tr></table></figure>
+
+<p>我们知道异或操作：不同得 1 ，相同得 0。我们对 x 和 y 做一次异或操作，得到的数的二进制位中的 1 的个数就是 x 和 y 的汉明距离。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">x &#x3D; 1, y &#x3D; 4</span><br><span class="line">1       (0 0 0 1)</span><br><span class="line">4       (0 1 0 0)</span><br><span class="line">1 xor 4 (0 1 0 1)  &quot;1&quot; 的个数为 2，即汉明距离为 2</span><br></pre></td></tr></table></figure>
+
+<p><strong>方法一：位移</strong></p>
+<p>我们要求一个数字二进制位中 “1” 的个数，可以不断将数字右移，统计最后一位为 1 的个数，直到数字为 0。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hammingDistance</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = x ^ y, count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(m != <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(m % <span class="number">2</span> == <span class="number">1</span>)&#123;</span><br><span class="line">                ++count;</span><br><span class="line">            &#125;</span><br><span class="line">            m &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(1)，空间复杂度O(1)。</p>
+<p><strong>方法二：布赖恩·克尼根算法</strong></p>
+<p>「Brian Kernighan 算法」，用于清除二进制串中最右边的 1。</p>
+<p>我们每次对 n 和 n - 1进行按位与操作后，n 中最右边的 1 会被抹去变为 0 。</p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20200823091337544.png" alt="image-20200823091337544"></p>
+<p>我们不断地将数字的最右边的 “1” 变为 0 ，同时统计 1 的个数，直到数字为 0 。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hammingDistance</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = x ^ y, count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(m != <span class="number">0</span>)&#123;</span><br><span class="line">            m = m &amp; (m - <span class="number">1</span>);</span><br><span class="line">            ++count;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(1)，空间复杂度O(1)。</p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode Easy</tag>
+        <tag>位运算</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>重复的子字符串</title>
+    <url>/2020/08/24/%E9%87%8D%E5%A4%8D%E7%9A%84%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
+    <content><![CDATA[<h4 id="459-重复的子字符串"><a href="#459-重复的子字符串" class="headerlink" title="459. 重复的子字符串"></a><a href="https://leetcode-cn.com/problems/repeated-substring-pattern/" target="_blank" rel="noopener">459. 重复的子字符串</a></h4><p>给定一个非空的字符串，判断它是否可以由它的一个子串重复多次构成。给定的字符串只含有小写英文字母，并且长度不超过10000。</p>
+<a id="more"></a>
+
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: &quot;abab&quot;</span><br><span class="line"></span><br><span class="line">输出: True</span><br><span class="line"></span><br><span class="line">解释: 可由子字符串 &quot;ab&quot; 重复两次构成。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: &quot;aba&quot;</span><br><span class="line"></span><br><span class="line">输出: False</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: &quot;abcabcabcabc&quot;</span><br><span class="line"></span><br><span class="line">输出: True</span><br><span class="line"></span><br><span class="line">解释: 可由子字符串 &quot;abc&quot; 重复四次构成。 (或者子字符串 &quot;abcabc&quot; 重复两次构成。)</span><br></pre></td></tr></table></figure>
+
+<p><strong>方法一：枚举</strong></p>
+<p>如果一个长度为 n 的字符串可以由它的一个长度为 n‘ 的子串 s’ 重复多次构成，那么：</p>
+<ul>
+<li>n 一定是 n‘ 的倍数；</li>
+<li>s’ 一定是 s 的前缀；</li>
+<li>对于任意的 <code>i∈[n&#39;, n)</code>，有 <code>s[i] = s[i - n&#39;]</code>。</li>
+</ul>
+<p>我们枚举子串的长度 n’ ，同时判断 s[i] 和 s[i - n’] 是否相等。子串的长度 n’ 属于 [1, n / 2]，长度为 n 的字符串至少要由两个重复子串构成。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">repeatedSubstringPattern</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = s.length();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n / <span class="number">2</span>; i++)&#123;</span><br><span class="line">            <span class="comment">//字符串长度不能整除子串的长度，continue</span></span><br><span class="line">            <span class="keyword">if</span>(n % i != <span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">		</span><br><span class="line">            <span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</span><br><span class="line">            <span class="comment">//判断子串s[0 ... i - 1] 是否为重复的子串</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i; j &lt; n; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(s.charAt(j) != s.charAt(j - i))&#123;</span><br><span class="line">                    flag = <span class="keyword">false</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(flag)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(n^2)，空间复杂度O(n)。</p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode Easy</tag>
+        <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数字范围按位与</title>
+    <url>/2020/08/23/%E6%95%B0%E5%AD%97%E8%8C%83%E5%9B%B4%E6%8C%89%E4%BD%8D%E4%B8%8E/</url>
+    <content><![CDATA[<h4 id="201-数字范围按位与"><a href="#201-数字范围按位与" class="headerlink" title="201. 数字范围按位与"></a><a href="https://leetcode-cn.com/problems/bitwise-and-of-numbers-range/" target="_blank" rel="noopener">201. 数字范围按位与</a></h4><p>给定范围 [m, n]，其中 0 &lt;= m &lt;= n &lt;= 2147483647，返回此范围内所有数字的按位与（包含 m, n 两端点）。</p>
+<a id="more"></a>
+
+<p><strong>示例 1:</strong> </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: [5,7]</span><br><span class="line">输出: 4</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: [0,1]</span><br><span class="line">输出: 0</span><br></pre></td></tr></table></figure>
+
+<p>我们首先想到将[m, n] 范围内的运算全部做一次与运算，然而超时。我们将 [9, 12] 的二进制字符画成图：</p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20200823090713328.png" alt="image-20200823090713328"></p>
+<p>我们可以发现，对所有数字执行按位与运算的结果是对应二进制字符串的公共前缀再用零补上后面的剩余位。进一步的说，这些字符串的公共前缀就等于 9 和 12 两个数字的二进制字符串的公共前缀。</p>
+<p><strong>方法一：位移</strong></p>
+<p>我们可以将两个数字不断右移，同时记录位移的次数，直到它们相等，得到了公共前缀，我们再将公共前缀左移相应的次数。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">rangeBitwiseAnd</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> shift = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//找到公共前缀</span></span><br><span class="line">        <span class="keyword">while</span>(m != n)&#123;</span><br><span class="line">            m &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">            n &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">            ++shift;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//左移相应的次数</span></span><br><span class="line">        <span class="keyword">return</span> m &lt;&lt; shift;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(1)，空间复杂度O(1)。</p>
+<p><strong>方法二：Brian Kernighan 算法</strong></p>
+<p>「Brian Kernighan 算法」，用于清除二进制串中最右边的 1。</p>
+<p>我们每次对 n 和 n - 1进行按位与操作后，n 中最右边的 1 会被抹去变为 0 。</p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20200823091337544.png" alt="image-20200823091337544"></p>
+<p>对于此题，我们将一直清除 n 最右边的 1 ，直到  n &lt;= m，此时 n 就是公共前缀。</p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20200823092218184.png" alt="image-20200823092218184"></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">rangeBitwiseAnd</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span>(m &lt; n)&#123;</span><br><span class="line">            n = n &amp; (n - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(1)，空间复杂度O(1)。</p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode Medium</tag>
+        <tag>位运算</tag>
+      </tags>
+  </entry>
 </search>
