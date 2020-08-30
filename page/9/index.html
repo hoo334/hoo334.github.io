@@ -187,7 +187,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://hoo334.github.io/2020/07/01/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E7%A0%81/">
+    <link itemprop="mainEntityOfPage" href="https://hoo334.github.io/2020/07/01/%E4%BB%8E%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86%E8%BF%98%E5%8E%9F%E4%BA%8C%E5%8F%89%E6%A0%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar2.jpg">
@@ -201,7 +201,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/07/01/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E7%A0%81/" class="post-title-link" itemprop="url">字符串解码</a>
+            <a href="/2020/07/01/%E4%BB%8E%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86%E8%BF%98%E5%8E%9F%E4%BA%8C%E5%8F%89%E6%A0%91/" class="post-title-link" itemprop="url">从先序遍历还原二叉树</a>
         </h2>
 
         <div class="post-meta">
@@ -218,7 +218,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-07-02 12:25:23" itemprop="dateModified" datetime="2020-07-02T12:25:23+08:00">2020-07-02</time>
+                <time title="Modified: 2020-07-17 18:02:03" itemprop="dateModified" datetime="2020-07-17T18:02:03+08:00">2020-07-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -239,8 +239,8 @@
       </span>
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2020/07/01/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E7%A0%81/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/07/01/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E7%A0%81/" itemprop="commentCount"></span>
+    <a title="valine" href="/2020/07/01/%E4%BB%8E%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86%E8%BF%98%E5%8E%9F%E4%BA%8C%E5%8F%89%E6%A0%91/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/07/01/%E4%BB%8E%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86%E8%BF%98%E5%8E%9F%E4%BA%8C%E5%8F%89%E6%A0%91/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -255,11 +255,288 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="394-字符串解码"><a href="#394-字符串解码" class="headerlink" title="394. 字符串解码"></a><a href="https://leetcode-cn.com/problems/decode-string/" target="_blank" rel="noopener">394. 字符串解码</a></h4><p>给定一个经过编码的字符串，返回它解码后的字符串。</p>
-<p>编码规则为: <code>k[encoded_string]</code>，表示其中方括号内部的 <em>encoded_string</em> 正好重复 <em>k</em> 次。注意 <em>k</em> 保证为正整数。</p>
+          <h4 id="1028-从先序遍历还原二叉树"><a href="#1028-从先序遍历还原二叉树" class="headerlink" title="1028. 从先序遍历还原二叉树"></a><a href="https://leetcode-cn.com/problems/recover-a-tree-from-preorder-traversal/" target="_blank" rel="noopener">1028. 从先序遍历还原二叉树</a></h4><p>我们从二叉树的根节点 <code>root</code> 开始进行深度优先搜索。</p>
+<p>在遍历中的每个节点处，我们输出 <code>D</code> 条短划线（其中 <code>D</code> 是该节点的深度），然后输出该节点的值。（<em>如果节点的深度为 <code>D</code>，则其直接子节点的深度为 <code>D + 1</code>。根节点的深度为 <code>0</code>）。</em></p>
+<p>如果节点只有一个子节点，那么保证该子节点为左子节点。</p>
+<p>给出遍历输出 <code>S</code>，还原树并返回其根节点 <code>root</code>。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/07/01/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E7%A0%81/#more" rel="contents">
+              <a class="btn" href="/2020/07/01/%E4%BB%8E%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86%E8%BF%98%E5%8E%9F%E4%BA%8C%E5%8F%89%E6%A0%91/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoo334.github.io/2020/07/01/%E4%BD%BF%E7%94%A8%E6%9C%80%E5%B0%8F%E8%8A%B1%E8%B4%B9%E7%88%AC%E6%A5%BC%E6%A2%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar2.jpg">
+      <meta itemprop="name" content="hoo334">
+      <meta itemprop="description" content="弃坑C++，转Java！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="echo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/01/%E4%BD%BF%E7%94%A8%E6%9C%80%E5%B0%8F%E8%8A%B1%E8%B4%B9%E7%88%AC%E6%A5%BC%E6%A2%AF/" class="post-title-link" itemprop="url">使用最小花费爬楼梯</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-07-01 10:39:24 / Modified: 11:50:57" itemprop="dateCreated datePublished" datetime="2020-07-01T10:39:24+08:00">2020-07-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2020/07/01/%E4%BD%BF%E7%94%A8%E6%9C%80%E5%B0%8F%E8%8A%B1%E8%B4%B9%E7%88%AC%E6%A5%BC%E6%A2%AF/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/07/01/%E4%BD%BF%E7%94%A8%E6%9C%80%E5%B0%8F%E8%8A%B1%E8%B4%B9%E7%88%AC%E6%A5%BC%E6%A2%AF/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="746-使用最小花费爬楼梯"><a href="#746-使用最小花费爬楼梯" class="headerlink" title="746. 使用最小花费爬楼梯"></a><a href="https://leetcode-cn.com/problems/min-cost-climbing-stairs/" target="_blank" rel="noopener">746. 使用最小花费爬楼梯</a></h4><p>数组的每个索引做为一个阶梯，第 <code>i</code>个阶梯对应着一个非负数的体力花费值 <code>cost[i]</code>(索引从0开始)。</p>
+<p>每当你爬上一个阶梯你都要花费对应的体力花费值，然后你可以选择继续爬一个阶梯或者爬两个阶梯。</p>
+<p>您需要找到达到楼层顶部的最低花费。在开始时，你可以选择从索引为 0 或 1 的元素作为初始阶梯。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/07/01/%E4%BD%BF%E7%94%A8%E6%9C%80%E5%B0%8F%E8%8A%B1%E8%B4%B9%E7%88%AC%E6%A5%BC%E6%A2%AF/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoo334.github.io/2020/07/01/%E5%8D%95%E8%AF%8D%E6%8B%86%E5%88%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar2.jpg">
+      <meta itemprop="name" content="hoo334">
+      <meta itemprop="description" content="弃坑C++，转Java！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="echo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/01/%E5%8D%95%E8%AF%8D%E6%8B%86%E5%88%86/" class="post-title-link" itemprop="url">单词拆分</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-07-01 10:39:24" itemprop="dateCreated datePublished" datetime="2020-07-01T10:39:24+08:00">2020-07-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-15 10:07:20" itemprop="dateModified" datetime="2020-07-15T10:07:20+08:00">2020-07-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2020/07/01/%E5%8D%95%E8%AF%8D%E6%8B%86%E5%88%86/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/07/01/%E5%8D%95%E8%AF%8D%E6%8B%86%E5%88%86/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="139-单词拆分"><a href="#139-单词拆分" class="headerlink" title="139. 单词拆分"></a><a href="https://leetcode-cn.com/problems/word-break/" target="_blank" rel="noopener">139. 单词拆分</a></h4><p>给定一个<strong>非空</strong>字符串 <em>s</em> 和一个包含<strong>非空</strong>单词列表的字典 <em>wordDict*，判定 *s</em> 是否可以被空格拆分为一个或多个在字典中出现的单词。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/07/01/%E5%8D%95%E8%AF%8D%E6%8B%86%E5%88%86/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoo334.github.io/2020/07/01/%E5%92%8C%E5%8F%AF%E8%A2%AB-K-%E6%95%B4%E9%99%A4%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar2.jpg">
+      <meta itemprop="name" content="hoo334">
+      <meta itemprop="description" content="弃坑C++，转Java！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="echo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/01/%E5%92%8C%E5%8F%AF%E8%A2%AB-K-%E6%95%B4%E9%99%A4%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/" class="post-title-link" itemprop="url">和可被 K 整除的子数组</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-07-01 10:39:24 / Modified: 11:09:24" itemprop="dateCreated datePublished" datetime="2020-07-01T10:39:24+08:00">2020-07-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2020/07/01/%E5%92%8C%E5%8F%AF%E8%A2%AB-K-%E6%95%B4%E9%99%A4%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/07/01/%E5%92%8C%E5%8F%AF%E8%A2%AB-K-%E6%95%B4%E9%99%A4%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="974-和可被-K-整除的子数组"><a href="#974-和可被-K-整除的子数组" class="headerlink" title="974. 和可被 K 整除的子数组"></a><a href="https://leetcode-cn.com/problems/subarray-sums-divisible-by-k/" target="_blank" rel="noopener">974. 和可被 K 整除的子数组</a></h4><p>给定一个整数数组 <code>A</code>，返回其中元素之和可被 <code>K</code> 整除的（连续、非空）子数组的数目。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/07/01/%E5%92%8C%E5%8F%AF%E8%A2%AB-K-%E6%95%B4%E9%99%A4%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -349,6 +626,102 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/07/01/%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoo334.github.io/2020/07/01/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E7%A0%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar2.jpg">
+      <meta itemprop="name" content="hoo334">
+      <meta itemprop="description" content="弃坑C++，转Java！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="echo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/01/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E7%A0%81/" class="post-title-link" itemprop="url">字符串解码</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-07-01 10:39:24" itemprop="dateCreated datePublished" datetime="2020-07-01T10:39:24+08:00">2020-07-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-02 12:25:23" itemprop="dateModified" datetime="2020-07-02T12:25:23+08:00">2020-07-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2020/07/01/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E7%A0%81/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/07/01/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E7%A0%81/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="394-字符串解码"><a href="#394-字符串解码" class="headerlink" title="394. 字符串解码"></a><a href="https://leetcode-cn.com/problems/decode-string/" target="_blank" rel="noopener">394. 字符串解码</a></h4><p>给定一个经过编码的字符串，返回它解码后的字符串。</p>
+<p>编码规则为: <code>k[encoded_string]</code>，表示其中方括号内部的 <em>encoded_string</em> 正好重复 <em>k</em> 次。注意 <em>k</em> 保证为正整数。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/07/01/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E7%A0%81/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -725,366 +1098,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://hoo334.github.io/2020/07/01/%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACK%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar2.jpg">
-      <meta itemprop="name" content="hoo334">
-      <meta itemprop="description" content="弃坑C++，转Java！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="echo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/01/%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACK%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0/" class="post-title-link" itemprop="url">数组中的第K个最大元素</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-07-01 10:39:24 / Modified: 11:04:38" itemprop="dateCreated datePublished" datetime="2020-07-01T10:39:24+08:00">2020-07-01</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2020/07/01/%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACK%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/07/01/%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACK%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="215-数组中的第K个最大元素"><a href="#215-数组中的第K个最大元素" class="headerlink" title="215. 数组中的第K个最大元素"></a><a href="https://leetcode-cn.com/problems/kth-largest-element-in-an-array/" target="_blank" rel="noopener">215. 数组中的第K个最大元素</a></h4><p>在未排序的数组中找到第 <strong>k</strong> 个最大的元素。请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/07/01/%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACK%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://hoo334.github.io/2020/07/01/%E6%96%B021%E7%82%B9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar2.jpg">
-      <meta itemprop="name" content="hoo334">
-      <meta itemprop="description" content="弃坑C++，转Java！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="echo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/01/%E6%96%B021%E7%82%B9/" class="post-title-link" itemprop="url">新21点</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-07-01 10:39:24 / Modified: 11:30:34" itemprop="dateCreated datePublished" datetime="2020-07-01T10:39:24+08:00">2020-07-01</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2020/07/01/%E6%96%B021%E7%82%B9/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/07/01/%E6%96%B021%E7%82%B9/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="837-新21点"><a href="#837-新21点" class="headerlink" title="837. 新21点"></a><a href="https://leetcode-cn.com/problems/new-21-game/" target="_blank" rel="noopener">837. 新21点</a></h4><p>爱丽丝参与一个大致基于纸牌游戏 “21点” 规则的游戏，描述如下：</p>
-<p>爱丽丝以 <code>0</code> 分开始，并在她的得分少于 <code>K</code> 分时抽取数字。 抽取时，她从 <code>[1, W]</code> 的范围中随机获得一个整数作为分数进行累计，其中 <code>W</code> 是整数。 每次抽取都是独立的，其结果具有相同的概率。</p>
-<p>当爱丽丝获得不少于 <code>K</code> 分时，她就停止抽取数字。 爱丽丝的分数不超过 <code>N</code> 的概率是多少？</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/07/01/%E6%96%B021%E7%82%B9/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://hoo334.github.io/2020/07/01/%E6%9C%80%E4%BD%B3%E8%A7%82%E5%85%89%E7%BB%84%E5%90%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar2.jpg">
-      <meta itemprop="name" content="hoo334">
-      <meta itemprop="description" content="弃坑C++，转Java！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="echo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/01/%E6%9C%80%E4%BD%B3%E8%A7%82%E5%85%89%E7%BB%84%E5%90%88/" class="post-title-link" itemprop="url">最佳观光组合</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-07-01 10:39:24 / Modified: 11:10:45" itemprop="dateCreated datePublished" datetime="2020-07-01T10:39:24+08:00">2020-07-01</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2020/07/01/%E6%9C%80%E4%BD%B3%E8%A7%82%E5%85%89%E7%BB%84%E5%90%88/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/07/01/%E6%9C%80%E4%BD%B3%E8%A7%82%E5%85%89%E7%BB%84%E5%90%88/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="1014-最佳观光组合"><a href="#1014-最佳观光组合" class="headerlink" title="1014. 最佳观光组合"></a><a href="https://leetcode-cn.com/problems/best-sightseeing-pair/" target="_blank" rel="noopener">1014. 最佳观光组合</a></h4><p>给定正整数数组 <code>A</code>，<code>A[i]</code> 表示第 <code>i</code> 个观光景点的评分，并且两个景点 <code>i</code> 和 <code>j</code> 之间的距离为 <code>j - i</code>。</p>
-<p>一对景点（<code>i &lt; j</code>）组成的观光组合的得分为（<code>A[i] + A[j] + i - j</code>）：景点的评分之和<strong>减去</strong>它们两者之间的距离。</p>
-<p>返回一对观光景点能取得的最高分。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/07/01/%E6%9C%80%E4%BD%B3%E8%A7%82%E5%85%89%E7%BB%84%E5%90%88/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://hoo334.github.io/2020/07/01/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar2.jpg">
-      <meta itemprop="name" content="hoo334">
-      <meta itemprop="description" content="弃坑C++，转Java！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="echo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/01/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8C/" class="post-title-link" itemprop="url">最大子序和</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-07-01 10:39:24 / Modified: 11:45:32" itemprop="dateCreated datePublished" datetime="2020-07-01T10:39:24+08:00">2020-07-01</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2020/07/01/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8C/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/07/01/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8C/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="53-最大子序和"><a href="#53-最大子序和" class="headerlink" title="53. 最大子序和"></a><a href="https://leetcode-cn.com/problems/maximum-subarray/" target="_blank" rel="noopener">53. 最大子序和</a></h4><p>给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/07/01/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8C/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1156,7 +1169,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-count">147</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1169,7 +1182,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-count">32</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -1287,6 +1300,59 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
