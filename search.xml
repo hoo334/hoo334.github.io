@@ -10102,4 +10102,79 @@
         <tag>DFS</tag>
       </tags>
   </entry>
+  <entry>
+    <title>组合总和II</title>
+    <url>/2020/09/10/%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8CII/</url>
+    <content><![CDATA[<h4 id="40-组合总和-II"><a href="#40-组合总和-II" class="headerlink" title="40. 组合总和 II"></a><a href="https://leetcode-cn.com/problems/combination-sum-ii/" target="_blank" rel="noopener">40. 组合总和 II</a></h4><p>给定一个数组 <code>candidates</code> 和一个目标数 <code>target</code> ，找出 <code>candidates</code> 中所有可以使数字和为 <code>target</code> 的组合。</p>
+<p><code>candidates</code> 中的每个数字在每个组合中只能使用一次。</p>
+<a id="more"></a>
+
+<p><strong>说明：</strong></p>
+<ul>
+<li>所有数字（包括目标数）都是正整数。</li>
+<li>解集不能包含重复的组合。 </li>
+</ul>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: candidates &#x3D; [10,1,2,7,6,1,5], target &#x3D; 8,</span><br><span class="line">所求解集为:</span><br><span class="line">[</span><br><span class="line">  [1, 7],</span><br><span class="line">  [1, 2, 5],</span><br><span class="line">  [2, 6],</span><br><span class="line">  [1, 1, 6]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: candidates &#x3D; [2,5,2,1,2], target &#x3D; 5,</span><br><span class="line">所求解集为:</span><br><span class="line">[</span><br><span class="line">  [1,2,2],</span><br><span class="line">  [5]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>此题与第 39 题差不多，只是条件限制有些不同。我们首先写出允许重复的初始程序，然后再添加限制条件：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; ans = <span class="keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; combinationSum2(<span class="keyword">int</span>[] candidates, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        Arrays.sort(candidates);</span><br><span class="line">        dfs(<span class="number">0</span>, target, candidates, <span class="keyword">new</span> ArrayDeque&lt;Integer&gt;());</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> start, <span class="keyword">int</span> target, <span class="keyword">int</span>[] candidates, ArrayDeque&lt;Integer&gt; path)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(target == <span class="number">0</span>)&#123;</span><br><span class="line">            ans.add(<span class="keyword">new</span> ArrayList(path));</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> index = start; index &lt; candidates.length; index++)&#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">int</span> cur = candidates[index];</span><br><span class="line">            <span class="keyword">if</span>(target - cur &lt; <span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            path.addLast(cur);</span><br><span class="line">            dfs(index + <span class="number">1</span>, target - cur, candidates, path);</span><br><span class="line">            path.removeLast();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当<code>candidates = [1, 2, 2, 2, 5]</code>，<code>target = 5</code> 时运行得到的结果为<code>[[1,2,2],[1,2,2],[1,2,2],[5]]</code>，<code>[1, 2, 2]</code>这个结果重复了三次。</p>
+<p>想到可以在递归的时候限制，遇到重复的元素就跳过，我们写出如下版本（错误示例）：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> start, <span class="keyword">int</span> target, <span class="keyword">int</span>[] candidates, ArrayDeque&lt;Integer&gt; path)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">     <span class="keyword">if</span>(target == <span class="number">0</span>)&#123;</span><br><span class="line">         ans.add(<span class="keyword">new</span> ArrayList(path));</span><br><span class="line">         <span class="keyword">return</span>;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     <span class="keyword">for</span>(<span class="keyword">int</span> index = start; index &lt; candidates.length; index++)&#123;</span><br><span class="line">         <span class="keyword">int</span> cur = candidates[index];</span><br><span class="line">         <span class="keyword">if</span>(target - cur &lt; <span class="number">0</span>)&#123;</span><br><span class="line">             <span class="keyword">break</span>;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="comment">//跳过重复的元素            </span></span><br><span class="line"><span class="keyword">if</span>(index &gt; <span class="number">0</span> &amp;&amp; candidates[index] == candidates[index - <span class="number">1</span>])&#123;</span><br><span class="line">             <span class="keyword">continue</span>;</span><br><span class="line">         &#125;</span><br><span class="line">         </span><br><span class="line">         path.addLast(cur);</span><br><span class="line">         dfs(index + <span class="number">1</span>, target - cur, candidates, path);</span><br><span class="line">         path.removeLast();</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>再次运行上述示例，我们得到结果<code>[[5]]</code>，<code>[1, 2, 2]</code>被剪掉了。当 index = 2 时，发现 index - 1 的值与它的值相同，则剪掉了这一分支，但我们需要保留这条分支。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">	1    index &#x3D; 0      第 1 层</span><br><span class="line">   &#x2F;</span><br><span class="line">  2      index &#x3D; 1      第 2 层</span><br><span class="line"> &#x2F;</span><br><span class="line">2        index &#x3D; 2      第 3 层</span><br></pre></td></tr></table></figure>
+
+<p>对于下图中的递归路径，我们需要保留左边的分支，删除右边的分支，使每层都可以保留一个与上一层相同的元素，同时在每一层中，只能有一个相同的元素。这样就保留了最左侧的分支。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">    1</span><br><span class="line">   &#x2F; \</span><br><span class="line">  2   2</span><br><span class="line"> &#x2F;     \</span><br><span class="line">2       2</span><br></pre></td></tr></table></figure>
+
+<p>具体的代码如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> start, <span class="keyword">int</span> target, <span class="keyword">int</span>[] candidates, ArrayDeque&lt;Integer&gt; path)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">     <span class="keyword">if</span>(target == <span class="number">0</span>)&#123;</span><br><span class="line">         ans.add(<span class="keyword">new</span> ArrayList(path));</span><br><span class="line">         <span class="keyword">return</span>;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     <span class="keyword">for</span>(<span class="keyword">int</span> index = start; index &lt; candidates.length; index++)&#123;</span><br><span class="line">         <span class="keyword">int</span> cur = candidates[index];</span><br><span class="line">         <span class="keyword">if</span>(target - cur &lt; <span class="number">0</span>)&#123;</span><br><span class="line">             <span class="keyword">break</span>;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="comment">//跳过重复的元素，当 index == start 时不剪枝，保留最左侧的分支            </span></span><br><span class="line"><span class="keyword">if</span>(index &gt; start &amp;&amp; candidates[index] == candidates[index - <span class="number">1</span>])&#123;</span><br><span class="line">             <span class="keyword">continue</span>;</span><br><span class="line">         &#125;</span><br><span class="line">         </span><br><span class="line">         path.addLast(cur);</span><br><span class="line">         dfs(index + <span class="number">1</span>, target - cur, candidates, path);</span><br><span class="line">         path.removeLast();</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>参考：<a href="https://leetcode-cn.com/problems/combination-sum-ii/solution/hui-su-suan-fa-jian-zhi-python-dai-ma-java-dai-m-3/" target="_blank" rel="noopener">weiwei哥的题解</a>。</p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode Medium</tag>
+        <tag>DFS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>组合总和III</title>
+    <url>/2020/09/11/%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8CIII/</url>
+    <content><![CDATA[<h4 id="216-组合总和-III"><a href="#216-组合总和-III" class="headerlink" title="216. 组合总和 III"></a><a href="https://leetcode-cn.com/problems/combination-sum-iii/" target="_blank" rel="noopener">216. 组合总和 III</a></h4><p>找出所有相加之和为 <strong><em>n</em></strong> 的 <strong>k</strong> 个数的组合。组合中只允许含有 1 - 9 的正整数，并且每种组合中不存在重复的数字。</p>
+<a id="more"></a>
+
+<p><strong>说明：</strong></p>
+<ul>
+<li>所有数字都是正整数。</li>
+<li>解集不能包含重复的组合。 </li>
+</ul>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: k &#x3D; 3, n &#x3D; 7</span><br><span class="line">输出: [[1,2,4]]</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: k &#x3D; 3, n &#x3D; 9</span><br><span class="line">输出: [[1,2,6], [1,3,5], [2,3,4]]</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是，不能包含重复的数字，不能包含重复的组合。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; ans = <span class="keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; combinationSum3(<span class="keyword">int</span> k, <span class="keyword">int</span> n) &#123;</span><br><span class="line">        dfs(n, k, <span class="number">1</span>, <span class="keyword">new</span> ArrayDeque&lt;Integer&gt;());</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> n 剩余的数字之和</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> k 剩余的数字个数</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> min 当前能选取的最小数字</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> path 递归路径</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> k, <span class="keyword">int</span> min, Deque&lt;Integer&gt; path)</span></span>&#123;</span><br><span class="line">        <span class="comment">// 和为 0 且 剩余数字个数为 0 将当前路径加入结果</span></span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">0</span> &amp;&amp; k == <span class="number">0</span>)&#123;</span><br><span class="line">            ans.add(<span class="keyword">new</span> ArrayList&lt;Integer&gt;(path));</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="comment">//从最小值开始递归</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = min; k &gt; <span class="number">0</span> &amp;&amp; i &lt;= <span class="number">9</span>; i++)&#123;</span><br><span class="line">            <span class="comment">//剪枝</span></span><br><span class="line">            <span class="keyword">if</span>(i &gt; n)&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            path.addLast(i);</span><br><span class="line">            <span class="comment">//下一次选择只能选择比自己大的数字</span></span><br><span class="line">            dfs(n - i, k - <span class="number">1</span>, i + <span class="number">1</span>, path);</span><br><span class="line">            path.removeLast();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode Medium</tag>
+        <tag>DFS</tag>
+      </tags>
+  </entry>
 </search>
