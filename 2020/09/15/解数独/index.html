@@ -20,21 +20,24 @@
     var CONFIG = {"hostname":"hoo334.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="39. 组合总和给定一个无重复元素的数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。 candidates 中的数字可以无限制重复被选取。">
+  <meta name="description" content="37. 解数独编写一个程序，通过已填充的空格来解决数独问题。 一个数独的解法需遵循如下规则：  数字 1-9 在每一行只能出现一次。 数字 1-9 在每一列只能出现一次。 数字 1-9 在每一个以粗实线分隔的 3x3 宫内只能出现一次。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="组合总和">
-<meta property="og:url" content="https://hoo334.github.io/2020/09/09/%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/index.html">
+<meta property="og:title" content="解数独">
+<meta property="og:url" content="https://hoo334.github.io/2020/09/15/%E8%A7%A3%E6%95%B0%E7%8B%AC/index.html">
 <meta property="og:site_name" content="echo">
-<meta property="og:description" content="39. 组合总和给定一个无重复元素的数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。 candidates 中的数字可以无限制重复被选取。">
+<meta property="og:description" content="37. 解数独编写一个程序，通过已填充的空格来解决数独问题。 一个数独的解法需遵循如下规则：  数字 1-9 在每一行只能出现一次。 数字 1-9 在每一列只能出现一次。 数字 1-9 在每一个以粗实线分隔的 3x3 宫内只能出现一次。">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-09-09T01:08:46.000Z">
-<meta property="article:modified_time" content="2020-09-09T03:17:30.924Z">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/image-20200915085345737.png">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/image-20200915085359798.png">
+<meta property="article:published_time" content="2020-09-15T00:52:11.000Z">
+<meta property="article:modified_time" content="2020-09-15T01:08:50.920Z">
 <meta property="article:author" content="hoo334">
-<meta property="article:tag" content="Leetcode Medium">
+<meta property="article:tag" content="Leetcode Hard">
 <meta property="article:tag" content="DFS">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/hoo334/picgo/raw/master//img/image-20200915085345737.png">
 
-<link rel="canonical" href="https://hoo334.github.io/2020/09/09/%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/">
+<link rel="canonical" href="https://hoo334.github.io/2020/09/15/%E8%A7%A3%E6%95%B0%E7%8B%AC/">
 
 
 <script id="page-configurations">
@@ -47,7 +50,7 @@
   };
 </script>
 
-  <title>组合总和 | echo</title>
+  <title>解数独 | echo</title>
   
 
 
@@ -192,7 +195,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://hoo334.github.io/2020/09/09/%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/">
+    <link itemprop="mainEntityOfPage" href="https://hoo334.github.io/2020/09/15/%E8%A7%A3%E6%95%B0%E7%8B%AC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar2.jpg">
@@ -205,7 +208,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          组合总和
+          解数独
         </h1>
 
         <div class="post-meta">
@@ -216,7 +219,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-09-09 09:08:46 / Modified: 11:17:30" itemprop="dateCreated datePublished" datetime="2020-09-09T09:08:46+08:00">2020-09-09</time>
+              <time title="Created: 2020-09-15 08:52:11 / Modified: 09:08:50" itemprop="dateCreated datePublished" datetime="2020-09-15T08:52:11+08:00">2020-09-15</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -244,8 +247,8 @@
       </span>
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2020/09/09/%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/09/09/%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/" itemprop="commentCount"></span>
+    <a title="valine" href="/2020/09/15/%E8%A7%A3%E6%95%B0%E7%8B%AC/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/09/15/%E8%A7%A3%E6%95%B0%E7%8B%AC/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -260,31 +263,28 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h4 id="39-组合总和"><a href="#39-组合总和" class="headerlink" title="39. 组合总和"></a><a href="https://leetcode-cn.com/problems/combination-sum/" target="_blank" rel="noopener">39. 组合总和</a></h4><p>给定一个<strong>无重复元素</strong>的数组 <code>candidates</code> 和一个目标数 <code>target</code> ，找出 <code>candidates</code> 中所有可以使数字和为 <code>target</code> 的组合。</p>
-<p><code>candidates</code> 中的数字可以无限制重复被选取。</p>
+        <h4 id="37-解数独"><a href="#37-解数独" class="headerlink" title="37. 解数独"></a><a href="https://leetcode-cn.com/problems/sudoku-solver/" target="_blank" rel="noopener">37. 解数独</a></h4><p>编写一个程序，通过已填充的空格来解决数独问题。</p>
+<p>一个数独的解法需<strong>遵循如下规则</strong>：</p>
+<ol>
+<li>数字 <code>1-9</code> 在每一行只能出现一次。</li>
+<li>数字 <code>1-9</code> 在每一列只能出现一次。</li>
+<li>数字 <code>1-9</code> 在每一个以粗实线分隔的 <code>3x3</code> 宫内只能出现一次。</li>
+</ol>
 <a id="more"></a>
 
-<p><strong>说明：</strong></p>
+<p>空白格用 <code>&#39;.&#39;</code> 表示。</p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20200915085345737.png" alt="image-20200915085345737"></p>
+<p>一个数独。</p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20200915085359798.png" alt="image-20200915085359798"></p>
+<p>答案被标成红色。</p>
+<p><strong>Note:</strong></p>
 <ul>
-<li>所有数字（包括 <code>target</code>）都是正整数。</li>
-<li>解集不能包含重复的组合。 </li>
+<li>给定的数独序列只包含数字 <code>1-9</code> 和字符 <code>&#39;.&#39;</code> 。</li>
+<li>你可以假设给定的数独只有唯一解。</li>
+<li>给定数独永远是 <code>9x9</code> 形式的。</li>
 </ul>
-<p><strong>示例 1：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入：candidates &#x3D; [2,3,6,7], target &#x3D; 7,</span><br><span class="line">所求解集为：</span><br><span class="line">[</span><br><span class="line">  [7],</span><br><span class="line">  [2,2,3]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 2：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入：candidates &#x3D; [2,3,5], target &#x3D; 8,</span><br><span class="line">所求解集为：</span><br><span class="line">[</span><br><span class="line">  [2,2,2,2],</span><br><span class="line">  [2,3,3],</span><br><span class="line">  [3,5]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<p> <strong>提示：</strong></p>
-<ul>
-<li><code>1 &lt;= candidates.length &lt;= 30</code></li>
-<li><code>1 &lt;= candidates[i] &lt;= 200</code></li>
-<li><code>candidate</code> 中的每个元素都是独一无二的。</li>
-<li><code>1 &lt;= target &lt;= 500</code></li>
-</ul>
-<p>由于 candidates 是无序的，只能暴力搜索全部的解。考虑剪枝，先将 candidates 数组排序，在搜索的过程中如果得到的当前总和大于 target ，那么后面的元素总和都不用尝试（由于数组递增，它们的总和比大于当前总和）。</p>
-<p>数字可以被重复选取代表下一次递归时，还可以取当前选取的数字。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; ans = <span class="keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; combinationSum(<span class="keyword">int</span>[] candidates, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="comment">//排序是剪枝的基础</span></span><br><span class="line">        Arrays.sort(candidates);</span><br><span class="line">        dfs(<span class="number">0</span>, target, candidates, <span class="keyword">new</span> ArrayDeque&lt;Integer&gt;());</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> start, <span class="keyword">int</span> target, <span class="keyword">int</span>[] candidates, ArrayDeque&lt;Integer&gt; path)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> end = candidates.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(target == <span class="number">0</span>)&#123;</span><br><span class="line">            ans.add(<span class="keyword">new</span> ArrayList(path));</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">		</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; start + i &lt;= end; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> cur = candidates[start + i];</span><br><span class="line">            <span class="comment">//剪枝</span></span><br><span class="line">            <span class="keyword">if</span>(target - cur &lt; <span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                path.addLast(cur);</span><br><span class="line">                <span class="comment">//只能使用当前元素及其右侧的值，避免重复解</span></span><br><span class="line">                dfs(start + i, target - cur, candidates, path);</span><br><span class="line">                path.removeLast();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由于每个数字只能在同一行、同一列和同一个九宫格中只会出现一次，我们使用三个数组来标记该数字是否出现，如果出现则直接退出递归。同时使用一个数组保存剩余的空位，对每个空位尝试放入 1- 9的数字，如果将所有空位都使用完，没有出现错误则发现了一种解。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span>[][] line = <span class="keyword">new</span> <span class="keyword">boolean</span>[<span class="number">9</span>][<span class="number">9</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span>[][] column = <span class="keyword">new</span> <span class="keyword">boolean</span>[<span class="number">9</span>][<span class="number">9</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span>[][][] block = <span class="keyword">new</span> <span class="keyword">boolean</span>[<span class="number">3</span>][<span class="number">3</span>][<span class="number">9</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> valid = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">private</span> List&lt;<span class="keyword">int</span>[]&gt; spaces = <span class="keyword">new</span> ArrayList&lt;<span class="keyword">int</span>[]&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">solveSudoku</span><span class="params">(<span class="keyword">char</span>[][] board)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">9</span>; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(board[i][j] == <span class="string">'.'</span>)&#123;</span><br><span class="line">                    <span class="comment">//保存空位</span></span><br><span class="line">                    spaces.add(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;i, j&#125;);</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="comment">//标记已存在的数字</span></span><br><span class="line">                    <span class="keyword">int</span> digit = board[i][j] - <span class="string">'0'</span> - <span class="number">1</span>;</span><br><span class="line">                    line[i][digit] = column[j][digit] = block[i / <span class="number">3</span>][j / <span class="number">3</span>][digit] = <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="comment">//从第一个空位开始递归</span></span><br><span class="line">        dfs(board, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">char</span>[][] board, <span class="keyword">int</span> pos)</span></span>&#123;</span><br><span class="line">        <span class="comment">//将所有空位用完，找到了一组解</span></span><br><span class="line">        <span class="keyword">if</span>(pos == spaces.size())&#123;</span><br><span class="line">            valid = <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="comment">//获取一个空位</span></span><br><span class="line">        <span class="keyword">int</span>[] space = spaces.get(pos);</span><br><span class="line">        <span class="keyword">int</span> i = space[<span class="number">0</span>], j = space[<span class="number">1</span>];</span><br><span class="line">        <span class="comment">//尝试将该空位中放入 1-9 </span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> digit = <span class="number">0</span>; digit &lt; <span class="number">9</span> &amp;&amp; !valid; ++digit)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!line[i][digit] &amp;&amp; !column[j][digit] &amp;&amp; !block[i / <span class="number">3</span>][j / <span class="number">3</span>][digit])&#123;</span><br><span class="line">                line[i][digit] = column[j][digit] = block[i / <span class="number">3</span>][j / <span class="number">3</span>][digit] = <span class="keyword">true</span>;</span><br><span class="line">                board[i][j] = (<span class="keyword">char</span>) (digit + <span class="string">'0'</span> + <span class="number">1</span>);</span><br><span class="line">                dfs(board, pos + <span class="number">1</span>);</span><br><span class="line">                line[i][digit] = column[j][digit] = block[i / <span class="number">3</span>][j / <span class="number">3</span>][digit] = <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
     </div>
@@ -295,7 +295,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Leetcode-Medium/" rel="tag"># Leetcode Medium</a>
+              <a href="/tags/Leetcode-Hard/" rel="tag"># Leetcode Hard</a>
               <a href="/tags/DFS/" rel="tag"># DFS</a>
           </div>
 
@@ -305,13 +305,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/09/08/%E7%BB%84%E5%90%88/" rel="prev" title="组合">
-      <i class="fa fa-chevron-left"></i> 组合
+    <a href="/2020/09/11/@Transactional%E5%88%B0%E5%BA%95%E6%9C%89%E5%95%A5%E7%94%A8/" rel="prev" title="JPA中@Transactional怎么用？">
+      <i class="fa fa-chevron-left"></i> JPA中@Transactional怎么用？
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/09/10/%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8CII/" rel="next" title="组合总和II">
-      组合总和II <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -371,7 +368,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#39-组合总和"><span class="nav-number">1.</span> <span class="nav-text">39. 组合总和</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#37-解数独"><span class="nav-number">1.</span> <span class="nav-text">37. 解数独</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
