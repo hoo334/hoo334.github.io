@@ -10650,4 +10650,44 @@
         <tag>数组</tag>
       </tags>
   </entry>
+  <entry>
+    <title>环形链表II</title>
+    <url>/2020/10/10/%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8II/</url>
+    <content><![CDATA[<h4 id="142-环形链表-II"><a href="#142-环形链表-II" class="headerlink" title="142. 环形链表 II"></a><a href="https://leetcode-cn.com/problems/linked-list-cycle-ii/" target="_blank" rel="noopener">142. 环形链表 II</a></h4><p>给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回 <code>null</code>。</p>
+<p>为了表示给定链表中的环，我们使用整数 <code>pos</code> 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 <code>pos</code> 是 <code>-1</code>，则在该链表中没有环。</p>
+<p><strong>说明：</strong>不允许修改给定的链表。</p>
+ <a id="more"></a>
+
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：head &#x3D; [3,2,0,-4], pos &#x3D; 1</span><br><span class="line">输出：tail connects to node index 1</span><br><span class="line">解释：链表中有一个环，其尾部连接到第二个节点。</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20201010085610758.png" alt="image-20201010085610758"></p>
+<p><strong>方法一：快慢指针</strong></p>
+<p>在环形链表中，我们使用快慢指针，快慢指针相遇则链表中有环。我们具体分析相遇时的情况：</p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20201010090508224.png" alt="image-20201010090508224"></p>
+<p>假设相遇的点在图中红点处，快慢指针在快指针走了 n 圈后相遇，快指针走过的总路程为 <code>a + n(b + c) + b</code>，慢指针走过的总路程为<code>a + b</code>，由于快指针走过的路程是慢指针走过路程的两倍，故<code>a + n(b + c) + b == 2(a + b)</code>，得到<code>a = (n - 1)(b + c) + c</code>，到这里我们发现从相遇点到入环点的距离加上 n - 1 圈的环长，恰好等于从链表头部到入环点的位置。</p>
+<p>在快慢指针相遇时，让另外一个指针 ptr 从链表头开始向后走，同时让慢指针在环中走，当两个指针相遇时，ptr 指向的结点就是环的入口，此时慢指针走过的路程为<code>(n - 1)(b + c) + c</code>。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">detectCycle</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode slow = head, fast = head;</span><br><span class="line">        <span class="keyword">while</span>(fast != <span class="keyword">null</span> &amp;&amp; fast.next != <span class="keyword">null</span>)&#123;</span><br><span class="line">            fast = fast.next.next;</span><br><span class="line">            slow = slow.next;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(slow == fast)&#123;</span><br><span class="line">                ListNode ptr = head;</span><br><span class="line">                <span class="keyword">while</span>(ptr != slow)&#123;</span><br><span class="line">                    ptr = ptr.next;</span><br><span class="line">                    slow = slow.next;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> ptr;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>时间复杂度O(n)</li>
+<li>空间复杂度O(1)</li>
+</ul>
+<p><strong>方法二：哈希表</strong></p>
+<p>使用一个哈希表存储已经访问过的结点，发现当前访问过的结点存在于哈希表，返回当前结点。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">detectCycle</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        ListNode pos = head;</span><br><span class="line">        Set&lt;ListNode&gt; visited = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span>(pos != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(visited.contains(pos))&#123;</span><br><span class="line">                <span class="keyword">return</span> pos;</span><br><span class="line">            &#125;</span><br><span class="line">            visited.add(pos);</span><br><span class="line">            pos = pos.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>时间复杂度O(n)</li>
+<li>空间复杂度O(n)</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>链表</tag>
+        <tag>Leetcode Medium</tag>
+      </tags>
+  </entry>
 </search>
