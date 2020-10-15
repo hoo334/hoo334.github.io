@@ -10690,4 +10690,53 @@
         <tag>Leetcode Medium</tag>
       </tags>
   </entry>
+  <entry>
+    <title>填充每个节点的下一个右侧节点指针</title>
+    <url>/2020/10/15/%E5%A1%AB%E5%85%85%E6%AF%8F%E4%B8%AA%E8%8A%82%E7%82%B9%E7%9A%84%E4%B8%8B%E4%B8%80%E4%B8%AA%E5%8F%B3%E4%BE%A7%E8%8A%82%E7%82%B9%E6%8C%87%E9%92%88/</url>
+    <content><![CDATA[<h4 id="116-填充每个节点的下一个右侧节点指针"><a href="#116-填充每个节点的下一个右侧节点指针" class="headerlink" title="116. 填充每个节点的下一个右侧节点指针"></a><a href="https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node/" target="_blank" rel="noopener">116. 填充每个节点的下一个右侧节点指针</a></h4><p>给定一个<strong>完美二叉树</strong>，其所有叶子节点都在同一层，每个父节点都有两个子节点。二叉树定义如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">struct Node &#123;</span><br><span class="line">  int val;</span><br><span class="line">  Node *left;</span><br><span class="line">  Node *right;</span><br><span class="line">  Node *next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>填充它的每个 next 指针，让这个指针指向其下一个右侧节点。如果找不到下一个右侧节点，则将 next 指针设置为 <code>NULL</code>。</p>
+<p>初始状态下，所有 next 指针都被设置为 <code>NULL</code>。</p>
+<a id="more"></a>
+
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20201015085236630.png" alt=""></p>
+<p><strong>方法一：层次遍历</strong></p>
+<p>在遍历每层时将同一层的结点连接起来。</p>
+<ul>
+<li>时间复杂度O(n)</li>
+<li>空间复杂度O(n)</li>
+</ul>
+<p><strong>方法二：使用已建立的 next 指针</strong></p>
+<p>我们使用 nextHead 指针保存下一层的头节点，nextTail 保存下一层的尾结点。使用 ptr 指针遍历当前层的结点，同时将下一层的结点连接成链表。令 ptr = nextHead，即可遍历下一层结点。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Node nextHead = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">private</span> Node nextTail = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Node <span class="title">connect</span><span class="params">(Node root)</span> </span>&#123;</span><br><span class="line">        Node ptr = root;</span><br><span class="line">        <span class="keyword">while</span>(ptr != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="comment">//当前层开始访问时将下一层信息清空</span></span><br><span class="line">            nextHead = <span class="keyword">null</span>;</span><br><span class="line">            nextTail = <span class="keyword">null</span>;</span><br><span class="line">            <span class="comment">//连接</span></span><br><span class="line">            <span class="keyword">while</span>(ptr != <span class="keyword">null</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(ptr.left != <span class="keyword">null</span>)&#123;</span><br><span class="line">                    helper(ptr.left);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(ptr.right != <span class="keyword">null</span>)&#123;</span><br><span class="line">                    helper(ptr.right);</span><br><span class="line">                &#125;</span><br><span class="line">                ptr = ptr.next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//进入下一层</span></span><br><span class="line">            ptr = nextHead;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">helper</span><span class="params">(Node nextNode)</span></span>&#123;</span><br><span class="line">        <span class="comment">//维护下一层的头节点和尾结点</span></span><br><span class="line">        <span class="keyword">if</span>(nextHead == <span class="keyword">null</span>)&#123;</span><br><span class="line">        nextHead = nextNode;</span><br><span class="line">        nextTail = nextHead;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        nextTail.next = nextNode;</span><br><span class="line">        nextTail = nextTail.next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>时间复杂度O(n)</li>
+<li>空间复杂度O(1)</li>
+</ul>
+<p>注意到题目中的<strong><em>完美二叉树</em></strong>条件，我们可以更加简单地使用 next 指针。</p>
+<p>对于结点的连接只有两种情况：</p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20201015090455731.png" alt=""></p>
+<ol>
+<li>左右子节点相连</li>
+<li>当前结点的右子结点和下一个结点的左子结点相连</li>
+</ol>
+<p>下一层的头节点就是当前层头节点的左子结点（任何一个结点都有左右子节点）。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Node <span class="title">connect</span><span class="params">(Node root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> root;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Node leftmost = root;</span><br><span class="line">        <span class="keyword">while</span>(leftmost.left != <span class="keyword">null</span>)&#123;</span><br><span class="line">            Node head = leftmost;</span><br><span class="line">            <span class="keyword">while</span>(head != <span class="keyword">null</span>)&#123;</span><br><span class="line">                head.left.next = head.right;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(head.next != <span class="keyword">null</span>)&#123;</span><br><span class="line">                    head.right.next = head.next.left;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                head = head.next;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            leftmost = leftmost.left;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>时间复杂度O(n)</li>
+<li>空间复杂度O(1)</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>链表</tag>
+        <tag>Leetcode Medium</tag>
+        <tag>二叉树</tag>
+      </tags>
+  </entry>
 </search>
