@@ -11128,6 +11128,8 @@
 <p>上图为 8 皇后问题的一种解法。</p>
 <p>给定一个整数 <em>n</em>，返回所有不同的 <em>n</em> 皇后问题的解决方案。</p>
 <p>每一种解法包含一个明确的 <em>n</em> 皇后问题的棋子放置方案，该方案中 <code>&#39;Q&#39;</code> 和 <code>&#39;.&#39;</code> 分别代表了皇后和空位。</p>
+<a id="more"></a>
+
 <p> <strong>示例：</strong></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：4</span><br><span class="line">输出：[</span><br><span class="line"> [&quot;.Q..&quot;,  &#x2F;&#x2F; 解法 1</span><br><span class="line">  &quot;...Q&quot;,</span><br><span class="line">  &quot;Q...&quot;,</span><br><span class="line">  &quot;..Q.&quot;],</span><br><span class="line"></span><br><span class="line"> [&quot;..Q.&quot;,  &#x2F;&#x2F; 解法 2</span><br><span class="line">  &quot;Q...&quot;,</span><br><span class="line">  &quot;...Q&quot;,</span><br><span class="line">  &quot;.Q..&quot;]</span><br><span class="line">]ss</span><br><span class="line">解释: 4 皇后问题存在两个不同的解法。</span><br></pre></td></tr></table></figure>
 
