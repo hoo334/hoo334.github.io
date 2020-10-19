@@ -11120,4 +11120,98 @@
         <category>笔记</category>
       </categories>
   </entry>
+  <entry>
+    <title>N皇后</title>
+    <url>/2020/10/17/N%E7%9A%87%E5%90%8E/</url>
+    <content><![CDATA[<h4 id="51-N-皇后"><a href="#51-N-皇后" class="headerlink" title="51. N 皇后"></a><a href="https://leetcode-cn.com/problems/n-queens/" target="_blank" rel="noopener">51. N 皇后</a></h4><p><em>n</em> 皇后问题研究的是如何将 <em>n</em> 个皇后放置在 <em>n</em>×<em>n</em> 的棋盘上，并且使皇后彼此之间不能相互攻击。</p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20201017103523238.png" alt="image-20201017103523238"></p>
+<p>上图为 8 皇后问题的一种解法。</p>
+<p>给定一个整数 <em>n</em>，返回所有不同的 <em>n</em> 皇后问题的解决方案。</p>
+<p>每一种解法包含一个明确的 <em>n</em> 皇后问题的棋子放置方案，该方案中 <code>&#39;Q&#39;</code> 和 <code>&#39;.&#39;</code> 分别代表了皇后和空位。</p>
+<p> <strong>示例：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：4</span><br><span class="line">输出：[</span><br><span class="line"> [&quot;.Q..&quot;,  &#x2F;&#x2F; 解法 1</span><br><span class="line">  &quot;...Q&quot;,</span><br><span class="line">  &quot;Q...&quot;,</span><br><span class="line">  &quot;..Q.&quot;],</span><br><span class="line"></span><br><span class="line"> [&quot;..Q.&quot;,  &#x2F;&#x2F; 解法 2</span><br><span class="line">  &quot;Q...&quot;,</span><br><span class="line">  &quot;...Q&quot;,</span><br><span class="line">  &quot;.Q..&quot;]</span><br><span class="line">]ss</span><br><span class="line">解释: 4 皇后问题存在两个不同的解法。</span><br></pre></td></tr></table></figure>
+
+<p> <strong>提示：</strong></p>
+<ul>
+<li>皇后彼此不能相互攻击，也就是说：任何两个皇后都不能处于同一条横行、纵行或斜线上。</li>
+</ul>
+<p><strong>方法一：基于集合的回溯</strong></p>
+<p>直接暴力枚举将 n 个皇后放在棋盘中。每行每列仅有一个皇后，且任何两个皇后都不能在同一条斜线上。</p>
+<p>使用三个集合 columns、diagonals1，diagonals2 分别记录每一列以及两个方向斜线上是否有皇后。我们从第一行开始，每行放一个皇后，这样每行就只有一个皇后。</p>
+<p>方向一的斜线为从左上到右下，同一条斜线上的每个位置满足<strong>行下标与列下标之差相等。</strong></p>
+<p>方向二的斜线为从右上到左下，同一条斜线上的每个位置满足<strong>行下标与列下标之和相等。</strong></p>
+<p>每次放置皇后时，对每个位置判断其是否在三个集合中，如果都不在，当前位置可以放置皇后。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;String&gt;&gt; solveNQueens(<span class="keyword">int</span> n) &#123;</span><br><span class="line">        List&lt;List&lt;String&gt;&gt; solutions = <span class="keyword">new</span> ArrayList&lt;List&lt;String&gt;&gt;();</span><br><span class="line">        <span class="keyword">int</span>[] queens = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">        Arrays.fill(queens, -<span class="number">1</span>);</span><br><span class="line">        Set&lt;Integer&gt; columns = <span class="keyword">new</span> HashSet&lt;Integer&gt;();</span><br><span class="line">        Set&lt;Integer&gt; diagonals1 = <span class="keyword">new</span> HashSet&lt;Integer&gt;();</span><br><span class="line">        Set&lt;Integer&gt; diagonals2 = <span class="keyword">new</span> HashSet&lt;Integer&gt;();</span><br><span class="line">        backtrack(solutions, queens, n, <span class="number">0</span>, columns, diagonals1, diagonals2);</span><br><span class="line">        <span class="keyword">return</span> solutions;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">backtrack</span><span class="params">(List&lt;List&lt;String&gt;&gt; solutions, <span class="keyword">int</span>[] queens, <span class="keyword">int</span> n, <span class="keyword">int</span> row, Set&lt;Integer&gt; columns, Set&lt;Integer&gt; diagonals1, Set&lt;Integer&gt; diagonals2)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//row = n 代表已经得到一种结果</span></span><br><span class="line">        <span class="keyword">if</span> (row == n) &#123;</span><br><span class="line">            List&lt;String&gt; board = generateBoard(queens, n);</span><br><span class="line">            solutions.add(board);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//尝试在当前行的每个位置放置皇后</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (columns.contains(i)) &#123;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">int</span> diagonal1 = row - i;</span><br><span class="line">                <span class="keyword">if</span> (diagonals1.contains(diagonal1)) &#123;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">int</span> diagonal2 = row + i;</span><br><span class="line">                <span class="keyword">if</span> (diagonals2.contains(diagonal2)) &#123;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                queens[row] = i;</span><br><span class="line">                columns.add(i);</span><br><span class="line">                diagonals1.add(diagonal1);</span><br><span class="line">                diagonals2.add(diagonal2);</span><br><span class="line">                <span class="comment">//继续放置下一行的皇后</span></span><br><span class="line">                backtrack(solutions, queens, n, row + <span class="number">1</span>, columns, diagonals1, diagonals2);</span><br><span class="line">                <span class="comment">//状态重置</span></span><br><span class="line">                queens[row] = -<span class="number">1</span>;</span><br><span class="line">                columns.remove(i);</span><br><span class="line">                diagonals1.remove(diagonal1);</span><br><span class="line">                diagonals2.remove(diagonal2);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//生成棋盘</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">generateBoard</span><span class="params">(<span class="keyword">int</span>[] queens, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        List&lt;String&gt; board = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">char</span>[] row = <span class="keyword">new</span> <span class="keyword">char</span>[n];</span><br><span class="line">            Arrays.fill(row, <span class="string">'.'</span>);</span><br><span class="line">            row[queens[i]] = <span class="string">'Q'</span>;</span><br><span class="line">            board.add(<span class="keyword">new</span> String(row));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> board;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>时间复杂度O(n!)</li>
+<li>空间复杂度O(n)，n 是皇后数量。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode Hard</tag>
+        <tag>回溯</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>比较含退格的字符串</title>
+    <url>/2020/10/19/%E6%AF%94%E8%BE%83%E5%90%AB%E9%80%80%E6%A0%BC%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
+    <content><![CDATA[<h4 id="844-比较含退格的字符串"><a href="#844-比较含退格的字符串" class="headerlink" title="844. 比较含退格的字符串"></a><a href="https://leetcode-cn.com/problems/backspace-string-compare/" target="_blank" rel="noopener">844. 比较含退格的字符串</a></h4><p>给定 <code>S</code> 和 <code>T</code> 两个字符串，当它们分别被输入到空白的文本编辑器后，判断二者是否相等，并返回结果。 <code>#</code> 代表退格字符。</p>
+<p><strong>注意：</strong>如果对空文本输入退格字符，文本继续为空。</p>
+ <a id="more"></a>
+
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：S &#x3D; &quot;ab#c&quot;, T &#x3D; &quot;ad#c&quot;</span><br><span class="line">输出：true</span><br><span class="line">解释：S 和 T 都会变成 “ac”。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：S &#x3D; &quot;ab##&quot;, T &#x3D; &quot;c#d#&quot;</span><br><span class="line">输出：true</span><br><span class="line">解释：S 和 T 都会变成 “”。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：S &#x3D; &quot;a##c&quot;, T &#x3D; &quot;#a#c&quot;</span><br><span class="line">输出：true</span><br><span class="line">解释：S 和 T 都会变成 “c”。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 4：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：S &#x3D; &quot;a#c&quot;, T &#x3D; &quot;b&quot;</span><br><span class="line">输出：false</span><br><span class="line">解释：S 会变成 “c”，但 T 仍然是 “b”。</span><br></pre></td></tr></table></figure>
+
+<p> <strong>提示：</strong></p>
+<ol>
+<li><p><code>1 &lt;= S.length &lt;= 200</code></p>
+</li>
+<li><p><code>1 &lt;= T.length &lt;= 200</code></p>
+</li>
+<li><p><code>S</code> 和 <code>T</code> 只含有小写字母以及字符 <code>&#39;#&#39;</code>。</p>
+<p><strong>进阶：</strong></p>
+</li>
+</ol>
+<ul>
+<li>你可以用 <code>O(N)</code> 的时间复杂度和 <code>O(1)</code> 的空间复杂度解决该问题吗？</li>
+</ul>
+<p>一个字符是否被删掉取决于它后面是否有#号，我们逆序遍历字符串，就可以立即确定当前字符是否会被删掉。</p>
+<p>使用 s 记录字符串 S 中 # 号的数量，从后往前遍历每个字符：</p>
+<ul>
+<li>当前字符为 # 号，我们要多删除一个字符，s 加一；</li>
+<li>当前字符不是 # 号：<ul>
+<li>若 s 大于 0 ，则删去当前字符；</li>
+<li>若 s 等于 0 ，当前字符不需要删除。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">backspaceCompare</span><span class="params">(String S, String T)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> s = <span class="number">0</span>, t = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = S.length() - <span class="number">1</span>, j = T.length() - <span class="number">1</span>; i &gt;= <span class="number">0</span> || j &gt;= <span class="number">0</span>;)&#123;</span><br><span class="line">            <span class="comment">//去掉 S 尾部需要删除的字符</span></span><br><span class="line">            <span class="keyword">while</span>(i &gt;= <span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(S.charAt(i) == <span class="string">'#'</span>)&#123;</span><br><span class="line">                    ++s;</span><br><span class="line">                    --i;</span><br><span class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>(s &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                    --s;</span><br><span class="line">                    --i;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">			<span class="comment">//去掉 T 尾部需要删除的字符</span></span><br><span class="line">            <span class="keyword">while</span>(j &gt;= <span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(T.charAt(j) == <span class="string">'#'</span>)&#123;</span><br><span class="line">                    ++t;</span><br><span class="line">                    --j;</span><br><span class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>(t &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                    --t;</span><br><span class="line">                    --j;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">			</span><br><span class="line">            <span class="keyword">if</span>(i &gt;= <span class="number">0</span> &amp;&amp; j &gt;= <span class="number">0</span>)&#123;</span><br><span class="line">                <span class="comment">//判断两个字符是否相等</span></span><br><span class="line">                <span class="keyword">if</span>(S.charAt(i) != T.charAt(j))&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">//有一个字符串已经遍历完</span></span><br><span class="line">                <span class="keyword">if</span>(i &gt;= <span class="number">0</span> || j &gt;= <span class="number">0</span>)&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            --i;</span><br><span class="line">            --j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>时间复杂度O(n)</li>
+<li>空间复杂度O(1)</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>双指针</tag>
+        <tag>字符串</tag>
+        <tag>Leetcode Easy</tag>
+      </tags>
+  </entry>
 </search>
