@@ -11252,4 +11252,158 @@
         <tag>贪心</tag>
       </tags>
   </entry>
+  <entry>
+    <title>视频拼接</title>
+    <url>/2020/10/24/%E8%A7%86%E9%A2%91%E6%8B%BC%E6%8E%A5/</url>
+    <content><![CDATA[<h4 id="1024-视频拼接"><a href="#1024-视频拼接" class="headerlink" title="1024. 视频拼接"></a><a href="https://leetcode-cn.com/problems/video-stitching/" target="_blank" rel="noopener">1024. 视频拼接</a></h4><p>你将会获得一系列视频片段，这些片段来自于一项持续时长为 <code>T</code> 秒的体育赛事。这些片段可能有所重叠，也可能长度不一。</p>
+<p>视频片段 <code>clips[i]</code> 都用区间进行表示：开始于 <code>clips[i][0]</code> 并于 <code>clips[i][1]</code> 结束。我们甚至可以对这些片段自由地再剪辑，例如片段 <code>[0, 7]</code> 可以剪切成 <code>[0, 1] + [1, 3] + [3, 7]</code> 三部分。</p>
+<p>我们需要将这些片段进行再剪辑，并将剪辑后的内容拼接成覆盖整个运动过程的片段（<code>[0, T]</code>）。返回所需片段的最小数目，如果无法完成该任务，则返回 <code>-1</code> 。</p>
+ <a id="more"></a>
+
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：clips &#x3D; [[0,2],[4,6],[8,10],[1,9],[1,5],[5,9]], T &#x3D; 10</span><br><span class="line">输出：3</span><br><span class="line">解释：</span><br><span class="line">我们选中 [0,2], [8,10], [1,9] 这三个片段。</span><br><span class="line">然后，按下面的方案重制比赛片段：</span><br><span class="line">将 [1,9] 再剪辑为 [1,2] + [2,8] + [8,9] 。</span><br><span class="line">现在我们手上有 [0,2] + [2,8] + [8,10]，而这些涵盖了整场比赛 [0, 10]。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：clips &#x3D; [[0,1],[1,2]], T &#x3D; 5</span><br><span class="line">输出：-1</span><br><span class="line">解释：</span><br><span class="line">我们无法只用 [0,1] 和 [1,2] 覆盖 [0,5] 的整个过程。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：clips &#x3D; [[0,1],[6,8],[0,2],[5,6],[0,4],[0,3],[6,7],[1,3],[4,7],[1,4],[2,5],[2,6],[3,4],[4,5],[5,7],[6,9]], T &#x3D; 9</span><br><span class="line">输出：3</span><br><span class="line">解释： </span><br><span class="line">我们选取片段 [0,4], [4,7] 和 [6,9] 。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 4：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：clips &#x3D; [[0,4],[2,8]], T &#x3D; 5</span><br><span class="line">输出：2</span><br><span class="line">解释：</span><br><span class="line">注意，你可能录制超过比赛结束时间的视频。</span><br></pre></td></tr></table></figure>
+
+<p> <strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= clips.length &lt;= 100</code></li>
+<li><code>0 &lt;= clips[i][0] &lt;= clips[i][1] &lt;= 100</code></li>
+<li><code>0 &lt;= T &lt;= 100</code></li>
+</ul>
+<p><strong>方法一：动态规划</strong></p>
+<p>我们使用 <code>dp[i]</code>表示整个运动过程<code>[0, i]</code>所需的最小片段数。我们遍历每段 clip ，如果 i 在这段 clip 中（<code>clip[0] &lt; i &lt;= clip[1]</code>），那么使用 <code>dp[clip[0]]</code> 和 当前这一段clip就可覆盖<code>[0,1]</code>.对于符合情况的每段 clip，我们统计 dp[i] 的最小值即可。<br>$$<br>dp[i] = min(dp[i], dp[clip[0]] + 1), (clip[0] &lt; i \leq clip[1])<br>$$</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">videoStitching</span><span class="params">(<span class="keyword">int</span>[][] clips, <span class="keyword">int</span> T)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[T + <span class="number">1</span>];</span><br><span class="line">        Arrays.fill(dp, Integer.MAX_VALUE - <span class="number">1</span>);</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= T; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span>[] clip : clips)&#123;</span><br><span class="line">                <span class="keyword">if</span>(i &gt; clip[<span class="number">0</span>] &amp;&amp; i &lt;= clip[<span class="number">1</span>])&#123;</span><br><span class="line">                    dp[i] = Math.min(dp[i], dp[clip[<span class="number">0</span>]] + <span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[T] == Integer.MAX_VALUE - <span class="number">1</span> ? -<span class="number">1</span> : dp[T];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>时间复杂度O(T * N)，T 是区间的长度，N 是子区间的数量。</li>
+<li>空间复杂度O(T)，T 是区间的长度。</li>
+</ul>
+<p><strong>方法二：贪心</strong></p>
+<p>对于每一段左端点相等的视频片段，右端点越远越好。对于每个位置 i，我们记录以其为左端点中最远的右节点<code>maxn[i]</code>。</p>
+<p>每遍历到一个位置 i ，我们需要更新当前位置能到达的最远处 last，如果更新后 last == i，那么说明下一个位置不能被覆盖，返回 -1。</p>
+<p>同时我们需要维护上一个区间的结束位置 pre，每次我们越过一个旧的子区间，到达一个新的子区间，这个子区间的结束位置就为 last，此时令 pre = last，答案加 1 。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">videoStitching</span><span class="params">(<span class="keyword">int</span>[][] clips, <span class="keyword">int</span> T)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] maxn = <span class="keyword">new</span> <span class="keyword">int</span>[T];</span><br><span class="line">        <span class="keyword">int</span> pre = <span class="number">0</span>, last = <span class="number">0</span>, res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span>[] clip : clips)&#123;</span><br><span class="line">            <span class="keyword">if</span>(clip[<span class="number">0</span>] &lt; T)&#123;</span><br><span class="line">                maxn[clip[<span class="number">0</span>]] = Math.max(clip[<span class="number">1</span>], maxn[clip[<span class="number">0</span>]]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; T; i++)&#123;</span><br><span class="line">            last = Math.max(last, maxn[i]);</span><br><span class="line">            <span class="keyword">if</span>(i == last)&#123;</span><br><span class="line">                <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(i == pre)&#123;</span><br><span class="line">                pre = last;</span><br><span class="line">                ++res;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>时间复杂度O(T + N)，O(N)时间对子区间进行预处理，O(T)时间枚举每个位置。</li>
+<li>空间复杂度O(T)</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode Medium</tag>
+        <tag>贪心</tag>
+        <tag>动态规划</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>时间插入、删除和获取随机元素-允许重复</title>
+    <url>/2020/10/31/O(1)%E6%97%B6%E9%97%B4%E6%8F%92%E5%85%A5%E3%80%81%E5%88%A0%E9%99%A4%E5%92%8C%E8%8E%B7%E5%8F%96%E9%9A%8F%E6%9C%BA%E5%85%83%E7%B4%A0-%E5%85%81%E8%AE%B8%E9%87%8D%E5%A4%8D/</url>
+    <content><![CDATA[<h4 id="381-O-1-时间插入、删除和获取随机元素-允许重复"><a href="#381-O-1-时间插入、删除和获取随机元素-允许重复" class="headerlink" title="381. O(1) 时间插入、删除和获取随机元素 - 允许重复"></a><a href="https://leetcode-cn.com/problems/insert-delete-getrandom-o1-duplicates-allowed/" target="_blank" rel="noopener">381. O(1) 时间插入、删除和获取随机元素 - 允许重复</a></h4><p>设计一个支持在<em>平均</em> 时间复杂度 <strong>O(1)</strong> 下<strong>，</strong> 执行以下操作的数据结构。</p>
+<p><strong>注意: 允许出现重复元素。</strong></p>
+<ol>
+<li><p><code>insert(val)</code>：向集合中插入元素 val。</p>
+</li>
+<li><p><code>remove(val)</code>：当 val 存在时，从集合中移除一个 val。</p>
+</li>
+<li><p><code>getRandom</code>：从现有集合中随机获取一个元素。每个元素被返回的概率应该与其在集合中的数量呈线性相关。</p>
+</li>
+</ol>
+<a id="more"></a>
+
+<p><strong>示例:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 初始化一个空的集合。</span><br><span class="line">RandomizedCollection collection &#x3D; new RandomizedCollection();</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 向集合中插入 1 。返回 true 表示集合不包含 1 。</span><br><span class="line">collection.insert(1);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 向集合中插入另一个 1 。返回 false 表示集合包含 1 。集合现在包含 [1,1] 。</span><br><span class="line">collection.insert(1);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 向集合中插入 2 ，返回 true 。集合现在包含 [1,1,2] 。</span><br><span class="line">collection.insert(2);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; getRandom 应当有 2&#x2F;3 的概率返回 1 ，1&#x2F;3 的概率返回 2 。</span><br><span class="line">collection.getRandom();</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 从集合中删除 1 ，返回 true 。集合现在包含 [1,2] 。</span><br><span class="line">collection.remove(1);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; getRandom 应有相同概率返回 1 和 2 。</span><br><span class="line">collection.getRandom();</span><br></pre></td></tr></table></figure>
+
+<p>使用一个数组 nums 存储所有的数字，我们随机生成下标就可在 O(1)时间内得到一个随机元素。</p>
+<p>在列表中删除最后一个元素的时间复杂度是 O(1)，如果要在 O(1)时间复杂度删除数组中间的元素，我们需要将它与最后一个元素交换，最后将最后一个元素删除。</p>
+<p>remove 函数的参数为删除的数的 val，我们需要将一个数值对应数组中的下标存储起来，使用一个Set 存储。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RandomizedCollection</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    Map&lt;Integer, Set&lt;Integer&gt;&gt; map;</span><br><span class="line">    List&lt;Integer&gt; nums;</span><br><span class="line">    <span class="comment">/** Initialize your data structure here. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RandomizedCollection</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        map = <span class="keyword">new</span> HashMap&lt;Integer, Set&lt;Integer&gt;&gt;();</span><br><span class="line">        nums = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Inserts a value to the collection. Returns true if the collection did not already contain the specified element. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//将 val 添加到数组中</span></span><br><span class="line">        nums.add(val);</span><br><span class="line">        <span class="comment">//将 当前下标添加进 val 对应的 set</span></span><br><span class="line">        Set&lt;Integer&gt; set = map.getOrDefault(val, <span class="keyword">new</span> HashSet&lt;Integer&gt;());</span><br><span class="line">        set.add(nums.size() - <span class="number">1</span>);</span><br><span class="line">        <span class="comment">//将 set 放入 map</span></span><br><span class="line">        map.put(val, set);</span><br><span class="line">        <span class="comment">//数组中是否已经存在 val</span></span><br><span class="line">        <span class="keyword">return</span> set.size() == <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Removes a value from the collection. Returns true if the collection contained the specified element. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">remove</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//数组中没有 val，删除失败</span></span><br><span class="line">        <span class="keyword">if</span>(!map.containsKey(val))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//得到 val 对应的一个 数组下标</span></span><br><span class="line">        Iterator&lt;Integer&gt; it = map.get(val).iterator();</span><br><span class="line">        <span class="keyword">int</span> i = it.next();</span><br><span class="line">        <span class="comment">//得到数组中最后一个数字</span></span><br><span class="line">        <span class="keyword">int</span> lastNum = nums.get(nums.size() - <span class="number">1</span>);</span><br><span class="line">        <span class="comment">//将最后一个数组拷贝到下标 i 处</span></span><br><span class="line">        nums.set(i, lastNum);</span><br><span class="line">		</span><br><span class="line">        <span class="comment">//删除set 中的下标</span></span><br><span class="line">        map.get(val).remove(i);</span><br><span class="line">        map.get(lastNum).remove(nums.size() - <span class="number">1</span>);</span><br><span class="line">		<span class="comment">//将 lastNum 的新下标加入set</span></span><br><span class="line">        <span class="keyword">if</span>(i &lt; nums.size() - <span class="number">1</span>)&#123;</span><br><span class="line">            map.get(lastNum).add(i);</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="comment">//删除后 set 为空，删除这个 键值对</span></span><br><span class="line">        <span class="keyword">if</span>(map.get(val).size() == <span class="number">0</span>)&#123;</span><br><span class="line">            map.remove(val);</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="comment">//删除数组中最后一个元素</span></span><br><span class="line">        nums.remove(nums.size() - <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Get a random element from the collection. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getRandom</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//随机生成数组下标</span></span><br><span class="line">        <span class="keyword">return</span> nums.get( (<span class="keyword">int</span>) ( Math.random() * nums.size() ) );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>时间复杂度O(1)</li>
+<li>空间复杂度O(N)，N为数组中所有元素的数目。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>哈希表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数组中的最长山脉</title>
+    <url>/2020/10/25/%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E9%95%BF%E5%B1%B1%E8%84%89/</url>
+    <content><![CDATA[<h4 id="845-数组中的最长山脉"><a href="#845-数组中的最长山脉" class="headerlink" title="845. 数组中的最长山脉"></a><a href="https://leetcode-cn.com/problems/longest-mountain-in-array/" target="_blank" rel="noopener">845. 数组中的最长山脉</a></h4><p>我们把数组 A 中符合下列属性的任意连续子数组 B 称为 “<em>山脉”</em>：</p>
+<ul>
+<li><code>B.length &gt;= 3</code></li>
+<li>存在 <code>0 &lt; i &lt; B.length - 1</code> 使得 <code>B[0] &lt; B[1] &lt; ... B[i-1] &lt; B[i] &gt; B[i+1] &gt; ... &gt; B[B.length - 1]</code></li>
+</ul>
+<p>（注意：B 可以是 A 的任意子数组，包括整个数组 A。）</p>
+<p>给出一个整数数组 <code>A</code>，返回最长 <em>“山脉”</em> 的长度。</p>
+<p>如果不含有 “<em>山脉”</em> 则返回 <code>0</code>。</p>
+ <a id="more"></a>
+
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：[2,1,4,7,3,2,5]</span><br><span class="line">输出：5</span><br><span class="line">解释：最长的 “山脉” 是 [1,4,7,3,2]，长度为 5。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：[2,2,2]</span><br><span class="line">输出：0</span><br><span class="line">解释：不含 “山脉”。</span><br></pre></td></tr></table></figure>
+
+<p> <strong>提示：</strong></p>
+<ol>
+<li><code>0 &lt;= A.length &lt;= 10000</code></li>
+<li><code>0 &lt;= A[i] &lt;= 10000</code></li>
+</ol>
+<p><strong>方法一：枚举山顶</strong></p>
+<p>我们对于数组 A 中的每个数使用一次中心扩展，即可求出以当前数为山顶的子数组长度。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">longestMountain</span><span class="params">(<span class="keyword">int</span>[] A)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; A.length; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> l = i - <span class="number">1</span>, r = i + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>(l &gt;= <span class="number">0</span> &amp;&amp; A[l] &lt; A[l + <span class="number">1</span>])&#123;</span><br><span class="line">                --l;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">while</span>(r &lt; A.length &amp;&amp; A[r - <span class="number">1</span>] &gt; A[r])&#123;</span><br><span class="line">                ++r;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(l != i - <span class="number">1</span> &amp;&amp; r != i + <span class="number">1</span>)&#123;</span><br><span class="line">                ans = Math.max(ans, r - l - <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>时间复杂度O(n^2)</li>
+<li>空间复杂度O(1)</li>
+</ul>
+<p>由于左侧山脚到山顶的序列是严格单调递增的，从山顶到右侧山脚的序列是严格单调递减的。我们可以计算从任意一个元素开始，向左右两侧最多可扩展的元素。</p>
+<p>我们用 <code>left[i]</code>表示<code>A[i]</code>向左侧最多可以扩展的元素数目，用 <code>right[i]</code>表示<code>A[i]</code>向右侧最多可以扩展的元素数目。<br>$$<br>left[i]=\left{<br>\begin{aligned}<br>left[i - 1] + 1, \ \ A[i] &gt; A[i - 1] \<br>0, \ \ A[i] \leq A[i - 1] 或 i =0\<br>\end{aligned}<br>\right.<br>$$</p>
+<p>$$<br>right[i]=\left{<br>\begin{aligned}<br>right[i + 1] + 1, \ \ A[i] &gt; A[i + 1] \<br>0, \ \ A[i] \leq A[i + 1] 或 i = n -1\<br>\end{aligned}<br>\right.<br>$$<br>计算出所有 left 和 right 后，枚举山顶，只有当left[i] 和 right[i]都大于 0 时，A[i]才能作为山顶。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">longestMountain</span><span class="params">(<span class="keyword">int</span>[] A)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = A.length;</span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[] left = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">        <span class="keyword">int</span>[] right = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++)&#123;</span><br><span class="line">            left[i] = A[i] &gt; A[i - <span class="number">1</span>] ? left[i - <span class="number">1</span>] + <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = n - <span class="number">2</span>; i &gt;= <span class="number">0</span>; i--)&#123;</span><br><span class="line">            right[i] = A[i] &gt; A[i + <span class="number">1</span>] ? right[i + <span class="number">1</span>] + <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(left[i] != <span class="number">0</span> &amp;&amp; right[i] != <span class="number">0</span>)&#123;</span><br><span class="line">                ans = Math.max(ans, left[i] + right[i] + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>时间复杂度O(n)</li>
+<li>空间复杂度O(n)</li>
+</ul>
+<p><strong>方法二：枚举山脚</strong></p>
+<p>当我们从左向右遍历整个数组 A 时，可以使用双指针的方法，一个枚举左侧山脚，另一个不断向右移动到右侧山脚。</p>
+<p>山顶数组最少为 3 个元素，需要保证<code>left + 2 &lt; n</code>和 <code>A[left] &lt; A[left + 1]</code>。</p>
+<p>我们将right 初始化为 left + 1，不断将其右移，直到不满足<code>A[right] &lt; A[right + 1]</code></p>
+<ul>
+<li>如果 right = n - 1，此时已经无法形成山脉</li>
+<li>如果 right 指向的是山顶，我们需要判断是否有 A[right] &gt; A[right + 1]，如果right 指向的是山顶，不断右移 right 直到不满足 A[right] &gt; A[right + 1]，此时 right 指向右侧山脚，A[left] 到 A[right]就对应着一座山脉。</li>
+<li>右侧的山脚有可能是下一座山脉的左侧山脚，我们需要将 right 的值赋予 left，以便进行下一次枚举。在其他所有情况下，将right + 1赋给left。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">longestMountain</span><span class="params">(<span class="keyword">int</span>[] A)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = A.length;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(left + <span class="number">2</span> &lt; n)&#123;</span><br><span class="line">            <span class="keyword">int</span> right = left + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(A[left] &lt; A[left + <span class="number">1</span>])&#123;</span><br><span class="line">                <span class="keyword">while</span>(right + <span class="number">1</span> &lt; n &amp;&amp; A[right] &lt; A[right + <span class="number">1</span>])&#123;</span><br><span class="line">                    ++right;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(right &lt; n - <span class="number">1</span> &amp;&amp; A[right] &gt; A[right + <span class="number">1</span>])&#123;</span><br><span class="line">                    <span class="keyword">while</span>(right + <span class="number">1</span> &lt; n &amp;&amp; A[right] &gt; A[right + <span class="number">1</span>])&#123;</span><br><span class="line">                        ++right;</span><br><span class="line">                    &#125;</span><br><span class="line">                    ans = Math.max(ans, right - left + <span class="number">1</span>);</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    ++right;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            left = right;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>时间复杂度O(n)</li>
+<li>空间复杂度O(1)</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode Medium</tag>
+        <tag>双指针</tag>
+      </tags>
+  </entry>
 </search>
