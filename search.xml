@@ -1734,7 +1734,7 @@
 <p><strong>示例 3：</strong></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: s &#x3D; &quot;catsandog&quot;, wordDict &#x3D; [&quot;cats&quot;, &quot;dog&quot;, &quot;sand&quot;, &quot;and&quot;, &quot;cat&quot;]</span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure>
 
-<p>我们定义 dp[i] 表示字符串 s 前 i 个字符组成s的字符串 s[0…i - 1] 是否能被空格拆分成若干个字典中出现的单词。对于字符串 s[0 … i - 1]，我们需要枚举每一个分割点，位置为 j ，将其分为两个字符串，得到 s[0 … j - 1]，s[j … i - 1]，如果两个字符串均合法，那么将其拼接起来的字符串同样合法。由于计算 dp[i] 时已经计算出了 dp[0 … i - 1] 的值，因此字符串 s[0 … j - 1] 是否合法由 dp[j] 可知，剩下的我们只用看 s[j … i - 1] 是否合法，因此得到如下转移方程：<br>$$<br>dp[i]=dp[j] &amp;&amp; checks(s[j…i-1])<br>$$<br>其中 checks(s[j…i-1]) 表示子串 s[j … i - 1] 是否出现在字典中。初始化dp[0] = true;</p>
+<p>我们定义 dp[i] 表示字符串 s 前 i 个字符组成s的字符串 s[0…i - 1] 是否能被空格拆分成若干个字典中出现的单词。对于字符串 s[0 … i - 1]，我们需要枚举每一个分割点，位置为 j ，将其分为两个字符串，得到 s[0 … j - 1]，s[j … i - 1]，如果两个字符串均合法，那么将其拼接起来的字符串同样合法。由于计算 dp[i] 时已经计算出了 dp[0 … i - 1] 的值，因此字符串 s[0 … j - 1] 是否合法由 dp[j] 可知，剩下的我们只用看 s[j … i - 1] 是否合法，因此得到如下转移方程：<br>$$<br>dp[i]=dp[j] &amp; &amp; checks(s[j…i-1])<br>$$<br>其中 checks(s[j…i-1]) 表示子串 s[j … i - 1] 是否出现在字典中。初始化dp[0] = true;</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">wordBreak</span><span class="params">(String s, List&lt;String&gt; wordDict)</span> </span>&#123;</span><br><span class="line">        Set&lt;String&gt; set = <span class="keyword">new</span> HashSet(wordDict);</span><br><span class="line">        <span class="keyword">int</span> n = s.length();</span><br><span class="line">        <span class="comment">//dp[i] 表示 s 中 以 下标 i-1 结尾的字符串可否被 wordDict 拆分</span></span><br><span class="line">        <span class="keyword">boolean</span>[] dp = <span class="keyword">new</span> <span class="keyword">boolean</span>[n+<span class="number">1</span>];</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; ++i)&#123;</span><br><span class="line">            <span class="comment">//利用下标 j 将 下标为 0 ~ i-1 的字符串分割成两个字符串,依次判断所有情况。</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;i; ++j)&#123;</span><br><span class="line">                <span class="keyword">if</span>(dp[j] &amp;&amp; set.contains(s.substring(j,i)) )&#123;</span><br><span class="line">                    dp[i] = <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>时间复杂度 O(n^2)，空间复杂度O(n)</p>
@@ -11404,6 +11404,37 @@
       <tags>
         <tag>Leetcode Medium</tag>
         <tag>双指针</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>插入区间</title>
+    <url>/2020/11/04/%E6%8F%92%E5%85%A5%E5%8C%BA%E9%97%B4/</url>
+    <content><![CDATA[<h4 id="57-插入区间"><a href="#57-插入区间" class="headerlink" title="57. 插入区间"></a><a href="https://leetcode-cn.com/problems/insert-interval/" target="_blank" rel="noopener">57. 插入区间</a></h4><p>给出一个<em>无重叠的 ，</em>按照区间起始端点排序的区间列表。</p>
+<p>在列表中插入一个新的区间，你需要确保列表中的区间仍然有序且不重叠（如果有必要的话，可以合并区间）。</p>
+<a id="more"></a> 
+
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：intervals &#x3D; [[1,3],[6,9]], newInterval &#x3D; [2,5]</span><br><span class="line">输出：[[1,5],[6,9]]</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：intervals &#x3D; [[1,2],[3,5],[6,7],[8,10],[12,16]], newInterval &#x3D; [4,8]</span><br><span class="line">输出：[[1,2],[3,10],[12,16]]</span><br><span class="line">解释：这是因为新的区间 [4,8] 与 [3,5],[6,7],[8,10] 重叠。</span><br></pre></td></tr></table></figure>
+
+<p><strong>方法一：模拟</strong></p>
+<p>对于区间<code>s1 = [l1, r1]</code>和区间<code>s2 = [l2, r2]</code>，如果它们没有交集，那么要么 s1 在 s2 左侧（r1 &lt; l2），要么 s2 在 s1 左侧（r2 &lt; l1）。</p>
+<p>如果两者有交集，那么并集为<code>[min(l1, l2), max(r1, r2)]</code>。</p>
+<p>当插入区间[left, right]时，如果它不与其他区间相交，直接将其加入答案；如果它与其他区间有交集，将两个区间取并集，然后继续插入新的区间[left’, right‘]。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[][] insert(<span class="keyword">int</span>[][] intervals, <span class="keyword">int</span>[] newInterval) &#123;</span><br><span class="line">        <span class="keyword">int</span> left = newInterval[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> right = newInterval[<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">boolean</span> placed = <span class="keyword">false</span>;</span><br><span class="line">        List&lt;<span class="keyword">int</span>[]&gt; ansList = <span class="keyword">new</span> ArrayList&lt;<span class="keyword">int</span>[]&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span>[] interval : intervals)&#123;</span><br><span class="line">            <span class="keyword">if</span>(interval[<span class="number">0</span>] &gt; right)&#123;</span><br><span class="line">                <span class="comment">//当前区间在插入区间的右侧且无交集，直接加入结果集</span></span><br><span class="line">                <span class="keyword">if</span>(!placed)&#123;</span><br><span class="line">                    ansList.add(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;left, right&#125;);</span><br><span class="line">                    placed = <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                ansList.add(interval);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span>(interval[<span class="number">1</span>] &lt; left)&#123;</span><br><span class="line">                <span class="comment">//当前区间在插入区间的左侧且无交集，将当前区间加入结果集</span></span><br><span class="line">                ansList.add(interval);</span><br><span class="line">            &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">//与插入区间有交集，计算它们的并集</span></span><br><span class="line">                left = Math.min(left, interval[<span class="number">0</span>]);</span><br><span class="line">                right = Math.max(right, interval[<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(!placed)&#123;</span><br><span class="line">            ansList.add(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;left, right&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[][] ans = <span class="keyword">new</span> <span class="keyword">int</span>[ansList.size()][<span class="number">2</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ansList.size(); ++i)&#123;</span><br><span class="line">            ans[i] = ansList.get(i);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>时间复杂度O(N)</li>
+<li>空间复杂度O(1)</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode Hard</tag>
       </tags>
   </entry>
 </search>
