@@ -28,7 +28,7 @@
 <meta property="og:description" content="121. 买卖股票的最佳时机给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。 如果你最多只允许完成一笔交易（即买入和卖出一支股票一次），设计一个算法来计算你所能获取的最大利润。 注意：你不能在买入股票前卖出股票。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-01T02:39:24.000Z">
-<meta property="article:modified_time" content="2020-07-01T03:48:40.806Z">
+<meta property="article:modified_time" content="2020-11-08T02:03:45.260Z">
 <meta property="article:author" content="hoo334">
 <meta property="article:tag" content="动态规划">
 <meta property="article:tag" content="数组">
@@ -215,10 +215,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-07-01 10:39:24 / Modified: 11:48:40" itemprop="dateCreated datePublished" datetime="2020-07-01T10:39:24+08:00">2020-07-01</time>
+              <time title="Created: 2020-07-01 10:39:24" itemprop="dateCreated datePublished" datetime="2020-07-01T10:39:24+08:00">2020-07-01</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-11-08 10:03:45" itemprop="dateModified" datetime="2020-11-08T10:03:45+08:00">2020-11-08</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -272,10 +278,22 @@
 <p><strong>示例 2:</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: [7,6,4,3,1]</span><br><span class="line">输出: 0</span><br><span class="line">解释: 在这种情况下, 没有交易完成, 所以最大利润为 0。</span><br></pre></td></tr></table></figure>
 
-<p>假设我们在第 i 天之前买一张股票，想要在第 i 天卖掉它，我们肯定在前 i-1 天中选择一天价格最低的时候买入，在股票价格最高的时候卖出。但是如果在前 i-1 天中的某一天可以获得比第 i 天获得的更大利润就不能选择第 i 天卖出而要选择前 i-1 天中的最大利润。第 i 天能获得的最大利润 = max( 前 i-1 天的最大利润，第 i 天的股票价格 - 前 i-1 天股票的最低价格)。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(prices.length &lt;= <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> max = <span class="number">0</span>,min = prices[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i&lt;prices.length;++i)&#123;</span><br><span class="line">        max=Math.max(max,prices[i]-min);</span><br><span class="line">        min=Math.min(prices[i],min);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>方法一：暴力</strong></p>
+<p>我们需要找出两个数字之间的最大差值，并且第二个数字必须大于第一个数字。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> maxProfit = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; prices.length; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; prices.length; j++)&#123;</span><br><span class="line">                <span class="keyword">int</span> profit = prices[j] - prices[i];</span><br><span class="line">                <span class="keyword">if</span>(profit &gt; maxProfit)&#123;</span><br><span class="line">                    maxProfit = profit;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxProfit;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>时间复杂度O(n)，空间复杂度O(1)。</p>
+<ul>
+<li>时间复杂度O(N^2)</li>
+<li>空间复杂度O(N)</li>
+</ul>
+<p><strong>方法二：一次遍历</strong></p>
+<p>我们买股票肯定希望在历史最低点买入，在最高点卖出。使用 minPrice 记录一个历史最低价格，我们在第 i 天卖出股票的得到的利润为<code>prices[i] -minPrice</code>。我们遍历一次数组，同时维护最大利润 maxProfit 即可得到答案。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(prices.length &lt;= <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> maxProfit = <span class="number">0</span>, minPrice = prices[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; prices.length; ++i)&#123;</span><br><span class="line">        maxProfit = Math.max(maxProfit, prices[i] - minPrice);</span><br><span class="line">        minPrice = Math.min(prices[i], minPrice);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> maxProfit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>时间复杂度O(n)</li>
+<li>空间复杂度O(1)。</li>
+</ul>
 
     </div>
 
@@ -378,7 +396,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-count">178</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

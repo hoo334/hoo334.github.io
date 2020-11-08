@@ -1139,10 +1139,22 @@
 <p><strong>示例 2:</strong></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: [7,6,4,3,1]</span><br><span class="line">输出: 0</span><br><span class="line">解释: 在这种情况下, 没有交易完成, 所以最大利润为 0。</span><br></pre></td></tr></table></figure>
 
-<p>假设我们在第 i 天之前买一张股票，想要在第 i 天卖掉它，我们肯定在前 i-1 天中选择一天价格最低的时候买入，在股票价格最高的时候卖出。但是如果在前 i-1 天中的某一天可以获得比第 i 天获得的更大利润就不能选择第 i 天卖出而要选择前 i-1 天中的最大利润。第 i 天能获得的最大利润 = max( 前 i-1 天的最大利润，第 i 天的股票价格 - 前 i-1 天股票的最低价格)。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(prices.length &lt;= <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> max = <span class="number">0</span>,min = prices[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i&lt;prices.length;++i)&#123;</span><br><span class="line">        max=Math.max(max,prices[i]-min);</span><br><span class="line">        min=Math.min(prices[i],min);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>方法一：暴力</strong></p>
+<p>我们需要找出两个数字之间的最大差值，并且第二个数字必须大于第一个数字。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> maxProfit = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; prices.length; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; prices.length; j++)&#123;</span><br><span class="line">                <span class="keyword">int</span> profit = prices[j] - prices[i];</span><br><span class="line">                <span class="keyword">if</span>(profit &gt; maxProfit)&#123;</span><br><span class="line">                    maxProfit = profit;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxProfit;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>时间复杂度O(n)，空间复杂度O(1)。</p>
+<ul>
+<li>时间复杂度O(N^2)</li>
+<li>空间复杂度O(N)</li>
+</ul>
+<p><strong>方法二：一次遍历</strong></p>
+<p>我们买股票肯定希望在历史最低点买入，在最高点卖出。使用 minPrice 记录一个历史最低价格，我们在第 i 天卖出股票的得到的利润为<code>prices[i] -minPrice</code>。我们遍历一次数组，同时维护最大利润 maxProfit 即可得到答案。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(prices.length &lt;= <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> maxProfit = <span class="number">0</span>, minPrice = prices[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; prices.length; ++i)&#123;</span><br><span class="line">        maxProfit = Math.max(maxProfit, prices[i] - minPrice);</span><br><span class="line">        minPrice = Math.min(prices[i], minPrice);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> maxProfit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>时间复杂度O(n)</li>
+<li>空间复杂度O(1)。</li>
+</ul>
 ]]></content>
       <categories>
         <category>Leetcode</category>
@@ -11435,6 +11447,71 @@
       </categories>
       <tags>
         <tag>Leetcode Hard</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>买卖股票的最佳时机II</title>
+    <url>/2020/11/08/%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BAII/</url>
+    <content><![CDATA[<h4 id="122-买卖股票的最佳时机-II"><a href="#122-买卖股票的最佳时机-II" class="headerlink" title="122. 买卖股票的最佳时机 II"></a><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/" target="_blank" rel="noopener">122. 买卖股票的最佳时机 II</a></h4><p>给定一个数组，它的第 <em>i</em> 个元素是一支给定股票第 <em>i</em> 天的价格。</p>
+<p>设计一个算法来计算你所能获取的最大利润。你可以尽可能地完成更多的交易（多次买卖一支股票）。</p>
+<p><strong>注意：</strong>你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。</p>
+ <a id="more"></a>
+
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: [7,1,5,3,6,4]</span><br><span class="line">输出: 7</span><br><span class="line">解释: 在第 2 天（股票价格 &#x3D; 1）的时候买入，在第 3 天（股票价格 &#x3D; 5）的时候卖出, 这笔交易所能获得利润 &#x3D; 5-1 &#x3D; 4 。</span><br><span class="line">     随后，在第 4 天（股票价格 &#x3D; 3）的时候买入，在第 5 天（股票价格 &#x3D; 6）的时候卖出, 这笔交易所能获得利润 &#x3D; 6-3 &#x3D; 3 。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: [1,2,3,4,5]</span><br><span class="line">输出: 4</span><br><span class="line">解释: 在第 1 天（股票价格 &#x3D; 1）的时候买入，在第 5 天 （股票价格 &#x3D; 5）的时候卖出, 这笔交易所能获得利润 &#x3D; 5-1 &#x3D; 4 。</span><br><span class="line">     注意你不能在第 1 天和第 2 天接连购买股票，之后再将它们卖出。</span><br><span class="line">     因为这样属于同时参与了多笔交易，你必须在再次购买前出售掉之前的股票。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: [7,6,4,3,1]</span><br><span class="line">输出: 0</span><br><span class="line">解释: 在这种情况下, 没有交易完成, 所以最大利润为 0。</span><br></pre></td></tr></table></figure>
+
+<p> <strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= prices.length &lt;= 3 * 10 ^ 4</code></li>
+<li><code>0 &lt;= prices[i] &lt;= 10 ^ 4</code></li>
+</ul>
+<p><strong>方法一：动态规划</strong></p>
+<p>由于不能同时参与多笔交易，每天交易结束后，手中有股票和没股票两种情况，定义<code>dp[i][0]</code>为第 i 天结束后手中没有股票的最大利润，定义<code>dp[i][1]</code>为第 i 天结束后手中有股票的最大利润。</p>
+<p>第 i 天结束时，手中没有股票有两种情况：</p>
+<ul>
+<li>第 i - 1 天没有股票，第 i 天没有买入；</li>
+<li>第 i - 1 天有股票，第 i 天卖出。</li>
+</ul>
+<p>取两种收益的最大值，我们可以写出 dp 方程：<br>$$<br>dp[i][0] = max(dp[i - 1][0], dp[i - 1][1] + prices[i])<br>$$<br>第 i 天结束时，手中有股票有两种情况：</p>
+<ul>
+<li>第 i - 1 天有股票，第 i 天没有卖出；</li>
+<li>第 i - 1 天没有股票，第 i 天买入。</li>
+</ul>
+<p>取两种收益的最大值，我们可以写出 dp 方程：<br>$$<br>dp[i][1] = max(dp[i - 1][1], dp[i - 1][0] - prices[i])<br>$$<br>考虑初始状态：第 0 天结束时，手中没有股票，收益为 0 ；第 0 天结束时，手中有股票，此时我们在第 0 天买入了股票，收益为 -prices[0]。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = prices.length;</span><br><span class="line">        <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[n][<span class="number">2</span>];</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">1</span>] = -prices[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; prices.length; i++)&#123;</span><br><span class="line">            dp[i][<span class="number">0</span>] = Math.max(dp[i - <span class="number">1</span>][<span class="number">0</span>], dp[i - <span class="number">1</span>][<span class="number">1</span>] + prices[i]);</span><br><span class="line">            dp[i][<span class="number">1</span>] = Math.max(dp[i - <span class="number">1</span>][<span class="number">1</span>], dp[i - <span class="number">1</span>][<span class="number">0</span>] - prices[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[n - <span class="number">1</span>][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>时间复杂度O(N)</li>
+<li>空间复杂度O(N)</li>
+</ul>
+<p>由于第 i 天的状态只与 第 i - 1 天的状态有关，我们可以只用 O(1)空间。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = prices.length;</span><br><span class="line">        <span class="keyword">int</span> dp0 = <span class="number">0</span>, dp1 = -prices[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; prices.length; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> newdp0 = Math.max(dp0, dp1 + prices[i]);</span><br><span class="line">            <span class="keyword">int</span> newdp1 = Math.max(dp1, dp0 - prices[i]);</span><br><span class="line">            dp0 = newdp0;</span><br><span class="line">            dp1 = newdp1;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>时间复杂度O(N)</li>
+<li>空间复杂度O(1)</li>
+</ul>
+<p><strong>方法二：贪心</strong></p>
+<p><strong>贪心算法的直觉</strong>：由于不限制交易次数，只要今天股价比昨天高，就交易。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; prices.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(prices[i] &gt; prices[i - <span class="number">1</span>])&#123;</span><br><span class="line">                ans += prices[i] - prices[i - <span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>时间复杂度O(N)</li>
+<li>空间复杂度O(1)</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>贪心</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
 </search>
