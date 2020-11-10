@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hoo334.github.io/"/>
-  <updated>2020-11-08T02:09:50.984Z</updated>
+  <updated>2020-11-10T02:21:03.928Z</updated>
   <id>https://hoo334.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>下一个排列</title>
+    <link href="https://hoo334.github.io/2020/11/10/%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%8E%92%E5%88%97/"/>
+    <id>https://hoo334.github.io/2020/11/10/%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%8E%92%E5%88%97/</id>
+    <published>2020-11-10T01:53:16.000Z</published>
+    <updated>2020-11-10T02:21:03.928Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="31-下一个排列"><a href="#31-下一个排列" class="headerlink" title="31. 下一个排列"></a><a href="https://leetcode-cn.com/problems/next-permutation/" target="_blank" rel="noopener">31. 下一个排列</a></h4><p>实现获取下一个排列的函数，算法需要将给定数字序列重新排列成字典序中下一个更大的排列。</p><p>如果不存在下一个更大的排列，则将数字重新排列成最小的排列（即升序排列）。</p><p>必须<strong><a href="https://baike.baidu.com/item/原地算法" target="_blank" rel="noopener">原地</a></strong>修改，只允许使用额外常数空间。</p><a id="more"></a><p>以下是一些例子，输入位于左侧列，其相应输出位于右侧列。<br><code>1,2,3</code> → <code>1,3,2</code><br><code>3,2,1</code> → <code>1,2,3</code><br><code>1,1,5</code> → <code>1,5,1</code></p><p>下一个排列总是比当前排列要大，除非当前排列是最大的，我们需要找到一个下一个排列，且变化的幅度尽量小。</p><p>我们需要找到一个尽量靠右的<em>较小数</em>和尽量小的<em>较大数</em>，交换这两个数使排列变大，同时交换之后我们需要将较小数右边的递减序列重排，来得到变换幅度最小的序列。</p><p>以[1, 5, 8, 4, 7, 6, 5, 3, 1]为例，我们可以得到下一个序列[1, 5, 8, 5, 1, 3, 4, 6, 7]。</p><p>直观的想法是，从右至左找到第一个不是递减序列中的值，找到了 4，它右边的递减序列为 [7, 6, 5, 3, 1]。接下来找一个数和 4 交换，这个数必须比 4 大（比 4 小的序列已经生成过）又要使变化幅度最小，我们找到了第一个大于 4 的数 5。将 4 和 5 交换，得到[1, 5, 8, 5, 7, 6, 4, 3, 1]，还需要将 5 右边的递减序列翻转，得到[1, 5, 8, 5, 1, 3, 4, 6, 7]。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">nextPermutation</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = nums.length - <span class="number">2</span>;</span><br><span class="line">        <span class="comment">//从右至左找到一个不是递减序列中的值</span></span><br><span class="line">        <span class="keyword">while</span>(i &gt;= <span class="number">0</span> &amp;&amp; nums[i] &gt;= nums[i + <span class="number">1</span>])&#123;</span><br><span class="line">            --i;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(i &gt;= <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="comment">//在递减序列中找到一个比前一个找到的值稍大的数</span></span><br><span class="line">            <span class="keyword">int</span> j = nums.length - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>(j &gt;= <span class="number">0</span> &amp;&amp; nums[i] &gt;= nums[j])&#123;</span><br><span class="line">                --j;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//交换这两个数</span></span><br><span class="line">            swap(nums, i, j);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//将右边的递减序列翻转</span></span><br><span class="line">        reverse(nums, i + <span class="number">1</span>, nums.length - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> temp = nums[i];</span><br><span class="line">        nums[i] = nums[j];</span><br><span class="line">        nums[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> left = start, right = end;</span><br><span class="line">        <span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">            swap(nums, left, right);</span><br><span class="line">            ++left;</span><br><span class="line">            --right;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li>时间复杂度O(N)</li><li>空间复杂度O(1)</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;31-下一个排列&quot;&gt;&lt;a href=&quot;#31-下一个排列&quot; class=&quot;headerlink&quot; title=&quot;31. 下一个排列&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/next-permutation/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;31. 下一个排列&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;实现获取下一个排列的函数，算法需要将给定数字序列重新排列成字典序中下一个更大的排列。&lt;/p&gt;
+&lt;p&gt;如果不存在下一个更大的排列，则将数字重新排列成最小的排列（即升序排列）。&lt;/p&gt;
+&lt;p&gt;必须&lt;strong&gt;&lt;a href=&quot;https://baike.baidu.com/item/原地算法&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;原地&lt;/a&gt;&lt;/strong&gt;修改，只允许使用额外常数空间。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Leetcode" scheme="https://hoo334.github.io/categories/Leetcode/"/>
+    
+    
+      <category term="Leetcode Medium" scheme="https://hoo334.github.io/tags/Leetcode-Medium/"/>
+    
+      <category term="数组" scheme="https://hoo334.github.io/tags/%E6%95%B0%E7%BB%84/"/>
+    
+  </entry>
   
   <entry>
     <title>买卖股票的最佳时机II</title>
@@ -521,31 +548,6 @@
     <summary type="html">
     
       &lt;h4 id=&quot;326-3的幂&quot;&gt;&lt;a href=&quot;#326-3的幂&quot; class=&quot;headerlink&quot; title=&quot;326. 3的幂&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/power-of-three/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;326. 3的幂&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;给定一个整数，写一个函数来判断它是否是 3 的幂次方。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Leetcode" scheme="https://hoo334.github.io/categories/Leetcode/"/>
-    
-    
-      <category term="数学" scheme="https://hoo334.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
-    
-      <category term="Leetcode Easy" scheme="https://hoo334.github.io/tags/Leetcode-Easy/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>计算质数</title>
-    <link href="https://hoo334.github.io/2020/09/19/%E8%AE%A1%E7%AE%97%E8%B4%A8%E6%95%B0/"/>
-    <id>https://hoo334.github.io/2020/09/19/%E8%AE%A1%E7%AE%97%E8%B4%A8%E6%95%B0/</id>
-    <published>2020-09-19T02:06:33.000Z</published>
-    <updated>2020-09-19T02:11:05.431Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="204-计数质数"><a href="#204-计数质数" class="headerlink" title="204. 计数质数"></a><a href="https://leetcode-cn.com/problems/count-primes/" target="_blank" rel="noopener">204. 计数质数</a></h4><p>统计所有小于非负整数 <em>n</em> 的质数的数量。</p><a id="more"></a><p><strong>示例:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: 10</span><br><span class="line">输出: 4</span><br><span class="line">解释: 小于 10 的质数一共有 4 个, 它们是 2, 3, 5, 7 。</span><br></pre></td></tr></table></figure><p>暴力方法会超时，我们使用<strong>厄拉多塞筛法</strong>。</p><p>该方法的核心是，<strong>一个质数的倍数不会是质数</strong>。具体来说，2 是质数，那么 4 ，6，8 … 不会是质数。</p><p>我们使用一个数组来存储是否为质数的标记。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">countPrimes</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// book 初始化全部为false，将不是质数的下标变为 true</span></span><br><span class="line">        <span class="keyword">boolean</span>[] book = <span class="keyword">new</span> <span class="keyword">boolean</span>[n];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; n; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!book[i])&#123;</span><br><span class="line">                ++count;</span><br><span class="line">                <span class="comment">//质数 i 的倍数不可能为质数，将其标记为 true</span></span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j = i; j &lt; n; j += i)&#123;</span><br><span class="line">                    book[j] = <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;204-计数质数&quot;&gt;&lt;a href=&quot;#204-计数质数&quot; class=&quot;headerlink&quot; title=&quot;204. 计数质数&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/count-primes/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;204. 计数质数&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;统计所有小于非负整数 &lt;em&gt;n&lt;/em&gt; 的质数的数量。&lt;/p&gt;
     
     </summary>
     
