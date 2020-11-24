@@ -11598,4 +11598,42 @@
         <tag>单调栈</tag>
       </tags>
   </entry>
+  <entry>
+    <title>完全二叉树的节点个数</title>
+    <url>/2020/11/24/%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E8%8A%82%E7%82%B9%E4%B8%AA%E6%95%B0/</url>
+    <content><![CDATA[<h4 id="222-完全二叉树的节点个数"><a href="#222-完全二叉树的节点个数" class="headerlink" title="222. 完全二叉树的节点个数"></a><a href="https://leetcode-cn.com/problems/count-complete-tree-nodes/" target="_blank" rel="noopener">222. 完全二叉树的节点个数</a></h4><p>给出一个<strong>完全二叉树</strong>，求出该树的节点个数。</p>
+<a id="more"></a>
+
+<p><strong>说明：</strong></p>
+<p><a href="https://baike.baidu.com/item/完全二叉树/7773232?fr=aladdin" target="_blank" rel="noopener">完全二叉树</a>的定义如下：在完全二叉树中，除了最底层节点可能没填满外，其余每层节点数都达到最大值，并且最下面一层的节点都集中在该层最左边的若干位置。若最底层为第 h 层，则该层包含 1~ 2h 个节点。</p>
+<p><strong>示例:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: </span><br><span class="line">    1</span><br><span class="line">   &#x2F; \</span><br><span class="line">  2   3</span><br><span class="line"> &#x2F; \  &#x2F;</span><br><span class="line">4  5 6</span><br><span class="line"></span><br><span class="line">输出: 6</span><br></pre></td></tr></table></figure>
+
+<p><strong>方法一：暴力</strong></p>
+<p>:) 年轻人不讲码德，暴力就完事了。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">countNodes</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> countNodes(root.left) + countNodes(root.right) + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>时间复杂度O(N)</li>
+<li>空间复杂度O(logN)</li>
+</ul>
+<p><strong>方法二：二分查找 + 位运算</strong></p>
+<p>规定根节点位于第 0 层，完全二叉树的最大层数为 h。根据二叉树的性质，最后一层的结点数最少为 1，最多为 2^h。对于最大层数为 h 的完全二叉树，结点个数在 [2^h, 2^(h + 1) - 1]范围内，可以在该范围内使用二分查找来得到完全二叉树的结点个数。</p>
+<p>根据结点个数范围的上下界得到当前需要判断的结点个数 k，如果第 k 个结点存在，则结点个数一定 大于等于 k，如果第 k 个结点不存在，则结点个数一定小于 k，因此可以将查找的范围缩小一半。</p>
+<p>如何判断第 k 个结点是否存在，如果第 k 个结点位于第 h 层，则 k 的二进制表示包含 h + 1 位，其中最高位为 1，其余各位从高到低表示根节点到第 k 个结点的路径 ，0 表示移动到左子结点，1表示移动到右子结点。</p>
+<p>例如数字 12 二进制表示 1100，则从根节点开始向下判断 右，左，左结点是否存在。</p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20201124094205904.png" alt="image-20201124094205904"></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">countNodes</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> level =  <span class="number">0</span>;</span><br><span class="line">        TreeNode node = root;</span><br><span class="line">        <span class="keyword">while</span>(node.left != <span class="keyword">null</span>)&#123;</span><br><span class="line">            ++level;</span><br><span class="line">            node = node.left;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> low = <span class="number">1</span> &lt;&lt; level, high = (<span class="number">1</span> &lt;&lt; (level + <span class="number">1</span>)) - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(low &lt; high)&#123;</span><br><span class="line">            <span class="keyword">int</span> mid = low +(high - low + <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(exists(root, level, mid))&#123;</span><br><span class="line">                low = mid;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                high = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> low;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">exists</span><span class="params">(TreeNode root, <span class="keyword">int</span> level, <span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> bits = <span class="number">1</span> &lt;&lt; (level - <span class="number">1</span>);</span><br><span class="line">        TreeNode node = root;</span><br><span class="line">        <span class="keyword">while</span> (node != <span class="keyword">null</span> &amp;&amp; bits &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span> ((bits &amp; k) == <span class="number">0</span>)&#123;</span><br><span class="line">                node = node.left;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123; </span><br><span class="line">                node = node.right;</span><br><span class="line">            &#125;</span><br><span class="line">            bits &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> node != <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20201124094629941.png" alt="image-20201124094629941"></p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode Medium</tag>
+        <tag>二分查找</tag>
+        <tag>位运算</tag>
+      </tags>
+  </entry>
 </search>
