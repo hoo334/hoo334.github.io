@@ -11754,4 +11754,104 @@
         <category>笔记</category>
       </categories>
   </entry>
+  <entry>
+    <title>托普利茨矩阵</title>
+    <url>/2021/02/22/%E6%89%98%E6%99%AE%E5%88%A9%E8%8C%A8%E7%9F%A9%E9%98%B5/</url>
+    <content><![CDATA[<h4 id="766-托普利茨矩阵"><a href="#766-托普利茨矩阵" class="headerlink" title="766. 托普利茨矩阵"></a><a href="https://leetcode-cn.com/problems/toeplitz-matrix/" target="_blank" rel="noopener">766. 托普利茨矩阵</a></h4><p>给你一个 <code>m x n</code> 的矩阵 <code>matrix</code> 。如果这个矩阵是托普利茨矩阵，返回 <code>true</code> ；否则，返回 <code>false</code> <em>。</em></p>
+<p>如果矩阵上每一条由左上到右下的对角线上的元素都相同，那么这个矩阵是 <strong>托普利茨矩阵</strong> 。</p>
+ <a id="more"></a>
+
+<p><strong>示例 1：</strong></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20210222081038267.png" alt="image-20210222081038267"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：matrix &#x3D; [[1,2,3,4],[5,1,2,3],[9,5,1,2]]</span><br><span class="line">输出：true</span><br><span class="line">解释：</span><br><span class="line">在上述矩阵中, 其对角线为: </span><br><span class="line">&quot;[9]&quot;, &quot;[5, 5]&quot;, &quot;[1, 1, 1]&quot;, &quot;[2, 2, 2]&quot;, &quot;[3, 3]&quot;, &quot;[4]&quot;。 </span><br><span class="line">各条对角线上的所有元素均相同, 因此答案是 True 。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20210222081059141.png" alt="image-20210222081059141"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：matrix &#x3D; [[1,2],[2,2]]</span><br><span class="line">输出：false</span><br><span class="line">解释：</span><br><span class="line">对角线 &quot;[1, 2]&quot; 上的元素不同。</span><br></pre></td></tr></table></figure>
+
+<p> <strong>提示：</strong></p>
+<ul>
+<li><p><code>m == matrix.length</code></p>
+</li>
+<li><p><code>n == matrix[i].length</code></p>
+</li>
+<li><p><code>1 &lt;= m, n &lt;= 20</code></p>
+</li>
+<li><p><code>0 &lt;= matrix[i][j] &lt;= 99</code></p>
+<p><strong>进阶：</strong></p>
+</li>
+<li><p>如果矩阵存储在磁盘上，并且内存有限，以至于一次最多只能将矩阵的一行加载到内存中，该怎么办？</p>
+</li>
+<li><p>如果矩阵太大，以至于一次只能将不完整的一行加载到内存中，该怎么办？</p>
+</li>
+</ul>
+<p><strong>方法一：遍历</strong></p>
+<p>可以发现，托普利兹矩阵中每一个元素都和它左上角的元素相等，我们直接比较当前元素和左上角元素是否相等。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isToeplitzMatrix</span><span class="params">(<span class="keyword">int</span>[][] matrix)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = matrix.length;</span><br><span class="line">        <span class="keyword">int</span> n = matrix[<span class="number">0</span>].length;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; m; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; n; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(matrix[i][j] != matrix[i - <span class="number">1</span>][j - <span class="number">1</span>])&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>时间复杂度O(mn)，m 和 n 分别是数组的长宽</li>
+<li>空间复杂度O(1)</li>
+</ul>
+<p>进阶问题一：将每一行从硬盘复制到内存中的一个连续数组中，在读取下一行时，直接与内存中的数据进行比较。</p>
+<p>进阶问题二：将数组竖直切分为若干个子矩阵，保证两个相邻的子矩阵至少有一行或一列是重合 的，判断子矩阵是否符合要求。</p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
+        <tag>Leetcode Easy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>绝对差不超过限制的最长连续子数组</title>
+    <url>/2021/02/21/%E7%BB%9D%E5%AF%B9%E5%B7%AE%E4%B8%8D%E8%B6%85%E8%BF%87%E9%99%90%E5%88%B6%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84/</url>
+    <content><![CDATA[<h4 id="1438-绝对差不超过限制的最长连续子数组"><a href="#1438-绝对差不超过限制的最长连续子数组" class="headerlink" title="1438. 绝对差不超过限制的最长连续子数组"></a><a href="https://leetcode-cn.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/" target="_blank" rel="noopener">1438. 绝对差不超过限制的最长连续子数组</a></h4><p>给你一个整数数组 <code>nums</code> ，和一个表示限制的整数 <code>limit</code>，请你返回最长连续子数组的长度，该子数组中的任意两个元素之间的绝对差必须小于或者等于 <code>limit</code> <em>。</em></p>
+<p>如果不存在满足条件的子数组，则返回 <code>0</code> 。</p>
+ <a id="more"></a>
+
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：nums &#x3D; [8,2,4,7], limit &#x3D; 4</span><br><span class="line">输出：2 </span><br><span class="line">解释：所有子数组如下：</span><br><span class="line">[8] 最大绝对差 |8-8| &#x3D; 0 &lt;&#x3D; 4.</span><br><span class="line">[8,2] 最大绝对差 |8-2| &#x3D; 6 &gt; 4. </span><br><span class="line">[8,2,4] 最大绝对差 |8-2| &#x3D; 6 &gt; 4.</span><br><span class="line">[8,2,4,7] 最大绝对差 |8-2| &#x3D; 6 &gt; 4.</span><br><span class="line">[2] 最大绝对差 |2-2| &#x3D; 0 &lt;&#x3D; 4.</span><br><span class="line">[2,4] 最大绝对差 |2-4| &#x3D; 2 &lt;&#x3D; 4.</span><br><span class="line">[2,4,7] 最大绝对差 |2-7| &#x3D; 5 &gt; 4.</span><br><span class="line">[4] 最大绝对差 |4-4| &#x3D; 0 &lt;&#x3D; 4.</span><br><span class="line">[4,7] 最大绝对差 |4-7| &#x3D; 3 &lt;&#x3D; 4.</span><br><span class="line">[7] 最大绝对差 |7-7| &#x3D; 0 &lt;&#x3D; 4. </span><br><span class="line">因此，满足题意的最长子数组的长度为 2 。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：nums &#x3D; [10,1,2,4,7,2], limit &#x3D; 5</span><br><span class="line">输出：4 </span><br><span class="line">解释：满足题意的最长子数组是 [2,4,7,2]，其最大绝对差 |2-7| &#x3D; 5 &lt;&#x3D; 5 。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：nums &#x3D; [4,2,2,2,4,4,2,2], limit &#x3D; 0</span><br><span class="line">输出：3</span><br></pre></td></tr></table></figure>
+
+<p> <strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= nums.length &lt;= 10^5</code></li>
+<li><code>1 &lt;= nums[i] &lt;= 10^9</code></li>
+<li><code>0 &lt;= limit &lt;= 10^9</code></li>
+</ul>
+<p><strong>方法一：暴力法（超时）</strong></p>
+<p>直接枚举子数组的开始位置和结束位置，同时维护最大最小值，并判断该子数组是否满足条件。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">longestSubarray</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> limit)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.length;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">		<span class="comment">//枚举每一个子数组nums[i ... j]</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">            <span class="comment">//初始化子数组中最大最小值</span></span><br><span class="line">            <span class="keyword">int</span> min = nums[i], max = nums[i];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i; j &lt; n; j++)&#123;<span class="comment">//对于每个子数组，更新最大最小值</span></span><br><span class="line">                <span class="keyword">if</span>(nums[j] &gt; max)&#123;</span><br><span class="line">                    max = nums[j];</span><br><span class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>(nums[j] &lt; min)&#123;</span><br><span class="line">                    min = nums[j];</span><br><span class="line">                &#125;</span><br><span class="line">				<span class="comment">//判断子数组是否满足条件并维护结果</span></span><br><span class="line">                <span class="keyword">if</span>(max - min &lt;= limit &amp;&amp; j - i + <span class="number">1</span> &gt; ans)&#123;</span><br><span class="line">                    ans = j - i + <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>时间复杂度O(n^2)</li>
+<li>空间复杂度O(1)</li>
+</ul>
+<p><strong>方法二：滑动窗口+单调队列</strong></p>
+<p>枚举每一个位置作为右端点，找到其对应的最靠左的左端点，满足区间中最大与最小值不超过 limit。我们分别使用两个单调队列保存最大和最小值。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">longestSubarray</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> limit)</span> </span>&#123;</span><br><span class="line">        Deque&lt;Integer&gt; queMax = <span class="keyword">new</span> LinkedList&lt;Integer&gt;();</span><br><span class="line">        Deque&lt;Integer&gt; queMin = <span class="keyword">new</span> LinkedList&lt;Integer&gt;();</span><br><span class="line">        <span class="keyword">int</span> n = nums.length;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>, right = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//枚举每一个右端点 right</span></span><br><span class="line">        <span class="keyword">while</span> (right &lt; n) &#123;</span><br><span class="line">            <span class="keyword">while</span> (!queMax.isEmpty() &amp;&amp; queMax.peekLast() &lt; nums[right]) &#123;</span><br><span class="line">                queMax.pollLast();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">while</span> (!queMin.isEmpty() &amp;&amp; queMin.peekLast() &gt; nums[right]) &#123;</span><br><span class="line">                queMin.pollLast();</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            queMax.offerLast(nums[right]);</span><br><span class="line">            queMin.offerLast(nums[right]);</span><br><span class="line">            <span class="comment">//当 nums[left ... right]不满足条件时将 left 右移</span></span><br><span class="line">            <span class="keyword">while</span> (!queMax.isEmpty() &amp;&amp; !queMin.isEmpty() &amp;&amp; queMax.peekFirst() - queMin.peekFirst() &gt; limit) &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[left] == queMin.peekFirst()) &#123;</span><br><span class="line">                    queMin.pollFirst();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (nums[left] == queMax.peekFirst()) &#123;</span><br><span class="line">                    queMax.pollFirst();</span><br><span class="line">                &#125;</span><br><span class="line">                left++;</span><br><span class="line">            &#125;</span><br><span class="line">            ret = Math.max(ret, right - left + <span class="number">1</span>);</span><br><span class="line">            right++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>时间复杂度O(n)</li>
+<li>空间复杂度O(n)</li>
+</ul>
+<p><strong>方法三：滑动窗口+有序集合</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">longestSubarray</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> limit)</span> </span>&#123;</span><br><span class="line">        TreeMap&lt;Integer, Integer&gt; map = <span class="keyword">new</span> TreeMap&lt;Integer, Integer&gt;();</span><br><span class="line">        <span class="keyword">int</span> n = nums.length;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>, right = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (right &lt; n) &#123;</span><br><span class="line">            map.put(nums[right], map.getOrDefault(nums[right], <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">while</span> (map.lastKey() - map.firstKey() &gt; limit) &#123;</span><br><span class="line">                map.put(nums[left], map.get(nums[left]) - <span class="number">1</span>);</span><br><span class="line">                <span class="keyword">if</span> (map.get(nums[left]) == <span class="number">0</span>) &#123;</span><br><span class="line">                    map.remove(nums[left]);</span><br><span class="line">                &#125;</span><br><span class="line">                left++;</span><br><span class="line">            &#125;</span><br><span class="line">            ret = Math.max(ret, right - left + <span class="number">1</span>);</span><br><span class="line">            right++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode Medium</tag>
+        <tag>滑动窗口</tag>
+      </tags>
+  </entry>
 </search>
