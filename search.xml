@@ -11854,4 +11854,37 @@
         <tag>滑动窗口</tag>
       </tags>
   </entry>
+  <entry>
+    <title>爱生气的书店老板</title>
+    <url>/2021/02/23/%E7%88%B1%E7%94%9F%E6%B0%94%E7%9A%84%E4%B9%A6%E5%BA%97%E8%80%81%E6%9D%BF/</url>
+    <content><![CDATA[<h4 id="1052-爱生气的书店老板"><a href="#1052-爱生气的书店老板" class="headerlink" title="1052. 爱生气的书店老板"></a><a href="https://leetcode-cn.com/problems/grumpy-bookstore-owner/" target="_blank" rel="noopener">1052. 爱生气的书店老板</a></h4><p>今天，书店老板有一家店打算试营业 <code>customers.length</code> 分钟。每分钟都有一些顾客（<code>customers[i]</code>）会进入书店，所有这些顾客都会在那一分钟结束后离开。</p>
+<p>在某些时候，书店老板会生气。 如果书店老板在第 <code>i</code> 分钟生气，那么 <code>grumpy[i] = 1</code>，否则 <code>grumpy[i] = 0</code>。 当书店老板生气时，那一分钟的顾客就会不满意，不生气则他们是满意的。</p>
+<p>书店老板知道一个秘密技巧，能抑制自己的情绪，可以让自己连续 <code>X</code> 分钟不生气，但却只能使用一次。</p>
+<p>请你返回这一天营业下来，最多有多少客户能够感到满意的数量。<br> <a id="more"></a></p>
+<p><strong>示例：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：customers &#x3D; [1,0,1,2,1,1,7,5], grumpy &#x3D; [0,1,0,1,0,1,0,1], X &#x3D; 3</span><br><span class="line">输出：16</span><br><span class="line">解释：</span><br><span class="line">书店老板在最后 3 分钟保持冷静。</span><br><span class="line">感到满意的最大客户数量 &#x3D; 1 + 1 + 1 + 1 + 7 + 5 &#x3D; 16.</span><br></pre></td></tr></table></figure>
+
+<p> <strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= X &lt;= customers.length == grumpy.length &lt;= 20000</code></li>
+<li><code>0 &lt;= customers[i] &lt;= 1000</code></li>
+<li><code>0 &lt;= grumpy[i] &lt;= 1</code></li>
+</ul>
+<p><strong>方法一：滑动窗口</strong></p>
+<p>首先我们将确定满意的顾客加起来，然后使用滑动窗口计算可以额外增加的最大满意数。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxSatisfied</span><span class="params">(<span class="keyword">int</span>[] customers, <span class="keyword">int</span>[] grumpy, <span class="keyword">int</span> X)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//统计确定满意的客户</span></span><br><span class="line">        <span class="keyword">int</span> total = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; customers.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(grumpy[i] == <span class="number">0</span>)&#123;</span><br><span class="line">                total += customers[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="comment">//统计第一个窗口中额外增加的满意数</span></span><br><span class="line">        <span class="keyword">int</span> increase = <span class="number">0</span>, maxIncrease = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; X; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(grumpy[i] == <span class="number">1</span>)&#123;</span><br><span class="line">                increase += customers[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        maxIncrease = increase;</span><br><span class="line">		<span class="comment">//使用滑动窗口计算最大满意数</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = X; i &lt; customers.length; i++)&#123;</span><br><span class="line">            increase = increase - grumpy[i - X] * customers[i - X] + grumpy[i] * customers[i];   </span><br><span class="line">            maxIncrease = Math.max(increase, maxIncrease);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> total + maxIncrease;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>时间复杂度O(n)</li>
+<li>空间复杂度O(1)</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode Medium</tag>
+        <tag>滑动窗口</tag>
+      </tags>
+  </entry>
 </search>
