@@ -11887,4 +11887,80 @@
         <tag>滑动窗口</tag>
       </tags>
   </entry>
+  <entry>
+    <title>翻转图像</title>
+    <url>/2021/02/24/%E7%BF%BB%E8%BD%AC%E5%9B%BE%E5%83%8F/</url>
+    <content><![CDATA[<h4 id="832-翻转图像"><a href="#832-翻转图像" class="headerlink" title="832. 翻转图像"></a><a href="https://leetcode-cn.com/problems/flipping-an-image/" target="_blank" rel="noopener">832. 翻转图像</a></h4><p>给定一个二进制矩阵 <code>A</code>，我们想先水平翻转图像，然后反转图像并返回结果。</p>
+<p>水平翻转图片就是将图片的每一行都进行翻转，即逆序。例如，水平翻转 <code>[1, 1, 0]</code> 的结果是 <code>[0, 1, 1]</code>。</p>
+<p>反转图片的意思是图片中的 <code>0</code> 全部被 <code>1</code> 替换， <code>1</code> 全部被 <code>0</code> 替换。例如，反转 <code>[0, 1, 1]</code> 的结果是 <code>[1, 0, 0]</code>。</p>
+<a id="more"></a>
+
+<p> <strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：[[1,1,0],[1,0,1],[0,0,0]]</span><br><span class="line">输出：[[1,0,0],[0,1,0],[1,1,1]]</span><br><span class="line">解释：首先翻转每一行: [[0,1,1],[1,0,1],[0,0,0]]；</span><br><span class="line">     然后反转图片: [[1,0,0],[0,1,0],[1,1,1]]</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：[[1,1,0,0],[1,0,0,1],[0,1,1,1],[1,0,1,0]]</span><br><span class="line">输出：[[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]</span><br><span class="line">解释：首先翻转每一行: [[0,0,1,1],[1,0,0,1],[1,1,1,0],[0,1,0,1]]；</span><br><span class="line">     然后反转图片: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]</span><br></pre></td></tr></table></figure>
+
+<p> <strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= A.length = A[0].length &lt;= 20</code></li>
+<li><code>0 &lt;= A[i][j] &lt;= 1</code></li>
+</ul>
+<p><strong>方法一：双指针</strong></p>
+<p>对于每一行元素，我们使用 left 和 right 指针来对该行元素进行水平翻转和反转操作。</p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">left</th>
+<th align="center">right</th>
+<th align="center">处理后left</th>
+<th align="center">处理后right</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">①</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">②</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">③</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">④</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+</tbody></table>
+<p>我们可以发现，当 left 和 right 指向的值相等时时，元素才需要变化，只用用该元素与 1 异或。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[][] flipAndInvertImage(<span class="keyword">int</span>[][] A) &#123;</span><br><span class="line">        <span class="keyword">int</span> n = A.length;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> left = <span class="number">0</span>, right = n - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">                <span class="keyword">if</span>(A[i][left] == A[i][right])&#123;</span><br><span class="line">                    A[i][left] ^= <span class="number">1</span>;</span><br><span class="line">                    A[i][right] ^= <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                ++left;</span><br><span class="line">                --right;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//当一行元素个数为奇数时，需要将最中间的数翻转</span></span><br><span class="line">            <span class="keyword">if</span>(left == right)&#123;</span><br><span class="line">                A[i][left] ^= <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> A;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>时间复杂度O(n^2)</li>
+<li>空间复杂度O(1)</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
+        <tag>Leetcode Easy</tag>
+      </tags>
+  </entry>
 </search>
