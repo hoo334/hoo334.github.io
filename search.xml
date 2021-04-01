@@ -10523,7 +10523,7 @@
 <p><strong>方法一：回溯搜索</strong></p>
 <p>执行一次深度优先搜索，一条路走到底，走不通的是否，返回回来，继续执行，一直递归，直到回到起点。</p>
 <p>我们可以画出搜索路径。</p>
-<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/IMG_20200920_091853.jpg" alt="IMG_20200920_091853"></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20210401094806671.png" alt=""></p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; ans = <span class="keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; subsets(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">        </span><br><span class="line">        dfs(nums, <span class="number">0</span>, <span class="keyword">new</span> ArrayDeque&lt;Integer&gt;());</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> start, Deque&lt;Integer&gt; path)</span></span>&#123;</span><br><span class="line">        ans.add(<span class="keyword">new</span> ArrayList&lt;Integer&gt;(path));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = start; i &lt; nums.length; i++)&#123;</span><br><span class="line">            path.addLast(nums[i]);</span><br><span class="line">            dfs(nums, i + <span class="number">1</span>, path);</span><br><span class="line">            path.removeLast();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>方法二：位运算</strong></p>
@@ -12224,6 +12224,187 @@
       <tags>
         <tag>Leetcode Medium</tag>
         <tag>栈</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>子集II</title>
+    <url>/2021/04/01/%E5%AD%90%E9%9B%86II/</url>
+    <content><![CDATA[<h4 id="90-子集-II"><a href="#90-子集-II" class="headerlink" title="90. 子集 II"></a><a href="https://leetcode-cn.com/problems/subsets-ii/" target="_blank" rel="noopener">90. 子集 II</a></h4><p>给你一个整数数组 <code>nums</code> ，其中可能包含重复元素，请你返回该数组所有可能的子集（幂集）。</p>
+<p>解集 <strong>不能</strong> 包含重复的子集。返回的解集中，子集可以按 <strong>任意顺序</strong> 排列。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：nums &#x3D; [1,2,2]</span><br><span class="line">输出：[[],[1],[1,2],[1,2,2],[2],[2,2]]</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：nums &#x3D; [0]</span><br><span class="line">输出：[[],[0]]</span><br></pre></td></tr></table></figure>
+
+ <a id="more"></a>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= nums.length &lt;= 10</code></li>
+<li><code>-10 &lt;= nums[i] &lt;= 10</code></li>
+</ul>
+<p><strong>方法一：回溯</strong></p>
+<p>在阅读此题解前可查看前置问题<a href="https://hoo334.github.io/2020/09/20/%E5%AD%90%E9%9B%86/">子集</a>。</p>
+<p>以数组<code>[1,2,3]</code>为例，在子集问题中我们的搜索路径如下图所示：</p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20210401094806671.png" alt="image-20210401094806671"></p>
+<p>类似的，我们画出数组<code>[1,2,2]</code>的搜索路径：</p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20210401095255560.png" alt="image-20210401095255560"></p>
+<p>可以看到[1,2] 和 [2] 出现了两次，我们在搜索的过程中需要剪枝。并且，nums 数组必须排序才能保证相同的解只出现在同一层。</p>
+<p>下面以不排序的数组 <code>[2,3,2]</code>为例，画出搜索路径：</p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20210401100627492.png" alt="image-20210401100627492"></p>
+<p>在遍历到第二个<code>[2,3]</code>时，我们发现不了前面是否遍历过<code>[2,3]</code>这个子集，排序后搜索路径为：</p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20210401100510220.png" alt="image-20210401100510220"></p>
+<p>我们只用保存前一个遍历过的数字，再后续的遍历过程中，如果遇到相同的数字直接跳过即可。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> List&lt;List&lt;Integer&gt;&gt; ans = <span class="keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; subsetsWithDup(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        dfs(nums, <span class="number">0</span>, <span class="keyword">new</span> ArrayDeque&lt;Integer&gt;());</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> start, Deque&lt;Integer&gt; path)</span></span>&#123;</span><br><span class="line">        ans.add(<span class="keyword">new</span> ArrayList&lt;Integer&gt;(path));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> pre = -<span class="number">10</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = start; i &lt; nums.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] != pre)&#123;</span><br><span class="line">                path.addLast(nums[i]);</span><br><span class="line">                dfs(nums, i + <span class="number">1</span>, path);</span><br><span class="line">                path.removeLast();</span><br><span class="line">                pre = nums[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>时间复杂度O(n * 2 ^ n)</li>
+<li>空间复杂度O(n)</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode Medium</tag>
+        <tag>回溯</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>螺旋矩阵</title>
+    <url>/2021/03/15/%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/</url>
+    <content><![CDATA[<h4 id="54-螺旋矩阵"><a href="#54-螺旋矩阵" class="headerlink" title="54. 螺旋矩阵"></a><a href="https://leetcode-cn.com/problems/spiral-matrix/" target="_blank" rel="noopener">54. 螺旋矩阵</a></h4><p>给你一个 <code>m</code> 行 <code>n</code> 列的矩阵 <code>matrix</code> ，请按照 <strong>顺时针螺旋顺序</strong> ，返回矩阵中的所有元素。</p>
+ <a id="more"></a>
+
+<p><strong>示例 1：</strong></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20210315095358506.png" alt="image-20210315095358506"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：matrix &#x3D; [[1,2,3],[4,5,6],[7,8,9]]</span><br><span class="line">输出：[1,2,3,6,9,8,7,4,5]</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20210315095445985.png" alt="image-20210315095445985"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：matrix &#x3D; [[1,2,3,4],[5,6,7,8],[9,10,11,12]]</span><br><span class="line">输出：[1,2,3,4,8,12,11,10,9,5,6,7]</span><br></pre></td></tr></table></figure>
+
+<p> <strong>提示：</strong></p>
+<ul>
+<li><code>m == matrix.length</code></li>
+<li><code>n == matrix[i].length</code></li>
+<li><code>1 &lt;= m, n &lt;= 10</code></li>
+<li><code>-100 &lt;= matrix[i][j] &lt;= 100</code></li>
+</ul>
+<p><strong>方法一：模拟</strong></p>
+<p>我们可以确定箭头方向顺序为：向右、向下、向左、向上。使用一个数组来保存访问过的元素，在遍历过程中，如果遇到数组边界或已经访问过的元素，改变到下一个方向，继续访问。直到结果数组中的元素个数等于矩阵中元素个数。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">spiralOrder</span><span class="params">(<span class="keyword">int</span>[][] matrix)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; order = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="comment">//特殊情况处理</span></span><br><span class="line">        <span class="keyword">if</span>(matrix == <span class="keyword">null</span> || matrix.length == <span class="number">0</span> || matrix[<span class="number">0</span>].length == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> order;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> rows = matrix.length, cols = matrix[<span class="number">0</span>].length;</span><br><span class="line">        <span class="keyword">boolean</span>[][] visited = <span class="keyword">new</span> <span class="keyword">boolean</span>[rows][cols];</span><br><span class="line">        <span class="keyword">int</span>[][] directions = &#123;&#123;<span class="number">0</span>, <span class="number">1</span>&#125;,&#123;<span class="number">1</span>, <span class="number">0</span>&#125;,&#123;<span class="number">0</span>, -<span class="number">1</span>&#125;,&#123;-<span class="number">1</span>, <span class="number">0</span>&#125;&#125;;</span><br><span class="line">        <span class="keyword">int</span> total = rows * cols;</span><br><span class="line">        <span class="keyword">int</span> directionIndex = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> row = <span class="number">0</span>, col = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; total; i++)&#123;</span><br><span class="line">            order.add(matrix[row][col]);</span><br><span class="line">            visited[row][col] = <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">int</span> nextRow = row + directions[directionIndex][<span class="number">0</span>], nextCol = col + directions[directionIndex][<span class="number">1</span>];</span><br><span class="line">            <span class="comment">//遇到边界或已经访问过的元素，改变方向</span></span><br><span class="line">            <span class="keyword">if</span>(nextRow &lt; <span class="number">0</span> || nextRow &gt;= rows || nextCol &lt; <span class="number">0</span> || nextCol &gt;= cols || visited[nextRow][nextCol])&#123;</span><br><span class="line">                directionIndex = (directionIndex + <span class="number">1</span>) % <span class="number">4</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            row += directions[directionIndex][<span class="number">0</span>];</span><br><span class="line">            col += directions[directionIndex][<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> order;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>时间复杂度O(n)，n 为矩阵中元素个数</li>
+<li>空间复杂度O(n)</li>
+</ul>
+<p><strong>方法二：按层遍历</strong></p>
+<p>将矩阵看成若干层，依次输出每一层的元素。</p>
+<p>对于一个矩阵，我们可以使用四个点来确定其范围，分别是左上角[top, left]，右上角[top, right]，左下角[bottom, left]，右下角[bottom, right]。</p>
+<p>访问当前层的元素顺序分别为：</p>
+<ol>
+<li><p>[top][left] … [top][right]</p>
+</li>
+<li><p>[top + 1][right] … [bottom][right]</p>
+</li>
+<li><p>[bottom][right - 1] … [bottom][left]</p>
+</li>
+<li><p>[bottom - 1][left] … [top + 1][left]</p>
+</li>
+</ol>
+<p>需要注意的是，当矩阵为一行元素（top == bottom）时，步骤1、3会造成元素重复访问;当矩阵为一列元素（left == right）时，步骤2、4 会造成元素重复访问。所以需要在访问步骤 3、4外面加上 <code>top &lt; bottom &amp;&amp; left &lt; right</code>限制，来使这两个重复访问只执行一次。</p>
+<p>要访问下一层元素，将 left 和 top 加一，right 和 bottom 减一即可。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">spiralOrder</span><span class="params">(<span class="keyword">int</span>[][] matrix)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; order = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(matrix == <span class="keyword">null</span> || matrix.length == <span class="number">0</span> || matrix[<span class="number">0</span>].length == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> order;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> rows = matrix.length, cols = matrix[<span class="number">0</span>].length;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>, right = cols - <span class="number">1</span>, bottom = rows - <span class="number">1</span>, top = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(left &lt;= right &amp;&amp; top &lt;= bottom)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = left; i &lt;= right; i++)&#123;</span><br><span class="line">                order.add(matrix[top][i]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = top + <span class="number">1</span>; i &lt;= bottom; i++)&#123;</span><br><span class="line">                order.add(matrix[i][right]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//访问限制</span></span><br><span class="line">            <span class="keyword">if</span>(left &lt; right &amp;&amp; top &lt; bottom)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i = right - <span class="number">1</span>; i &gt;= left; --i)&#123;</span><br><span class="line">                    order.add(matrix[bottom][i]);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i = bottom - <span class="number">1</span>; i &gt;= top + <span class="number">1</span>; --i)&#123;</span><br><span class="line">                    order.add(matrix[i][left]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            ++top;</span><br><span class="line">            ++left;</span><br><span class="line">            --right;</span><br><span class="line">            --bottom;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> order;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>时间复杂度O(n)，n 为矩阵中元素个数</li>
+<li>空间复杂度O(1)</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>笨阶乘</title>
+    <url>/2021/04/01/%E7%AC%A8%E9%98%B6%E4%B9%98/</url>
+    <content><![CDATA[<h4 id="1006-笨阶乘"><a href="#1006-笨阶乘" class="headerlink" title="1006. 笨阶乘"></a><a href="https://leetcode-cn.com/problems/clumsy-factorial/" target="_blank" rel="noopener">1006. 笨阶乘</a></h4><p>通常，正整数 <code>n</code> 的阶乘是所有小于或等于 <code>n</code> 的正整数的乘积。例如，<code>factorial(10) = 10 * 9 * 8 * 7 * 6 * 5 * 4 * 3 * 2 * 1</code>。</p>
+<p>相反，我们设计了一个笨阶乘 <code>clumsy</code>：在整数的递减序列中，我们以一个固定顺序的操作符序列来依次替换原有的乘法操作符：乘法(*)，除法(/)，加法(+)和减法(-)。</p>
+<p>例如，<code>clumsy(10) = 10 * 9 / 8 + 7 - 6 * 5 / 4 + 3 - 2 * 1</code>。然而，这些运算仍然使用通常的算术运算顺序：我们在任何加、减步骤之前执行所有的乘法和除法步骤，并且按从左到右处理乘法和除法步骤。</p>
+<p>另外，我们使用的除法是地板除法（<em>floor division</em>），所以 <code>10 * 9 / 8</code> 等于 <code>11</code>。这保证结果是一个整数。</p>
+<p>实现上面定义的笨函数：给定一个整数 <code>N</code>，它返回 <code>N</code> 的笨阶乘。</p>
+<a id="more"></a>
+
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：4</span><br><span class="line">输出：7</span><br><span class="line">解释：7 &#x3D; 4 * 3 &#x2F; 2 + 1</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：10</span><br><span class="line">输出：12</span><br><span class="line">解释：12 &#x3D; 10 * 9 &#x2F; 8 + 7 - 6 * 5 &#x2F; 4 + 3 - 2 * 1</span><br></pre></td></tr></table></figure>
+
+<p> <strong>提示：</strong></p>
+<ol>
+<li><code>1 &lt;= N &lt;= 10000</code></li>
+<li><code>-2^31 &lt;= answer &lt;= 2^31 - 1</code> （答案保证符合 32 位整数。）</li>
+</ol>
+<p><strong>方法一：使用栈模拟</strong></p>
+<p>运算优先级是先乘除后加减。我们可以从 N 开始，枚举N - 1，N - 2 直到 1，枚举这些数的时候，认为它们之前的操作符按乘、除、加、减交替进行。</p>
+<ul>
+<li>出现乘除法是，我们可以把栈顶元素去除，与当前的 N 进行乘除法运算，并将结果重新压入栈中</li>
+<li>出现加减法是，把减法视为加上一个数的相反数，然后压入栈，等待以后遇见乘除法时取出。</li>
+</ul>
+<p>最后将栈中所有元素相加得到答案。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">clumsy</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">        Deque&lt;Integer&gt; stack = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        stack.push(N);</span><br><span class="line">        N--;</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(N != <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(index % <span class="number">4</span> == <span class="number">0</span>)&#123;</span><br><span class="line">                stack.push(stack.pop() * N);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(index % <span class="number">4</span> == <span class="number">1</span>)&#123;</span><br><span class="line">                stack.push(stack.pop() / N);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(index % <span class="number">4</span> == <span class="number">2</span>)&#123;</span><br><span class="line">                stack.push(N);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                stack.push(-N);</span><br><span class="line">            &#125;</span><br><span class="line">            --N;</span><br><span class="line">            ++index;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(!stack.isEmpty())&#123;</span><br><span class="line">            ret += stack.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>时间复杂度O(n)</li>
+<li>空间复杂度O(n)</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode Medium</tag>
+        <tag>栈</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>设计哈希集合</title>
+    <url>/2021/03/13/%E8%AE%BE%E8%AE%A1%E5%93%88%E5%B8%8C%E9%9B%86%E5%90%88/</url>
+    <content><![CDATA[<h4 id="705-设计哈希集合"><a href="#705-设计哈希集合" class="headerlink" title="705. 设计哈希集合"></a><a href="https://leetcode-cn.com/problems/design-hashset/" target="_blank" rel="noopener">705. 设计哈希集合</a></h4><p>不使用任何内建的哈希表库设计一个哈希集合（HashSet）。</p>
+<p>实现 <code>MyHashSet</code> 类：</p>
+<ul>
+<li><code>void add(key)</code> 向哈希集合中插入值 <code>key</code> 。</li>
+<li><code>bool contains(key)</code> 返回哈希集合中是否存在这个值 <code>key</code> 。</li>
+<li><code>void remove(key)</code> 将给定值 <code>key</code> 从哈希集合中删除。如果哈希集合中没有这个值，什么也不做。</li>
+</ul>
+<a id="more"></a>
+
+<p><strong>示例：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：</span><br><span class="line">[&quot;MyHashSet&quot;, &quot;add&quot;, &quot;add&quot;, &quot;contains&quot;, &quot;contains&quot;, &quot;add&quot;, &quot;contains&quot;, &quot;remove&quot;, &quot;contains&quot;]</span><br><span class="line">[[], [1], [2], [1], [3], [2], [2], [2], [2]]</span><br><span class="line">输出：</span><br><span class="line">[null, null, null, true, false, null, true, null, false]</span><br><span class="line"></span><br><span class="line">解释：</span><br><span class="line">MyHashSet myHashSet &#x3D; new MyHashSet();</span><br><span class="line">myHashSet.add(1);      &#x2F;&#x2F; set &#x3D; [1]</span><br><span class="line">myHashSet.add(2);      &#x2F;&#x2F; set &#x3D; [1, 2]</span><br><span class="line">myHashSet.contains(1); &#x2F;&#x2F; 返回 True</span><br><span class="line">myHashSet.contains(3); &#x2F;&#x2F; 返回 False ，（未找到）</span><br><span class="line">myHashSet.add(2);      &#x2F;&#x2F; set &#x3D; [1, 2]</span><br><span class="line">myHashSet.contains(2); &#x2F;&#x2F; 返回 True</span><br><span class="line">myHashSet.remove(2);   &#x2F;&#x2F; set &#x3D; [1]</span><br><span class="line">myHashSet.contains(2); &#x2F;&#x2F; 返回 False ，（已移除）</span><br></pre></td></tr></table></figure>
+
+<pre><code>**提示：**</code></pre><ul>
+<li><code>0 &lt;= key &lt;= 106</code></li>
+<li>最多调用 <code>104</code> 次 <code>add</code>、<code>remove</code> 和 <code>contains</code> 。</li>
+</ul>
+<p><strong>方法一：链地址法</strong></p>
+<p>设哈希表的大小为 base，hash 函数为<code>hash(x) = x mod base</code>,base 取质数 769。</p>
+<p>数组中每个位置是一个链表，当计算出哈希值后，就插入对应链表中。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyHashSet</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> BASE = <span class="number">769</span>;</span><br><span class="line">    <span class="keyword">private</span> LinkedList[] data;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Initialize your data structure here. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyHashSet</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        data = <span class="keyword">new</span> LinkedList[BASE];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; BASE; i++)&#123;</span><br><span class="line">            data[i] = <span class="keyword">new</span> LinkedList&lt;Integer&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> h = hash(key);</span><br><span class="line">        Iterator&lt;Integer&gt; iterator = data[h].iterator();</span><br><span class="line">        <span class="keyword">while</span>(iterator.hasNext())&#123;</span><br><span class="line">            Integer element = iterator.next();</span><br><span class="line">            <span class="keyword">if</span>(element == key)&#123;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        data[h].offerLast(key);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">(<span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> h = hash(key);</span><br><span class="line">        Iterator&lt;Integer&gt; iterator = data[h].iterator();</span><br><span class="line">        <span class="keyword">while</span>(iterator.hasNext())&#123;</span><br><span class="line">            Integer element = iterator.next();</span><br><span class="line">            <span class="keyword">if</span>(element == key)&#123;</span><br><span class="line">                data[h].remove(element);</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Returns true if this set contains the specified element */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(<span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> h = hash(key);</span><br><span class="line">        Iterator&lt;Integer&gt; iter = data[h].iterator();</span><br><span class="line">        <span class="keyword">while</span>(iter.hasNext())&#123;</span><br><span class="line">            Integer element = iter.next();</span><br><span class="line">            <span class="keyword">if</span>(element == key)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">hash</span><span class="params">(<span class="keyword">int</span> key)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> key % BASE;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>时间复杂度O(n/b)，n为哈希表中的元素数量，b 为链表的数量，假设链表长度为均匀的。</li>
+<li>空间复杂度O(n + b)</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>哈希表</tag>
+        <tag>Leetcode Easy</tag>
       </tags>
   </entry>
 </search>
