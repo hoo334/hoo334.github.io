@@ -12513,4 +12513,38 @@
         <tag>双指针，Leetcode Hard</tag>
       </tags>
   </entry>
+  <entry>
+    <title>森林中的兔子</title>
+    <url>/2021/04/04/%E6%A3%AE%E6%9E%97%E4%B8%AD%E7%9A%84%E5%85%94%E5%AD%90/</url>
+    <content><![CDATA[<h4 id="781-森林中的兔子"><a href="#781-森林中的兔子" class="headerlink" title="781. 森林中的兔子"></a><a href="https://leetcode-cn.com/problems/rabbits-in-forest/" target="_blank" rel="noopener">781. 森林中的兔子</a></h4><p>森林中，每个兔子都有颜色。其中一些兔子（可能是全部）告诉你还有多少其他的兔子和自己有相同的颜色。我们将这些回答放在 <code>answers</code> 数组里。</p>
+<p>返回森林中兔子的最少数量。</p>
+<a id="more"></a>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">示例:</span><br><span class="line">输入: answers &#x3D; [1, 1, 2]</span><br><span class="line">输出: 5</span><br><span class="line">解释:</span><br><span class="line">两只回答了 &quot;1&quot; 的兔子可能有相同的颜色，设为红色。</span><br><span class="line">之后回答了 &quot;2&quot; 的兔子不会是红色，否则他们的回答会相互矛盾。</span><br><span class="line">设回答了 &quot;2&quot; 的兔子为蓝色。</span><br><span class="line">此外，森林中还应有另外 2 只蓝色兔子的回答没有包含在数组中。</span><br><span class="line">因此森林中兔子的最少数量是 5: 3 只回答的和 2 只没有回答的。</span><br><span class="line"></span><br><span class="line">输入: answers &#x3D; [10, 10, 10]</span><br><span class="line">输出: 11</span><br><span class="line"></span><br><span class="line">输入: answers &#x3D; []</span><br><span class="line">输出: 0</span><br></pre></td></tr></table></figure>
+
+<p><strong>说明:</strong></p>
+<ol>
+<li><code>answers</code> 的长度最大为<code>1000</code>。</li>
+<li><code>answers[i]</code> 是在 <code>[0, 999]</code> 范围内的整数。</li>
+</ol>
+<p><strong>方法一：贪心</strong></p>
+<p>两只相同颜色的兔子看到的其他同色兔子数必然是相同的。反之，若两只兔子看到的其他同色兔子数不同，那么这两只兔子颜色也不同。</p>
+<p>因此，将 answer 中值相同的元素分为一组，对于每一组，计算出兔子的最少数量，然后将所有组的计算结果累加，就是最终的答案。</p>
+<p>例如，现在有 13 只兔子回答 5，可以肯定至少有 3 种颜色的兔子。假设一只蓝色兔子回答 5 ，那么还有 5 只蓝色兔子；假设还有一只红色兔子回答 5 ，那么还有 5 只红色兔子；为了最小化可能的兔子数量，我们假设这 12 只兔子都在这 13 只兔子中。还剩下 1 只其他颜色兔子回答 5 ，那么其他颜色的兔子也为 5 只。最少会有 18 只兔子。</p>
+<p>一般如果有 x 只兔子回答 y，则至少有 ceil(x / (y  + 1))种不同的颜色，且每种颜色有 y  + 1 只兔子，因此兔子数至少为<br>$$<br>\lceil \frac{x}{y + 1}\rceil * (y + 1)<br>$$</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numRabbits</span><span class="params">(<span class="keyword">int</span>[] answers)</span> </span>&#123;</span><br><span class="line">        Map&lt;Integer, Integer&gt; count = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> y : answers)&#123;</span><br><span class="line">            count.put(y, count.getOrDefault(y, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(Map.Entry&lt;Integer, Integer&gt; entry : count.entrySet())&#123;</span><br><span class="line">            <span class="keyword">int</span> y = entry.getKey(), x = entry.getValue();</span><br><span class="line">            ans += (x + y) / (y + <span class="number">1</span>) * (y + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>时间复杂度O(n)</li>
+<li>空间复杂度O(n)</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode Medium</tag>
+        <tag>贪心</tag>
+      </tags>
+  </entry>
 </search>
