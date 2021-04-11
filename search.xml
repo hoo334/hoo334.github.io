@@ -12596,4 +12596,48 @@
         <tag>二分查找</tag>
       </tags>
   </entry>
+  <entry>
+    <title>丑数II</title>
+    <url>/2021/04/11/%E4%B8%91%E6%95%B0II/</url>
+    <content><![CDATA[<h4 id="264-丑数-II"><a href="#264-丑数-II" class="headerlink" title="264. 丑数 II"></a><a href="https://leetcode-cn.com/problems/ugly-number-ii/" target="_blank" rel="noopener">264. 丑数 II</a></h4><p>给你一个整数 <code>n</code> ，请你找出并返回第 <code>n</code> 个 <strong>丑数</strong> 。</p>
+<p><strong>丑数</strong> 就是只包含质因数 <code>2</code>、<code>3</code> 和/或 <code>5</code> 的正整数。</p>
+ <a id="more"></a>
+
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：n &#x3D; 10</span><br><span class="line">输出：12</span><br><span class="line">解释：[1, 2, 3, 4, 5, 6, 8, 9, 10, 12] 是由前 10 个丑数组成的序列。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：n &#x3D; 1</span><br><span class="line">输出：1</span><br><span class="line">解释：1 通常被视为丑数。</span><br></pre></td></tr></table></figure>
+
+<p> <strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= n &lt;= 1690</code></li>
+</ul>
+<p><strong>方法一：最小堆</strong></p>
+<p>初始时堆为空，首先将最小的丑数 1 加入堆，每次取出堆顶元素 x，则 x 是堆中最小的丑数，2x，3x，5x也是丑数，因此将 2x，3x，5x，加入堆中，但这会导致出现重复元素，为了避免出现重复元素，我们使用哈希表去重。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">nthUglyNumber</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] factors = &#123;<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>&#125;;</span><br><span class="line">        Set&lt;Long&gt; seen = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        PriorityQueue&lt;Long&gt; heap = <span class="keyword">new</span> PriorityQueue&lt;&gt;();</span><br><span class="line">        seen.add(<span class="number">1L</span>);</span><br><span class="line">        heap.offer(<span class="number">1L</span>);</span><br><span class="line">        <span class="keyword">int</span> ugly = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">            <span class="keyword">long</span> curr = heap.poll();</span><br><span class="line">            ugly = (<span class="keyword">int</span>) curr;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> factor : factors)&#123;</span><br><span class="line">                <span class="keyword">long</span> next = curr * factor;</span><br><span class="line">                <span class="keyword">if</span>(seen.add(next))&#123; </span><br><span class="line">                    heap.offer(next);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ugly;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>时间复杂度O(nlogn)</li>
+<li>空间复杂度O(n)</li>
+</ul>
+<p><strong>方法二：动态规划</strong></p>
+<p>在方法一中，我们存储了较多的丑数，导致空间复杂度较高。我们可以使用三个指针来指向最小的三个丑数。</p>
+<p>定义数组 dp，dp[i] 表示第 i 个丑数，第 n 个丑数为 dp[n]，dp[1] = 1。</p>
+<p>定义三个指针 p2，p3，p5，下一个丑数是当前指针指向的凑数乘以对应的质因数。下一个丑数分别为，2 * p2, 3 * p3, 5 * p5，我们取这三个数的最小值，然后将使用过的指针加一。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">nthUglyNumber</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">1</span>];</span><br><span class="line">        dp[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> p2 = <span class="number">1</span>, p3 = <span class="number">1</span>, p5 = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> num2 = dp[p2] * <span class="number">2</span>, num3 = dp[p3] * <span class="number">3</span>, num5 = dp[p5] * <span class="number">5</span>;</span><br><span class="line">            <span class="comment">//取三个数中的最小值</span></span><br><span class="line">            dp[i] = Math.min(Math.min(num2, num3), num5);</span><br><span class="line">            <span class="comment">//将使用过的指针加一</span></span><br><span class="line">            <span class="keyword">if</span>(dp[i] == num2)&#123;</span><br><span class="line">                ++p2;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(dp[i] == num3)&#123;</span><br><span class="line">                ++p3;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(dp[i] == num5)&#123;</span><br><span class="line">                ++p5;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>时间复杂度O(n)</li>
+<li>空间复杂度O(n)</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode Medium</tag>
+        <tag>动态规划</tag>
+      </tags>
+  </entry>
 </search>
