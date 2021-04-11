@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hoo334.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="207. 课程表你这个学期必须选修 numCourse 门课程，记为 0 到 numCourse-1 。 在选修某些课程之前需要一些先修课程。 例如，想要学习课程 0 ，你需要先完成课程 1 ，我们用一个匹配来表示他们：[0,1] 给定课程总量以及它们的先决条件，请你判断是否可能完成所有课程的学习？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="课程表">
+<meta property="og:url" content="https://hoo334.github.io/2020/08/04/%E8%AF%BE%E7%A8%8B%E8%A1%A8/index.html">
+<meta property="og:site_name" content="echo">
+<meta property="og:description" content="207. 课程表你这个学期必须选修 numCourse 门课程，记为 0 到 numCourse-1 。 在选修某些课程之前需要一些先修课程。 例如，想要学习课程 0 ，你需要先完成课程 1 ，我们用一个匹配来表示他们：[0,1] 给定课程总量以及它们的先决条件，请你判断是否可能完成所有课程的学习？">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/image-20200804101354711.png">
+<meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/image-20200804101551878.png">
+<meta property="article:published_time" content="2020-08-04T02:07:41.000Z">
+<meta property="article:modified_time" content="2020-08-04T03:00:25.042Z">
+<meta property="article:author" content="hoo334">
+<meta property="article:tag" content="Leetcode Medium">
+<meta property="article:tag" content="DFS">
+<meta property="article:tag" content="BFS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/hoo334/picgo/raw/master//img/image-20200804101354711.png">
+
+<link rel="canonical" href="https://hoo334.github.io/2020/08/04/%E8%AF%BE%E7%A8%8B%E8%A1%A8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>课程表 | echo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="echo" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">echo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">任生命穿梭 时间的角落 </p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hoo334.github.io/2020/08/04/%E8%AF%BE%E7%A8%8B%E8%A1%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar2.jpg">
+      <meta itemprop="name" content="hoo334">
+      <meta itemprop="description" content="弃坑C++，转Java！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="echo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          课程表
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-08-04 10:07:41 / Modified: 11:00:25" itemprop="dateCreated datePublished" datetime="2020-08-04T10:07:41+08:00">2020-08-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2020/08/04/%E8%AF%BE%E7%A8%8B%E8%A1%A8/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/08/04/%E8%AF%BE%E7%A8%8B%E8%A1%A8/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="207-课程表"><a href="#207-课程表" class="headerlink" title="207. 课程表"></a><a href="https://leetcode-cn.com/problems/course-schedule/" target="_blank" rel="noopener">207. 课程表</a></h4><p>你这个学期必须选修 <code>numCourse</code> 门课程，记为 <code>0</code> 到 <code>numCourse-1</code> 。</p>
+<p>在选修某些课程之前需要一些先修课程。 例如，想要学习课程 0 ，你需要先完成课程 1 ，我们用一个匹配来表示他们：<code>[0,1]</code></p>
+<p>给定课程总量以及它们的先决条件，请你判断是否可能完成所有课程的学习？</p>
+<a id="more"></a>
+
+<p> <strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: 2, [[1,0]] </span><br><span class="line">输出: true</span><br><span class="line">解释: 总共有 2 门课程。学习课程 1 之前，你需要完成课程 0。所以这是可能的。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: 2, [[1,0],[0,1]]</span><br><span class="line">输出: false</span><br><span class="line">解释: 总共有 2 门课程。学习课程 1 之前，你需要先完成课程 0；并且学习课程 0 之前，你还应先完成课程 1。这是不可能的。</span><br></pre></td></tr></table></figure>
+
+<p> <strong>提示：</strong></p>
+<ol>
+<li>输入的先决条件是由 <strong>边缘列表</strong> 表示的图形，而不是 邻接矩阵 。详情请参见<a href="http://blog.csdn.net/woaidapaopao/article/details/51732947" target="_blank" rel="noopener">图的表示法</a>。</li>
+<li>你可以假定输入的先决条件中没有重复的边。</li>
+<li><code>1 &lt;= numCourses &lt;= 10^5</code></li>
+</ol>
+<p>此题可以看作判断一个有向图是否存在环，如果图中存在环，则不存在拓扑排序。如果图中不存在环，则可能存在不止一种拓扑排序。</p>
+<p>不存在拓扑排序：</p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20200804101354711.png" alt="image-20200804101354711"></p>
+<p>存在拓扑排序：</p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20200804101551878.png" alt="image-20200804101551878"></p>
+<p>上图中存在拓扑排序中的一种为：[0, 2, 1, 3, 5, 6, 4]。</p>
+<p>求拓扑序列方法：不断取下<strong>「入度」为零</strong>的结点直到图中没有结点或没有入度为零的结点，按取下结点的顺序就得到了拓扑排序。</p>
+<p>边缘列表就是存储图的每一条边， <code>[[1,0]]</code>代表存在一条结点 0 到结点 1 的边。</p>
+<p><strong>方法一：BFS</strong></p>
+<p>我们首先统计每个结点的出边信息和入度信息，首先将入度为零的结点加入队列，取下一个结点，并将该结点所指向的结点入度减一，同时将入度减为零的结点加入队列，不断重复这个步骤直到队列为空，取下结点的顺序就是拓扑排序。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; edges;<span class="comment">//edges[i] 为结点 i 所指向的结点数组</span></span><br><span class="line">    <span class="keyword">int</span>[] indeg;<span class="comment">//indeg[i]为结点 i 的入度</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">canFinish</span><span class="params">(<span class="keyword">int</span> numCourses, <span class="keyword">int</span>[][] prerequisites)</span> </span>&#123;</span><br><span class="line">        edges = <span class="keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numCourses; i++)&#123;</span><br><span class="line">            edges.add(<span class="keyword">new</span> ArrayList&lt;Integer&gt;());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        indeg = <span class="keyword">new</span> <span class="keyword">int</span>[numCourses];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span>[] edge : prerequisites)&#123;</span><br><span class="line">            <span class="comment">//存在 edge[1] 到 edge[0] 的边，把edge[0] 加入到 edge[1]</span></span><br><span class="line">            edges.get(edge[<span class="number">1</span>]).add(edge[<span class="number">0</span>]);</span><br><span class="line">            <span class="comment">//edge[0] 入度加一</span></span><br><span class="line">            ++indeg[edge[<span class="number">0</span>]];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//queue 存储入度为 0 的结点</span></span><br><span class="line">        Queue&lt;Integer&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numCourses; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(indeg[i] == <span class="number">0</span>)&#123;</span><br><span class="line">                queue.offer(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="comment">//visited 记录已经取下的结点个数</span></span><br><span class="line">        <span class="keyword">int</span> visited = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(!queue.isEmpty())&#123;</span><br><span class="line">            ++visited;</span><br><span class="line">            <span class="comment">//取下一个入度为 0 的结点</span></span><br><span class="line">            <span class="keyword">int</span> u = queue.poll();</span><br><span class="line">            <span class="comment">//将该结点所指向的结点的入度减一</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> v : edges.get(u))&#123;</span><br><span class="line">                --indeg[v];</span><br><span class="line">                <span class="comment">//将入度为 0 的结点加入队列</span></span><br><span class="line">                <span class="keyword">if</span>(indeg[v] == <span class="number">0</span>)&#123;</span><br><span class="line">                    queue.offer(v);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//能取下所有结点则存在拓扑排序</span></span><br><span class="line">        <span class="keyword">return</span> visited == numCourses;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度 O(n+m)，其中 n 为课程数，m 为先修课程的要求数。空间复杂度 O(n+m)。</p>
+<p><strong>方法二：DFS</strong></p>
+<p>我们也可以使用深度优先搜索来找到拓扑排序，我们使用一个栈来存储拓扑排序。对于任意一个结点，我们首先访问该结点，继续访问该结点指向的结点，一直递归地进行这个操作，直到当前访问的结点出度为 0 ，就开始递归返回，在返回的过程中将结点加入栈中。对所有未搜索过的结点进行深度优先搜索，最后得到的栈中，从栈顶到栈底就是拓扑排序。</p>
+<p>对于图中的任意结点有三个状态：</p>
+<ul>
+<li>未搜索，还没有搜索到这个结点；</li>
+<li>搜索中，已经搜索过这个结点，还未回溯到该结点，此时这个结点还没有入栈；</li>
+<li>已完成，已经搜索过这个结点，已经将该结点入栈。</li>
+</ul>
+<p>每一轮深度优先搜索开始时，我们选择一个未搜索过的结点。</p>
+<p>算法流程：</p>
+<ul>
+<li><p>将当前搜索的结点 u 标记为搜索中，遍历该结点所指向的每一个结点 v</p>
+<ul>
+<li>如果 v 为 未搜索 ，那么开始搜索 v，等待回溯到 u；</li>
+<li>如果 v 为搜索中，那么图中存在一个环，不存在拓扑序列；</li>
+<li>如果 v 为已完成，v 已经在栈中，u 还不在栈中，满足栈中 u 在 v 的上方，不用操作。</li>
+</ul>
+</li>
+<li><p>当 u 所指向的所有结点都为 已完成 时，将 u 放入栈中，将其标为 已完成。</p>
+</li>
+</ul>
+<p>由于我们不需要拓扑序列，只用判断它是否存在，我们只用一个布尔值来代替栈。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; edges;</span><br><span class="line">    <span class="keyword">int</span>[] visited;</span><br><span class="line">    <span class="keyword">boolean</span> valid = <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">canFinish</span><span class="params">(<span class="keyword">int</span> numCourses, <span class="keyword">int</span>[][] prerequisites)</span> </span>&#123;</span><br><span class="line">        edges = <span class="keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numCourses; i++)&#123;</span><br><span class="line">            edges.add(<span class="keyword">new</span> ArrayList&lt;Integer&gt;());</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="comment">//visited[i] 为结点 i 的状态，0 代表未搜索，1 代表搜索中，2 代表已完成</span></span><br><span class="line">        visited = <span class="keyword">new</span> <span class="keyword">int</span>[numCourses];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span>[] edge : prerequisites)&#123;</span><br><span class="line">            edges.get(edge[<span class="number">1</span>]).add(edge[<span class="number">0</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="comment">//拓扑序列存在时搜索</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numCourses &amp;&amp; valid; i++)&#123;</span><br><span class="line">            <span class="comment">//不断选取未搜索的结点进行 DFS</span></span><br><span class="line">            <span class="keyword">if</span>(visited[i] == <span class="number">0</span>)&#123;</span><br><span class="line">                dfs(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> valid;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">        <span class="comment">//将当前结点 u 状态改为 搜索中</span></span><br><span class="line">        visited[u] = <span class="number">1</span>;</span><br><span class="line">        <span class="comment">//选取 u 所指向的结点进行 DFS</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> v : edges.get(u))&#123;</span><br><span class="line">            <span class="comment">//u 指向的结点 v 未搜索过，递归地搜索</span></span><br><span class="line">            <span class="keyword">if</span>(visited[v] == <span class="number">0</span>)&#123;</span><br><span class="line">                dfs(v);</span><br><span class="line">                <span class="comment">//搜索过程中出现环，返回</span></span><br><span class="line">                <span class="keyword">if</span>(!valid)&#123;</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(visited[v] == <span class="number">1</span>)&#123;<span class="comment">//存在环，将 valid 设为false，返回</span></span><br><span class="line">                valid = <span class="keyword">false</span>;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//将结点 u 设为已完成状态</span></span><br><span class="line">        visited[u] = <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度 O(n+m)，其中 n 为课程数，m 为先修课程的要求数。空间复杂度 O(n+m)。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Leetcode-Medium/" rel="tag"># Leetcode Medium</a>
+              <a href="/tags/DFS/" rel="tag"># DFS</a>
+              <a href="/tags/BFS/" rel="tag"># BFS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/08/03/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%8A%A0/" rel="prev" title="字符串相加">
+      <i class="fa fa-chevron-left"></i> 字符串相加
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/08/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C(%E8%B0%A2%E5%B8%8C%E4%BB%81)/" rel="next" title="计算机网络(谢希仁)">
+      计算机网络(谢希仁) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#207-课程表"><span class="nav-number">1.</span> <span class="nav-text">207. 课程表</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="hoo334"
+      src="/images/avatar2.jpg">
+  <p class="site-author-name" itemprop="name">hoo334</p>
+  <div class="site-description" itemprop="description">弃坑C++，转Java！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">202</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hoo334" title="Github → https:&#x2F;&#x2F;github.com&#x2F;hoo334" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>Github</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:liminghu98@foxmail.com" title="E-Mail → mailto:liminghu98@foxmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hoo334</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'EiY3VXyWjvwDilIGKwC1eVm8-gzGzoHsz',
+      appKey     : 'rkL4uHX26hqdosKCRFk0Qf7u',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
