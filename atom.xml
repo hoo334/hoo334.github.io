@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hoo334.github.io/"/>
-  <updated>2021-04-11T02:58:54.086Z</updated>
+  <updated>2021-04-11T11:16:18.621Z</updated>
   <id>https://hoo334.github.io/</id>
   
   <author>
@@ -15,6 +15,21 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>test</title>
+    <link href="https://hoo334.github.io/2021/04/11/test/"/>
+    <id>https://hoo334.github.io/2021/04/11/test/</id>
+    <published>2021-04-11T11:16:18.000Z</published>
+    <updated>2021-04-11T11:16:18.621Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>丑数II</title>
@@ -519,27 +534,6 @@
       <category term="数组" scheme="https://hoo334.github.io/tags/%E6%95%B0%E7%BB%84/"/>
     
       <category term="Leetcode Easy" scheme="https://hoo334.github.io/tags/Leetcode-Easy/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NSGA2 遗传算法</title>
-    <link href="https://hoo334.github.io/2020/12/27/NSGA2/"/>
-    <id>https://hoo334.github.io/2020/12/27/NSGA2/</id>
-    <published>2020-12-27T01:02:38.000Z</published>
-    <updated>2021-02-20T01:40:40.673Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="NSGA2"><a href="#NSGA2" class="headerlink" title="NSGA2"></a>NSGA2</h1><p>快速的、精英主义的、多目标遗传算法</p><a id="more"></a><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>使用非支配排序和共享的多目标进化算法（EA）主要受到批评：1）（3）O(MN^3)计算复杂度（其中，M为目标函数数量和人口数量 N）；  2）非民族主义的方法；  3）需要指定共享参数。 在本文中，我们提出了一种基于非支配排序的多目标EA（MOEA），称为非支配排序遗传算法II（NSGA-II），它可以缓解上述三个难题。 具体来说，提出了一种具有（2）计算复杂度的快速非支配排序方法。 另外，提出了一个选择算子，该算子通过组合父母和后代种群并选择最佳的（相对于适应性和传播性）解决方案来创建交配池。 针对棘手的测试问题的仿真结果表明，与帕累托归档的演化策略和强度帕累托EA相比，拟议的NSGA-II在大多数问题中都能找到更好的解决方案分布，并且能够在真正的帕累托最优前沿附近找到更好的收敛性。 另外两个精英MOEA特别重视创建多样化的帕累托最优阵线。<br>   此外，我们修改了优势的定义，以便有效地解决约束性多目标问题。 将受约束的NSGA-II在许多测试问题（包括五目标七约束的非线性问题）上的仿真结果与另一个受约束的多目标优化器进行了比较，并且观察到NSGA-II的性能要好得多。</p><h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><h3 id="非支配排序"><a href="#非支配排序" class="headerlink" title="非支配排序"></a>非支配排序</h3><p>将种群 P 分级为 F1，F2， F3…</p><p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20201123101830454.png" alt="image-20201123101830454"></p><p>对于每个个体，有两个参数：</p><ul><li>n_p，支配 p 的个体数</li><li>S_p，被 p 支配的个体数</li></ul><p>算法首先对每个个体计算 n_p 和 S_p，并将 n_p = 0 的个体放入 F1集合中，并设 p_rank = 1。这个操作的时间复杂度为 O(N^2)，空间复杂度O(N^2)，N 为种群的个体数。</p><p>非支配排序步骤：</p><ol><li>对集合 F_i（i 初始化为 1）中的每个个体 p（n_p = 0），它的支配个体集合为 S_p，遍历集合中的每个元素 q，执行 n_q -= 1，如果 q 仅被 p 支配（即 n_q = 1），则代表它是下一层 F_(i + 1) 的元素，q_rank = i + 1，将其加入到集合 Q 中。</li><li>i = i + 1，记 F_i 中得到的个体为第 i 个非支配层的个体，F_i = Q ，重复步骤 1，直到整个种群被分级。 </li></ol><h3 id="拥挤度"><a href="#拥挤度" class="headerlink" title="拥挤度"></a>拥挤度</h3><p>拥挤度是指种群中给定个体的周围个体的密度,直观上可表示为个体。</p><p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20201123104555048.png" alt="image-20201123104555048"></p><p>长方形的周长就是 i 的拥挤度。拥挤距离计算需要根据每个目标函数值按升序对人群进行排序。</p><p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20201123204159237.png" alt="image-20201123204159237"></p><p>在带精英策略的非支配排序遗传算法中，拥挤度的计算是保证种群多样性的一个重要环节。</p><p>拥挤距离计算需要根据每个目标函数值按升序对人群进行排序。 </p><p>I[i].m 是集合 I 中的第 i 个个体的第 m 个对象函数值。</p><p>算法步骤：</p><p>初始化每个个体的拥挤度为 0，对于每个目标函数值 m，对种群进行排序，令两个边界的两个个体拥挤度为无穷。</p><p>计算拥挤度：</p><p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20201123212058306.png" alt="image-20201123212058306"></p><p>将每个归一化后的值加入拥挤度，其中<img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20201123212113353.png" alt="image-20201123212113353">为每个函数值归一化后的值。</p><h3 id="拥挤度比较算子"><a href="#拥挤度比较算子" class="headerlink" title="拥挤度比较算子"></a>拥挤度比较算子</h3><p>在经过非支配排序和拥挤度计算后，我们得到非支配排序 i_rank 和拥挤度 i_distance。</p><p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20201123214216461.png" alt="image-20201123214216461"></p><p>在具有不同非支配等级的两个解决方案之间，我们倾向于非支配等级较低（更好）的解决方案。否则，如果两个解决方案属于同一个非支配层，那么我们更喜欢位于不拥挤的解决方案（拥挤度越大，证明当前解决方案越稀疏）。</p><h3 id="主循环"><a href="#主循环" class="headerlink" title="主循环"></a>主循环</h3><p>最初，将创建一个随机的父母群体。 人口基于非统治进行排序。 每个解决方案的适应性（或等级）均等于其非支配级别（1是最佳级别，2是次佳级别，依此类推）。 因此，假定适合度最小。 首先，通常使用二元锦标赛选择，重组和变异运算符来创建大小为后代的种群Q0。</p><p>首先得到一个合并种群<img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20201123221904004.png" alt="image-20201123221904004">，种群大小为 2N。对该种群进行非支配排序，最优非支配集合 F1 中的解是最优解，比种群中的其他解更加重要。如果 F1 的大小小于 N，将其加入新种群P_(t + 1)，将剩下的非支配层按照它们的顺序加入 P_(t + 1)。</p><p>我们要使 P_(t + 1)的大小为 N，对最后一个非支配层（例如 图2中的 F3）使用拥挤度比较算子对解进行降序排序，取最后一个非支配层的前 N - |P _ (t + 1)|个解。然后对 P_(t + 1)进行选择，交叉和变异得到 Q _ (t + 1)，然后继续进行下一次循环。</p><p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20201123215417480.png" alt="image-20201123215417480"></p><p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20201123215444579.png" alt="image-20201123215444579"></p><p>  “变异”运算符是用于生成修饰种群的多个运算符（如交叉，变异等）的集合。 交叉算子的目的是从交配池中随机选择两个或多个解决方案（父代），并通过在父解决方案之间交换信息来创建一个或多个解决方案。 交叉算子的交叉概率为p; 指出参与交叉操作的人口成员的比例。 剩下的1-p人口的比例只是复制到修改后的（儿童）人口中。 在具有n个实值变量并涉及与两个父解的交叉的实参优化的上下文中，每个变量可以一次交叉。 依赖于两个父变量值之间的差异的概率分布通常用于创建两个新数字，作为围绕两个父变量值的子变量[5]。 除了可变方式重组算子，矢量方式重组算子还建议将父解决方案变量之间的相关性传播到创建的子解决方案中[6，7]。</p><h3 id="支配"><a href="#支配" class="headerlink" title="支配"></a>支配</h3><p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20201124133529203.png" alt=""></p><h3 id="非支配前沿"><a href="#非支配前沿" class="headerlink" title="非支配前沿"></a>非支配前沿</h3><p>图中的非支配前言为 3，5，6 从 3 到 5 ，f1 的收益变大，但 f2 收益变小。</p><p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20201124134131436.png" alt=""></p><h2 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h2><p>与单目标优化不同，多目标优化中有两个目标：1）收敛到帕累托最优集；2）维持帕累托最优集的解的多样性。</p><p>第一个度量 γ 度量到一组已知的Pareto最优解的收敛程度。第二个度量标准 Δ 衡量获得的解决方案之间实现的扩展程度。</p><p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20201127193127398.png" alt="image-20201127193127398"></p><p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20201127190055560.png" alt="image-20201127190055560"></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;NSGA2&quot;&gt;&lt;a href=&quot;#NSGA2&quot; class=&quot;headerlink&quot; title=&quot;NSGA2&quot;&gt;&lt;/a&gt;NSGA2&lt;/h1&gt;&lt;p&gt;快速的、精英主义的、多目标遗传算法&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="笔记" scheme="https://hoo334.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
-    
     
   </entry>
   
