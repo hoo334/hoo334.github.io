@@ -13140,4 +13140,54 @@
         <tag>动态规划</tag>
       </tags>
   </entry>
+  <entry>
+    <title>制作m束花所需的最少天数</title>
+    <url>/2021/05/09/%E5%88%B6%E4%BD%9Cm%E6%9D%9F%E8%8A%B1%E6%89%80%E9%9C%80%E7%9A%84%E6%9C%80%E5%B0%91%E5%A4%A9%E6%95%B0/</url>
+    <content><![CDATA[<h4 id="1482-制作-m-束花所需的最少天数"><a href="#1482-制作-m-束花所需的最少天数" class="headerlink" title="1482. 制作 m 束花所需的最少天数"></a><a href="https://leetcode-cn.com/problems/minimum-number-of-days-to-make-m-bouquets/" target="_blank" rel="noopener">1482. 制作 m 束花所需的最少天数</a></h4><p>给你一个整数数组 <code>bloomDay</code>，以及两个整数 <code>m</code> 和 <code>k</code> 。</p>
+<p>现需要制作 <code>m</code> 束花。制作花束时，需要使用花园中 <strong>相邻的 <code>k</code> 朵花</strong> 。</p>
+<p>花园中有 <code>n</code> 朵花，第 <code>i</code> 朵花会在 <code>bloomDay[i]</code> 时盛开，<strong>恰好</strong> 可以用于 <strong>一束</strong> 花中。</p>
+<p>请你返回从花园中摘 <code>m</code> 束花需要等待的最少的天数。如果不能摘到 <code>m</code> 束花则返回 <strong>-1</strong> 。</p>
+ <a id="more"></a>
+
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：bloomDay &#x3D; [1,10,3,10,2], m &#x3D; 3, k &#x3D; 1</span><br><span class="line">输出：3</span><br><span class="line">解释：让我们一起观察这三天的花开过程，x 表示花开，而 _ 表示花还未开。</span><br><span class="line">现在需要制作 3 束花，每束只需要 1 朵。</span><br><span class="line">1 天后：[x, _, _, _, _]   &#x2F;&#x2F; 只能制作 1 束花</span><br><span class="line">2 天后：[x, _, _, _, x]   &#x2F;&#x2F; 只能制作 2 束花</span><br><span class="line">3 天后：[x, _, x, _, x]   &#x2F;&#x2F; 可以制作 3 束花，答案为 3</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：bloomDay &#x3D; [1,10,3,10,2], m &#x3D; 3, k &#x3D; 2</span><br><span class="line">输出：-1</span><br><span class="line">解释：要制作 3 束花，每束需要 2 朵花，也就是一共需要 6 朵花。而花园中只有 5 朵花，无法满足制作要求，返回 -1 。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：bloomDay &#x3D; [7,7,7,7,12,7,7], m &#x3D; 2, k &#x3D; 3</span><br><span class="line">输出：12</span><br><span class="line">解释：要制作 2 束花，每束需要 3 朵。</span><br><span class="line">花园在 7 天后和 12 天后的情况如下：</span><br><span class="line">7 天后：[x, x, x, x, _, x, x]</span><br><span class="line">可以用前 3 朵盛开的花制作第一束花。但不能使用后 3 朵盛开的花，因为它们不相邻。</span><br><span class="line">12 天后：[x, x, x, x, x, x, x]</span><br><span class="line">显然，我们可以用不同的方式制作两束花。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 4：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：bloomDay &#x3D; [1000000000,1000000000], m &#x3D; 1, k &#x3D; 1</span><br><span class="line">输出：1000000000</span><br><span class="line">解释：需要等 1000000000 天才能采到花来制作花束</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 5：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：bloomDay &#x3D; [1,10,2,9,3,8,4,7,5,6], m &#x3D; 4, k &#x3D; 2</span><br><span class="line">输出：9</span><br></pre></td></tr></table></figure>
+
+<p> <strong>提示：</strong></p>
+<ul>
+<li><code>bloomDay.length == n</code></li>
+<li><code>1 &lt;= n &lt;= 10^5</code></li>
+<li><code>1 &lt;= bloomDay[i] &lt;= 10^9</code></li>
+<li><code>1 &lt;= m &lt;= 10^6</code></li>
+<li><code>1 &lt;= k &lt;= n</code></li>
+</ul>
+<p><strong>方法一：二分查找</strong></p>
+<p>为了计算制作花束的最少天数，首先需要实现一个辅助函数用于判断在给定的天数内能否制作出指定数量的花束。我们可以遍历数组 bloomDay，计算其中的长度为 k 且最大元素不超过 days 的补充和的连续子数组额数量，如果符合要求的不重合连续子数组的数量大于或等于 m 则返回 True，否则返回 false。</p>
+<p>当 days 很小时，辅助函数总是返回 false，引文天数太少不能收齐 m 个花束；当 days 很大的时候辅助函数总是返回 true，如果给定的序列可以制作出 m 个花束。在 days 慢慢变大的过程中，辅助函数的返回值会从false变为 true，所以我们可以认为这个辅助函数是关于 days 递增的，于是可以通过二分查找得到最少天数。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minDays</span><span class="params">(<span class="keyword">int</span>[] bloomDay, <span class="keyword">int</span> m, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(k * m &gt; bloomDay.length)&#123;</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> low = <span class="number">1</span>, high = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> length = bloomDay.length;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; i++)&#123;</span><br><span class="line">            high = Math.max(high, bloomDay[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(low &lt; high)&#123;</span><br><span class="line">            <span class="keyword">int</span> days = (high - low) / <span class="number">2</span> + low;</span><br><span class="line">            <span class="keyword">if</span>(canMake(bloomDay, days, m, k))&#123;</span><br><span class="line">                high = days;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;<span class="comment">//从左向右逼近</span></span><br><span class="line">                low = days + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> low;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">canMake</span><span class="params">(<span class="keyword">int</span>[] bloomDay, <span class="keyword">int</span> days, <span class="keyword">int</span> m, <span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> bouquets = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> flowers = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> length = bloomDay.length;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length &amp;&amp; bouquets &lt; m; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(bloomDay[i] &lt;= days)&#123;</span><br><span class="line">                flowers++;</span><br><span class="line">                <span class="keyword">if</span>(flowers == k)&#123;</span><br><span class="line">                    bouquets++;</span><br><span class="line">                    flowers = <span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                flowers = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> bouquets &gt;= m;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>时间复杂度 <em>O</em>(<em>n</em>log<em>h</em>) ，n 是数组 bloomDay 的长度，h 是数组 bloomDay 中的最大值。</li>
+<li>空间复杂度O(1)</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode Medium</tag>
+        <tag>二分查找</tag>
+      </tags>
+  </entry>
 </search>
