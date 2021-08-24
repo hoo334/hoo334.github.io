@@ -4788,6 +4788,7 @@
 <p>如果 s[i - dp[i - 1] - 1] = ‘(‘ 那么<br>$$<br>dp[i]=dp[i-1] + 2 + dp[i - dp[i - 1] - 2]<br>$$</p>
 </li>
 </ol>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20210824162120356.png" alt="image-20210824162120356"></p>
 <p>第一种情况为后面的两个字符 “()” 与前面的字符串构成一个更长的有效括号子串；</p>
 <p>第二种情况为后面两个字符 “))” 中有两层子串，里面一个 ‘)’ 构成一个有效括号子串，再加上外层括号，然后看包括外层括号的子串能否与外层括号’(‘ 连接起来构成一个更长的有效括号子串，<code>s[i - dp[i - 1] - 1] = &#39;(&#39;</code> 判断外层左括号是否存在，<code>dp[i - 1] + 2</code> 表示内层子串加上外层两个括号构成更长的子串长度，<code>dp[i - dp[i - 1] - 2]</code> 表示外层 ‘(‘ 与其之前的字符串构成更长的有效括号子串。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">longestValidParentheses</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> dp[] = <span class="keyword">new</span> <span class="keyword">int</span>[s.length()];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; dp.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s.charAt(i) == <span class="string">')'</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(s.charAt(i - <span class="number">1</span>) == <span class="string">'('</span>)&#123;</span><br><span class="line">                    dp[i] = (i &gt;= <span class="number">2</span> ? dp[i - <span class="number">2</span>] : <span class="number">0</span>) + <span class="number">2</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>(i - dp[i - <span class="number">1</span>] &gt; <span class="number">0</span> &amp;&amp; s.charAt(i - dp[i - <span class="number">1</span>] - <span class="number">1</span>) == <span class="string">'('</span>)&#123;</span><br><span class="line">                    dp[i] = dp[i - <span class="number">1</span>] + ((i - dp[i - <span class="number">1</span>]) &gt;= <span class="number">2</span> ? dp[i - dp[i - <span class="number">1</span>] - <span class="number">2</span>] : <span class="number">0</span>) + <span class="number">2</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                ans = Math.max(ans, dp[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -12461,8 +12462,9 @@
         <category>Leetcode</category>
       </categories>
       <tags>
+        <tag>Leetcode Hard</tag>
+        <tag>双指针</tag>
         <tag>动态规划</tag>
-        <tag>双指针，Leetcode Hard</tag>
       </tags>
   </entry>
   <entry>
@@ -13372,6 +13374,78 @@
       <tags>
         <tag>Leetcode Medium</tag>
         <tag>哈希表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>动态规划总结</title>
+    <url>/2021/07/31/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h3 id="坐标型动态规划"><a href="#坐标型动态规划" class="headerlink" title="坐标型动态规划"></a>坐标型动态规划</h3><p>是最简单的动态规划类型，通常给定一个序列或网格，记为 A。需要找到序列中某个/些子序列或网格中的某条路径</p>
+<ol>
+<li>某种性质最大/最小</li>
+<li>计数</li>
+<li>存在性</li>
+</ol>
+<p>动态规划方程 <code>f[i]</code>中的下标 <code>i</code>表示以<code>A[i]</code>为结尾的满足条件的子序列性质，<code>f[i][j]</code>中的下标<code>i, j</code>表示以<code>A[i][j]</code>为结尾的满足条件的路径的性质。这些性质可能是：</p>
+<ul>
+<li>最大值/最小值</li>
+<li>个数</li>
+<li>是否存在</li>
+</ul>
+<p>坐标型动态规划的初始条件<code>f[0]</code>就是指以<code>A[0]</code>为结尾的子序列的性质，对于网格，初始条件<code>f[0][0]</code>就是以<code>A[0][0]</code>为结尾的子序列的性质。</p>
+<p><a href="https://leetcode-cn.com/problems/longest-continuous-increasing-subsequence/" target="_blank" rel="noopener">674. 最长连续递增序列</a></p>
+<p><a href="https://leetcode-cn.com/problems/minimum-path-sum/" target="_blank" rel="noopener">64. 最小路径和</a></p>
+<p><a href="https://www.lintcode.com/problem/553/" target="_blank" rel="noopener">553 · 炸弹袭击 - LintCode</a></p>
+<h3 id="序列型动态规划"><a href="#序列型动态规划" class="headerlink" title="序列型动态规划"></a>序列型动态规划</h3><p>给定一个序列，动态规划方程 <code>f[i]</code>中的下标 <code>i</code>表示前 <code>i</code>个元素 A[0], A[1], …, A[i - 1]的某种性质，初始化时<code>f[0]</code>表示空序列的性质。</p>
+<p><a href="https://www.lintcode.com/problem/516/" target="_blank" rel="noopener">516 · 房屋染色 II - LintCode</a></p>
+<p><a href="https://www.lintcode.com/problem/392/" target="_blank" rel="noopener">392 · 打劫房屋 - LintCode</a></p>
+<p><a href="https://www.lintcode.com/problem/534/" target="_blank" rel="noopener">534 · 打劫房屋 II - LintCode</a></p>
+<p><a href="https://www.lintcode.com/problem/149/" target="_blank" rel="noopener">149 · 买卖股票的最佳时机 - LintCode</a></p>
+<p><a href="https://www.lintcode.com/problem/150/" target="_blank" rel="noopener">150 · 买卖股票的最佳时机 II - LintCode</a></p>
+<p><a href="https://www.lintcode.com/problem/151/" target="_blank" rel="noopener">151 · 买卖股票的最佳时机 III - LintCode</a></p>
+<p><a href="https://www.lintcode.com/problem/393/" target="_blank" rel="noopener">393 · 买卖股票的最佳时机 IV - LintCode</a></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20210803154845696.png" alt="image-20210803154845696"></p>
+<h3 id="最长序列型动态规划"><a href="#最长序列型动态规划" class="headerlink" title="最长序列型动态规划"></a>最长序列型动态规划</h3><p>给定一个序列，要求找出符合条件的最长子序列</p>
+<p>方法：</p>
+<ul>
+<li>记录以每个元素 i 结尾的最长子序列的长度</li>
+<li>计算时，在 i 之前枚举子序列的上一个元素</li>
+</ul>
+<p><a href="https://www.lintcode.com/problem/397/" target="_blank" rel="noopener">397 · 最长上升连续子序列 - LintCode</a></p>
+<p><a href="https://www.lintcode.com/problem/76/" target="_blank" rel="noopener">76 · 最长上升子序列 - LintCode</a></p>
+<p><a href="https://www.lintcode.com/problem/602/" target="_blank" rel="noopener">602 · 俄罗斯套娃信封 - LintCode</a></p>
+<h3 id="划分型动态规划"><a href="#划分型动态规划" class="headerlink" title="划分型动态规划"></a>划分型动态规划</h3><p><a href="https://www.lintcode.com/problem/513" target="_blank" rel="noopener">513 · 完美平方 - LintCode</a></p>
+<p><a href="https://www.lintcode.com/problem/108/" target="_blank" rel="noopener">108 · 分割回文串（二） - LintCode</a></p>
+<p><a href="https://www.lintcode.com/problem/437/" target="_blank" rel="noopener">437 · 书籍复印 - LintCode</a></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20210803155745658.png" alt="image-20210803155745658"></p>
+<h3 id="博弈型动态规划"><a href="#博弈型动态规划" class="headerlink" title="博弈型动态规划"></a>博弈型动态规划</h3><p><a href="https://www.lintcode.com/problem/394/" target="_blank" rel="noopener">394 · 硬币排成线 - LintCode</a></p>
+<h3 id="背包问题"><a href="#背包问题" class="headerlink" title="背包问题"></a>背包问题</h3><p><a href="https://www.lintcode.com/problem/92/" target="_blank" rel="noopener">92 · 背包问题 - LintCode</a></p>
+<p><a href="https://www.lintcode.com/problem/563/" target="_blank" rel="noopener">563 · 背包问题 V - LintCode</a></p>
+<p><a href="https://www.lintcode.com/problem/564/" target="_blank" rel="noopener">564 · 组合总和 IV - LintCode</a></p>
+<p><a href="https://www.lintcode.com/problem/125/" target="_blank" rel="noopener">125 · 背包问题（二） - LintCode</a></p>
+<p><a href="https://www.lintcode.com/problem/440/" target="_blank" rel="noopener">440 · 背包问题 III - LintCode</a></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20210805110903881.png" alt="image-20210805110903881"></p>
+<h3 id="区间型动态规划"><a href="#区间型动态规划" class="headerlink" title="区间型动态规划"></a>区间型动态规划</h3><p>给定一个序列/字符串，进行一些操作，最后一步将序列/字符串去头去尾， 剩下的会是一个区间<code>[i, j]</code>，状态自然定义为 <code>f[i][j]</code>，表示面对子序列<code>[i, ..., j]</code>时的最优性质。</p>
+<p>  <a href="https://www.lintcode.com/problem/667/" target="_blank" rel="noopener">667 · 最长的回文序列 - LintCode</a></p>
+<p><a href="https://www.lintcode.com/problem/396/" target="_blank" rel="noopener">396 · 硬币排成线 III - LintCode</a></p>
+<p><a href="https://www.lintcode.com/problem/430/" target="_blank" rel="noopener">430 · 攀爬字符串 - LintCode</a></p>
+<p><a href="https://www.lintcode.com/problem/168/" target="_blank" rel="noopener">168 · 吹气球 - LintCode</a></p>
+<h3 id="双序列型动态规划"><a href="#双序列型动态规划" class="headerlink" title="双序列型动态规划"></a>双序列型动态规划</h3><p><a href="https://www.lintcode.com/problem/77" target="_blank" rel="noopener">77 · 最长公共子序列 - LintCode</a></p>
+<p><a href="https://www.lintcode.com/problem/29" target="_blank" rel="noopener">29 · 交叉字符串 - LintCode</a></p>
+<p><a href="https://www.lintcode.com/problem/119" target="_blank" rel="noopener">119 · 编辑距离 - LintCode</a></p>
+<p><a href="https://www.lintcode.com/problem/118/" target="_blank" rel="noopener">118 · 不同的子序列 - LintCode</a></p>
+<p><a href="https://www.lintcode.com/problem/154/" target="_blank" rel="noopener">154 · 正则表达式匹配 - LintCode</a></p>
+<p><a href="https://www.lintcode.com/problem/192/" target="_blank" rel="noopener">192 · 通配符匹配 - LintCode</a></p>
+<p><img src="https://gitee.com/hoo334/picgo/raw/master//img/image-20210808203541323.png" alt="image-20210808203541323"></p>
+<p><a href="https://www.lintcode.com/problem/668/" target="_blank" rel="noopener">668 · 一和零 - LintCode</a></p>
+<p><a href="https://www.lintcode.com/problem/91/" target="_blank" rel="noopener">91 · 最小调整代价 - LintCode</a></p>
+<p><a href="https://www.lintcode.com/problem/622/" target="_blank" rel="noopener">622 · 青蛙跳 - LintCode</a></p>
+<p><a href="https://www.lintcode.com/problem/436/" target="_blank" rel="noopener">436 · 最大正方形 - LintCode</a></p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>动态规划</tag>
       </tags>
   </entry>
 </search>
