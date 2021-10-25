@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/image-20211022213057682.png">
 <meta property="og:image" content="https://gitee.com/hoo334/picgo/raw/master//img/image-20211022214139191.png">
 <meta property="article:published_time" content="2021-10-22T08:14:35.000Z">
-<meta property="article:modified_time" content="2021-10-22T13:46:45.740Z">
+<meta property="article:modified_time" content="2021-10-25T06:53:46.060Z">
 <meta property="article:author" content="hoo334">
 <meta property="article:tag" content="动态规划">
 <meta name="twitter:card" content="summary">
@@ -219,10 +219,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-10-22 16:14:35 / Modified: 21:46:45" itemprop="dateCreated datePublished" datetime="2021-10-22T16:14:35+08:00">2021-10-22</time>
+              <time title="Created: 2021-10-22 16:14:35" itemprop="dateCreated datePublished" datetime="2021-10-22T16:14:35+08:00">2021-10-22</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-10-25 14:53:46" itemprop="dateModified" datetime="2021-10-25T14:53:46+08:00">2021-10-25</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -733,6 +739,59 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
